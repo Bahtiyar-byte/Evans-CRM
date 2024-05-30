@@ -99,7 +99,7 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
-                    TemplateUsed
+                    Template Used
                   </dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
@@ -110,7 +110,7 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
-                    MaterialCost
+                    Material Cost
                   </dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
@@ -121,7 +121,7 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
-                    LaborCost
+                    Labor Cost
                   </dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
@@ -141,7 +141,7 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
-                    ProfitMargin
+                    Profit Margin
                   </dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
@@ -152,7 +152,7 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
-                    TotalPrice
+                    Total Price
                   </dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
@@ -163,18 +163,7 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
-                    UnitofMeasurement
-                  </dt>
-                  <dd className='flex items-start gap-x-2'>
-                    <div className='font-medium line-clamp-4'>
-                      {item.unit_of_measurement}
-                    </div>
-                  </dd>
-                </div>
-
-                <div className='flex justify-between gap-x-4 py-3'>
-                  <dt className='text-gray-500 dark:text-dark-600'>
-                    RelatedContact
+                    Related Contact
                   </dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
@@ -187,11 +176,24 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
-                    RelatedJob
+                    Related Job
                   </dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
                       {dataFormatter.jobsOneListFormatter(item.related_job)}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='text-gray-500 dark:text-dark-600'>
+                    Related Template
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {dataFormatter.templatesOneListFormatter(
+                        item.related_template,
+                      )}
                     </div>
                   </dd>
                 </div>

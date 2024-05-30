@@ -152,4 +152,42 @@ export default {
     if (!val) return '';
     return { label: val.name, id: val.id };
   },
+
+  templatesManyListFormatter(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => item.id);
+  },
+  templatesOneListFormatter(val) {
+    if (!val) return '';
+    return val.id;
+  },
+  templatesManyListFormatterEdit(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => {
+      return { id: item.id, label: item.id };
+    });
+  },
+  templatesOneListFormatterEdit(val) {
+    if (!val) return '';
+    return { label: val.id, id: val.id };
+  },
+
+  tradesManyListFormatter(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => item.id);
+  },
+  tradesOneListFormatter(val) {
+    if (!val) return '';
+    return val.id;
+  },
+  tradesManyListFormatterEdit(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => {
+      return { id: item.id, label: item.id };
+    });
+  },
+  tradesOneListFormatterEdit(val) {
+    if (!val) return '';
+    return { label: val.id, id: val.id };
+  },
 };

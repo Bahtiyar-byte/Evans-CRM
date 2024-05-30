@@ -51,6 +51,72 @@ const AppointmentsView = () => {
           {''}
         </SectionTitleLineWithButton>
         <CardBox>
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Subject</p>
+            <p>{appointments?.subject}</p>
+          </div>
+
+          <FormField label='Start Time'>
+            {appointments.start_time ? (
+              <DatePicker
+                dateFormat='yyyy-MM-dd hh:mm'
+                showTimeSelect
+                selected={
+                  appointments.start_time
+                    ? new Date(
+                        dayjs(appointments.start_time).format(
+                          'YYYY-MM-DD hh:mm',
+                        ),
+                      )
+                    : null
+                }
+                disabled
+              />
+            ) : (
+              <p>No Start Time</p>
+            )}
+          </FormField>
+
+          <FormField label='End Time'>
+            {appointments.end_time ? (
+              <DatePicker
+                dateFormat='yyyy-MM-dd hh:mm'
+                showTimeSelect
+                selected={
+                  appointments.end_time
+                    ? new Date(
+                        dayjs(appointments.end_time).format('YYYY-MM-DD hh:mm'),
+                      )
+                    : null
+                }
+                disabled
+              />
+            ) : (
+              <p>No End Time</p>
+            )}
+          </FormField>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Notes</p>
+            {appointments.notes ? (
+              <p dangerouslySetInnerHTML={{ __html: appointments.notes }} />
+            ) : (
+              <p>No data</p>
+            )}
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Contact</p>
+
+            <p>{appointments?.related_contact?.name ?? 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Assigned To</p>
+
+            <p>{appointments?.assigned_to?.firstName ?? 'No data'}</p>
+          </div>
+
           <BaseDivider />
 
           <BaseButton

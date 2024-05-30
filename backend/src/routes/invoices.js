@@ -20,6 +20,18 @@ router.use(checkCrudPermissions('invoices'));
  *        type: object
  *        properties:
 
+ *          invoice_number:
+ *            type: string
+ *            default: invoice_number
+
+ *          approved_job_value:
+ *            type: integer
+ *            format: int64
+ *          balance_amount:
+ *            type: integer
+ *            format: int64
+
+ *          
  */
 
 /**
@@ -263,7 +275,15 @@ router.get(
 
     const payload = await InvoicesDBApi.findAll(req.query);
     if (filetype && filetype === 'csv') {
-      const fields = ['id'];
+      const fields = [
+        'id',
+        'invoice_number',
+
+        'approved_job_value',
+        'balance_amount',
+
+        'invoice_date',
+      ];
       const opts = { fields };
       try {
         const csv = parse(payload.rows, opts);

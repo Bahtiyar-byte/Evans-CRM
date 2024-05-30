@@ -51,6 +51,50 @@ const TasksView = () => {
           {''}
         </SectionTitleLineWithButton>
         <CardBox>
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Subject</p>
+            <p>{tasks?.subject}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Assigned To</p>
+
+            <p>{tasks?.assigned_to?.firstName ?? 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Status</p>
+            <p>{tasks?.status ?? 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Priority</p>
+            <p>{tasks?.priority ?? 'No data'}</p>
+          </div>
+
+          <FormField label='Due Date'>
+            {tasks.due_date ? (
+              <DatePicker
+                dateFormat='yyyy-MM-dd hh:mm'
+                showTimeSelect
+                selected={
+                  tasks.due_date
+                    ? new Date(dayjs(tasks.due_date).format('YYYY-MM-DD hh:mm'))
+                    : null
+                }
+                disabled
+              />
+            ) : (
+              <p>No Due Date</p>
+            )}
+          </FormField>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Job</p>
+
+            <p>{tasks?.related_job?.name ?? 'No data'}</p>
+          </div>
+
           <BaseDivider />
 
           <BaseButton

@@ -69,8 +69,23 @@ const ListContacts = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Stage</p>
-                    <p className={'line-clamp-2'}>{item.stage}</p>
+                    <p className={'text-xs text-gray-500'}>Status</p>
+                    <p className={'line-clamp-2'}>{item.status}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>First Name</p>
+                    <p className={'line-clamp-2'}>{item.firstName}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Last Name</p>
+                    <p className={'line-clamp-2'}>{item.lastName}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Source</p>
+                    <p className={'line-clamp-2'}>{item.source}</p>
                   </div>
                 </div>
                 <ListActionsPopover

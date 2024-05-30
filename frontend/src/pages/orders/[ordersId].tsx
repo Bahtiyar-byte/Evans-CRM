@@ -36,7 +36,15 @@ import ImageField from '../../components/ImageField';
 const EditOrders = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const initVals = {};
+  const initVals = {
+    order_number: '',
+
+    total_amount: '',
+
+    related_job: '',
+
+    related_estimate: '',
+  };
   const [initialValues, setInitialValues] = useState(initVals);
 
   const { orders } = useAppSelector((state) => state.orders);
@@ -90,6 +98,40 @@ const EditOrders = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Order Number'>
+                <Field name='order_number' placeholder='Order Number' />
+              </FormField>
+
+              <FormField label='Total Amount'>
+                <Field
+                  type='number'
+                  name='total_amount'
+                  placeholder='Total Amount'
+                />
+              </FormField>
+
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={initialValues.related_job}
+                  itemRef={'jobs'}
+                  showField={'name'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Estimate' labelFor='related_estimate'>
+                <Field
+                  name='related_estimate'
+                  id='related_estimate'
+                  component={SelectField}
+                  options={initialValues.related_estimate}
+                  itemRef={'estimates'}
+                  showField={'name'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

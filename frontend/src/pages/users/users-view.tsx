@@ -136,7 +136,7 @@ const UsersView = () => {
           </>
 
           <>
-            <p className={'block font-bold mb-2'}>Jobs AssignedTo</p>
+            <p className={'block font-bold mb-2'}>Jobs Assigned To</p>
             <CardBox
               className='mb-6 border border-gray-300 rounded overflow-hidden'
               hasTable
@@ -154,6 +154,10 @@ const UsersView = () => {
                       <th>Status</th>
 
                       <th>Address</th>
+
+                      <th>Start Date</th>
+
+                      <th>End Date</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -175,12 +179,118 @@ const UsersView = () => {
                           <td data-label='status'>{item.status}</td>
 
                           <td data-label='address'>{item.address}</td>
+
+                          <td data-label='start_date'>
+                            {dataFormatter.dateFormatter(item.start_date)}
+                          </td>
+
+                          <td data-label='end_date'>
+                            {dataFormatter.dateFormatter(item.end_date)}
+                          </td>
                         </tr>
                       ))}
                   </tbody>
                 </table>
               </div>
               {!users?.jobs_assigned_to?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Appointments Assigned To</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Subject</th>
+
+                      <th>Start Time</th>
+
+                      <th>End Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users.appointments_assigned_to &&
+                      Array.isArray(users.appointments_assigned_to) &&
+                      users.appointments_assigned_to.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/appointments/appointments-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='subject'>{item.subject}</td>
+
+                          <td data-label='start_time'>
+                            {dataFormatter.dateTimeFormatter(item.start_time)}
+                          </td>
+
+                          <td data-label='end_time'>
+                            {dataFormatter.dateTimeFormatter(item.end_time)}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!users?.appointments_assigned_to?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Tasks Assigned To</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Subject</th>
+
+                      <th>Status</th>
+
+                      <th>Priority</th>
+
+                      <th>Due Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users.tasks_assigned_to &&
+                      Array.isArray(users.tasks_assigned_to) &&
+                      users.tasks_assigned_to.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/tasks/tasks-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='subject'>{item.subject}</td>
+
+                          <td data-label='status'>{item.status}</td>
+
+                          <td data-label='priority'>{item.priority}</td>
+
+                          <td data-label='due_date'>
+                            {dataFormatter.dateTimeFormatter(item.due_date)}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!users?.tasks_assigned_to?.length && (
                 <div className={'text-center py-4'}>No data</div>
               )}
             </CardBox>

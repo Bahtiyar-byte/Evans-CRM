@@ -33,7 +33,19 @@ import { useAppDispatch } from '../../stores/hooks';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
-const initialValues = {};
+const initialValues = {
+  subject: '',
+
+  start_time: '',
+
+  end_time: '',
+
+  notes: '',
+
+  related_contact: '',
+
+  assigned_to: '',
+};
 
 const AppointmentsNew = () => {
   const router = useRouter();
@@ -62,6 +74,54 @@ const AppointmentsNew = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Subject'>
+                <Field name='subject' placeholder='Subject' />
+              </FormField>
+
+              <FormField label='Start Time'>
+                <Field
+                  type='datetime-local'
+                  name='start_time'
+                  placeholder='Start Time'
+                />
+              </FormField>
+
+              <FormField label='End Time'>
+                <Field
+                  type='datetime-local'
+                  name='end_time'
+                  placeholder='End Time'
+                />
+              </FormField>
+
+              <FormField label='Notes' hasTextareaHeight>
+                <Field
+                  name='notes'
+                  id='notes'
+                  component={RichTextField}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Contact' labelFor='related_contact'>
+                <Field
+                  name='related_contact'
+                  id='related_contact'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'contacts'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Assigned To' labelFor='assigned_to'>
+                <Field
+                  name='assigned_to'
+                  id='assigned_to'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'users'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

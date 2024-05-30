@@ -72,12 +72,27 @@ const ContactsView = () => {
           </div>
 
           <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>Stage</p>
-            <p>{contacts?.stage ?? 'No data'}</p>
+            <p className={'block font-bold mb-2'}>Status</p>
+            <p>{contacts?.status ?? 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>First Name</p>
+            <p>{contacts?.firstName}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Last Name</p>
+            <p>{contacts?.lastName}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Source</p>
+            <p>{contacts?.source ?? 'No data'}</p>
           </div>
 
           <>
-            <p className={'block font-bold mb-2'}>Estimates RelatedContact</p>
+            <p className={'block font-bold mb-2'}>Estimates Related Contact</p>
             <CardBox
               className='mb-6 border border-gray-300 rounded overflow-hidden'
               hasTable
@@ -90,19 +105,17 @@ const ContactsView = () => {
 
                       <th>Trade</th>
 
-                      <th>TemplateUsed</th>
+                      <th>Template Used</th>
 
-                      <th>MaterialCost</th>
+                      <th>Material Cost</th>
 
-                      <th>LaborCost</th>
+                      <th>Labor Cost</th>
 
                       <th>Markup</th>
 
-                      <th>ProfitMargin</th>
+                      <th>Profit Margin</th>
 
-                      <th>TotalPrice</th>
-
-                      <th>UnitofMeasurement</th>
+                      <th>Total Price</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -138,10 +151,6 @@ const ContactsView = () => {
                           </td>
 
                           <td data-label='total_price'>{item.total_price}</td>
-
-                          <td data-label='unit_of_measurement'>
-                            {item.unit_of_measurement}
-                          </td>
                         </tr>
                       ))}
                   </tbody>
@@ -154,7 +163,7 @@ const ContactsView = () => {
           </>
 
           <>
-            <p className={'block font-bold mb-2'}>Jobs RelatedContact</p>
+            <p className={'block font-bold mb-2'}>Jobs Related Contact</p>
             <CardBox
               className='mb-6 border border-gray-300 rounded overflow-hidden'
               hasTable
@@ -172,6 +181,10 @@ const ContactsView = () => {
                       <th>Status</th>
 
                       <th>Address</th>
+
+                      <th>Start Date</th>
+
+                      <th>End Date</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -193,12 +206,118 @@ const ContactsView = () => {
                           <td data-label='status'>{item.status}</td>
 
                           <td data-label='address'>{item.address}</td>
+
+                          <td data-label='start_date'>
+                            {dataFormatter.dateFormatter(item.start_date)}
+                          </td>
+
+                          <td data-label='end_date'>
+                            {dataFormatter.dateFormatter(item.end_date)}
+                          </td>
                         </tr>
                       ))}
                   </tbody>
                 </table>
               </div>
               {!contacts?.jobs_related_contact?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>
+              Appointments Related Contact
+            </p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Subject</th>
+
+                      <th>Start Time</th>
+
+                      <th>End Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {contacts.appointments_related_contact &&
+                      Array.isArray(contacts.appointments_related_contact) &&
+                      contacts.appointments_related_contact.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/appointments/appointments-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='subject'>{item.subject}</td>
+
+                          <td data-label='start_time'>
+                            {dataFormatter.dateTimeFormatter(item.start_time)}
+                          </td>
+
+                          <td data-label='end_time'>
+                            {dataFormatter.dateTimeFormatter(item.end_time)}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!contacts?.appointments_related_contact?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Contracts Related Contact</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+
+                      <th>Amount</th>
+
+                      <th>Signed Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {contacts.contracts_related_contact &&
+                      Array.isArray(contacts.contracts_related_contact) &&
+                      contacts.contracts_related_contact.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/contracts/contracts-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='name'>{item.name}</td>
+
+                          <td data-label='amount'>{item.amount}</td>
+
+                          <td data-label='signed_date'>
+                            {dataFormatter.dateFormatter(item.signed_date)}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!contacts?.contracts_related_contact?.length && (
                 <div className={'text-center py-4'}>No data</div>
               )}
             </CardBox>

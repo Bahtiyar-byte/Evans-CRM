@@ -15,12 +15,18 @@ module.exports = class TemplatesDBApi {
       {
         id: data.id || undefined,
 
+        name: data.name || null,
+        description: data.description || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await templates.setRelated_trade(data.related_trade || null, {
+      transaction,
+    });
 
     return templates;
   }
@@ -33,6 +39,8 @@ module.exports = class TemplatesDBApi {
     const templatesData = data.map((item, index) => ({
       id: item.id || undefined,
 
+      name: item.name || null,
+      description: item.description || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -57,10 +65,16 @@ module.exports = class TemplatesDBApi {
 
     await templates.update(
       {
+        name: data.name || null,
+        description: data.description || null,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await templates.setRelated_trade(data.related_trade || null, {
+      transaction,
+    });
 
     return templates;
   }
@@ -123,6 +137,15 @@ module.exports = class TemplatesDBApi {
 
     const output = templates.get({ plain: true });
 
+    output.estimates_related_template =
+      await templates.getEstimates_related_template({
+        transaction,
+      });
+
+    output.related_trade = await templates.getRelated_trade({
+      transaction,
+    });
+
     return output;
   }
 
@@ -137,13 +160,32 @@ module.exports = class TemplatesDBApi {
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};
-    let include = [];
+    let include = [
+      {
+        model: db.trades,
+        as: 'related_trade',
+      },
+    ];
 
     if (filter) {
       if (filter.id) {
         where = {
           ...where,
           ['id']: Utils.uuid(filter.id),
+        };
+      }
+
+      if (filter.name) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('templates', 'name', filter.name),
+        };
+      }
+
+      if (filter.description) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('templates', 'description', filter.description),
         };
       }
 
@@ -156,6 +198,17 @@ module.exports = class TemplatesDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
+        };
+      }
+
+      if (filter.related_trade) {
+        var listItems = filter.related_trade.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_tradeId: { [Op.or]: listItems },
         };
       }
 

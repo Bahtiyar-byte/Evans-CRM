@@ -42,7 +42,13 @@ const initialValues = {
 
   address: '',
 
-  stage: 'Lead',
+  status: 'Lead',
+
+  firstName: '',
+
+  lastName: '',
+
+  source: 'Google Ads',
 };
 
 const ContactsNew = () => {
@@ -88,13 +94,33 @@ const ContactsNew = () => {
                 <Field name='address' placeholder='Address' />
               </FormField>
 
-              <FormField label='Stage' labelFor='stage'>
-                <Field name='stage' id='stage' component='select'>
+              <FormField label='Status' labelFor='status'>
+                <Field name='status' id='status' component='select'>
                   <option value='Lead'>Lead</option>
 
                   <option value='Prospect'>Prospect</option>
 
                   <option value='Customer'>Customer</option>
+                </Field>
+              </FormField>
+
+              <FormField label='First Name'>
+                <Field name='firstName' placeholder='First Name' />
+              </FormField>
+
+              <FormField label='Last Name'>
+                <Field name='lastName' placeholder='Last Name' />
+              </FormField>
+
+              <FormField label='Source' labelFor='source'>
+                <Field name='source' id='source' component='select'>
+                  <option value='Google Ads'>Google Ads</option>
+
+                  <option value='Facebook'>Facebook</option>
+
+                  <option value='Website'>Website</option>
+
+                  <option value='Other'>Other</option>
                 </Field>
               </FormField>
 

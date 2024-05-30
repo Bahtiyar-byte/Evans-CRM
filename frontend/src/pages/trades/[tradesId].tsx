@@ -36,7 +36,9 @@ import ImageField from '../../components/ImageField';
 const EditTrades = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const initVals = {};
+  const initVals = {
+    name: '',
+  };
   const [initialValues, setInitialValues] = useState(initVals);
 
   const { trades } = useAppSelector((state) => state.trades);
@@ -90,6 +92,10 @@ const EditTrades = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Name'>
+                <Field name='name' placeholder='Name' />
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

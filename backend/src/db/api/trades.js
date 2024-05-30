@@ -15,6 +15,7 @@ module.exports = class TradesDBApi {
       {
         id: data.id || undefined,
 
+        name: data.name || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
@@ -33,6 +34,7 @@ module.exports = class TradesDBApi {
     const tradesData = data.map((item, index) => ({
       id: item.id || undefined,
 
+      name: item.name || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -55,6 +57,7 @@ module.exports = class TradesDBApi {
 
     await trades.update(
       {
+        name: data.name || null,
         updatedById: currentUser.id,
       },
       { transaction },
@@ -121,6 +124,10 @@ module.exports = class TradesDBApi {
 
     const output = trades.get({ plain: true });
 
+    output.templates_related_trade = await trades.getTemplates_related_trade({
+      transaction,
+    });
+
     return output;
   }
 
@@ -142,6 +149,13 @@ module.exports = class TradesDBApi {
         where = {
           ...where,
           ['id']: Utils.uuid(filter.id),
+        };
+      }
+
+      if (filter.name) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('trades', 'name', filter.name),
         };
       }
 

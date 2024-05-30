@@ -123,7 +123,7 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
-                    AssignedTo
+                    Assigned To
                   </dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
@@ -134,7 +134,7 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
-                    RelatedContact
+                    Related Contact
                   </dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
@@ -147,7 +147,7 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
-                    RelatedEstimate
+                    Related Estimate
                   </dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
@@ -198,6 +198,26 @@ const CardUsers = ({
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
                       {item.address}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='text-gray-500 dark:text-dark-600'>
+                    Start Date
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {dataFormatter.dateFormatter(item.start_date)}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='text-gray-500 dark:text-dark-600'>End Date</dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {dataFormatter.dateFormatter(item.end_date)}
                     </div>
                   </dd>
                 </div>

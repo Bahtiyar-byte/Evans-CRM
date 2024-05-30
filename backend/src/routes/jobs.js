@@ -271,7 +271,15 @@ router.get(
 
     const payload = await JobsDBApi.findAll(req.query);
     if (filetype && filetype === 'csv') {
-      const fields = ['id', 'name', 'description', 'address'];
+      const fields = [
+        'id',
+        'name',
+        'description',
+        'address',
+
+        'start_date',
+        'end_date',
+      ];
       const opts = { fields };
       try {
         const csv = parse(payload.rows, opts);

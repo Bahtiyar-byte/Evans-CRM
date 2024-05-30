@@ -33,7 +33,19 @@ import { useAppDispatch } from '../../stores/hooks';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
-const initialValues = {};
+const initialValues = {
+  subject: '',
+
+  assigned_to: '',
+
+  status: '',
+
+  priority: '',
+
+  due_date: '',
+
+  related_job: '',
+};
 
 const TasksNew = () => {
   const router = useRouter();
@@ -62,6 +74,70 @@ const TasksNew = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Subject'>
+                <Field name='subject' placeholder='Subject' />
+              </FormField>
+
+              <FormField label='Assigned To' labelFor='assigned_to'>
+                <Field
+                  name='assigned_to'
+                  id='assigned_to'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'users'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Status'>
+                <FormCheckRadioGroup>
+                  <FormCheckRadio type='radio' label='Open'>
+                    <Field type='radio' name='status' value='Open' />
+                  </FormCheckRadio>
+
+                  <FormCheckRadio type='radio' label='Completed'>
+                    <Field type='radio' name='status' value='Completed' />
+                  </FormCheckRadio>
+
+                  <FormCheckRadio type='radio' label='Accepted'>
+                    <Field type='radio' name='status' value='Accepted' />
+                  </FormCheckRadio>
+                </FormCheckRadioGroup>
+              </FormField>
+
+              <FormField label='Priority'>
+                <FormCheckRadioGroup>
+                  <FormCheckRadio type='radio' label='Low'>
+                    <Field type='radio' name='priority' value='Low' />
+                  </FormCheckRadio>
+
+                  <FormCheckRadio type='radio' label='Medium'>
+                    <Field type='radio' name='priority' value='Medium' />
+                  </FormCheckRadio>
+
+                  <FormCheckRadio type='radio' label='High'>
+                    <Field type='radio' name='priority' value='High' />
+                  </FormCheckRadio>
+                </FormCheckRadioGroup>
+              </FormField>
+
+              <FormField label='Due Date'>
+                <Field
+                  type='datetime-local'
+                  name='due_date'
+                  placeholder='Due Date'
+                />
+              </FormField>
+
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'jobs'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

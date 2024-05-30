@@ -28,7 +28,13 @@ const AmendmentsTablesPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const [filters] = useState([]);
+  const [filters] = useState([
+    { label: 'Description', title: 'description' },
+
+    { label: 'Amount', title: 'amount', number: 'true' },
+
+    { label: 'Related Job', title: 'related_job' },
+  ]);
 
   const hasCreatePermission =
     currentUser && hasPermission(currentUser, 'CREATE_AMENDMENTS');

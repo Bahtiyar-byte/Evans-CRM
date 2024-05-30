@@ -21,6 +21,8 @@ module.exports = class JobsDBApi {
         type: data.type || null,
         status: data.status || null,
         address: data.address || null,
+        start_date: data.start_date || null,
+        end_date: data.end_date || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
@@ -77,6 +79,8 @@ module.exports = class JobsDBApi {
       type: item.type || null,
       status: item.status || null,
       address: item.address || null,
+      start_date: item.start_date || null,
+      end_date: item.end_date || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -129,6 +133,8 @@ module.exports = class JobsDBApi {
         type: data.type || null,
         status: data.status || null,
         address: data.address || null,
+        start_date: data.start_date || null,
+        end_date: data.end_date || null,
         updatedById: currentUser.id,
       },
       { transaction },
@@ -231,6 +237,26 @@ module.exports = class JobsDBApi {
       transaction,
     });
 
+    output.invoices_related_job = await jobs.getInvoices_related_job({
+      transaction,
+    });
+
+    output.orders_related_job = await jobs.getOrders_related_job({
+      transaction,
+    });
+
+    output.tasks_related_job = await jobs.getTasks_related_job({
+      transaction,
+    });
+
+    output.contracts_related_job = await jobs.getContracts_related_job({
+      transaction,
+    });
+
+    output.amendments_related_job = await jobs.getAmendments_related_job({
+      transaction,
+    });
+
     output.assigned_to = await jobs.getAssigned_to({
       transaction,
     });
@@ -319,6 +345,54 @@ module.exports = class JobsDBApi {
           ...where,
           [Op.and]: Utils.ilike('jobs', 'address', filter.address),
         };
+      }
+
+      if (filter.start_dateRange) {
+        const [start, end] = filter.start_dateRange;
+
+        if (start !== undefined && start !== null && start !== '') {
+          where = {
+            ...where,
+            start_date: {
+              ...where.start_date,
+              [Op.gte]: start,
+            },
+          };
+        }
+
+        if (end !== undefined && end !== null && end !== '') {
+          where = {
+            ...where,
+            start_date: {
+              ...where.start_date,
+              [Op.lte]: end,
+            },
+          };
+        }
+      }
+
+      if (filter.end_dateRange) {
+        const [start, end] = filter.end_dateRange;
+
+        if (start !== undefined && start !== null && start !== '') {
+          where = {
+            ...where,
+            end_date: {
+              ...where.end_date,
+              [Op.gte]: start,
+            },
+          };
+        }
+
+        if (end !== undefined && end !== null && end !== '') {
+          where = {
+            ...where,
+            end_date: {
+              ...where.end_date,
+              [Op.lte]: end,
+            },
+          };
+        }
       }
 
       if (

@@ -77,7 +77,7 @@ export const loadColumns = async (
 
     {
       field: 'template_used',
-      headerName: 'TemplateUsed',
+      headerName: 'Template Used',
       flex: 1,
       minWidth: 120,
       filterable: false,
@@ -89,7 +89,7 @@ export const loadColumns = async (
 
     {
       field: 'material_cost',
-      headerName: 'MaterialCost',
+      headerName: 'Material Cost',
       flex: 1,
       minWidth: 120,
       filterable: false,
@@ -103,7 +103,7 @@ export const loadColumns = async (
 
     {
       field: 'labor_cost',
-      headerName: 'LaborCost',
+      headerName: 'Labor Cost',
       flex: 1,
       minWidth: 120,
       filterable: false,
@@ -131,7 +131,7 @@ export const loadColumns = async (
 
     {
       field: 'profit_margin',
-      headerName: 'ProfitMargin',
+      headerName: 'Profit Margin',
       flex: 1,
       minWidth: 120,
       filterable: false,
@@ -145,7 +145,7 @@ export const loadColumns = async (
 
     {
       field: 'total_price',
-      headerName: 'TotalPrice',
+      headerName: 'Total Price',
       flex: 1,
       minWidth: 120,
       filterable: false,
@@ -158,20 +158,8 @@ export const loadColumns = async (
     },
 
     {
-      field: 'unit_of_measurement',
-      headerName: 'UnitofMeasurement',
-      flex: 1,
-      minWidth: 120,
-      filterable: false,
-      headerClassName: 'datagrid--header',
-      cellClassName: 'datagrid--cell',
-
-      editable: hasUpdatePermission,
-    },
-
-    {
       field: 'related_contact',
-      headerName: 'RelatedContact',
+      headerName: 'Related Contact',
       flex: 1,
       minWidth: 120,
       filterable: false,
@@ -191,7 +179,7 @@ export const loadColumns = async (
 
     {
       field: 'related_job',
-      headerName: 'RelatedJob',
+      headerName: 'Related Job',
       flex: 1,
       minWidth: 120,
       filterable: false,
@@ -205,6 +193,26 @@ export const loadColumns = async (
       getOptionValue: (value: any) => value?.id,
       getOptionLabel: (value: any) => value?.label,
       valueOptions: await callOptionsApi('jobs'),
+      valueGetter: (params: GridValueGetterParams) =>
+        params?.value?.id ?? params?.value,
+    },
+
+    {
+      field: 'related_template',
+      headerName: 'Related Template',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      sortable: false,
+      type: 'singleSelect',
+      getOptionValue: (value: any) => value?.id,
+      getOptionLabel: (value: any) => value?.label,
+      valueOptions: await callOptionsApi('templates'),
       valueGetter: (params: GridValueGetterParams) =>
         params?.value?.id ?? params?.value,
     },

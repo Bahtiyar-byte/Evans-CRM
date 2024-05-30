@@ -15,12 +15,21 @@ module.exports = class InvoicesDBApi {
       {
         id: data.id || undefined,
 
+        invoice_number: data.invoice_number || null,
+        invoice_date: data.invoice_date || null,
+        terms: data.terms || null,
+        approved_job_value: data.approved_job_value || null,
+        balance_amount: data.balance_amount || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await invoices.setRelated_job(data.related_job || null, {
+      transaction,
+    });
 
     return invoices;
   }
@@ -33,6 +42,11 @@ module.exports = class InvoicesDBApi {
     const invoicesData = data.map((item, index) => ({
       id: item.id || undefined,
 
+      invoice_number: item.invoice_number || null,
+      invoice_date: item.invoice_date || null,
+      terms: item.terms || null,
+      approved_job_value: item.approved_job_value || null,
+      balance_amount: item.balance_amount || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -57,10 +71,19 @@ module.exports = class InvoicesDBApi {
 
     await invoices.update(
       {
+        invoice_number: data.invoice_number || null,
+        invoice_date: data.invoice_date || null,
+        terms: data.terms || null,
+        approved_job_value: data.approved_job_value || null,
+        balance_amount: data.balance_amount || null,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await invoices.setRelated_job(data.related_job || null, {
+      transaction,
+    });
 
     return invoices;
   }
@@ -123,6 +146,10 @@ module.exports = class InvoicesDBApi {
 
     const output = invoices.get({ plain: true });
 
+    output.related_job = await invoices.getRelated_job({
+      transaction,
+    });
+
     return output;
   }
 
@@ -137,7 +164,12 @@ module.exports = class InvoicesDBApi {
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};
-    let include = [];
+    let include = [
+      {
+        model: db.jobs,
+        as: 'related_job',
+      },
+    ];
 
     if (filter) {
       if (filter.id) {
@@ -145,6 +177,89 @@ module.exports = class InvoicesDBApi {
           ...where,
           ['id']: Utils.uuid(filter.id),
         };
+      }
+
+      if (filter.invoice_number) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike(
+            'invoices',
+            'invoice_number',
+            filter.invoice_number,
+          ),
+        };
+      }
+
+      if (filter.invoice_dateRange) {
+        const [start, end] = filter.invoice_dateRange;
+
+        if (start !== undefined && start !== null && start !== '') {
+          where = {
+            ...where,
+            invoice_date: {
+              ...where.invoice_date,
+              [Op.gte]: start,
+            },
+          };
+        }
+
+        if (end !== undefined && end !== null && end !== '') {
+          where = {
+            ...where,
+            invoice_date: {
+              ...where.invoice_date,
+              [Op.lte]: end,
+            },
+          };
+        }
+      }
+
+      if (filter.approved_job_valueRange) {
+        const [start, end] = filter.approved_job_valueRange;
+
+        if (start !== undefined && start !== null && start !== '') {
+          where = {
+            ...where,
+            approved_job_value: {
+              ...where.approved_job_value,
+              [Op.gte]: start,
+            },
+          };
+        }
+
+        if (end !== undefined && end !== null && end !== '') {
+          where = {
+            ...where,
+            approved_job_value: {
+              ...where.approved_job_value,
+              [Op.lte]: end,
+            },
+          };
+        }
+      }
+
+      if (filter.balance_amountRange) {
+        const [start, end] = filter.balance_amountRange;
+
+        if (start !== undefined && start !== null && start !== '') {
+          where = {
+            ...where,
+            balance_amount: {
+              ...where.balance_amount,
+              [Op.gte]: start,
+            },
+          };
+        }
+
+        if (end !== undefined && end !== null && end !== '') {
+          where = {
+            ...where,
+            balance_amount: {
+              ...where.balance_amount,
+              [Op.lte]: end,
+            },
+          };
+        }
       }
 
       if (
@@ -156,6 +271,24 @@ module.exports = class InvoicesDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
+        };
+      }
+
+      if (filter.terms) {
+        where = {
+          ...where,
+          terms: filter.terms,
+        };
+      }
+
+      if (filter.related_job) {
+        var listItems = filter.related_job.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_jobId: { [Op.or]: listItems },
         };
       }
 

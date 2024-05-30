@@ -20,6 +20,12 @@ router.use(checkCrudPermissions('tasks'));
  *        type: object
  *        properties:
 
+ *          subject:
+ *            type: string
+ *            default: subject
+
+ *          
+ *          
  */
 
 /**
@@ -258,7 +264,7 @@ router.get(
 
     const payload = await TasksDBApi.findAll(req.query);
     if (filetype && filetype === 'csv') {
-      const fields = ['id'];
+      const fields = ['id', 'subject', 'due_date'];
       const opts = { fields };
       try {
         const csv = parse(payload.rows, opts);

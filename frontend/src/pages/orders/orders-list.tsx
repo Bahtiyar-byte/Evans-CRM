@@ -28,7 +28,14 @@ const OrdersTablesPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const [filters] = useState([]);
+  const [filters] = useState([
+    { label: 'Order Number', title: 'order_number' },
+
+    { label: 'Total Amount', title: 'total_amount', number: 'true' },
+
+    { label: 'Related Job', title: 'related_job' },
+    { label: 'Related Estimate', title: 'related_estimate' },
+  ]);
 
   const hasCreatePermission =
     currentUser && hasPermission(currentUser, 'CREATE_ORDERS');

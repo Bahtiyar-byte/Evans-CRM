@@ -28,7 +28,18 @@ const InvoicesTablesPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const [filters] = useState([]);
+  const [filters] = useState([
+    { label: 'Invoice Number', title: 'invoice_number' },
+
+    {
+      label: 'Approved Job Value',
+      title: 'approved_job_value',
+      number: 'true',
+    },
+    { label: 'Balance Amount', title: 'balance_amount', number: 'true' },
+
+    { label: 'Related Job', title: 'related_job' },
+  ]);
 
   const hasCreatePermission =
     currentUser && hasPermission(currentUser, 'CREATE_INVOICES');

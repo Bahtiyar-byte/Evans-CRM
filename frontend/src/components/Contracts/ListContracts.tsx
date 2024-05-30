@@ -47,7 +47,45 @@ const ListContracts = ({
                     'flex-1 px-4 py-6 h-24 flex items-stretch divide-x-2 dark:divide-dark-700 overflow-x-auto'
                   }
                   onClick={() => onView(item.id)}
-                ></div>
+                >
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Name</p>
+                    <p className={'line-clamp-2'}>{item.name}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Amount</p>
+                    <p className={'line-clamp-2'}>{item.amount}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Body</p>
+                    <p className={'line-clamp-2'}>{item.body}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Related Contact</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.contactsOneListFormatter(
+                        item.related_contact,
+                      )}
+                    </p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Signed Date</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.dateFormatter(item.signed_date)}
+                    </p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Related Job</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.jobsOneListFormatter(item.related_job)}
+                    </p>
+                  </div>
+                </div>
                 <ListActionsPopover
                   onDelete={onDelete}
                   onView={onView}

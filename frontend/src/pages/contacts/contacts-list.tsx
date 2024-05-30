@@ -33,6 +33,8 @@ const ContactsTablesPage = () => {
     { label: 'Email', title: 'email' },
     { label: 'Phone', title: 'phone' },
     { label: 'Address', title: 'address' },
+    { label: 'First Name', title: 'firstName' },
+    { label: 'Last Name', title: 'lastName' },
   ]);
 
   const hasCreatePermission =

@@ -20,6 +20,14 @@ router.use(checkCrudPermissions('orders'));
  *        type: object
  *        properties:
 
+ *          order_number:
+ *            type: string
+ *            default: order_number
+
+ *          total_amount:
+ *            type: integer
+ *            format: int64
+
  */
 
 /**
@@ -258,7 +266,7 @@ router.get(
 
     const payload = await OrdersDBApi.findAll(req.query);
     if (filetype && filetype === 'csv') {
-      const fields = ['id'];
+      const fields = ['id', 'order_number', 'total_amount'];
       const opts = { fields };
       try {
         const csv = parse(payload.rows, opts);

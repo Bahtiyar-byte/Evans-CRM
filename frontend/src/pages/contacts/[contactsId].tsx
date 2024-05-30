@@ -45,7 +45,13 @@ const EditContacts = () => {
 
     address: '',
 
-    stage: '',
+    status: '',
+
+    firstName: '',
+
+    lastName: '',
+
+    source: '',
   };
   const [initialValues, setInitialValues] = useState(initVals);
 
@@ -116,13 +122,33 @@ const EditContacts = () => {
                 <Field name='address' placeholder='Address' />
               </FormField>
 
-              <FormField label='Stage' labelFor='stage'>
-                <Field name='Stage' id='Stage' component='select'>
+              <FormField label='Status' labelFor='status'>
+                <Field name='Status' id='Status' component='select'>
                   <option value='Lead'>Lead</option>
 
                   <option value='Prospect'>Prospect</option>
 
                   <option value='Customer'>Customer</option>
+                </Field>
+              </FormField>
+
+              <FormField label='First Name'>
+                <Field name='firstName' placeholder='First Name' />
+              </FormField>
+
+              <FormField label='Last Name'>
+                <Field name='lastName' placeholder='Last Name' />
+              </FormField>
+
+              <FormField label='Source' labelFor='source'>
+                <Field name='Source' id='Source' component='select'>
+                  <option value='Google Ads'>Google Ads</option>
+
+                  <option value='Facebook'>Facebook</option>
+
+                  <option value='Website'>Website</option>
+
+                  <option value='Other'>Other</option>
                 </Field>
               </FormField>
 

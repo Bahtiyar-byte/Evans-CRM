@@ -33,9 +33,9 @@ const JobsTablesPage = () => {
     { label: 'Description', title: 'description' },
     { label: 'Address', title: 'address' },
 
-    { label: 'AssignedTo', title: 'assigned_to' },
-    { label: 'RelatedContact', title: 'related_contact' },
-    { label: 'RelatedEstimate', title: 'related_estimate' },
+    { label: 'Assigned To', title: 'assigned_to' },
+    { label: 'Related Contact', title: 'related_contact' },
+    { label: 'Related Estimate', title: 'related_estimate' },
   ]);
 
   const hasCreatePermission =
