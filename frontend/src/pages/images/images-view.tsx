@@ -51,6 +51,30 @@ const ImagesView = () => {
           {''}
         </SectionTitleLineWithButton>
         <CardBox>
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Image</p>
+            {images?.image?.length ? (
+              <ImageField
+                name={'image'}
+                image={images?.image}
+                className='w-20 h-20'
+              />
+            ) : (
+              <p>No Image</p>
+            )}
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Name</p>
+            <p>{images?.Name}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Job</p>
+
+            <p>{images?.related_job?.name ?? 'No data'}</p>
+          </div>
+
           <BaseDivider />
 
           <BaseButton

@@ -47,7 +47,28 @@ const ListChats = ({
                     'flex-1 px-4 py-6 h-24 flex items-stretch divide-x-2 dark:divide-dark-700 overflow-x-auto'
                   }
                   onClick={() => onView(item.id)}
-                ></div>
+                >
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Related Job</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.jobsOneListFormatter(item.related_job)}
+                    </p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Related Users</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter
+                        .usersManyListFormatter(item.related_users)
+                        .join(', ')}
+                    </p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Name</p>
+                    <p className={'line-clamp-2'}>{item.name}</p>
+                  </div>
+                </div>
                 <ListActionsPopover
                   onDelete={onDelete}
                   onView={onView}

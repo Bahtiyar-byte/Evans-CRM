@@ -156,6 +156,10 @@ module.exports = class ContactsDBApi {
       transaction,
     });
 
+    output.emails_related_contact = await contacts.getEmails_related_contact({
+      transaction,
+    });
+
     output.appointments_related_contact =
       await contacts.getAppointments_related_contact({
         transaction,

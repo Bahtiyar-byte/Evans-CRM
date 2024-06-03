@@ -28,7 +28,11 @@ const ImagesTablesPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const [filters] = useState([]);
+  const [filters] = useState([
+    { label: 'Name', title: 'Name' },
+
+    { label: 'Related Job', title: 'related_job' },
+  ]);
 
   const hasCreatePermission =
     currentUser && hasPermission(currentUser, 'CREATE_IMAGES');
@@ -120,6 +124,10 @@ const ImagesTablesPage = () => {
 
           <div className='md:inline-flex items-center ms-auto'>
             <div id='delete-rows-button'></div>
+
+            <Link href={'/images/images-list'}>
+              Back to <span className='capitalize'>card</span>
+            </Link>
           </div>
         </CardBox>
         <CardBox className='mb-6' hasTable>

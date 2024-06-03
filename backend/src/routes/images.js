@@ -20,6 +20,10 @@ router.use(checkCrudPermissions('images'));
  *        type: object
  *        properties:
 
+ *          Name:
+ *            type: string
+ *            default: Name
+
  */
 
 /**
@@ -258,7 +262,7 @@ router.get(
 
     const payload = await ImagesDBApi.findAll(req.query);
     if (filetype && filetype === 'csv') {
-      const fields = ['id'];
+      const fields = ['id', 'Name'];
       const opts = { fields };
       try {
         const csv = parse(payload.rows, opts);

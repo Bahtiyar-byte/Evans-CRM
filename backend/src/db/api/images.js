@@ -15,11 +15,26 @@ module.exports = class ImagesDBApi {
       {
         id: data.id || undefined,
 
+        Name: data.Name || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
       },
       { transaction },
+    );
+
+    await images.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await FileDBApi.replaceRelationFiles(
+      {
+        belongsTo: db.images.getTableName(),
+        belongsToColumn: 'image',
+        belongsToId: images.id,
+      },
+      data.image,
+      options,
     );
 
     return images;
@@ -33,6 +48,7 @@ module.exports = class ImagesDBApi {
     const imagesData = data.map((item, index) => ({
       id: item.id || undefined,
 
+      Name: item.Name || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -43,6 +59,18 @@ module.exports = class ImagesDBApi {
     const images = await db.images.bulkCreate(imagesData, { transaction });
 
     // For each item created, replace relation files
+
+    for (let i = 0; i < images.length; i++) {
+      await FileDBApi.replaceRelationFiles(
+        {
+          belongsTo: db.images.getTableName(),
+          belongsToColumn: 'image',
+          belongsToId: images[i].id,
+        },
+        data[i].image,
+        options,
+      );
+    }
 
     return images;
   }
@@ -55,9 +83,24 @@ module.exports = class ImagesDBApi {
 
     await images.update(
       {
+        Name: data.Name || null,
         updatedById: currentUser.id,
       },
       { transaction },
+    );
+
+    await images.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await FileDBApi.replaceRelationFiles(
+      {
+        belongsTo: db.images.getTableName(),
+        belongsToColumn: 'image',
+        belongsToId: images.id,
+      },
+      data.image,
+      options,
     );
 
     return images;
@@ -121,6 +164,14 @@ module.exports = class ImagesDBApi {
 
     const output = images.get({ plain: true });
 
+    output.image = await images.getImage({
+      transaction,
+    });
+
+    output.related_job = await images.getRelated_job({
+      transaction,
+    });
+
     return output;
   }
 
@@ -135,13 +186,30 @@ module.exports = class ImagesDBApi {
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};
-    let include = [];
+    let include = [
+      {
+        model: db.jobs,
+        as: 'related_job',
+      },
+
+      {
+        model: db.file,
+        as: 'image',
+      },
+    ];
 
     if (filter) {
       if (filter.id) {
         where = {
           ...where,
           ['id']: Utils.uuid(filter.id),
+        };
+      }
+
+      if (filter.Name) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('images', 'Name', filter.Name),
         };
       }
 
@@ -154,6 +222,17 @@ module.exports = class ImagesDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
+        };
+      }
+
+      if (filter.related_job) {
+        var listItems = filter.related_job.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_jobId: { [Op.or]: listItems },
         };
       }
 
@@ -226,21 +305,21 @@ module.exports = class ImagesDBApi {
       where = {
         [Op.or]: [
           { ['id']: Utils.uuid(query) },
-          Utils.ilike('images', 'id', query),
+          Utils.ilike('images', 'Name', query),
         ],
       };
     }
 
     const records = await db.images.findAll({
-      attributes: ['id', 'id'],
+      attributes: ['id', 'Name'],
       where,
       limit: limit ? Number(limit) : undefined,
-      orderBy: [['id', 'ASC']],
+      orderBy: [['Name', 'ASC']],
     });
 
     return records.map((record) => ({
       id: record.id,
-      label: record.id,
+      label: record.Name,
     }));
   }
 };

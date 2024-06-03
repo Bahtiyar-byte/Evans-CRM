@@ -32,6 +32,30 @@ module.exports = function (sequelize, DataTypes) {
 
     //end loop
 
+    db.emails.belongsTo(db.jobs, {
+      as: 'related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.emails.belongsTo(db.contacts, {
+      as: 'related_contact',
+      foreignKey: {
+        name: 'related_contactId',
+      },
+      constraints: false,
+    });
+
+    db.emails.belongsTo(db.users, {
+      as: 'related_user',
+      foreignKey: {
+        name: 'related_userId',
+      },
+      constraints: false,
+    });
+
     db.emails.belongsTo(db.users, {
       as: 'createdBy',
     });

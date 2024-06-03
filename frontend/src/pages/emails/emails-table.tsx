@@ -28,7 +28,11 @@ const EmailsTablesPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const [filters] = useState([]);
+  const [filters] = useState([
+    { label: 'Related Job', title: 'related_job' },
+    { label: 'Related Contact', title: 'related_contact' },
+    { label: 'Related User', title: 'related_user' },
+  ]);
 
   const hasCreatePermission =
     currentUser && hasPermission(currentUser, 'CREATE_EMAILS');

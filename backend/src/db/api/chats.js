@@ -15,12 +15,21 @@ module.exports = class ChatsDBApi {
       {
         id: data.id || undefined,
 
+        name: data.name || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await chats.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await chats.setRelated_users(data.related_users || [], {
+      transaction,
+    });
 
     return chats;
   }
@@ -33,6 +42,7 @@ module.exports = class ChatsDBApi {
     const chatsData = data.map((item, index) => ({
       id: item.id || undefined,
 
+      name: item.name || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -55,10 +65,19 @@ module.exports = class ChatsDBApi {
 
     await chats.update(
       {
+        name: data.name || null,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await chats.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await chats.setRelated_users(data.related_users || [], {
+      transaction,
+    });
 
     return chats;
   }
@@ -121,6 +140,14 @@ module.exports = class ChatsDBApi {
 
     const output = chats.get({ plain: true });
 
+    output.related_job = await chats.getRelated_job({
+      transaction,
+    });
+
+    output.related_users = await chats.getRelated_users({
+      transaction,
+    });
+
     return output;
   }
 
@@ -135,13 +162,40 @@ module.exports = class ChatsDBApi {
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};
-    let include = [];
+    let include = [
+      {
+        model: db.jobs,
+        as: 'related_job',
+      },
+
+      {
+        model: db.users,
+        as: 'related_users',
+        through: filter.related_users
+          ? {
+              where: {
+                [Op.or]: filter.related_users.split('|').map((item) => {
+                  return { ['Id']: Utils.uuid(item) };
+                }),
+              },
+            }
+          : null,
+        required: filter.related_users ? true : null,
+      },
+    ];
 
     if (filter) {
       if (filter.id) {
         where = {
           ...where,
           ['id']: Utils.uuid(filter.id),
+        };
+      }
+
+      if (filter.name) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('chats', 'name', filter.name),
         };
       }
 
@@ -154,6 +208,17 @@ module.exports = class ChatsDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
+        };
+      }
+
+      if (filter.related_job) {
+        var listItems = filter.related_job.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_jobId: { [Op.or]: listItems },
         };
       }
 

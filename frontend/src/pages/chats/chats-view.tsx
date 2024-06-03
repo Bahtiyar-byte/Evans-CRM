@@ -51,6 +51,70 @@ const ChatsView = () => {
           {''}
         </SectionTitleLineWithButton>
         <CardBox>
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Job</p>
+
+            <p>{chats?.related_job?.name ?? 'No data'}</p>
+          </div>
+
+          <>
+            <p className={'block font-bold mb-2'}>Related Users</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>First Name</th>
+
+                      <th>Last Name</th>
+
+                      <th>Phone Number</th>
+
+                      <th>E-Mail</th>
+
+                      <th>Disabled</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {chats.related_users &&
+                      Array.isArray(chats.related_users) &&
+                      chats.related_users.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/users/users-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='firstName'>{item.firstName}</td>
+
+                          <td data-label='lastName'>{item.lastName}</td>
+
+                          <td data-label='phoneNumber'>{item.phoneNumber}</td>
+
+                          <td data-label='email'>{item.email}</td>
+
+                          <td data-label='disabled'>
+                            {dataFormatter.booleanFormatter(item.disabled)}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!chats?.related_users?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Name</p>
+            <p>{chats?.name}</p>
+          </div>
+
           <BaseDivider />
 
           <BaseButton

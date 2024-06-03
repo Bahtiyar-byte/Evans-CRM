@@ -199,6 +199,37 @@ const UsersView = () => {
           </>
 
           <>
+            <p className={'block font-bold mb-2'}>Emails Related User</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr></tr>
+                  </thead>
+                  <tbody>
+                    {users.emails_related_user &&
+                      Array.isArray(users.emails_related_user) &&
+                      users.emails_related_user.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/emails/emails-view/?id=${item.id}`)
+                          }
+                        ></tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!users?.emails_related_user?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
             <p className={'block font-bold mb-2'}>Appointments Assigned To</p>
             <CardBox
               className='mb-6 border border-gray-300 rounded overflow-hidden'

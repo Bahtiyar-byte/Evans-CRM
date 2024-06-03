@@ -47,7 +47,30 @@ const ListEmails = ({
                     'flex-1 px-4 py-6 h-24 flex items-stretch divide-x-2 dark:divide-dark-700 overflow-x-auto'
                   }
                   onClick={() => onView(item.id)}
-                ></div>
+                >
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Related Job</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.jobsOneListFormatter(item.related_job)}
+                    </p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Related Contact</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.contactsOneListFormatter(
+                        item.related_contact,
+                      )}
+                    </p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Related User</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.usersOneListFormatter(item.related_user)}
+                    </p>
+                  </div>
+                </div>
                 <ListActionsPopover
                   onDelete={onDelete}
                   onView={onView}

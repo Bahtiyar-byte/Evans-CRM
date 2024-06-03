@@ -15,12 +15,17 @@ module.exports = class DocumentsDBApi {
       {
         id: data.id || undefined,
 
+        name: data.name || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await documents.setRelated_job(data.related_job || null, {
+      transaction,
+    });
 
     return documents;
   }
@@ -33,6 +38,7 @@ module.exports = class DocumentsDBApi {
     const documentsData = data.map((item, index) => ({
       id: item.id || undefined,
 
+      name: item.name || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -57,10 +63,15 @@ module.exports = class DocumentsDBApi {
 
     await documents.update(
       {
+        name: data.name || null,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await documents.setRelated_job(data.related_job || null, {
+      transaction,
+    });
 
     return documents;
   }
@@ -123,6 +134,10 @@ module.exports = class DocumentsDBApi {
 
     const output = documents.get({ plain: true });
 
+    output.related_job = await documents.getRelated_job({
+      transaction,
+    });
+
     return output;
   }
 
@@ -137,13 +152,25 @@ module.exports = class DocumentsDBApi {
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};
-    let include = [];
+    let include = [
+      {
+        model: db.jobs,
+        as: 'related_job',
+      },
+    ];
 
     if (filter) {
       if (filter.id) {
         where = {
           ...where,
           ['id']: Utils.uuid(filter.id),
+        };
+      }
+
+      if (filter.name) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('documents', 'name', filter.name),
         };
       }
 
@@ -156,6 +183,17 @@ module.exports = class DocumentsDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
+        };
+      }
+
+      if (filter.related_job) {
+        var listItems = filter.related_job.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_jobId: { [Op.or]: listItems },
         };
       }
 
@@ -228,21 +266,21 @@ module.exports = class DocumentsDBApi {
       where = {
         [Op.or]: [
           { ['id']: Utils.uuid(query) },
-          Utils.ilike('documents', 'id', query),
+          Utils.ilike('documents', 'name', query),
         ],
       };
     }
 
     const records = await db.documents.findAll({
-      attributes: ['id', 'id'],
+      attributes: ['id', 'name'],
       where,
       limit: limit ? Number(limit) : undefined,
-      orderBy: [['id', 'ASC']],
+      orderBy: [['name', 'ASC']],
     });
 
     return records.map((record) => ({
       id: record.id,
-      label: record.id,
+      label: record.name,
     }));
   }
 };

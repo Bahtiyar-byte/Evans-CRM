@@ -33,7 +33,13 @@ import { useAppDispatch } from '../../stores/hooks';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
-const initialValues = {};
+const initialValues = {
+  image: [],
+
+  Name: '',
+
+  related_job: '',
+};
 
 const ImagesNew = () => {
   const router = useRouter();
@@ -62,6 +68,36 @@ const ImagesNew = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField>
+                <Field
+                  label='Image'
+                  color='info'
+                  icon={mdiUpload}
+                  path={'images/image'}
+                  name='image'
+                  id='image'
+                  schema={{
+                    size: undefined,
+                    formats: undefined,
+                  }}
+                  component={FormImagePicker}
+                ></Field>
+              </FormField>
+
+              <FormField label='Name'>
+                <Field name='Name' placeholder='Name' />
+              </FormField>
+
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'jobs'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

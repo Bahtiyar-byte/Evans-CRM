@@ -45,10 +45,10 @@ module.exports = class JobsDBApi {
     await FileDBApi.replaceRelationFiles(
       {
         belongsTo: db.jobs.getTableName(),
-        belongsToColumn: 'images',
+        belongsToColumn: 'main_image',
         belongsToId: jobs.id,
       },
-      data.images,
+      data.main_image,
       options,
     );
 
@@ -96,10 +96,10 @@ module.exports = class JobsDBApi {
       await FileDBApi.replaceRelationFiles(
         {
           belongsTo: db.jobs.getTableName(),
-          belongsToColumn: 'images',
+          belongsToColumn: 'main_image',
           belongsToId: jobs[i].id,
         },
-        data[i].images,
+        data[i].main_image,
         options,
       );
     }
@@ -155,10 +155,10 @@ module.exports = class JobsDBApi {
     await FileDBApi.replaceRelationFiles(
       {
         belongsTo: db.jobs.getTableName(),
-        belongsToColumn: 'images',
+        belongsToColumn: 'main_image',
         belongsToId: jobs.id,
       },
-      data.images,
+      data.main_image,
       options,
     );
 
@@ -245,6 +245,22 @@ module.exports = class JobsDBApi {
       transaction,
     });
 
+    output.images_related_job = await jobs.getImages_related_job({
+      transaction,
+    });
+
+    output.documents_related_job = await jobs.getDocuments_related_job({
+      transaction,
+    });
+
+    output.emails_related_job = await jobs.getEmails_related_job({
+      transaction,
+    });
+
+    output.chats_related_job = await jobs.getChats_related_job({
+      transaction,
+    });
+
     output.tasks_related_job = await jobs.getTasks_related_job({
       transaction,
     });
@@ -269,7 +285,7 @@ module.exports = class JobsDBApi {
       transaction,
     });
 
-    output.images = await jobs.getImages({
+    output.main_image = await jobs.getMain_image({
       transaction,
     });
 
@@ -309,7 +325,7 @@ module.exports = class JobsDBApi {
 
       {
         model: db.file,
-        as: 'images',
+        as: 'main_image',
       },
 
       {

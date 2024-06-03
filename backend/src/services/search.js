@@ -69,6 +69,12 @@ module.exports = class SearchService {
 
         orders: ['order_number'],
 
+        images: ['Name'],
+
+        documents: ['name'],
+
+        chats: ['name'],
+
         appointments: ['subject', 'notes'],
 
         tasks: ['subject'],

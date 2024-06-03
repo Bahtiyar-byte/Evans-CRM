@@ -53,7 +53,7 @@ const EditJobs = () => {
 
     related_estimate: '',
 
-    images: [],
+    main_image: [],
 
     documents: [],
 
@@ -205,12 +205,12 @@ const EditJobs = () => {
 
               <FormField>
                 <Field
-                  label='Images'
+                  label='Main Image'
                   color='info'
                   icon={mdiUpload}
-                  path={'jobs/images'}
-                  name='images'
-                  id='images'
+                  path={'jobs/main_image'}
+                  name='main_image'
+                  id='main_image'
                   schema={{
                     size: undefined,
                     formats: undefined,

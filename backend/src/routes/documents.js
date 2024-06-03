@@ -20,6 +20,10 @@ router.use(checkCrudPermissions('documents'));
  *        type: object
  *        properties:
 
+ *          name:
+ *            type: string
+ *            default: name
+
  */
 
 /**
@@ -263,7 +267,7 @@ router.get(
 
     const payload = await DocumentsDBApi.findAll(req.query);
     if (filetype && filetype === 'csv') {
-      const fields = ['id'];
+      const fields = ['id', 'name'];
       const opts = { fields };
       try {
         const csv = parse(payload.rows, opts);

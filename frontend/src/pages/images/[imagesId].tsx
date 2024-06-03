@@ -36,7 +36,13 @@ import ImageField from '../../components/ImageField';
 const EditImages = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const initVals = {};
+  const initVals = {
+    image: [],
+
+    Name: '',
+
+    related_job: '',
+  };
   const [initialValues, setInitialValues] = useState(initVals);
 
   const { images } = useAppSelector((state) => state.images);
@@ -90,6 +96,37 @@ const EditImages = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField>
+                <Field
+                  label='Image'
+                  color='info'
+                  icon={mdiUpload}
+                  path={'images/image'}
+                  name='image'
+                  id='image'
+                  schema={{
+                    size: undefined,
+                    formats: undefined,
+                  }}
+                  component={FormImagePicker}
+                ></Field>
+              </FormField>
+
+              <FormField label='Name'>
+                <Field name='Name' placeholder='Name' />
+              </FormField>
+
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={initialValues.related_job}
+                  itemRef={'jobs'}
+                  showField={'name'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

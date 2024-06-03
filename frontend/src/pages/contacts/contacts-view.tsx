@@ -226,6 +226,37 @@ const ContactsView = () => {
           </>
 
           <>
+            <p className={'block font-bold mb-2'}>Emails Related Contact</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr></tr>
+                  </thead>
+                  <tbody>
+                    {contacts.emails_related_contact &&
+                      Array.isArray(contacts.emails_related_contact) &&
+                      contacts.emails_related_contact.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/emails/emails-view/?id=${item.id}`)
+                          }
+                        ></tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!contacts?.emails_related_contact?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
             <p className={'block font-bold mb-2'}>
               Appointments Related Contact
             </p>

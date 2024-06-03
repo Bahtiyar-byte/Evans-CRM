@@ -160,8 +160,8 @@ export const loadColumns = async (
     },
 
     {
-      field: 'images',
-      headerName: 'Images',
+      field: 'main_image',
+      headerName: 'Main Image',
       flex: 1,
       minWidth: 120,
       filterable: false,
@@ -173,7 +173,7 @@ export const loadColumns = async (
       renderCell: (params: GridValueGetterParams) => (
         <ImageField
           name={'Avatar'}
-          image={params?.row?.images}
+          image={params?.row?.main_image}
           className='w-24 h-24 mx-auto lg:w-6 lg:h-6'
         />
       ),

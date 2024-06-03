@@ -44,7 +44,7 @@ const ListJobs = ({
               <div className={'flex items-center overflow-hidden'}>
                 <ImageField
                   name={'Avatar'}
-                  image={item.images}
+                  image={item.main_image}
                   className='w-24 h-24 rounded-l overflow-hidden hidden md:block'
                   imageClassName={
                     'rounded-l rounded-r-none h-full object-cover'
@@ -108,10 +108,10 @@ const ListJobs = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Images</p>
+                    <p className={'text-xs text-gray-500'}>Main Image</p>
                     <ImageField
                       name={'Avatar'}
-                      image={item.images}
+                      image={item.main_image}
                       className='mx-auto w-8 h-8'
                     />
                   </div>

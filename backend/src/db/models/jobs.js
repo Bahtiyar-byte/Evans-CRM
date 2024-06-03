@@ -118,6 +118,38 @@ module.exports = function (sequelize, DataTypes) {
       constraints: false,
     });
 
+    db.jobs.hasMany(db.images, {
+      as: 'images_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.jobs.hasMany(db.documents, {
+      as: 'documents_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.jobs.hasMany(db.emails, {
+      as: 'emails_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.jobs.hasMany(db.chats, {
+      as: 'chats_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
     db.jobs.hasMany(db.tasks, {
       as: 'tasks_related_job',
       foreignKey: {
@@ -169,12 +201,12 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     db.jobs.hasMany(db.file, {
-      as: 'images',
+      as: 'main_image',
       foreignKey: 'belongsToId',
       constraints: false,
       scope: {
         belongsTo: db.jobs.getTableName(),
-        belongsToColumn: 'images',
+        belongsToColumn: 'main_image',
       },
     });
 
