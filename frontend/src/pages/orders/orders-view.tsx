@@ -51,6 +51,28 @@ const OrdersView = () => {
           {''}
         </SectionTitleLineWithButton>
         <CardBox>
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Order Number</p>
+            <p>{orders?.order_number}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Total Amount</p>
+            <p>{orders?.total_amount || 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Job</p>
+
+            <p>{orders?.related_job?.name ?? 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Estimate</p>
+
+            <p>{orders?.related_estimate?.name ?? 'No data'}</p>
+          </div>
+
           <BaseDivider />
 
           <BaseButton

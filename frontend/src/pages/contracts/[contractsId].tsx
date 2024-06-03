@@ -36,7 +36,19 @@ import ImageField from '../../components/ImageField';
 const EditContracts = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const initVals = {};
+  const initVals = {
+    name: '',
+
+    amount: '',
+
+    body: '',
+
+    related_contact: '',
+
+    signed_date: new Date(),
+
+    related_job: '',
+  };
   const [initialValues, setInitialValues] = useState(initVals);
 
   const { contracts } = useAppSelector((state) => state.contracts);
@@ -90,6 +102,58 @@ const EditContracts = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Name'>
+                <Field name='name' placeholder='Name' />
+              </FormField>
+
+              <FormField label='Amount'>
+                <Field type='number' name='amount' placeholder='Amount' />
+              </FormField>
+
+              <FormField label='Body' hasTextareaHeight>
+                <Field name='body' id='body' component={RichTextField}></Field>
+              </FormField>
+
+              <FormField label='Related Contact' labelFor='related_contact'>
+                <Field
+                  name='related_contact'
+                  id='related_contact'
+                  component={SelectField}
+                  options={initialValues.related_contact}
+                  itemRef={'contacts'}
+                  showField={'name'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Signed Date'>
+                <DatePicker
+                  dateFormat='yyyy-MM-dd'
+                  selected={
+                    initialValues.signed_date
+                      ? new Date(
+                          dayjs(initialValues.signed_date).format(
+                            'YYYY-MM-DD hh:mm',
+                          ),
+                        )
+                      : null
+                  }
+                  onChange={(date) =>
+                    setInitialValues({ ...initialValues, signed_date: date })
+                  }
+                />
+              </FormField>
+
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={initialValues.related_job}
+                  itemRef={'jobs'}
+                  showField={'name'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

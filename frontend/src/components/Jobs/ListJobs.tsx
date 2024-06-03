@@ -44,7 +44,7 @@ const ListJobs = ({
               <div className={'flex items-center overflow-hidden'}>
                 <ImageField
                   name={'Avatar'}
-                  image={item.images}
+                  image={item.main_image}
                   className='w-24 h-24 rounded-l overflow-hidden hidden md:block'
                   imageClassName={
                     'rounded-l rounded-r-none h-full object-cover'
@@ -83,14 +83,14 @@ const ListJobs = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>AssignedTo</p>
+                    <p className={'text-xs text-gray-500'}>Assigned To</p>
                     <p className={'line-clamp-2'}>
                       {dataFormatter.usersOneListFormatter(item.assigned_to)}
                     </p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>RelatedContact</p>
+                    <p className={'text-xs text-gray-500'}>Related Contact</p>
                     <p className={'line-clamp-2'}>
                       {dataFormatter.contactsOneListFormatter(
                         item.related_contact,
@@ -99,7 +99,7 @@ const ListJobs = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>RelatedEstimate</p>
+                    <p className={'text-xs text-gray-500'}>Related Estimate</p>
                     <p className={'line-clamp-2'}>
                       {dataFormatter.estimatesOneListFormatter(
                         item.related_estimate,
@@ -108,10 +108,10 @@ const ListJobs = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Images</p>
+                    <p className={'text-xs text-gray-500'}>Main Image</p>
                     <ImageField
                       name={'Avatar'}
-                      image={item.images}
+                      image={item.main_image}
                       className='mx-auto w-8 h-8'
                     />
                   </div>
@@ -135,6 +135,20 @@ const ListJobs = ({
                   <div className={'flex-1 px-3'}>
                     <p className={'text-xs text-gray-500'}>Address</p>
                     <p className={'line-clamp-2'}>{item.address}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Start Date</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.dateFormatter(item.start_date)}
+                    </p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>End Date</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.dateFormatter(item.end_date)}
+                    </p>
                   </div>
                 </div>
                 <ListActionsPopover

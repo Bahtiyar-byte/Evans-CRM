@@ -101,7 +101,7 @@ export const loadColumns = async (
 
     {
       field: 'assigned_to',
-      headerName: 'AssignedTo',
+      headerName: 'Assigned To',
       flex: 1,
       minWidth: 120,
       filterable: false,
@@ -121,7 +121,7 @@ export const loadColumns = async (
 
     {
       field: 'related_contact',
-      headerName: 'RelatedContact',
+      headerName: 'Related Contact',
       flex: 1,
       minWidth: 120,
       filterable: false,
@@ -141,7 +141,7 @@ export const loadColumns = async (
 
     {
       field: 'related_estimate',
-      headerName: 'RelatedEstimate',
+      headerName: 'Related Estimate',
       flex: 1,
       minWidth: 120,
       filterable: false,
@@ -160,8 +160,8 @@ export const loadColumns = async (
     },
 
     {
-      field: 'images',
-      headerName: 'Images',
+      field: 'main_image',
+      headerName: 'Main Image',
       flex: 1,
       minWidth: 120,
       filterable: false,
@@ -173,7 +173,7 @@ export const loadColumns = async (
       renderCell: (params: GridValueGetterParams) => (
         <ImageField
           name={'Avatar'}
-          image={params?.row?.images}
+          image={params?.row?.main_image}
           className='w-24 h-24 mx-auto lg:w-6 lg:h-6'
         />
       ),
@@ -214,6 +214,38 @@ export const loadColumns = async (
       cellClassName: 'datagrid--cell',
 
       editable: hasUpdatePermission,
+    },
+
+    {
+      field: 'start_date',
+      headerName: 'Start Date',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      type: 'date',
+      valueGetter: (params: GridValueGetterParams) =>
+        new Date(params.row.start_date),
+    },
+
+    {
+      field: 'end_date',
+      headerName: 'End Date',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      type: 'date',
+      valueGetter: (params: GridValueGetterParams) =>
+        new Date(params.row.end_date),
     },
 
     {

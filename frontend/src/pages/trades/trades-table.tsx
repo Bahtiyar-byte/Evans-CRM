@@ -28,7 +28,7 @@ const TradesTablesPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const [filters] = useState([]);
+  const [filters] = useState([{ label: 'Name', title: 'name' }]);
 
   const hasCreatePermission =
     currentUser && hasPermission(currentUser, 'CREATE_TRADES');

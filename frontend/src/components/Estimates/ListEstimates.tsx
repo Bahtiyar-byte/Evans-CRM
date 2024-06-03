@@ -64,17 +64,17 @@ const ListEstimates = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>TemplateUsed</p>
+                    <p className={'text-xs text-gray-500'}>Template Used</p>
                     <p className={'line-clamp-2'}>{item.template_used}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>MaterialCost</p>
+                    <p className={'text-xs text-gray-500'}>Material Cost</p>
                     <p className={'line-clamp-2'}>{item.material_cost}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>LaborCost</p>
+                    <p className={'text-xs text-gray-500'}>Labor Cost</p>
                     <p className={'line-clamp-2'}>{item.labor_cost}</p>
                   </div>
 
@@ -84,22 +84,17 @@ const ListEstimates = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>ProfitMargin</p>
+                    <p className={'text-xs text-gray-500'}>Profit Margin</p>
                     <p className={'line-clamp-2'}>{item.profit_margin}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>TotalPrice</p>
+                    <p className={'text-xs text-gray-500'}>Total Price</p>
                     <p className={'line-clamp-2'}>{item.total_price}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>UnitofMeasurement</p>
-                    <p className={'line-clamp-2'}>{item.unit_of_measurement}</p>
-                  </div>
-
-                  <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>RelatedContact</p>
+                    <p className={'text-xs text-gray-500'}>Related Contact</p>
                     <p className={'line-clamp-2'}>
                       {dataFormatter.contactsOneListFormatter(
                         item.related_contact,
@@ -108,9 +103,18 @@ const ListEstimates = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>RelatedJob</p>
+                    <p className={'text-xs text-gray-500'}>Related Job</p>
                     <p className={'line-clamp-2'}>
                       {dataFormatter.jobsOneListFormatter(item.related_job)}
+                    </p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Related Template</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.templatesOneListFormatter(
+                        item.related_template,
+                      )}
                     </p>
                   </div>
                 </div>

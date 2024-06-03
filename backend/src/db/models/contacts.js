@@ -30,10 +30,24 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.TEXT,
       },
 
-      stage: {
+      status: {
         type: DataTypes.ENUM,
 
         values: ['Lead', 'Prospect', 'Customer'],
+      },
+
+      firstName: {
+        type: DataTypes.TEXT,
+      },
+
+      lastName: {
+        type: DataTypes.TEXT,
+      },
+
+      source: {
+        type: DataTypes.ENUM,
+
+        values: ['Google Ads', 'Facebook', 'Website', 'Other'],
       },
 
       importHash: {
@@ -62,6 +76,30 @@ module.exports = function (sequelize, DataTypes) {
 
     db.contacts.hasMany(db.jobs, {
       as: 'jobs_related_contact',
+      foreignKey: {
+        name: 'related_contactId',
+      },
+      constraints: false,
+    });
+
+    db.contacts.hasMany(db.emails, {
+      as: 'emails_related_contact',
+      foreignKey: {
+        name: 'related_contactId',
+      },
+      constraints: false,
+    });
+
+    db.contacts.hasMany(db.appointments, {
+      as: 'appointments_related_contact',
+      foreignKey: {
+        name: 'related_contactId',
+      },
+      constraints: false,
+    });
+
+    db.contacts.hasMany(db.contracts, {
+      as: 'contracts_related_contact',
       foreignKey: {
         name: 'related_contactId',
       },

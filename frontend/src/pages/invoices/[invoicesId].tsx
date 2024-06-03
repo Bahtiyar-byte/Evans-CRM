@@ -36,7 +36,19 @@ import ImageField from '../../components/ImageField';
 const EditInvoices = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const initVals = {};
+  const initVals = {
+    invoice_number: '',
+
+    invoice_date: new Date(),
+
+    terms: '',
+
+    approved_job_value: '',
+
+    balance_amount: '',
+
+    related_job: '',
+  };
   const [initialValues, setInitialValues] = useState(initVals);
 
   const { invoices } = useAppSelector((state) => state.invoices);
@@ -90,6 +102,75 @@ const EditInvoices = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Invoice Number'>
+                <Field name='invoice_number' placeholder='Invoice Number' />
+              </FormField>
+
+              <FormField label='Invoice Date'>
+                <DatePicker
+                  dateFormat='yyyy-MM-dd'
+                  selected={
+                    initialValues.invoice_date
+                      ? new Date(
+                          dayjs(initialValues.invoice_date).format(
+                            'YYYY-MM-DD hh:mm',
+                          ),
+                        )
+                      : null
+                  }
+                  onChange={(date) =>
+                    setInitialValues({ ...initialValues, invoice_date: date })
+                  }
+                />
+              </FormField>
+
+              <FormField label='Terms' labelFor='terms'>
+                <Field name='Terms' id='Terms' component='select'>
+                  <option value='By Due Date'>By Due Date</option>
+
+                  <option value='Upon Receipt'>Upon Receipt</option>
+
+                  <option value='Net 7 Days'>Net 7 Days</option>
+
+                  <option value='Net 10 Days'>Net 10 Days</option>
+
+                  <option value='Net 15 Days'>Net 15 Days</option>
+
+                  <option value='Net 30 Days'>Net 30 Days</option>
+
+                  <option value='Net 45 Days'>Net 45 Days</option>
+
+                  <option value='Net 60 Days'>Net 60 Days</option>
+                </Field>
+              </FormField>
+
+              <FormField label='Approved Job Value'>
+                <Field
+                  type='number'
+                  name='approved_job_value'
+                  placeholder='Approved Job Value'
+                />
+              </FormField>
+
+              <FormField label='Balance Amount'>
+                <Field
+                  type='number'
+                  name='balance_amount'
+                  placeholder='Balance Amount'
+                />
+              </FormField>
+
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={initialValues.related_job}
+                  itemRef={'jobs'}
+                  showField={'name'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

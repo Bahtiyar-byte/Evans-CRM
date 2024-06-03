@@ -40,6 +40,18 @@ export const loadColumns = async (
 
   return [
     {
+      field: 'name',
+      headerName: 'Name',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+    },
+
+    {
       field: 'actions',
       type: 'actions',
       minWidth: 30,

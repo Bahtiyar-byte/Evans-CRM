@@ -36,7 +36,15 @@ import ImageField from '../../components/ImageField';
 const EditAmendments = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const initVals = {};
+  const initVals = {
+    related_job: '',
+
+    type: '',
+
+    amount: '',
+
+    description: '',
+  };
   const [initialValues, setInitialValues] = useState(initVals);
 
   const { amendments } = useAppSelector((state) => state.amendments);
@@ -90,6 +98,43 @@ const EditAmendments = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={initialValues.related_job}
+                  itemRef={'jobs'}
+                  showField={'name'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Type' labelFor='type'>
+                <Field name='Type' id='Type' component='select'>
+                  <option value='Change Order'>Change Order</option>
+
+                  <option value='Discount'>Discount</option>
+
+                  <option value='Insurance Claim'>Insurance Claim</option>
+
+                  <option value='Supplement'>Supplement</option>
+
+                  <option value='Upgrade'>Upgrade</option>
+                </Field>
+              </FormField>
+
+              <FormField label='Amount'>
+                <Field type='number' name='amount' placeholder='Amount' />
+              </FormField>
+
+              <FormField label='Description' hasTextareaHeight>
+                <Field
+                  name='description'
+                  id='description'
+                  component={RichTextField}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

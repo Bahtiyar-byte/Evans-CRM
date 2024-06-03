@@ -36,7 +36,19 @@ import ImageField from '../../components/ImageField';
 const EditTasks = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const initVals = {};
+  const initVals = {
+    subject: '',
+
+    assigned_to: '',
+
+    status: '',
+
+    priority: '',
+
+    due_date: new Date(),
+
+    related_job: '',
+  };
   const [initialValues, setInitialValues] = useState(initVals);
 
   const { tasks } = useAppSelector((state) => state.tasks);
@@ -90,6 +102,83 @@ const EditTasks = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Subject'>
+                <Field name='subject' placeholder='Subject' />
+              </FormField>
+
+              <FormField label='Assigned To' labelFor='assigned_to'>
+                <Field
+                  name='assigned_to'
+                  id='assigned_to'
+                  component={SelectField}
+                  options={initialValues.assigned_to}
+                  itemRef={'users'}
+                  showField={'firstName'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Status'>
+                <FormCheckRadioGroup>
+                  <FormCheckRadio type='radio' label='Open'>
+                    <Field type='radio' name='status' value='Open' />
+                  </FormCheckRadio>
+
+                  <FormCheckRadio type='radio' label='Completed'>
+                    <Field type='radio' name='status' value='Completed' />
+                  </FormCheckRadio>
+
+                  <FormCheckRadio type='radio' label='Accepted'>
+                    <Field type='radio' name='status' value='Accepted' />
+                  </FormCheckRadio>
+                </FormCheckRadioGroup>
+              </FormField>
+
+              <FormField label='Priority'>
+                <FormCheckRadioGroup>
+                  <FormCheckRadio type='radio' label='Low'>
+                    <Field type='radio' name='priority' value='Low' />
+                  </FormCheckRadio>
+
+                  <FormCheckRadio type='radio' label='Medium'>
+                    <Field type='radio' name='priority' value='Medium' />
+                  </FormCheckRadio>
+
+                  <FormCheckRadio type='radio' label='High'>
+                    <Field type='radio' name='priority' value='High' />
+                  </FormCheckRadio>
+                </FormCheckRadioGroup>
+              </FormField>
+
+              <FormField label='Due Date'>
+                <DatePicker
+                  dateFormat='yyyy-MM-dd hh:mm'
+                  showTimeSelect
+                  selected={
+                    initialValues.due_date
+                      ? new Date(
+                          dayjs(initialValues.due_date).format(
+                            'YYYY-MM-DD hh:mm',
+                          ),
+                        )
+                      : null
+                  }
+                  onChange={(date) =>
+                    setInitialValues({ ...initialValues, due_date: date })
+                  }
+                />
+              </FormField>
+
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={initialValues.related_job}
+                  itemRef={'jobs'}
+                  showField={'name'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

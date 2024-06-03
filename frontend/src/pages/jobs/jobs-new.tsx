@@ -50,11 +50,17 @@ const initialValues = {
 
   related_estimate: '',
 
-  images: [],
+  main_image: [],
 
   documents: [],
 
   address: '',
+
+  start_date: '',
+  dateStart_date: '',
+
+  end_date: '',
+  dateEnd_date: '',
 };
 
 const JobsNew = () => {
@@ -138,7 +144,7 @@ const JobsNew = () => {
                 </Field>
               </FormField>
 
-              <FormField label='AssignedTo' labelFor='assigned_to'>
+              <FormField label='Assigned To' labelFor='assigned_to'>
                 <Field
                   name='assigned_to'
                   id='assigned_to'
@@ -148,7 +154,7 @@ const JobsNew = () => {
                 ></Field>
               </FormField>
 
-              <FormField label='RelatedContact' labelFor='related_contact'>
+              <FormField label='Related Contact' labelFor='related_contact'>
                 <Field
                   name='related_contact'
                   id='related_contact'
@@ -158,7 +164,7 @@ const JobsNew = () => {
                 ></Field>
               </FormField>
 
-              <FormField label='RelatedEstimate' labelFor='related_estimate'>
+              <FormField label='Related Estimate' labelFor='related_estimate'>
                 <Field
                   name='related_estimate'
                   id='related_estimate'
@@ -170,12 +176,12 @@ const JobsNew = () => {
 
               <FormField>
                 <Field
-                  label='Images'
+                  label='Main Image'
                   color='info'
                   icon={mdiUpload}
-                  path={'jobs/images'}
-                  name='images'
-                  id='images'
+                  path={'jobs/main_image'}
+                  name='main_image'
+                  id='main_image'
                   schema={{
                     size: undefined,
                     formats: undefined,
@@ -202,6 +208,14 @@ const JobsNew = () => {
 
               <FormField label='Address'>
                 <Field name='address' placeholder='Address' />
+              </FormField>
+
+              <FormField label='Start Date'>
+                <Field type='date' name='start_date' placeholder='Start Date' />
+              </FormField>
+
+              <FormField label='End Date'>
+                <Field type='date' name='end_date' placeholder='End Date' />
               </FormField>
 
               <BaseDivider />

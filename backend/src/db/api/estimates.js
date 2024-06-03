@@ -24,7 +24,6 @@ module.exports = class EstimatesDBApi {
         markup: data.markup || null,
         profit_margin: data.profit_margin || null,
         total_price: data.total_price || null,
-        unit_of_measurement: data.unit_of_measurement || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
@@ -37,6 +36,10 @@ module.exports = class EstimatesDBApi {
     });
 
     await estimates.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await estimates.setRelated_template(data.related_template || null, {
       transaction,
     });
 
@@ -60,7 +63,6 @@ module.exports = class EstimatesDBApi {
       markup: item.markup || null,
       profit_margin: item.profit_margin || null,
       total_price: item.total_price || null,
-      unit_of_measurement: item.unit_of_measurement || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -94,7 +96,6 @@ module.exports = class EstimatesDBApi {
         markup: data.markup || null,
         profit_margin: data.profit_margin || null,
         total_price: data.total_price || null,
-        unit_of_measurement: data.unit_of_measurement || null,
         updatedById: currentUser.id,
       },
       { transaction },
@@ -105,6 +106,10 @@ module.exports = class EstimatesDBApi {
     });
 
     await estimates.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await estimates.setRelated_template(data.related_template || null, {
       transaction,
     });
 
@@ -173,11 +178,21 @@ module.exports = class EstimatesDBApi {
       transaction,
     });
 
+    output.orders_related_estimate = await estimates.getOrders_related_estimate(
+      {
+        transaction,
+      },
+    );
+
     output.related_contact = await estimates.getRelated_contact({
       transaction,
     });
 
     output.related_job = await estimates.getRelated_job({
+      transaction,
+    });
+
+    output.related_template = await estimates.getRelated_template({
       transaction,
     });
 
@@ -204,6 +219,11 @@ module.exports = class EstimatesDBApi {
       {
         model: db.jobs,
         as: 'related_job',
+      },
+
+      {
+        model: db.templates,
+        as: 'related_template',
       },
     ];
 
@@ -243,17 +263,6 @@ module.exports = class EstimatesDBApi {
             'estimates',
             'template_used',
             filter.template_used,
-          ),
-        };
-      }
-
-      if (filter.unit_of_measurement) {
-        where = {
-          ...where,
-          [Op.and]: Utils.ilike(
-            'estimates',
-            'unit_of_measurement',
-            filter.unit_of_measurement,
           ),
         };
       }
@@ -409,6 +418,17 @@ module.exports = class EstimatesDBApi {
         where = {
           ...where,
           related_jobId: { [Op.or]: listItems },
+        };
+      }
+
+      if (filter.related_template) {
+        var listItems = filter.related_template.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_templateId: { [Op.or]: listItems },
         };
       }
 

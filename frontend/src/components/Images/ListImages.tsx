@@ -42,12 +42,42 @@ const ListImages = ({
           images.map((item) => (
             <CardBox hasTable key={item.id} className={'rounded'}>
               <div className={'flex items-center overflow-hidden'}>
+                <ImageField
+                  name={'Avatar'}
+                  image={item.image}
+                  className='w-24 h-24 rounded-l overflow-hidden hidden md:block'
+                  imageClassName={
+                    'rounded-l rounded-r-none h-full object-cover'
+                  }
+                />
+
                 <div
                   className={
                     'flex-1 px-4 py-6 h-24 flex items-stretch divide-x-2 dark:divide-dark-700 overflow-x-auto'
                   }
                   onClick={() => onView(item.id)}
-                ></div>
+                >
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Image</p>
+                    <ImageField
+                      name={'Avatar'}
+                      image={item.image}
+                      className='mx-auto w-8 h-8'
+                    />
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Name</p>
+                    <p className={'line-clamp-2'}>{item.Name}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Related Job</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.jobsOneListFormatter(item.related_job)}
+                    </p>
+                  </div>
+                </div>
                 <ListActionsPopover
                   onDelete={onDelete}
                   onView={onView}

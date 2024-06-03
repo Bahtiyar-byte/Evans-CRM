@@ -33,7 +33,15 @@ import { useAppDispatch } from '../../stores/hooks';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
-const initialValues = {};
+const initialValues = {
+  related_job: '',
+
+  type: 'Change Order',
+
+  amount: '',
+
+  description: '',
+};
 
 const AmendmentsNew = () => {
   const router = useRouter();
@@ -62,6 +70,42 @@ const AmendmentsNew = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'jobs'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Type' labelFor='type'>
+                <Field name='type' id='type' component='select'>
+                  <option value='Change Order'>Change Order</option>
+
+                  <option value='Discount'>Discount</option>
+
+                  <option value='Insurance Claim'>Insurance Claim</option>
+
+                  <option value='Supplement'>Supplement</option>
+
+                  <option value='Upgrade'>Upgrade</option>
+                </Field>
+              </FormField>
+
+              <FormField label='Amount'>
+                <Field type='number' name='amount' placeholder='Amount' />
+              </FormField>
+
+              <FormField label='Description' hasTextareaHeight>
+                <Field
+                  name='description'
+                  id='description'
+                  component={RichTextField}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

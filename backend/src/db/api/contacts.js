@@ -19,7 +19,10 @@ module.exports = class ContactsDBApi {
         email: data.email || null,
         phone: data.phone || null,
         address: data.address || null,
-        stage: data.stage || null,
+        status: data.status || null,
+        firstName: data.firstName || null,
+        lastName: data.lastName || null,
+        source: data.source || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
@@ -42,7 +45,10 @@ module.exports = class ContactsDBApi {
       email: item.email || null,
       phone: item.phone || null,
       address: item.address || null,
-      stage: item.stage || null,
+      status: item.status || null,
+      firstName: item.firstName || null,
+      lastName: item.lastName || null,
+      source: item.source || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -71,7 +77,10 @@ module.exports = class ContactsDBApi {
         email: data.email || null,
         phone: data.phone || null,
         address: data.address || null,
-        stage: data.stage || null,
+        status: data.status || null,
+        firstName: data.firstName || null,
+        lastName: data.lastName || null,
+        source: data.source || null,
         updatedById: currentUser.id,
       },
       { transaction },
@@ -147,6 +156,20 @@ module.exports = class ContactsDBApi {
       transaction,
     });
 
+    output.emails_related_contact = await contacts.getEmails_related_contact({
+      transaction,
+    });
+
+    output.appointments_related_contact =
+      await contacts.getAppointments_related_contact({
+        transaction,
+      });
+
+    output.contracts_related_contact =
+      await contacts.getContracts_related_contact({
+        transaction,
+      });
+
     return output;
   }
 
@@ -199,6 +222,20 @@ module.exports = class ContactsDBApi {
         };
       }
 
+      if (filter.firstName) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('contacts', 'firstName', filter.firstName),
+        };
+      }
+
+      if (filter.lastName) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('contacts', 'lastName', filter.lastName),
+        };
+      }
+
       if (
         filter.active === true ||
         filter.active === 'true' ||
@@ -211,10 +248,17 @@ module.exports = class ContactsDBApi {
         };
       }
 
-      if (filter.stage) {
+      if (filter.status) {
         where = {
           ...where,
-          stage: filter.stage,
+          status: filter.status,
+        };
+      }
+
+      if (filter.source) {
+        where = {
+          ...where,
+          source: filter.source,
         };
       }
 

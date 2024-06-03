@@ -36,7 +36,13 @@ import ImageField from '../../components/ImageField';
 const EditEmails = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const initVals = {};
+  const initVals = {
+    related_job: '',
+
+    related_contact: '',
+
+    related_user: '',
+  };
   const [initialValues, setInitialValues] = useState(initVals);
 
   const { emails } = useAppSelector((state) => state.emails);
@@ -90,6 +96,39 @@ const EditEmails = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={initialValues.related_job}
+                  itemRef={'jobs'}
+                  showField={'name'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Contact' labelFor='related_contact'>
+                <Field
+                  name='related_contact'
+                  id='related_contact'
+                  component={SelectField}
+                  options={initialValues.related_contact}
+                  itemRef={'contacts'}
+                  showField={'name'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related User' labelFor='related_user'>
+                <Field
+                  name='related_user'
+                  id='related_user'
+                  component={SelectField}
+                  options={initialValues.related_user}
+                  itemRef={'users'}
+                  showField={'firstName'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

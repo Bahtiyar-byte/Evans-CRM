@@ -31,7 +31,15 @@ const AppointmentsTablesPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const [filters] = useState([]);
+  const [filters] = useState([
+    { label: 'Subject', title: 'subject' },
+    { label: 'Notes', title: 'notes' },
+
+    { label: 'Start Time', title: 'start_time', date: 'true' },
+    { label: 'End Time', title: 'end_time', date: 'true' },
+    { label: 'Related Contact', title: 'related_contact' },
+    { label: 'Assigned To', title: 'assigned_to' },
+  ]);
 
   const hasCreatePermission =
     currentUser && hasPermission(currentUser, 'CREATE_APPOINTMENTS');

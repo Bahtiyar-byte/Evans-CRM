@@ -53,11 +53,15 @@ const EditJobs = () => {
 
     related_estimate: '',
 
-    images: [],
+    main_image: [],
 
     documents: [],
 
     address: '',
+
+    start_date: new Date(),
+
+    end_date: new Date(),
   };
   const [initialValues, setInitialValues] = useState(initVals);
 
@@ -166,7 +170,7 @@ const EditJobs = () => {
                 </Field>
               </FormField>
 
-              <FormField label='AssignedTo' labelFor='assigned_to'>
+              <FormField label='Assigned To' labelFor='assigned_to'>
                 <Field
                   name='assigned_to'
                   id='assigned_to'
@@ -177,7 +181,7 @@ const EditJobs = () => {
                 ></Field>
               </FormField>
 
-              <FormField label='RelatedContact' labelFor='related_contact'>
+              <FormField label='Related Contact' labelFor='related_contact'>
                 <Field
                   name='related_contact'
                   id='related_contact'
@@ -188,7 +192,7 @@ const EditJobs = () => {
                 ></Field>
               </FormField>
 
-              <FormField label='RelatedEstimate' labelFor='related_estimate'>
+              <FormField label='Related Estimate' labelFor='related_estimate'>
                 <Field
                   name='related_estimate'
                   id='related_estimate'
@@ -201,12 +205,12 @@ const EditJobs = () => {
 
               <FormField>
                 <Field
-                  label='Images'
+                  label='Main Image'
                   color='info'
                   icon={mdiUpload}
-                  path={'jobs/images'}
-                  name='images'
-                  id='images'
+                  path={'jobs/main_image'}
+                  name='main_image'
+                  id='main_image'
                   schema={{
                     size: undefined,
                     formats: undefined,
@@ -233,6 +237,42 @@ const EditJobs = () => {
 
               <FormField label='Address'>
                 <Field name='address' placeholder='Address' />
+              </FormField>
+
+              <FormField label='Start Date'>
+                <DatePicker
+                  dateFormat='yyyy-MM-dd'
+                  selected={
+                    initialValues.start_date
+                      ? new Date(
+                          dayjs(initialValues.start_date).format(
+                            'YYYY-MM-DD hh:mm',
+                          ),
+                        )
+                      : null
+                  }
+                  onChange={(date) =>
+                    setInitialValues({ ...initialValues, start_date: date })
+                  }
+                />
+              </FormField>
+
+              <FormField label='End Date'>
+                <DatePicker
+                  dateFormat='yyyy-MM-dd'
+                  selected={
+                    initialValues.end_date
+                      ? new Date(
+                          dayjs(initialValues.end_date).format(
+                            'YYYY-MM-DD hh:mm',
+                          ),
+                        )
+                      : null
+                  }
+                  onChange={(date) =>
+                    setInitialValues({ ...initialValues, end_date: date })
+                  }
+                />
               </FormField>
 
               <BaseDivider />

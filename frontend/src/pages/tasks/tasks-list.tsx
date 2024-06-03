@@ -28,7 +28,13 @@ const TasksTablesPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const [filters] = useState([]);
+  const [filters] = useState([
+    { label: 'Subject', title: 'subject' },
+
+    { label: 'Due Date', title: 'due_date', date: 'true' },
+    { label: 'Assigned To', title: 'assigned_to' },
+    { label: 'Related Job', title: 'related_job' },
+  ]);
 
   const hasCreatePermission =
     currentUser && hasPermission(currentUser, 'CREATE_TASKS');

@@ -21,6 +21,8 @@ import _ from 'lodash';
 import dataFormatter from '../../helpers/dataFormatter';
 import { dataGridStyles } from '../../styles';
 
+import CardImages from './CardImages';
+
 const perPage = 10;
 
 const TableSampleImages = ({
@@ -408,7 +410,20 @@ const TableSampleImages = ({
         <p>Are you sure you want to delete this item?</p>
       </CardBoxModal>
 
-      {dataGrid}
+      {images && Array.isArray(images) && !showGrid && (
+        <CardImages
+          images={images}
+          loading={loading}
+          onView={handleViewAction}
+          onEdit={handleEditAction}
+          onDelete={handleDeleteModalAction}
+          currentPage={currentPage}
+          numPages={numPages}
+          onPageChange={onPageChange}
+        />
+      )}
+
+      {showGrid && dataGrid}
 
       {selectedRows.length > 0 &&
         createPortal(

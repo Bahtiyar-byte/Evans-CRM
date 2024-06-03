@@ -51,6 +51,51 @@ const InvoicesView = () => {
           {''}
         </SectionTitleLineWithButton>
         <CardBox>
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Invoice Number</p>
+            <p>{invoices?.invoice_number}</p>
+          </div>
+
+          <FormField label='Invoice Date'>
+            {invoices.invoice_date ? (
+              <DatePicker
+                dateFormat='yyyy-MM-dd'
+                showTimeSelect
+                selected={
+                  invoices.invoice_date
+                    ? new Date(
+                        dayjs(invoices.invoice_date).format('YYYY-MM-DD hh:mm'),
+                      )
+                    : null
+                }
+                disabled
+              />
+            ) : (
+              <p>No Invoice Date</p>
+            )}
+          </FormField>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Terms</p>
+            <p>{invoices?.terms ?? 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Approved Job Value</p>
+            <p>{invoices?.approved_job_value || 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Balance Amount</p>
+            <p>{invoices?.balance_amount || 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Job</p>
+
+            <p>{invoices?.related_job?.name ?? 'No data'}</p>
+          </div>
+
           <BaseDivider />
 
           <BaseButton

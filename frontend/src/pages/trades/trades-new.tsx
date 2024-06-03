@@ -33,7 +33,9 @@ import { useAppDispatch } from '../../stores/hooks';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
-const initialValues = {};
+const initialValues = {
+  name: '',
+};
 
 const TradesNew = () => {
   const router = useRouter();
@@ -62,6 +64,10 @@ const TradesNew = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Name'>
+                <Field name='name' placeholder='Name' />
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

@@ -248,6 +248,18 @@ module.exports = class UsersDBApi {
       transaction,
     });
 
+    output.emails_related_user = await users.getEmails_related_user({
+      transaction,
+    });
+
+    output.appointments_assigned_to = await users.getAppointments_assigned_to({
+      transaction,
+    });
+
+    output.tasks_assigned_to = await users.getTasks_assigned_to({
+      transaction,
+    });
+
     output.avatar = await users.getAvatar({
       transaction,
     });

@@ -20,6 +20,13 @@ router.use(checkCrudPermissions('appointments'));
  *        type: object
  *        properties:
 
+ *          subject:
+ *            type: string
+ *            default: subject
+ *          notes:
+ *            type: string
+ *            default: notes
+
  */
 
 /**
@@ -267,7 +274,7 @@ router.get(
 
     const payload = await AppointmentsDBApi.findAll(req.query);
     if (filetype && filetype === 'csv') {
-      const fields = ['id'];
+      const fields = ['id', 'subject', 'notes', 'start_time', 'end_time'];
       const opts = { fields };
       try {
         const csv = parse(payload.rows, opts);

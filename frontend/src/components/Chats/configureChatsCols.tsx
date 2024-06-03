@@ -40,6 +40,57 @@ export const loadColumns = async (
 
   return [
     {
+      field: 'related_job',
+      headerName: 'Related Job',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      sortable: false,
+      type: 'singleSelect',
+      getOptionValue: (value: any) => value?.id,
+      getOptionLabel: (value: any) => value?.label,
+      valueOptions: await callOptionsApi('jobs'),
+      valueGetter: (params: GridValueGetterParams) =>
+        params?.value?.id ?? params?.value,
+    },
+
+    {
+      field: 'related_users',
+      headerName: 'Related Users',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: false,
+      sortable: false,
+      type: 'singleSelect',
+      valueFormatter: ({ value }) =>
+        dataFormatter.usersManyListFormatter(value).join(', '),
+      renderEditCell: (params) => (
+        <DataGridMultiSelect {...params} entityName={'users'} />
+      ),
+    },
+
+    {
+      field: 'name',
+      headerName: 'Name',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+    },
+
+    {
       field: 'actions',
       type: 'actions',
       minWidth: 30,

@@ -14,6 +14,10 @@ module.exports = function (sequelize, DataTypes) {
         primaryKey: true,
       },
 
+      name: {
+        type: DataTypes.TEXT,
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,
@@ -31,6 +35,14 @@ module.exports = function (sequelize, DataTypes) {
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
 
     //end loop
+
+    db.documents.belongsTo(db.jobs, {
+      as: 'related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
 
     db.documents.belongsTo(db.users, {
       as: 'createdBy',

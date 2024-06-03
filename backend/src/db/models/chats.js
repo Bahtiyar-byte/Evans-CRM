@@ -14,6 +14,10 @@ module.exports = function (sequelize, DataTypes) {
         primaryKey: true,
       },
 
+      name: {
+        type: DataTypes.TEXT,
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,
@@ -28,9 +32,26 @@ module.exports = function (sequelize, DataTypes) {
   );
 
   chats.associate = (db) => {
+    db.chats.belongsToMany(db.users, {
+      as: 'related_users',
+      foreignKey: {
+        name: 'chats_related_usersId',
+      },
+      constraints: false,
+      through: 'chatsRelated_usersUsers',
+    });
+
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
 
     //end loop
+
+    db.chats.belongsTo(db.jobs, {
+      as: 'related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
 
     db.chats.belongsTo(db.users, {
       as: 'createdBy',

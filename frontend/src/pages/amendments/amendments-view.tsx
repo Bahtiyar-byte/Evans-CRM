@@ -51,6 +51,31 @@ const AmendmentsView = () => {
           {''}
         </SectionTitleLineWithButton>
         <CardBox>
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Job</p>
+
+            <p>{amendments?.related_job?.name ?? 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Type</p>
+            <p>{amendments?.type ?? 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Amount</p>
+            <p>{amendments?.amount || 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Description</p>
+            {amendments.description ? (
+              <p dangerouslySetInnerHTML={{ __html: amendments.description }} />
+            ) : (
+              <p>No data</p>
+            )}
+          </div>
+
           <BaseDivider />
 
           <BaseButton

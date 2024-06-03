@@ -103,9 +103,42 @@ const CardUsers = ({
                 </div>
 
                 <div className='flex justify-between gap-x-4 py-3'>
-                  <dt className='text-gray-500 dark:text-dark-600'>Stage</dt>
+                  <dt className='text-gray-500 dark:text-dark-600'>Status</dt>
                   <dd className='flex items-start gap-x-2'>
-                    <div className='font-medium line-clamp-4'>{item.stage}</div>
+                    <div className='font-medium line-clamp-4'>
+                      {item.status}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='text-gray-500 dark:text-dark-600'>
+                    First Name
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {item.firstName}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='text-gray-500 dark:text-dark-600'>
+                    Last Name
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {item.lastName}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='text-gray-500 dark:text-dark-600'>Source</dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {item.source}
+                    </div>
                   </dd>
                 </div>
               </dl>

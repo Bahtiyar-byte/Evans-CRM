@@ -36,7 +36,13 @@ import ImageField from '../../components/ImageField';
 const EditChats = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const initVals = {};
+  const initVals = {
+    related_job: '',
+
+    related_users: [],
+
+    name: '',
+  };
   const [initialValues, setInitialValues] = useState(initVals);
 
   const { chats } = useAppSelector((state) => state.chats);
@@ -90,6 +96,32 @@ const EditChats = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={initialValues.related_job}
+                  itemRef={'jobs'}
+                  showField={'name'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Users' labelFor='related_users'>
+                <Field
+                  name='related_users'
+                  id='related_users'
+                  component={SelectFieldMany}
+                  options={initialValues.related_users}
+                  itemRef={'users'}
+                  showField={'firstName'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Name'>
+                <Field name='name' placeholder='Name' />
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

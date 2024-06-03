@@ -32,17 +32,17 @@ const EstimatesTablesPage = () => {
     { label: 'Name', title: 'name' },
     { label: 'Description', title: 'description' },
     { label: 'Trade', title: 'trade' },
-    { label: 'TemplateUsed', title: 'template_used' },
-    { label: 'UnitofMeasurement', title: 'unit_of_measurement' },
+    { label: 'Template Used', title: 'template_used' },
 
-    { label: 'MaterialCost', title: 'material_cost', number: 'true' },
-    { label: 'LaborCost', title: 'labor_cost', number: 'true' },
+    { label: 'Material Cost', title: 'material_cost', number: 'true' },
+    { label: 'Labor Cost', title: 'labor_cost', number: 'true' },
     { label: 'Markup', title: 'markup', number: 'true' },
-    { label: 'ProfitMargin', title: 'profit_margin', number: 'true' },
-    { label: 'TotalPrice', title: 'total_price', number: 'true' },
+    { label: 'Profit Margin', title: 'profit_margin', number: 'true' },
+    { label: 'Total Price', title: 'total_price', number: 'true' },
 
-    { label: 'RelatedContact', title: 'related_contact' },
-    { label: 'RelatedJob', title: 'related_job' },
+    { label: 'Related Contact', title: 'related_contact' },
+    { label: 'Related Job', title: 'related_job' },
+    { label: 'Related Template', title: 'related_template' },
   ]);
 
   const hasCreatePermission =

@@ -40,6 +40,58 @@ export const loadColumns = async (
 
   return [
     {
+      field: 'image',
+      headerName: 'Image',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: false,
+      sortable: false,
+      renderCell: (params: GridValueGetterParams) => (
+        <ImageField
+          name={'Avatar'}
+          image={params?.row?.image}
+          className='w-24 h-24 mx-auto lg:w-6 lg:h-6'
+        />
+      ),
+    },
+
+    {
+      field: 'Name',
+      headerName: 'Name',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+    },
+
+    {
+      field: 'related_job',
+      headerName: 'Related Job',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      sortable: false,
+      type: 'singleSelect',
+      getOptionValue: (value: any) => value?.id,
+      getOptionLabel: (value: any) => value?.label,
+      valueOptions: await callOptionsApi('jobs'),
+      valueGetter: (params: GridValueGetterParams) =>
+        params?.value?.id ?? params?.value,
+    },
+
+    {
       field: 'actions',
       type: 'actions',
       minWidth: 30,

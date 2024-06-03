@@ -55,11 +55,11 @@ const EditEstimates = () => {
 
     total_price: '',
 
-    unit_of_measurement: '',
-
     related_contact: '',
 
     related_job: '',
+
+    related_template: '',
   };
   const [initialValues, setInitialValues] = useState(initVals);
 
@@ -130,23 +130,23 @@ const EditEstimates = () => {
                 <Field name='trade' placeholder='Trade' />
               </FormField>
 
-              <FormField label='TemplateUsed'>
-                <Field name='template_used' placeholder='TemplateUsed' />
+              <FormField label='Template Used'>
+                <Field name='template_used' placeholder='Template Used' />
               </FormField>
 
-              <FormField label='MaterialCost'>
+              <FormField label='Material Cost'>
                 <Field
                   type='number'
                   name='material_cost'
-                  placeholder='MaterialCost'
+                  placeholder='Material Cost'
                 />
               </FormField>
 
-              <FormField label='LaborCost'>
+              <FormField label='Labor Cost'>
                 <Field
                   type='number'
                   name='labor_cost'
-                  placeholder='LaborCost'
+                  placeholder='Labor Cost'
                 />
               </FormField>
 
@@ -154,30 +154,23 @@ const EditEstimates = () => {
                 <Field type='number' name='markup' placeholder='Markup' />
               </FormField>
 
-              <FormField label='ProfitMargin'>
+              <FormField label='Profit Margin'>
                 <Field
                   type='number'
                   name='profit_margin'
-                  placeholder='ProfitMargin'
+                  placeholder='Profit Margin'
                 />
               </FormField>
 
-              <FormField label='TotalPrice'>
+              <FormField label='Total Price'>
                 <Field
                   type='number'
                   name='total_price'
-                  placeholder='TotalPrice'
+                  placeholder='Total Price'
                 />
               </FormField>
 
-              <FormField label='UnitofMeasurement'>
-                <Field
-                  name='unit_of_measurement'
-                  placeholder='UnitofMeasurement'
-                />
-              </FormField>
-
-              <FormField label='RelatedContact' labelFor='related_contact'>
+              <FormField label='Related Contact' labelFor='related_contact'>
                 <Field
                   name='related_contact'
                   id='related_contact'
@@ -188,7 +181,7 @@ const EditEstimates = () => {
                 ></Field>
               </FormField>
 
-              <FormField label='RelatedJob' labelFor='related_job'>
+              <FormField label='Related Job' labelFor='related_job'>
                 <Field
                   name='related_job'
                   id='related_job'
@@ -196,6 +189,17 @@ const EditEstimates = () => {
                   options={initialValues.related_job}
                   itemRef={'jobs'}
                   showField={'name'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Template' labelFor='related_template'>
+                <Field
+                  name='related_template'
+                  id='related_template'
+                  component={SelectField}
+                  options={initialValues.related_template}
+                  itemRef={'templates'}
+                  showField={'id'}
                 ></Field>
               </FormField>
 

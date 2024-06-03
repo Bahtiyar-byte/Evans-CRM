@@ -88,8 +88,44 @@ export const loadColumns = async (
     },
 
     {
-      field: 'stage',
-      headerName: 'Stage',
+      field: 'status',
+      headerName: 'Status',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+    },
+
+    {
+      field: 'firstName',
+      headerName: 'First Name',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+    },
+
+    {
+      field: 'lastName',
+      headerName: 'Last Name',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+    },
+
+    {
+      field: 'source',
+      headerName: 'Source',
       flex: 1,
       minWidth: 120,
       filterable: false,

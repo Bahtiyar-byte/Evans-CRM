@@ -14,6 +14,22 @@ module.exports = function (sequelize, DataTypes) {
         primaryKey: true,
       },
 
+      subject: {
+        type: DataTypes.TEXT,
+      },
+
+      start_time: {
+        type: DataTypes.DATE,
+      },
+
+      end_time: {
+        type: DataTypes.DATE,
+      },
+
+      notes: {
+        type: DataTypes.TEXT,
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,
@@ -31,6 +47,22 @@ module.exports = function (sequelize, DataTypes) {
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
 
     //end loop
+
+    db.appointments.belongsTo(db.contacts, {
+      as: 'related_contact',
+      foreignKey: {
+        name: 'related_contactId',
+      },
+      constraints: false,
+    });
+
+    db.appointments.belongsTo(db.users, {
+      as: 'assigned_to',
+      foreignKey: {
+        name: 'assigned_toId',
+      },
+      constraints: false,
+    });
 
     db.appointments.belongsTo(db.users, {
       as: 'createdBy',

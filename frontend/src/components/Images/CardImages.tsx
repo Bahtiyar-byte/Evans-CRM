@@ -53,15 +53,21 @@ const CardUsers = ({
                 darkMode ? 'aside-scrollbars-[slate]' : asideScrollbarsStyle
               }`}
             >
-              <div className='flex items-center p-6  gap-x-4 border-b border-gray-900/5 bg-gray-50 dark:bg-dark-800 relative'>
-                <button
-                  className='text-lg font-bold leading-6 line-clamp-1'
+              <div className='flex items-center p-6  md:p-0 md:block  gap-x-4 border-b border-gray-900/5 bg-gray-50 dark:bg-dark-800 relative'>
+                <div
                   onClick={() => onView(item.id)}
+                  className={'cursor-pointer'}
                 >
-                  {item.id}
-                </button>
+                  <ImageField
+                    name={'Avatar'}
+                    image={item.image}
+                    className='w-12 h-12 md:w-full md:h-44 rounded-lg md:rounded-b-none overflow-hidden ring-1 ring-gray-900/10'
+                    imageClassName='h-full w-full flex-none rounded-lg md:rounded-b-none bg-white object-cover'
+                  />
+                  <p className={'px-6 py-2 font-semibold'}>{item.Name}</p>
+                </div>
 
-                <div className='ml-auto '>
+                <div className='ml-auto  md:absolute md:top-0 md:right-0 '>
                   <ListActionsPopover
                     onDelete={onDelete}
                     onView={onView}
@@ -71,7 +77,38 @@ const CardUsers = ({
                   />
                 </div>
               </div>
-              <dl className='divide-y divide-gray-100 dark:divide-dark-700 px-6 py-4 text-sm leading-6 h-64 overflow-y-auto'></dl>
+              <dl className='divide-y divide-gray-100 dark:divide-dark-700 px-6 py-4 text-sm leading-6 h-64 overflow-y-auto'>
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='text-gray-500 dark:text-dark-600'>Image</dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium'>
+                      <ImageField
+                        name={'Avatar'}
+                        image={item.image}
+                        className='mx-auto w-8 h-8'
+                      />
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='text-gray-500 dark:text-dark-600'>Name</dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>{item.Name}</div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='text-gray-500 dark:text-dark-600'>
+                    Related Job
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {dataFormatter.jobsOneListFormatter(item.related_job)}
+                    </div>
+                  </dd>
+                </div>
+              </dl>
             </li>
           ))}
         {!loading && images.length === 0 && (

@@ -71,17 +71,17 @@ const EstimatesView = () => {
           </div>
 
           <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>TemplateUsed</p>
+            <p className={'block font-bold mb-2'}>Template Used</p>
             <p>{estimates?.template_used}</p>
           </div>
 
           <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>MaterialCost</p>
+            <p className={'block font-bold mb-2'}>Material Cost</p>
             <p>{estimates?.material_cost || 'No data'}</p>
           </div>
 
           <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>LaborCost</p>
+            <p className={'block font-bold mb-2'}>Labor Cost</p>
             <p>{estimates?.labor_cost || 'No data'}</p>
           </div>
 
@@ -91,34 +91,35 @@ const EstimatesView = () => {
           </div>
 
           <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>ProfitMargin</p>
+            <p className={'block font-bold mb-2'}>Profit Margin</p>
             <p>{estimates?.profit_margin || 'No data'}</p>
           </div>
 
           <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>TotalPrice</p>
+            <p className={'block font-bold mb-2'}>Total Price</p>
             <p>{estimates?.total_price || 'No data'}</p>
           </div>
 
           <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>UnitofMeasurement</p>
-            <p>{estimates?.unit_of_measurement}</p>
-          </div>
-
-          <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>RelatedContact</p>
+            <p className={'block font-bold mb-2'}>Related Contact</p>
 
             <p>{estimates?.related_contact?.name ?? 'No data'}</p>
           </div>
 
           <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>RelatedJob</p>
+            <p className={'block font-bold mb-2'}>Related Job</p>
 
             <p>{estimates?.related_job?.name ?? 'No data'}</p>
           </div>
 
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Template</p>
+
+            <p>{estimates?.related_template?.id ?? 'No data'}</p>
+          </div>
+
           <>
-            <p className={'block font-bold mb-2'}>Jobs RelatedEstimate</p>
+            <p className={'block font-bold mb-2'}>Jobs Related Estimate</p>
             <CardBox
               className='mb-6 border border-gray-300 rounded overflow-hidden'
               hasTable
@@ -136,6 +137,10 @@ const EstimatesView = () => {
                       <th>Status</th>
 
                       <th>Address</th>
+
+                      <th>Start Date</th>
+
+                      <th>End Date</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -157,12 +162,59 @@ const EstimatesView = () => {
                           <td data-label='status'>{item.status}</td>
 
                           <td data-label='address'>{item.address}</td>
+
+                          <td data-label='start_date'>
+                            {dataFormatter.dateFormatter(item.start_date)}
+                          </td>
+
+                          <td data-label='end_date'>
+                            {dataFormatter.dateFormatter(item.end_date)}
+                          </td>
                         </tr>
                       ))}
                   </tbody>
                 </table>
               </div>
               {!estimates?.jobs_related_estimate?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Orders Related Estimate</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Order Number</th>
+
+                      <th>Total Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {estimates.orders_related_estimate &&
+                      Array.isArray(estimates.orders_related_estimate) &&
+                      estimates.orders_related_estimate.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/orders/orders-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='order_number'>{item.order_number}</td>
+
+                          <td data-label='total_amount'>{item.total_amount}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!estimates?.orders_related_estimate?.length && (
                 <div className={'text-center py-4'}>No data</div>
               )}
             </CardBox>

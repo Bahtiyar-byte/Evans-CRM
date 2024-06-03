@@ -51,6 +51,17 @@ const DocumentsView = () => {
           {''}
         </SectionTitleLineWithButton>
         <CardBox>
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Name</p>
+            <p>{documents?.name}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Job</p>
+
+            <p>{documents?.related_job?.name ?? 'No data'}</p>
+          </div>
+
           <BaseDivider />
 
           <BaseButton

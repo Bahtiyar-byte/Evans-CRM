@@ -33,7 +33,20 @@ import { useAppDispatch } from '../../stores/hooks';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
-const initialValues = {};
+const initialValues = {
+  name: '',
+
+  amount: '',
+
+  body: '',
+
+  related_contact: '',
+
+  signed_date: '',
+  dateSigned_date: '',
+
+  related_job: '',
+};
 
 const ContractsNew = () => {
   const router = useRouter();
@@ -62,6 +75,46 @@ const ContractsNew = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Name'>
+                <Field name='name' placeholder='Name' />
+              </FormField>
+
+              <FormField label='Amount'>
+                <Field type='number' name='amount' placeholder='Amount' />
+              </FormField>
+
+              <FormField label='Body' hasTextareaHeight>
+                <Field name='body' id='body' component={RichTextField}></Field>
+              </FormField>
+
+              <FormField label='Related Contact' labelFor='related_contact'>
+                <Field
+                  name='related_contact'
+                  id='related_contact'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'contacts'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Signed Date'>
+                <Field
+                  type='date'
+                  name='signed_date'
+                  placeholder='Signed Date'
+                />
+              </FormField>
+
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'jobs'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

@@ -33,7 +33,15 @@ import { useAppDispatch } from '../../stores/hooks';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
-const initialValues = {};
+const initialValues = {
+  order_number: '',
+
+  total_amount: '',
+
+  related_job: '',
+
+  related_estimate: '',
+};
 
 const OrdersNew = () => {
   const router = useRouter();
@@ -62,6 +70,38 @@ const OrdersNew = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Order Number'>
+                <Field name='order_number' placeholder='Order Number' />
+              </FormField>
+
+              <FormField label='Total Amount'>
+                <Field
+                  type='number'
+                  name='total_amount'
+                  placeholder='Total Amount'
+                />
+              </FormField>
+
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'jobs'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Estimate' labelFor='related_estimate'>
+                <Field
+                  name='related_estimate'
+                  id='related_estimate'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'estimates'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

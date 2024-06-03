@@ -33,7 +33,13 @@ import { useAppDispatch } from '../../stores/hooks';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
-const initialValues = {};
+const initialValues = {
+  name: '',
+
+  description: '',
+
+  related_trade: '',
+};
 
 const TemplatesNew = () => {
   const router = useRouter();
@@ -62,6 +68,28 @@ const TemplatesNew = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Name'>
+                <Field name='name' placeholder='Name' />
+              </FormField>
+
+              <FormField label='Description' hasTextareaHeight>
+                <Field
+                  name='description'
+                  id='description'
+                  component={RichTextField}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Trade' labelFor='related_trade'>
+                <Field
+                  name='related_trade'
+                  id='related_trade'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'trades'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

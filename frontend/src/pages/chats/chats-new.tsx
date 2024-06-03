@@ -33,7 +33,13 @@ import { useAppDispatch } from '../../stores/hooks';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
-const initialValues = {};
+const initialValues = {
+  related_job: '',
+
+  related_users: [],
+
+  name: '',
+};
 
 const ChatsNew = () => {
   const router = useRouter();
@@ -62,6 +68,30 @@ const ChatsNew = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'jobs'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Users' labelFor='related_users'>
+                <Field
+                  name='related_users'
+                  id='related_users'
+                  itemRef={'users'}
+                  options={[]}
+                  component={SelectFieldMany}
+                ></Field>
+              </FormField>
+
+              <FormField label='Name'>
+                <Field name='name' placeholder='Name' />
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

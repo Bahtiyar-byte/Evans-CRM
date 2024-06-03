@@ -15,12 +15,22 @@ module.exports = class OrdersDBApi {
       {
         id: data.id || undefined,
 
+        order_number: data.order_number || null,
+        total_amount: data.total_amount || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await orders.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await orders.setRelated_estimate(data.related_estimate || null, {
+      transaction,
+    });
 
     return orders;
   }
@@ -33,6 +43,8 @@ module.exports = class OrdersDBApi {
     const ordersData = data.map((item, index) => ({
       id: item.id || undefined,
 
+      order_number: item.order_number || null,
+      total_amount: item.total_amount || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -55,10 +67,20 @@ module.exports = class OrdersDBApi {
 
     await orders.update(
       {
+        order_number: data.order_number || null,
+        total_amount: data.total_amount || null,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await orders.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await orders.setRelated_estimate(data.related_estimate || null, {
+      transaction,
+    });
 
     return orders;
   }
@@ -121,6 +143,14 @@ module.exports = class OrdersDBApi {
 
     const output = orders.get({ plain: true });
 
+    output.related_job = await orders.getRelated_job({
+      transaction,
+    });
+
+    output.related_estimate = await orders.getRelated_estimate({
+      transaction,
+    });
+
     return output;
   }
 
@@ -135,7 +165,17 @@ module.exports = class OrdersDBApi {
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};
-    let include = [];
+    let include = [
+      {
+        model: db.jobs,
+        as: 'related_job',
+      },
+
+      {
+        model: db.estimates,
+        as: 'related_estimate',
+      },
+    ];
 
     if (filter) {
       if (filter.id) {
@@ -143,6 +183,37 @@ module.exports = class OrdersDBApi {
           ...where,
           ['id']: Utils.uuid(filter.id),
         };
+      }
+
+      if (filter.order_number) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('orders', 'order_number', filter.order_number),
+        };
+      }
+
+      if (filter.total_amountRange) {
+        const [start, end] = filter.total_amountRange;
+
+        if (start !== undefined && start !== null && start !== '') {
+          where = {
+            ...where,
+            total_amount: {
+              ...where.total_amount,
+              [Op.gte]: start,
+            },
+          };
+        }
+
+        if (end !== undefined && end !== null && end !== '') {
+          where = {
+            ...where,
+            total_amount: {
+              ...where.total_amount,
+              [Op.lte]: end,
+            },
+          };
+        }
       }
 
       if (
@@ -154,6 +225,28 @@ module.exports = class OrdersDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
+        };
+      }
+
+      if (filter.related_job) {
+        var listItems = filter.related_job.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_jobId: { [Op.or]: listItems },
+        };
+      }
+
+      if (filter.related_estimate) {
+        var listItems = filter.related_estimate.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_estimateId: { [Op.or]: listItems },
         };
       }
 

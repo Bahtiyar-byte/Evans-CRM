@@ -20,6 +20,15 @@ router.use(checkCrudPermissions('amendments'));
  *        type: object
  *        properties:
 
+ *          description:
+ *            type: string
+ *            default: description
+
+ *          amount:
+ *            type: integer
+ *            format: int64
+
+ *          
  */
 
 /**
@@ -263,7 +272,7 @@ router.get(
 
     const payload = await AmendmentsDBApi.findAll(req.query);
     if (filetype && filetype === 'csv') {
-      const fields = ['id'];
+      const fields = ['id', 'description', 'amount'];
       const opts = { fields };
       try {
         const csv = parse(payload.rows, opts);

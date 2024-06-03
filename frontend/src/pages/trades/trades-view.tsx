@@ -51,6 +51,48 @@ const TradesView = () => {
           {''}
         </SectionTitleLineWithButton>
         <CardBox>
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Name</p>
+            <p>{trades?.name}</p>
+          </div>
+
+          <>
+            <p className={'block font-bold mb-2'}>Templates Related Trade</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {trades.templates_related_trade &&
+                      Array.isArray(trades.templates_related_trade) &&
+                      trades.templates_related_trade.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/templates/templates-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='name'>{item.name}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!trades?.templates_related_trade?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
           <BaseDivider />
 
           <BaseButton

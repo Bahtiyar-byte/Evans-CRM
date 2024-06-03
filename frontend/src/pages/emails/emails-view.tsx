@@ -51,6 +51,24 @@ const EmailsView = () => {
           {''}
         </SectionTitleLineWithButton>
         <CardBox>
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Job</p>
+
+            <p>{emails?.related_job?.name ?? 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Contact</p>
+
+            <p>{emails?.related_contact?.name ?? 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related User</p>
+
+            <p>{emails?.related_user?.firstName ?? 'No data'}</p>
+          </div>
+
           <BaseDivider />
 
           <BaseButton

@@ -28,7 +28,15 @@ const ContractsTablesPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const [filters] = useState([]);
+  const [filters] = useState([
+    { label: 'Name', title: 'name' },
+    { label: 'Body', title: 'body' },
+
+    { label: 'Amount', title: 'amount', number: 'true' },
+
+    { label: 'Related Contact', title: 'related_contact' },
+    { label: 'Related Job', title: 'related_job' },
+  ]);
 
   const hasCreatePermission =
     currentUser && hasPermission(currentUser, 'CREATE_CONTRACTS');

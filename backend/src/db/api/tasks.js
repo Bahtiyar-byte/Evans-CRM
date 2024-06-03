@@ -15,12 +15,24 @@ module.exports = class TasksDBApi {
       {
         id: data.id || undefined,
 
+        subject: data.subject || null,
+        status: data.status || null,
+        priority: data.priority || null,
+        due_date: data.due_date || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await tasks.setAssigned_to(data.assigned_to || null, {
+      transaction,
+    });
+
+    await tasks.setRelated_job(data.related_job || null, {
+      transaction,
+    });
 
     return tasks;
   }
@@ -33,6 +45,10 @@ module.exports = class TasksDBApi {
     const tasksData = data.map((item, index) => ({
       id: item.id || undefined,
 
+      subject: item.subject || null,
+      status: item.status || null,
+      priority: item.priority || null,
+      due_date: item.due_date || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -55,10 +71,22 @@ module.exports = class TasksDBApi {
 
     await tasks.update(
       {
+        subject: data.subject || null,
+        status: data.status || null,
+        priority: data.priority || null,
+        due_date: data.due_date || null,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await tasks.setAssigned_to(data.assigned_to || null, {
+      transaction,
+    });
+
+    await tasks.setRelated_job(data.related_job || null, {
+      transaction,
+    });
 
     return tasks;
   }
@@ -121,6 +149,14 @@ module.exports = class TasksDBApi {
 
     const output = tasks.get({ plain: true });
 
+    output.assigned_to = await tasks.getAssigned_to({
+      transaction,
+    });
+
+    output.related_job = await tasks.getRelated_job({
+      transaction,
+    });
+
     return output;
   }
 
@@ -135,7 +171,17 @@ module.exports = class TasksDBApi {
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};
-    let include = [];
+    let include = [
+      {
+        model: db.users,
+        as: 'assigned_to',
+      },
+
+      {
+        model: db.jobs,
+        as: 'related_job',
+      },
+    ];
 
     if (filter) {
       if (filter.id) {
@@ -143,6 +189,37 @@ module.exports = class TasksDBApi {
           ...where,
           ['id']: Utils.uuid(filter.id),
         };
+      }
+
+      if (filter.subject) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('tasks', 'subject', filter.subject),
+        };
+      }
+
+      if (filter.due_dateRange) {
+        const [start, end] = filter.due_dateRange;
+
+        if (start !== undefined && start !== null && start !== '') {
+          where = {
+            ...where,
+            due_date: {
+              ...where.due_date,
+              [Op.gte]: start,
+            },
+          };
+        }
+
+        if (end !== undefined && end !== null && end !== '') {
+          where = {
+            ...where,
+            due_date: {
+              ...where.due_date,
+              [Op.lte]: end,
+            },
+          };
+        }
       }
 
       if (
@@ -154,6 +231,42 @@ module.exports = class TasksDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
+        };
+      }
+
+      if (filter.status) {
+        where = {
+          ...where,
+          status: filter.status,
+        };
+      }
+
+      if (filter.priority) {
+        where = {
+          ...where,
+          priority: filter.priority,
+        };
+      }
+
+      if (filter.assigned_to) {
+        var listItems = filter.assigned_to.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          assigned_toId: { [Op.or]: listItems },
+        };
+      }
+
+      if (filter.related_job) {
+        var listItems = filter.related_job.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_jobId: { [Op.or]: listItems },
         };
       }
 

@@ -28,7 +28,12 @@ const TemplatesTablesPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const [filters] = useState([]);
+  const [filters] = useState([
+    { label: 'Name', title: 'name' },
+    { label: 'Description', title: 'description' },
+
+    { label: 'Related Trade', title: 'related_trade' },
+  ]);
 
   const hasCreatePermission =
     currentUser && hasPermission(currentUser, 'CREATE_TEMPLATES');

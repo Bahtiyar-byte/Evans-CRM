@@ -22,6 +22,18 @@ module.exports = class EmailsDBApi {
       { transaction },
     );
 
+    await emails.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await emails.setRelated_contact(data.related_contact || null, {
+      transaction,
+    });
+
+    await emails.setRelated_user(data.related_user || null, {
+      transaction,
+    });
+
     return emails;
   }
 
@@ -59,6 +71,18 @@ module.exports = class EmailsDBApi {
       },
       { transaction },
     );
+
+    await emails.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await emails.setRelated_contact(data.related_contact || null, {
+      transaction,
+    });
+
+    await emails.setRelated_user(data.related_user || null, {
+      transaction,
+    });
 
     return emails;
   }
@@ -121,6 +145,18 @@ module.exports = class EmailsDBApi {
 
     const output = emails.get({ plain: true });
 
+    output.related_job = await emails.getRelated_job({
+      transaction,
+    });
+
+    output.related_contact = await emails.getRelated_contact({
+      transaction,
+    });
+
+    output.related_user = await emails.getRelated_user({
+      transaction,
+    });
+
     return output;
   }
 
@@ -135,7 +171,22 @@ module.exports = class EmailsDBApi {
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};
-    let include = [];
+    let include = [
+      {
+        model: db.jobs,
+        as: 'related_job',
+      },
+
+      {
+        model: db.contacts,
+        as: 'related_contact',
+      },
+
+      {
+        model: db.users,
+        as: 'related_user',
+      },
+    ];
 
     if (filter) {
       if (filter.id) {
@@ -154,6 +205,39 @@ module.exports = class EmailsDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
+        };
+      }
+
+      if (filter.related_job) {
+        var listItems = filter.related_job.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_jobId: { [Op.or]: listItems },
+        };
+      }
+
+      if (filter.related_contact) {
+        var listItems = filter.related_contact.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_contactId: { [Op.or]: listItems },
+        };
+      }
+
+      if (filter.related_user) {
+        var listItems = filter.related_user.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_userId: { [Op.or]: listItems },
         };
       }
 

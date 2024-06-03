@@ -32,9 +32,6 @@ router.use(checkCrudPermissions('estimates'));
  *          template_used:
  *            type: string
  *            default: template_used
- *          unit_of_measurement:
- *            type: string
- *            default: unit_of_measurement
 
  *          material_cost:
  *            type: integer
@@ -301,7 +298,6 @@ router.get(
         'description',
         'trade',
         'template_used',
-        'unit_of_measurement',
 
         'material_cost',
         'labor_cost',

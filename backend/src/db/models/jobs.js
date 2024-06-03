@@ -58,6 +58,26 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.TEXT,
       },
 
+      start_date: {
+        type: DataTypes.DATEONLY,
+
+        get: function () {
+          return this.getDataValue('start_date')
+            ? moment.utc(this.getDataValue('start_date')).format('YYYY-MM-DD')
+            : null;
+        },
+      },
+
+      end_date: {
+        type: DataTypes.DATEONLY,
+
+        get: function () {
+          return this.getDataValue('end_date')
+            ? moment.utc(this.getDataValue('end_date')).format('YYYY-MM-DD')
+            : null;
+        },
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,
@@ -76,6 +96,78 @@ module.exports = function (sequelize, DataTypes) {
 
     db.jobs.hasMany(db.estimates, {
       as: 'estimates_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.jobs.hasMany(db.invoices, {
+      as: 'invoices_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.jobs.hasMany(db.orders, {
+      as: 'orders_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.jobs.hasMany(db.images, {
+      as: 'images_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.jobs.hasMany(db.documents, {
+      as: 'documents_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.jobs.hasMany(db.emails, {
+      as: 'emails_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.jobs.hasMany(db.chats, {
+      as: 'chats_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.jobs.hasMany(db.tasks, {
+      as: 'tasks_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.jobs.hasMany(db.contracts, {
+      as: 'contracts_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.jobs.hasMany(db.amendments, {
+      as: 'amendments_related_job',
       foreignKey: {
         name: 'related_jobId',
       },
@@ -109,12 +201,12 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     db.jobs.hasMany(db.file, {
-      as: 'images',
+      as: 'main_image',
       foreignKey: 'belongsToId',
       constraints: false,
       scope: {
         belongsTo: db.jobs.getTableName(),
-        belongsToColumn: 'images',
+        belongsToColumn: 'main_image',
       },
     });
 

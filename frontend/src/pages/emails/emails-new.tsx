@@ -33,7 +33,13 @@ import { useAppDispatch } from '../../stores/hooks';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
-const initialValues = {};
+const initialValues = {
+  related_job: '',
+
+  related_contact: '',
+
+  related_user: '',
+};
 
 const EmailsNew = () => {
   const router = useRouter();
@@ -62,6 +68,36 @@ const EmailsNew = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'jobs'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Contact' labelFor='related_contact'>
+                <Field
+                  name='related_contact'
+                  id='related_contact'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'contacts'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related User' labelFor='related_user'>
+                <Field
+                  name='related_user'
+                  id='related_user'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'users'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

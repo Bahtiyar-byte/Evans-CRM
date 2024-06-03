@@ -81,33 +81,33 @@ const JobsView = () => {
           </div>
 
           <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>AssignedTo</p>
+            <p className={'block font-bold mb-2'}>Assigned To</p>
 
             <p>{jobs?.assigned_to?.firstName ?? 'No data'}</p>
           </div>
 
           <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>RelatedContact</p>
+            <p className={'block font-bold mb-2'}>Related Contact</p>
 
             <p>{jobs?.related_contact?.name ?? 'No data'}</p>
           </div>
 
           <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>RelatedEstimate</p>
+            <p className={'block font-bold mb-2'}>Related Estimate</p>
 
             <p>{jobs?.related_estimate?.name ?? 'No data'}</p>
           </div>
 
           <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>Images</p>
-            {jobs?.images?.length ? (
+            <p className={'block font-bold mb-2'}>Main Image</p>
+            {jobs?.main_image?.length ? (
               <ImageField
-                name={'images'}
-                image={jobs?.images}
+                name={'main_image'}
+                image={jobs?.main_image}
                 className='w-20 h-20'
               />
             ) : (
-              <p>No Images</p>
+              <p>No Main Image</p>
             )}
           </div>
 
@@ -132,8 +132,44 @@ const JobsView = () => {
             <p>{jobs?.address}</p>
           </div>
 
+          <FormField label='Start Date'>
+            {jobs.start_date ? (
+              <DatePicker
+                dateFormat='yyyy-MM-dd'
+                showTimeSelect
+                selected={
+                  jobs.start_date
+                    ? new Date(
+                        dayjs(jobs.start_date).format('YYYY-MM-DD hh:mm'),
+                      )
+                    : null
+                }
+                disabled
+              />
+            ) : (
+              <p>No Start Date</p>
+            )}
+          </FormField>
+
+          <FormField label='End Date'>
+            {jobs.end_date ? (
+              <DatePicker
+                dateFormat='yyyy-MM-dd'
+                showTimeSelect
+                selected={
+                  jobs.end_date
+                    ? new Date(dayjs(jobs.end_date).format('YYYY-MM-DD hh:mm'))
+                    : null
+                }
+                disabled
+              />
+            ) : (
+              <p>No End Date</p>
+            )}
+          </FormField>
+
           <>
-            <p className={'block font-bold mb-2'}>Estimates RelatedJob</p>
+            <p className={'block font-bold mb-2'}>Estimates Related Job</p>
             <CardBox
               className='mb-6 border border-gray-300 rounded overflow-hidden'
               hasTable
@@ -146,19 +182,17 @@ const JobsView = () => {
 
                       <th>Trade</th>
 
-                      <th>TemplateUsed</th>
+                      <th>Template Used</th>
 
-                      <th>MaterialCost</th>
+                      <th>Material Cost</th>
 
-                      <th>LaborCost</th>
+                      <th>Labor Cost</th>
 
                       <th>Markup</th>
 
-                      <th>ProfitMargin</th>
+                      <th>Profit Margin</th>
 
-                      <th>TotalPrice</th>
-
-                      <th>UnitofMeasurement</th>
+                      <th>Total Price</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -194,16 +228,387 @@ const JobsView = () => {
                           </td>
 
                           <td data-label='total_price'>{item.total_price}</td>
-
-                          <td data-label='unit_of_measurement'>
-                            {item.unit_of_measurement}
-                          </td>
                         </tr>
                       ))}
                   </tbody>
                 </table>
               </div>
               {!jobs?.estimates_related_job?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Invoices Related Job</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Invoice Number</th>
+
+                      <th>Invoice Date</th>
+
+                      <th>Terms</th>
+
+                      <th>Approved Job Value</th>
+
+                      <th>Balance Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {jobs.invoices_related_job &&
+                      Array.isArray(jobs.invoices_related_job) &&
+                      jobs.invoices_related_job.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/invoices/invoices-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='invoice_number'>
+                            {item.invoice_number}
+                          </td>
+
+                          <td data-label='invoice_date'>
+                            {dataFormatter.dateFormatter(item.invoice_date)}
+                          </td>
+
+                          <td data-label='terms'>{item.terms}</td>
+
+                          <td data-label='approved_job_value'>
+                            {item.approved_job_value}
+                          </td>
+
+                          <td data-label='balance_amount'>
+                            {item.balance_amount}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!jobs?.invoices_related_job?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Orders Related Job</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Order Number</th>
+
+                      <th>Total Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {jobs.orders_related_job &&
+                      Array.isArray(jobs.orders_related_job) &&
+                      jobs.orders_related_job.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/orders/orders-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='order_number'>{item.order_number}</td>
+
+                          <td data-label='total_amount'>{item.total_amount}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!jobs?.orders_related_job?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Images Related Job</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {jobs.images_related_job &&
+                      Array.isArray(jobs.images_related_job) &&
+                      jobs.images_related_job.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/images/images-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='Name'>{item.Name}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!jobs?.images_related_job?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Documents Related Job</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {jobs.documents_related_job &&
+                      Array.isArray(jobs.documents_related_job) &&
+                      jobs.documents_related_job.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/documents/documents-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='name'>{item.name}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!jobs?.documents_related_job?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Emails Related Job</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr></tr>
+                  </thead>
+                  <tbody>
+                    {jobs.emails_related_job &&
+                      Array.isArray(jobs.emails_related_job) &&
+                      jobs.emails_related_job.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/emails/emails-view/?id=${item.id}`)
+                          }
+                        ></tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!jobs?.emails_related_job?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Chats Related Job</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {jobs.chats_related_job &&
+                      Array.isArray(jobs.chats_related_job) &&
+                      jobs.chats_related_job.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/chats/chats-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='name'>{item.name}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!jobs?.chats_related_job?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Tasks Related Job</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Subject</th>
+
+                      <th>Status</th>
+
+                      <th>Priority</th>
+
+                      <th>Due Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {jobs.tasks_related_job &&
+                      Array.isArray(jobs.tasks_related_job) &&
+                      jobs.tasks_related_job.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/tasks/tasks-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='subject'>{item.subject}</td>
+
+                          <td data-label='status'>{item.status}</td>
+
+                          <td data-label='priority'>{item.priority}</td>
+
+                          <td data-label='due_date'>
+                            {dataFormatter.dateTimeFormatter(item.due_date)}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!jobs?.tasks_related_job?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Contracts Related Job</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+
+                      <th>Amount</th>
+
+                      <th>Signed Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {jobs.contracts_related_job &&
+                      Array.isArray(jobs.contracts_related_job) &&
+                      jobs.contracts_related_job.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/contracts/contracts-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='name'>{item.name}</td>
+
+                          <td data-label='amount'>{item.amount}</td>
+
+                          <td data-label='signed_date'>
+                            {dataFormatter.dateFormatter(item.signed_date)}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!jobs?.contracts_related_job?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Amendments Related Job</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Type</th>
+
+                      <th>Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {jobs.amendments_related_job &&
+                      Array.isArray(jobs.amendments_related_job) &&
+                      jobs.amendments_related_job.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/amendments/amendments-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='type'>{item.type}</td>
+
+                          <td data-label='amount'>{item.amount}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!jobs?.amendments_related_job?.length && (
                 <div className={'text-center py-4'}>No data</div>
               )}
             </CardBox>

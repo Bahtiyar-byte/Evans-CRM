@@ -51,6 +51,56 @@ const ContractsView = () => {
           {''}
         </SectionTitleLineWithButton>
         <CardBox>
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Name</p>
+            <p>{contracts?.name}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Amount</p>
+            <p>{contracts?.amount || 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Body</p>
+            {contracts.body ? (
+              <p dangerouslySetInnerHTML={{ __html: contracts.body }} />
+            ) : (
+              <p>No data</p>
+            )}
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Contact</p>
+
+            <p>{contracts?.related_contact?.name ?? 'No data'}</p>
+          </div>
+
+          <FormField label='Signed Date'>
+            {contracts.signed_date ? (
+              <DatePicker
+                dateFormat='yyyy-MM-dd'
+                showTimeSelect
+                selected={
+                  contracts.signed_date
+                    ? new Date(
+                        dayjs(contracts.signed_date).format('YYYY-MM-DD hh:mm'),
+                      )
+                    : null
+                }
+                disabled
+              />
+            ) : (
+              <p>No Signed Date</p>
+            )}
+          </FormField>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Job</p>
+
+            <p>{contracts?.related_job?.name ?? 'No data'}</p>
+          </div>
+
           <BaseDivider />
 
           <BaseButton

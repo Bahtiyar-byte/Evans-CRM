@@ -15,12 +15,19 @@ module.exports = class AmendmentsDBApi {
       {
         id: data.id || undefined,
 
+        type: data.type || null,
+        amount: data.amount || null,
+        description: data.description || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await amendments.setRelated_job(data.related_job || null, {
+      transaction,
+    });
 
     return amendments;
   }
@@ -33,6 +40,9 @@ module.exports = class AmendmentsDBApi {
     const amendmentsData = data.map((item, index) => ({
       id: item.id || undefined,
 
+      type: item.type || null,
+      amount: item.amount || null,
+      description: item.description || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -57,10 +67,17 @@ module.exports = class AmendmentsDBApi {
 
     await amendments.update(
       {
+        type: data.type || null,
+        amount: data.amount || null,
+        description: data.description || null,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await amendments.setRelated_job(data.related_job || null, {
+      transaction,
+    });
 
     return amendments;
   }
@@ -123,6 +140,10 @@ module.exports = class AmendmentsDBApi {
 
     const output = amendments.get({ plain: true });
 
+    output.related_job = await amendments.getRelated_job({
+      transaction,
+    });
+
     return output;
   }
 
@@ -137,7 +158,12 @@ module.exports = class AmendmentsDBApi {
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};
-    let include = [];
+    let include = [
+      {
+        model: db.jobs,
+        as: 'related_job',
+      },
+    ];
 
     if (filter) {
       if (filter.id) {
@@ -145,6 +171,41 @@ module.exports = class AmendmentsDBApi {
           ...where,
           ['id']: Utils.uuid(filter.id),
         };
+      }
+
+      if (filter.description) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike(
+            'amendments',
+            'description',
+            filter.description,
+          ),
+        };
+      }
+
+      if (filter.amountRange) {
+        const [start, end] = filter.amountRange;
+
+        if (start !== undefined && start !== null && start !== '') {
+          where = {
+            ...where,
+            amount: {
+              ...where.amount,
+              [Op.gte]: start,
+            },
+          };
+        }
+
+        if (end !== undefined && end !== null && end !== '') {
+          where = {
+            ...where,
+            amount: {
+              ...where.amount,
+              [Op.lte]: end,
+            },
+          };
+        }
       }
 
       if (
@@ -156,6 +217,24 @@ module.exports = class AmendmentsDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
+        };
+      }
+
+      if (filter.type) {
+        where = {
+          ...where,
+          type: filter.type,
+        };
+      }
+
+      if (filter.related_job) {
+        var listItems = filter.related_job.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_jobId: { [Op.or]: listItems },
         };
       }
 

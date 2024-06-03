@@ -20,6 +20,17 @@ router.use(checkCrudPermissions('contracts'));
  *        type: object
  *        properties:
 
+ *          name:
+ *            type: string
+ *            default: name
+ *          body:
+ *            type: string
+ *            default: body
+
+ *          amount:
+ *            type: integer
+ *            format: int64
+
  */
 
 /**
@@ -263,7 +274,7 @@ router.get(
 
     const payload = await ContractsDBApi.findAll(req.query);
     if (filetype && filetype === 'csv') {
-      const fields = ['id'];
+      const fields = ['id', 'name', 'body', 'amount', 'signed_date'];
       const opts = { fields };
       try {
         const csv = parse(payload.rows, opts);

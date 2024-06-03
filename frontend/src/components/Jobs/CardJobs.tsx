@@ -60,7 +60,7 @@ const CardUsers = ({
                 >
                   <ImageField
                     name={'Avatar'}
-                    image={item.images}
+                    image={item.main_image}
                     className='w-12 h-12 md:w-full md:h-44 rounded-lg md:rounded-b-none overflow-hidden ring-1 ring-gray-900/10'
                     imageClassName='h-full w-full flex-none rounded-lg md:rounded-b-none bg-white object-cover'
                   />
@@ -123,7 +123,7 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
-                    AssignedTo
+                    Assigned To
                   </dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
@@ -134,7 +134,7 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
-                    RelatedContact
+                    Related Contact
                   </dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
@@ -147,7 +147,7 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
-                    RelatedEstimate
+                    Related Estimate
                   </dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
@@ -159,12 +159,14 @@ const CardUsers = ({
                 </div>
 
                 <div className='flex justify-between gap-x-4 py-3'>
-                  <dt className='text-gray-500 dark:text-dark-600'>Images</dt>
+                  <dt className='text-gray-500 dark:text-dark-600'>
+                    Main Image
+                  </dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium'>
                       <ImageField
                         name={'Avatar'}
-                        image={item.images}
+                        image={item.main_image}
                         className='mx-auto w-8 h-8'
                       />
                     </div>
@@ -198,6 +200,26 @@ const CardUsers = ({
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
                       {item.address}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='text-gray-500 dark:text-dark-600'>
+                    Start Date
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {dataFormatter.dateFormatter(item.start_date)}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='text-gray-500 dark:text-dark-600'>End Date</dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {dataFormatter.dateFormatter(item.end_date)}
                     </div>
                   </dd>
                 </div>

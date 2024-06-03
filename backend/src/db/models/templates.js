@@ -14,6 +14,14 @@ module.exports = function (sequelize, DataTypes) {
         primaryKey: true,
       },
 
+      name: {
+        type: DataTypes.TEXT,
+      },
+
+      description: {
+        type: DataTypes.TEXT,
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,
@@ -30,7 +38,23 @@ module.exports = function (sequelize, DataTypes) {
   templates.associate = (db) => {
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
 
+    db.templates.hasMany(db.estimates, {
+      as: 'estimates_related_template',
+      foreignKey: {
+        name: 'related_templateId',
+      },
+      constraints: false,
+    });
+
     //end loop
+
+    db.templates.belongsTo(db.trades, {
+      as: 'related_trade',
+      foreignKey: {
+        name: 'related_tradeId',
+      },
+      constraints: false,
+    });
 
     db.templates.belongsTo(db.users, {
       as: 'createdBy',

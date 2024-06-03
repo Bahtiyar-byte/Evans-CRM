@@ -33,7 +33,20 @@ import { useAppDispatch } from '../../stores/hooks';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
-const initialValues = {};
+const initialValues = {
+  invoice_number: '',
+
+  invoice_date: '',
+  dateInvoice_date: '',
+
+  terms: 'By Due Date',
+
+  approved_job_value: '',
+
+  balance_amount: '',
+
+  related_job: '',
+};
 
 const InvoicesNew = () => {
   const router = useRouter();
@@ -62,6 +75,64 @@ const InvoicesNew = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Invoice Number'>
+                <Field name='invoice_number' placeholder='Invoice Number' />
+              </FormField>
+
+              <FormField label='Invoice Date'>
+                <Field
+                  type='date'
+                  name='invoice_date'
+                  placeholder='Invoice Date'
+                />
+              </FormField>
+
+              <FormField label='Terms' labelFor='terms'>
+                <Field name='terms' id='terms' component='select'>
+                  <option value='By Due Date'>By Due Date</option>
+
+                  <option value='Upon Receipt'>Upon Receipt</option>
+
+                  <option value='Net 7 Days'>Net 7 Days</option>
+
+                  <option value='Net 10 Days'>Net 10 Days</option>
+
+                  <option value='Net 15 Days'>Net 15 Days</option>
+
+                  <option value='Net 30 Days'>Net 30 Days</option>
+
+                  <option value='Net 45 Days'>Net 45 Days</option>
+
+                  <option value='Net 60 Days'>Net 60 Days</option>
+                </Field>
+              </FormField>
+
+              <FormField label='Approved Job Value'>
+                <Field
+                  type='number'
+                  name='approved_job_value'
+                  placeholder='Approved Job Value'
+                />
+              </FormField>
+
+              <FormField label='Balance Amount'>
+                <Field
+                  type='number'
+                  name='balance_amount'
+                  placeholder='Balance Amount'
+                />
+              </FormField>
+
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'jobs'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

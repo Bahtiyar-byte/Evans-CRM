@@ -20,6 +20,13 @@ router.use(checkCrudPermissions('templates'));
  *        type: object
  *        properties:
 
+ *          name:
+ *            type: string
+ *            default: name
+ *          description:
+ *            type: string
+ *            default: description
+
  */
 
 /**
@@ -263,7 +270,7 @@ router.get(
 
     const payload = await TemplatesDBApi.findAll(req.query);
     if (filetype && filetype === 'csv') {
-      const fields = ['id'];
+      const fields = ['id', 'name', 'description'];
       const opts = { fields };
       try {
         const csv = parse(payload.rows, opts);

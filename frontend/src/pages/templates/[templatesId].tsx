@@ -36,7 +36,13 @@ import ImageField from '../../components/ImageField';
 const EditTemplates = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const initVals = {};
+  const initVals = {
+    name: '',
+
+    description: '',
+
+    related_trade: '',
+  };
   const [initialValues, setInitialValues] = useState(initVals);
 
   const { templates } = useAppSelector((state) => state.templates);
@@ -90,6 +96,29 @@ const EditTemplates = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Name'>
+                <Field name='name' placeholder='Name' />
+              </FormField>
+
+              <FormField label='Description' hasTextareaHeight>
+                <Field
+                  name='description'
+                  id='description'
+                  component={RichTextField}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Trade' labelFor='related_trade'>
+                <Field
+                  name='related_trade'
+                  id='related_trade'
+                  component={SelectField}
+                  options={initialValues.related_trade}
+                  itemRef={'trades'}
+                  showField={'id'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

@@ -36,7 +36,19 @@ import ImageField from '../../components/ImageField';
 const EditAppointments = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const initVals = {};
+  const initVals = {
+    subject: '',
+
+    start_time: new Date(),
+
+    end_time: new Date(),
+
+    notes: '',
+
+    related_contact: '',
+
+    assigned_to: '',
+  };
   const [initialValues, setInitialValues] = useState(initVals);
 
   const { appointments } = useAppSelector((state) => state.appointments);
@@ -90,6 +102,78 @@ const EditAppointments = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
+              <FormField label='Subject'>
+                <Field name='subject' placeholder='Subject' />
+              </FormField>
+
+              <FormField label='Start Time'>
+                <DatePicker
+                  dateFormat='yyyy-MM-dd hh:mm'
+                  showTimeSelect
+                  selected={
+                    initialValues.start_time
+                      ? new Date(
+                          dayjs(initialValues.start_time).format(
+                            'YYYY-MM-DD hh:mm',
+                          ),
+                        )
+                      : null
+                  }
+                  onChange={(date) =>
+                    setInitialValues({ ...initialValues, start_time: date })
+                  }
+                />
+              </FormField>
+
+              <FormField label='End Time'>
+                <DatePicker
+                  dateFormat='yyyy-MM-dd hh:mm'
+                  showTimeSelect
+                  selected={
+                    initialValues.end_time
+                      ? new Date(
+                          dayjs(initialValues.end_time).format(
+                            'YYYY-MM-DD hh:mm',
+                          ),
+                        )
+                      : null
+                  }
+                  onChange={(date) =>
+                    setInitialValues({ ...initialValues, end_time: date })
+                  }
+                />
+              </FormField>
+
+              <FormField label='Notes' hasTextareaHeight>
+                <Field
+                  name='notes'
+                  id='notes'
+                  component={RichTextField}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Contact' labelFor='related_contact'>
+                <Field
+                  name='related_contact'
+                  id='related_contact'
+                  component={SelectField}
+                  options={initialValues.related_contact}
+                  itemRef={'contacts'}
+                  showField={'name'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Assigned To' labelFor='assigned_to'>
+                <Field
+                  name='assigned_to'
+                  id='assigned_to'
+                  component={SelectField}
+                  options={initialValues.assigned_to}
+                  itemRef={'users'}
+                  showField={'firstName'}
+                ></Field>
+              </FormField>
+
               <BaseDivider />
               <BaseButtons>
                 <BaseButton type='submit' color='info' label='Submit' />

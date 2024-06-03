@@ -47,7 +47,33 @@ const ListOrders = ({
                     'flex-1 px-4 py-6 h-24 flex items-stretch divide-x-2 dark:divide-dark-700 overflow-x-auto'
                   }
                   onClick={() => onView(item.id)}
-                ></div>
+                >
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Order Number</p>
+                    <p className={'line-clamp-2'}>{item.order_number}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Total Amount</p>
+                    <p className={'line-clamp-2'}>{item.total_amount}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Related Job</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.jobsOneListFormatter(item.related_job)}
+                    </p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Related Estimate</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.estimatesOneListFormatter(
+                        item.related_estimate,
+                      )}
+                    </p>
+                  </div>
+                </div>
                 <ListActionsPopover
                   onDelete={onDelete}
                   onView={onView}

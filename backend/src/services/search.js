@@ -43,21 +43,45 @@ module.exports = class SearchService {
       const tableColumns = {
         users: ['firstName', 'lastName', 'phoneNumber', 'email'],
 
-        contacts: ['name', 'email', 'phone', 'address'],
-
-        estimates: [
+        contacts: [
           'name',
 
-          'description',
+          'email',
 
-          'trade',
+          'phone',
 
-          'template_used',
+          'address',
 
-          'unit_of_measurement',
+          'firstName',
+
+          'lastName',
         ],
 
+        estimates: ['name', 'description', 'trade', 'template_used'],
+
         jobs: ['name', 'description', 'address'],
+
+        templates: ['name', 'description'],
+
+        trades: ['name'],
+
+        invoices: ['invoice_number'],
+
+        orders: ['order_number'],
+
+        images: ['Name'],
+
+        documents: ['name'],
+
+        chats: ['name'],
+
+        appointments: ['subject', 'notes'],
+
+        tasks: ['subject'],
+
+        contracts: ['name', 'body'],
+
+        amendments: ['description'],
       };
       const columnsInt = {
         estimates: [
@@ -71,6 +95,14 @@ module.exports = class SearchService {
 
           'total_price',
         ],
+
+        invoices: ['approved_job_value', 'balance_amount'],
+
+        orders: ['total_amount'],
+
+        contracts: ['amount'],
+
+        amendments: ['amount'],
       };
 
       let allFoundRecords = [];

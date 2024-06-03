@@ -28,7 +28,11 @@ const ImagesTablesPage = () => {
 
   const dispatch = useAppDispatch();
 
-  const [filters] = useState([]);
+  const [filters] = useState([
+    { label: 'Name', title: 'Name' },
+
+    { label: 'Related Job', title: 'related_job' },
+  ]);
 
   const hasCreatePermission =
     currentUser && hasPermission(currentUser, 'CREATE_IMAGES');
@@ -117,6 +121,10 @@ const ImagesTablesPage = () => {
               onClick={() => setIsModalActive(true)}
             />
           )}
+
+          <div className='md:inline-flex items-center ms-auto'>
+            <Link href={'/images/images-table'}>Switch to Table</Link>
+          </div>
         </CardBox>
         <CardBox className='mb-6' hasTable>
           <TableImages
