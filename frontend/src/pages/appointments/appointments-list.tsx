@@ -37,8 +37,9 @@ const AppointmentsTablesPage = () => {
 
     { label: 'Start Time', title: 'start_time', date: 'true' },
     { label: 'End Time', title: 'end_time', date: 'true' },
-    { label: 'Related Contact', title: 'related_contact' },
     { label: 'Assigned To', title: 'assigned_to' },
+    { label: 'Related Job', title: 'related_job' },
+    { label: 'Related Contact', title: 'related_contact' },
   ]);
 
   const hasCreatePermission =
@@ -128,6 +129,10 @@ const AppointmentsTablesPage = () => {
               onClick={() => setIsModalActive(true)}
             />
           )}
+
+          <div className='md:inline-flex items-center ms-auto'>
+            <div id='delete-rows-button'></div>
+          </div>
         </CardBox>
         <CardBox className='mb-6' hasTable>
           <TableAppointments

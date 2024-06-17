@@ -157,6 +157,14 @@ const menuAside: MenuAsideItem[] = [
     permissions: 'READ_AMENDMENTS',
   },
   {
+    href: '/estimate_sections/estimate_sections-list',
+    label: 'Estimate sections',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    icon: icon.mdiTable ? icon.mdiTable : icon.mdiTable,
+    permissions: 'READ_ESTIMATE_SECTIONS',
+  },
+  {
     href: '/profile',
     label: 'Profile',
     icon: icon.mdiAccountCircle,

@@ -147,19 +147,6 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
-                    Related Estimate
-                  </dt>
-                  <dd className='flex items-start gap-x-2'>
-                    <div className='font-medium line-clamp-4'>
-                      {dataFormatter.estimatesOneListFormatter(
-                        item.related_estimate,
-                      )}
-                    </div>
-                  </dd>
-                </div>
-
-                <div className='flex justify-between gap-x-4 py-3'>
-                  <dt className='text-gray-500 dark:text-dark-600'>
                     Main Image
                   </dt>
                   <dd className='flex items-start gap-x-2'>

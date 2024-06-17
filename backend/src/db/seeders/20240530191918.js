@@ -1,6 +1,7 @@
 const { v4: uuid } = require('uuid');
 const db = require('../models');
 const Sequelize = require('sequelize');
+const config = require('../../config');
 
 module.exports = {
   /**
@@ -93,7 +94,7 @@ module.exports = {
     const permissionsIds = createdPermissions.map((p) => p.id);
     // Get admin role
     const adminRole = await db.roles.findOne({
-      where: { name: 'Administrator' },
+      where: { name: config.roles.admin },
     });
 
     if (adminRole) {

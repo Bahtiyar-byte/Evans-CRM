@@ -198,8 +198,8 @@ export const loadColumns = async (
     },
 
     {
-      field: 'related_template',
-      headerName: 'Related Template',
+      field: 'status',
+      headerName: 'Status',
       flex: 1,
       minWidth: 120,
       filterable: false,
@@ -207,14 +207,6 @@ export const loadColumns = async (
       cellClassName: 'datagrid--cell',
 
       editable: hasUpdatePermission,
-
-      sortable: false,
-      type: 'singleSelect',
-      getOptionValue: (value: any) => value?.id,
-      getOptionLabel: (value: any) => value?.label,
-      valueOptions: await callOptionsApi('templates'),
-      valueGetter: (params: GridValueGetterParams) =>
-        params?.value?.id ?? params?.value,
     },
 
     {

@@ -37,8 +37,9 @@ const AppointmentsTablesPage = () => {
 
     { label: 'Start Time', title: 'start_time', date: 'true' },
     { label: 'End Time', title: 'end_time', date: 'true' },
-    { label: 'Related Contact', title: 'related_contact' },
     { label: 'Assigned To', title: 'assigned_to' },
+    { label: 'Related Job', title: 'related_job' },
+    { label: 'Related Contact', title: 'related_contact' },
   ]);
 
   const hasCreatePermission =

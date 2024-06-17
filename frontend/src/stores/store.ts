@@ -22,6 +22,7 @@ import appointmentsSlice from './appointments/appointmentsSlice';
 import tasksSlice from './tasks/tasksSlice';
 import contractsSlice from './contracts/contractsSlice';
 import amendmentsSlice from './amendments/amendmentsSlice';
+import estimate_sectionsSlice from './estimate_sections/estimate_sectionsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -48,6 +49,7 @@ export const store = configureStore({
     tasks: tasksSlice,
     contracts: contractsSlice,
     amendments: amendmentsSlice,
+    estimate_sections: estimate_sectionsSlice,
   },
 });
 

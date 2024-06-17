@@ -99,15 +99,6 @@ const ListJobs = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Related Estimate</p>
-                    <p className={'line-clamp-2'}>
-                      {dataFormatter.estimatesOneListFormatter(
-                        item.related_estimate,
-                      )}
-                    </p>
-                  </div>
-
-                  <div className={'flex-1 px-3'}>
                     <p className={'text-xs text-gray-500'}>Main Image</p>
                     <ImageField
                       name={'Avatar'}

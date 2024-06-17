@@ -113,73 +113,9 @@ const EstimatesView = () => {
           </div>
 
           <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>Related Template</p>
-
-            <p>{estimates?.related_template?.id ?? 'No data'}</p>
+            <p className={'block font-bold mb-2'}>Status</p>
+            <p>{estimates?.status ?? 'No data'}</p>
           </div>
-
-          <>
-            <p className={'block font-bold mb-2'}>Jobs Related Estimate</p>
-            <CardBox
-              className='mb-6 border border-gray-300 rounded overflow-hidden'
-              hasTable
-            >
-              <div className='overflow-x-auto'>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-
-                      <th>Category</th>
-
-                      <th>Type</th>
-
-                      <th>Status</th>
-
-                      <th>Address</th>
-
-                      <th>Start Date</th>
-
-                      <th>End Date</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {estimates.jobs_related_estimate &&
-                      Array.isArray(estimates.jobs_related_estimate) &&
-                      estimates.jobs_related_estimate.map((item: any) => (
-                        <tr
-                          key={item.id}
-                          onClick={() =>
-                            router.push(`/jobs/jobs-view/?id=${item.id}`)
-                          }
-                        >
-                          <td data-label='name'>{item.name}</td>
-
-                          <td data-label='category'>{item.category}</td>
-
-                          <td data-label='type'>{item.type}</td>
-
-                          <td data-label='status'>{item.status}</td>
-
-                          <td data-label='address'>{item.address}</td>
-
-                          <td data-label='start_date'>
-                            {dataFormatter.dateFormatter(item.start_date)}
-                          </td>
-
-                          <td data-label='end_date'>
-                            {dataFormatter.dateFormatter(item.end_date)}
-                          </td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
-              </div>
-              {!estimates?.jobs_related_estimate?.length && (
-                <div className={'text-center py-4'}>No data</div>
-              )}
-            </CardBox>
-          </>
 
           <>
             <p className={'block font-bold mb-2'}>Orders Related Estimate</p>
@@ -215,6 +151,67 @@ const EstimatesView = () => {
                 </table>
               </div>
               {!estimates?.orders_related_estimate?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>
+              Estimate_sections Related Estimate
+            </p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Amount</th>
+
+                      <th>Material Price</th>
+
+                      <th>Labor Price</th>
+
+                      <th>Name</th>
+
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {estimates.estimate_sections_related_estimate &&
+                      Array.isArray(
+                        estimates.estimate_sections_related_estimate,
+                      ) &&
+                      estimates.estimate_sections_related_estimate.map(
+                        (item: any) => (
+                          <tr
+                            key={item.id}
+                            onClick={() =>
+                              router.push(
+                                `/estimate_sections/estimate_sections-view/?id=${item.id}`,
+                              )
+                            }
+                          >
+                            <td data-label='amount'>{item.amount}</td>
+
+                            <td data-label='material_price'>
+                              {item.material_price}
+                            </td>
+
+                            <td data-label='labor_price'>{item.labor_price}</td>
+
+                            <td data-label='name'>{item.name}</td>
+
+                            <td data-label='description'>{item.description}</td>
+                          </tr>
+                        ),
+                      )}
+                  </tbody>
+                </table>
+              </div>
+              {!estimates?.estimate_sections_related_estimate?.length && (
                 <div className={'text-center py-4'}>No data</div>
               )}
             </CardBox>

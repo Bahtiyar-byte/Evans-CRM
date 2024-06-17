@@ -72,7 +72,9 @@ const TemplatesView = () => {
           </div>
 
           <>
-            <p className={'block font-bold mb-2'}>Estimates Related Template</p>
+            <p className={'block font-bold mb-2'}>
+              Estimate_sections Related Template
+            </p>
             <CardBox
               className='mb-6 border border-gray-300 rounded overflow-hidden'
               hasTable
@@ -81,62 +83,50 @@ const TemplatesView = () => {
                 <table>
                   <thead>
                     <tr>
+                      <th>Amount</th>
+
+                      <th>Material Price</th>
+
+                      <th>Labor Price</th>
+
                       <th>Name</th>
 
-                      <th>Trade</th>
-
-                      <th>Template Used</th>
-
-                      <th>Material Cost</th>
-
-                      <th>Labor Cost</th>
-
-                      <th>Markup</th>
-
-                      <th>Profit Margin</th>
-
-                      <th>Total Price</th>
+                      <th>Description</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {templates.estimates_related_template &&
-                      Array.isArray(templates.estimates_related_template) &&
-                      templates.estimates_related_template.map((item: any) => (
-                        <tr
-                          key={item.id}
-                          onClick={() =>
-                            router.push(
-                              `/estimates/estimates-view/?id=${item.id}`,
-                            )
-                          }
-                        >
-                          <td data-label='name'>{item.name}</td>
+                    {templates.estimate_sections_related_template &&
+                      Array.isArray(
+                        templates.estimate_sections_related_template,
+                      ) &&
+                      templates.estimate_sections_related_template.map(
+                        (item: any) => (
+                          <tr
+                            key={item.id}
+                            onClick={() =>
+                              router.push(
+                                `/estimate_sections/estimate_sections-view/?id=${item.id}`,
+                              )
+                            }
+                          >
+                            <td data-label='amount'>{item.amount}</td>
 
-                          <td data-label='trade'>{item.trade}</td>
+                            <td data-label='material_price'>
+                              {item.material_price}
+                            </td>
 
-                          <td data-label='template_used'>
-                            {item.template_used}
-                          </td>
+                            <td data-label='labor_price'>{item.labor_price}</td>
 
-                          <td data-label='material_cost'>
-                            {item.material_cost}
-                          </td>
+                            <td data-label='name'>{item.name}</td>
 
-                          <td data-label='labor_cost'>{item.labor_cost}</td>
-
-                          <td data-label='markup'>{item.markup}</td>
-
-                          <td data-label='profit_margin'>
-                            {item.profit_margin}
-                          </td>
-
-                          <td data-label='total_price'>{item.total_price}</td>
-                        </tr>
-                      ))}
+                            <td data-label='description'>{item.description}</td>
+                          </tr>
+                        ),
+                      )}
                   </tbody>
                 </table>
               </div>
-              {!templates?.estimates_related_template?.length && (
+              {!templates?.estimate_sections_related_template?.length && (
                 <div className={'text-center py-4'}>No data</div>
               )}
             </CardBox>

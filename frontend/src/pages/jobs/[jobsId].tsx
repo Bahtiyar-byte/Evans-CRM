@@ -51,8 +51,6 @@ const EditJobs = () => {
 
     related_contact: '',
 
-    related_estimate: '',
-
     main_image: [],
 
     documents: [],
@@ -188,17 +186,6 @@ const EditJobs = () => {
                   component={SelectField}
                   options={initialValues.related_contact}
                   itemRef={'contacts'}
-                  showField={'name'}
-                ></Field>
-              </FormField>
-
-              <FormField label='Related Estimate' labelFor='related_estimate'>
-                <Field
-                  name='related_estimate'
-                  id='related_estimate'
-                  component={SelectField}
-                  options={initialValues.related_estimate}
-                  itemRef={'estimates'}
                   showField={'name'}
                 ></Field>
               </FormField>

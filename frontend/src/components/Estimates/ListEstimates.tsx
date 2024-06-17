@@ -110,12 +110,8 @@ const ListEstimates = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Related Template</p>
-                    <p className={'line-clamp-2'}>
-                      {dataFormatter.templatesOneListFormatter(
-                        item.related_template,
-                      )}
-                    </p>
+                    <p className={'text-xs text-gray-500'}>Status</p>
+                    <p className={'line-clamp-2'}>{item.status}</p>
                   </div>
                 </div>
                 <ListActionsPopover

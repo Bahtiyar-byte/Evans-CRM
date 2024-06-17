@@ -110,6 +110,28 @@ const CardUsers = ({
 
                 <div className='flex justify-between gap-x-4 py-3'>
                   <dt className='text-gray-500 dark:text-dark-600'>
+                    Assigned To
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {dataFormatter.usersOneListFormatter(item.assigned_to)}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='text-gray-500 dark:text-dark-600'>
+                    Related Job
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {dataFormatter.jobsOneListFormatter(item.related_job)}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='text-gray-500 dark:text-dark-600'>
                     Related Contact
                   </dt>
                   <dd className='flex items-start gap-x-2'>
@@ -117,17 +139,6 @@ const CardUsers = ({
                       {dataFormatter.contactsOneListFormatter(
                         item.related_contact,
                       )}
-                    </div>
-                  </dd>
-                </div>
-
-                <div className='flex justify-between gap-x-4 py-3'>
-                  <dt className='text-gray-500 dark:text-dark-600'>
-                    Assigned To
-                  </dt>
-                  <dd className='flex items-start gap-x-2'>
-                    <div className='font-medium line-clamp-4'>
-                      {dataFormatter.usersOneListFormatter(item.assigned_to)}
                     </div>
                   </dd>
                 </div>

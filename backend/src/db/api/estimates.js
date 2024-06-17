@@ -24,6 +24,7 @@ module.exports = class EstimatesDBApi {
         markup: data.markup || null,
         profit_margin: data.profit_margin || null,
         total_price: data.total_price || null,
+        status: data.status || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
@@ -36,10 +37,6 @@ module.exports = class EstimatesDBApi {
     });
 
     await estimates.setRelated_job(data.related_job || null, {
-      transaction,
-    });
-
-    await estimates.setRelated_template(data.related_template || null, {
       transaction,
     });
 
@@ -63,6 +60,7 @@ module.exports = class EstimatesDBApi {
       markup: item.markup || null,
       profit_margin: item.profit_margin || null,
       total_price: item.total_price || null,
+      status: item.status || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -96,6 +94,7 @@ module.exports = class EstimatesDBApi {
         markup: data.markup || null,
         profit_margin: data.profit_margin || null,
         total_price: data.total_price || null,
+        status: data.status || null,
         updatedById: currentUser.id,
       },
       { transaction },
@@ -106,10 +105,6 @@ module.exports = class EstimatesDBApi {
     });
 
     await estimates.setRelated_job(data.related_job || null, {
-      transaction,
-    });
-
-    await estimates.setRelated_template(data.related_template || null, {
       transaction,
     });
 
@@ -174,25 +169,22 @@ module.exports = class EstimatesDBApi {
 
     const output = estimates.get({ plain: true });
 
-    output.jobs_related_estimate = await estimates.getJobs_related_estimate({
-      transaction,
-    });
-
     output.orders_related_estimate = await estimates.getOrders_related_estimate(
       {
         transaction,
       },
     );
 
+    output.estimate_sections_related_estimate =
+      await estimates.getEstimate_sections_related_estimate({
+        transaction,
+      });
+
     output.related_contact = await estimates.getRelated_contact({
       transaction,
     });
 
     output.related_job = await estimates.getRelated_job({
-      transaction,
-    });
-
-    output.related_template = await estimates.getRelated_template({
       transaction,
     });
 
@@ -219,11 +211,6 @@ module.exports = class EstimatesDBApi {
       {
         model: db.jobs,
         as: 'related_job',
-      },
-
-      {
-        model: db.templates,
-        as: 'related_template',
       },
     ];
 
@@ -399,6 +386,13 @@ module.exports = class EstimatesDBApi {
         };
       }
 
+      if (filter.status) {
+        where = {
+          ...where,
+          status: filter.status,
+        };
+      }
+
       if (filter.related_contact) {
         var listItems = filter.related_contact.split('|').map((item) => {
           return Utils.uuid(item);
@@ -418,17 +412,6 @@ module.exports = class EstimatesDBApi {
         where = {
           ...where,
           related_jobId: { [Op.or]: listItems },
-        };
-      }
-
-      if (filter.related_template) {
-        var listItems = filter.related_template.split('|').map((item) => {
-          return Utils.uuid(item);
-        });
-
-        where = {
-          ...where,
-          related_templateId: { [Op.or]: listItems },
         };
       }
 

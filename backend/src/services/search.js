@@ -82,6 +82,8 @@ module.exports = class SearchService {
         contracts: ['name', 'body'],
 
         amendments: ['description'],
+
+        estimate_sections: ['name', 'description'],
       };
       const columnsInt = {
         estimates: [
@@ -103,6 +105,8 @@ module.exports = class SearchService {
         contracts: ['amount'],
 
         amendments: ['amount'],
+
+        estimate_sections: ['amount', 'material_price', 'labor_price'],
       };
 
       let allFoundRecords = [];

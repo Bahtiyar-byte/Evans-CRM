@@ -38,10 +38,6 @@ module.exports = class JobsDBApi {
       transaction,
     });
 
-    await jobs.setRelated_estimate(data.related_estimate || null, {
-      transaction,
-    });
-
     await FileDBApi.replaceRelationFiles(
       {
         belongsTo: db.jobs.getTableName(),
@@ -145,10 +141,6 @@ module.exports = class JobsDBApi {
     });
 
     await jobs.setRelated_contact(data.related_contact || null, {
-      transaction,
-    });
-
-    await jobs.setRelated_estimate(data.related_estimate || null, {
       transaction,
     });
 
@@ -261,6 +253,10 @@ module.exports = class JobsDBApi {
       transaction,
     });
 
+    output.appointments_related_job = await jobs.getAppointments_related_job({
+      transaction,
+    });
+
     output.tasks_related_job = await jobs.getTasks_related_job({
       transaction,
     });
@@ -278,10 +274,6 @@ module.exports = class JobsDBApi {
     });
 
     output.related_contact = await jobs.getRelated_contact({
-      transaction,
-    });
-
-    output.related_estimate = await jobs.getRelated_estimate({
       transaction,
     });
 
@@ -316,11 +308,6 @@ module.exports = class JobsDBApi {
       {
         model: db.contacts,
         as: 'related_contact',
-      },
-
-      {
-        model: db.estimates,
-        as: 'related_estimate',
       },
 
       {
@@ -463,17 +450,6 @@ module.exports = class JobsDBApi {
         where = {
           ...where,
           related_contactId: { [Op.or]: listItems },
-        };
-      }
-
-      if (filter.related_estimate) {
-        var listItems = filter.related_estimate.split('|').map((item) => {
-          return Utils.uuid(item);
-        });
-
-        where = {
-          ...where,
-          related_estimateId: { [Op.or]: listItems },
         };
       }
 

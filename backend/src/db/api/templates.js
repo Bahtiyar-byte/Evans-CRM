@@ -137,8 +137,8 @@ module.exports = class TemplatesDBApi {
 
     const output = templates.get({ plain: true });
 
-    output.estimates_related_template =
-      await templates.getEstimates_related_template({
+    output.estimate_sections_related_template =
+      await templates.getEstimate_sections_related_template({
         transaction,
       });
 

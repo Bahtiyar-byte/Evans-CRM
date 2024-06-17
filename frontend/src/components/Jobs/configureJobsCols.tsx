@@ -140,26 +140,6 @@ export const loadColumns = async (
     },
 
     {
-      field: 'related_estimate',
-      headerName: 'Related Estimate',
-      flex: 1,
-      minWidth: 120,
-      filterable: false,
-      headerClassName: 'datagrid--header',
-      cellClassName: 'datagrid--cell',
-
-      editable: hasUpdatePermission,
-
-      sortable: false,
-      type: 'singleSelect',
-      getOptionValue: (value: any) => value?.id,
-      getOptionLabel: (value: any) => value?.label,
-      valueOptions: await callOptionsApi('estimates'),
-      valueGetter: (params: GridValueGetterParams) =>
-        params?.value?.id ?? params?.value,
-    },
-
-    {
       field: 'main_image',
       headerName: 'Main Image',
       flex: 1,

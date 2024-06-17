@@ -35,7 +35,6 @@ const JobsTablesPage = () => {
 
     { label: 'Assigned To', title: 'assigned_to' },
     { label: 'Related Contact', title: 'related_contact' },
-    { label: 'Related Estimate', title: 'related_estimate' },
   ]);
 
   const hasCreatePermission =
@@ -125,6 +124,10 @@ const JobsTablesPage = () => {
               onClick={() => setIsModalActive(true)}
             />
           )}
+
+          <div className='md:inline-flex items-center ms-auto'>
+            <div id='delete-rows-button'></div>
+          </div>
 
           <div className='md:inline-flex items-center ms-auto'>
             <Link href={'/jobs/jobs-table'}>Switch to Table</Link>

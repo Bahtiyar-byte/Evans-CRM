@@ -38,8 +38,8 @@ module.exports = function (sequelize, DataTypes) {
   templates.associate = (db) => {
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
 
-    db.templates.hasMany(db.estimates, {
-      as: 'estimates_related_template',
+    db.templates.hasMany(db.estimate_sections, {
+      as: 'estimate_sections_related_template',
       foreignKey: {
         name: 'related_templateId',
       },

@@ -68,7 +68,6 @@ router.use(checkCrudPermissions('tasks'));
  *        500:
  *          description: Some server error
  */
-
 router.post(
   '/',
   wrapAsync(async (req, res) => {
@@ -79,6 +78,41 @@ router.post(
   }),
 );
 
+/**
+ * @swagger
+ * /api/budgets/bulk-import:
+ *  post:
+ *    security:
+ *      - bearerAuth: []
+ *    tags: [Tasks]
+ *    summary: Bulk import items
+ *    description: Bulk import items
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *         schema:
+ *          properties:
+ *            data:
+ *              description: Data of the updated items
+ *              type: array
+ *              items:
+ *                $ref: "#/components/schemas/Tasks"
+ *    responses:
+ *      200:
+ *        description: The items were successfully imported
+ *    content:
+ *      application/json:
+ *        schema:
+ *          $ref: "#/components/schemas/Tasks"
+ *      401:
+ *        $ref: "#/components/responses/UnauthorizedError"
+ *      405:
+ *        description: Invalid input data
+ *      500:
+ *        description: Some server error
+ *
+ */
 router.post(
   '/bulk-import',
   wrapAsync(async (req, res) => {
@@ -137,7 +171,6 @@ router.post(
  *        500:
  *          description: Some server error
  */
-
 router.put(
   '/:id',
   wrapAsync(async (req, res) => {
@@ -179,7 +212,6 @@ router.put(
  *        500:
  *          description: Some server error
  */
-
 router.delete(
   '/:id',
   wrapAsync(async (req, res) => {
@@ -191,7 +223,7 @@ router.delete(
 
 /**
  *  @swagger
- *  /api/tasks:
+ *  /api/tasks/deleteByIds:
  *    post:
  *      security:
  *        - bearerAuth: []
@@ -221,7 +253,6 @@ router.delete(
  *        500:
  *          description: Some server error
  */
-
 router.post(
   '/deleteByIds',
   wrapAsync(async (req, res) => {
@@ -256,7 +287,6 @@ router.post(
  *        500:
  *          description: Some server error
  */
-
 router.get(
   '/',
   wrapAsync(async (req, res) => {
@@ -383,7 +413,6 @@ router.get('/autocomplete', async (req, res) => {
  *        500:
  *          description: Some server error
  */
-
 router.get(
   '/:id',
   wrapAsync(async (req, res) => {

@@ -66,7 +66,6 @@ router.use(checkCrudPermissions('documents'));
  *        500:
  *          description: Some server error
  */
-
 router.post(
   '/',
   wrapAsync(async (req, res) => {
@@ -82,6 +81,41 @@ router.post(
   }),
 );
 
+/**
+ * @swagger
+ * /api/budgets/bulk-import:
+ *  post:
+ *    security:
+ *      - bearerAuth: []
+ *    tags: [Documents]
+ *    summary: Bulk import items
+ *    description: Bulk import items
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *         schema:
+ *          properties:
+ *            data:
+ *              description: Data of the updated items
+ *              type: array
+ *              items:
+ *                $ref: "#/components/schemas/Documents"
+ *    responses:
+ *      200:
+ *        description: The items were successfully imported
+ *    content:
+ *      application/json:
+ *        schema:
+ *          $ref: "#/components/schemas/Documents"
+ *      401:
+ *        $ref: "#/components/responses/UnauthorizedError"
+ *      405:
+ *        description: Invalid input data
+ *      500:
+ *        description: Some server error
+ *
+ */
 router.post(
   '/bulk-import',
   wrapAsync(async (req, res) => {
@@ -140,7 +174,6 @@ router.post(
  *        500:
  *          description: Some server error
  */
-
 router.put(
   '/:id',
   wrapAsync(async (req, res) => {
@@ -182,7 +215,6 @@ router.put(
  *        500:
  *          description: Some server error
  */
-
 router.delete(
   '/:id',
   wrapAsync(async (req, res) => {
@@ -194,7 +226,7 @@ router.delete(
 
 /**
  *  @swagger
- *  /api/documents:
+ *  /api/documents/deleteByIds:
  *    post:
  *      security:
  *        - bearerAuth: []
@@ -224,7 +256,6 @@ router.delete(
  *        500:
  *          description: Some server error
  */
-
 router.post(
   '/deleteByIds',
   wrapAsync(async (req, res) => {
@@ -259,7 +290,6 @@ router.post(
  *        500:
  *          description: Some server error
  */
-
 router.get(
   '/',
   wrapAsync(async (req, res) => {
@@ -386,7 +416,6 @@ router.get('/autocomplete', async (req, res) => {
  *        500:
  *          description: Some server error
  */
-
 router.get(
   '/:id',
   wrapAsync(async (req, res) => {

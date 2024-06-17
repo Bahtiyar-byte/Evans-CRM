@@ -42,7 +42,6 @@ const EstimatesTablesPage = () => {
 
     { label: 'Related Contact', title: 'related_contact' },
     { label: 'Related Job', title: 'related_job' },
-    { label: 'Related Template', title: 'related_template' },
   ]);
 
   const hasCreatePermission =
@@ -132,6 +131,10 @@ const EstimatesTablesPage = () => {
               onClick={() => setIsModalActive(true)}
             />
           )}
+
+          <div className='md:inline-flex items-center ms-auto'>
+            <div id='delete-rows-button'></div>
+          </div>
 
           <div className='md:inline-flex items-center ms-auto'>
             <Link href={'/estimates/estimates-table'}>Switch to Table</Link>

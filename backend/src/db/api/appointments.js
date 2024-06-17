@@ -26,11 +26,15 @@ module.exports = class AppointmentsDBApi {
       { transaction },
     );
 
-    await appointments.setRelated_contact(data.related_contact || null, {
+    await appointments.setAssigned_to(data.assigned_to || null, {
       transaction,
     });
 
-    await appointments.setAssigned_to(data.assigned_to || null, {
+    await appointments.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await appointments.setRelated_contact(data.related_contact || null, {
       transaction,
     });
 
@@ -86,11 +90,15 @@ module.exports = class AppointmentsDBApi {
       { transaction },
     );
 
-    await appointments.setRelated_contact(data.related_contact || null, {
+    await appointments.setAssigned_to(data.assigned_to || null, {
       transaction,
     });
 
-    await appointments.setAssigned_to(data.assigned_to || null, {
+    await appointments.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await appointments.setRelated_contact(data.related_contact || null, {
       transaction,
     });
 
@@ -158,11 +166,15 @@ module.exports = class AppointmentsDBApi {
 
     const output = appointments.get({ plain: true });
 
-    output.related_contact = await appointments.getRelated_contact({
+    output.assigned_to = await appointments.getAssigned_to({
       transaction,
     });
 
-    output.assigned_to = await appointments.getAssigned_to({
+    output.related_job = await appointments.getRelated_job({
+      transaction,
+    });
+
+    output.related_contact = await appointments.getRelated_contact({
       transaction,
     });
 
@@ -182,13 +194,18 @@ module.exports = class AppointmentsDBApi {
     let where = {};
     let include = [
       {
-        model: db.contacts,
-        as: 'related_contact',
+        model: db.users,
+        as: 'assigned_to',
       },
 
       {
-        model: db.users,
-        as: 'assigned_to',
+        model: db.jobs,
+        as: 'related_job',
+      },
+
+      {
+        model: db.contacts,
+        as: 'related_contact',
       },
     ];
 
@@ -274,17 +291,6 @@ module.exports = class AppointmentsDBApi {
         };
       }
 
-      if (filter.related_contact) {
-        var listItems = filter.related_contact.split('|').map((item) => {
-          return Utils.uuid(item);
-        });
-
-        where = {
-          ...where,
-          related_contactId: { [Op.or]: listItems },
-        };
-      }
-
       if (filter.assigned_to) {
         var listItems = filter.assigned_to.split('|').map((item) => {
           return Utils.uuid(item);
@@ -293,6 +299,28 @@ module.exports = class AppointmentsDBApi {
         where = {
           ...where,
           assigned_toId: { [Op.or]: listItems },
+        };
+      }
+
+      if (filter.related_job) {
+        var listItems = filter.related_job.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_jobId: { [Op.or]: listItems },
+        };
+      }
+
+      if (filter.related_contact) {
+        var listItems = filter.related_contact.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_contactId: { [Op.or]: listItems },
         };
       }
 

@@ -116,6 +116,8 @@ const ContactsView = () => {
                       <th>Profit Margin</th>
 
                       <th>Total Price</th>
+
+                      <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -151,6 +153,8 @@ const ContactsView = () => {
                           </td>
 
                           <td data-label='total_price'>{item.total_price}</td>
+
+                          <td data-label='status'>{item.status}</td>
                         </tr>
                       ))}
                   </tbody>
