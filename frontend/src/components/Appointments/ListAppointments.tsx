@@ -73,18 +73,16 @@ const ListAppointments = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Related Contact</p>
+                    <p className={'text-xs text-gray-500'}>Assigned To</p>
                     <p className={'line-clamp-2'}>
-                      {dataFormatter.contactsOneListFormatter(
-                        item.related_contact,
-                      )}
+                      {dataFormatter.usersOneListFormatter(item.assigned_to)}
                     </p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Assigned To</p>
+                    <p className={'text-xs text-gray-500'}>Related Job</p>
                     <p className={'line-clamp-2'}>
-                      {dataFormatter.usersOneListFormatter(item.assigned_to)}
+                      {dataFormatter.jobsOneListFormatter(item.related_job)}
                     </p>
                   </div>
                 </div>

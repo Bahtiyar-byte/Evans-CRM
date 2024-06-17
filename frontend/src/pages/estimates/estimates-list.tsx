@@ -134,6 +134,10 @@ const EstimatesTablesPage = () => {
           )}
 
           <div className='md:inline-flex items-center ms-auto'>
+            <div id='delete-rows-button'></div>
+          </div>
+
+          <div className='md:inline-flex items-center ms-auto'>
             <Link href={'/estimates/estimates-table'}>Switch to Table</Link>
           </div>
         </CardBox>

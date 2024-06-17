@@ -90,14 +90,6 @@ module.exports = function (sequelize, DataTypes) {
       constraints: false,
     });
 
-    db.contacts.hasMany(db.appointments, {
-      as: 'appointments_related_contact',
-      foreignKey: {
-        name: 'related_contactId',
-      },
-      constraints: false,
-    });
-
     db.contacts.hasMany(db.contracts, {
       as: 'contracts_related_contact',
       foreignKey: {

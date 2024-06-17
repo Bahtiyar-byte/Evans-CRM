@@ -150,6 +150,14 @@ module.exports = function (sequelize, DataTypes) {
       constraints: false,
     });
 
+    db.jobs.hasMany(db.appointments, {
+      as: 'appointments_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
     db.jobs.hasMany(db.tasks, {
       as: 'tasks_related_job',
       foreignKey: {

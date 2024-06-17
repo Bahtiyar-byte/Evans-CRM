@@ -261,6 +261,10 @@ module.exports = class JobsDBApi {
       transaction,
     });
 
+    output.appointments_related_job = await jobs.getAppointments_related_job({
+      transaction,
+    });
+
     output.tasks_related_job = await jobs.getTasks_related_job({
       transaction,
     });

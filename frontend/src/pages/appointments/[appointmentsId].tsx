@@ -45,9 +45,9 @@ const EditAppointments = () => {
 
     notes: '',
 
-    related_contact: '',
-
     assigned_to: '',
+
+    related_job: '',
   };
   const [initialValues, setInitialValues] = useState(initVals);
 
@@ -152,17 +152,6 @@ const EditAppointments = () => {
                 ></Field>
               </FormField>
 
-              <FormField label='Related Contact' labelFor='related_contact'>
-                <Field
-                  name='related_contact'
-                  id='related_contact'
-                  component={SelectField}
-                  options={initialValues.related_contact}
-                  itemRef={'contacts'}
-                  showField={'name'}
-                ></Field>
-              </FormField>
-
               <FormField label='Assigned To' labelFor='assigned_to'>
                 <Field
                   name='assigned_to'
@@ -171,6 +160,17 @@ const EditAppointments = () => {
                   options={initialValues.assigned_to}
                   itemRef={'users'}
                   showField={'firstName'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={initialValues.related_job}
+                  itemRef={'jobs'}
+                  showField={'name'}
                 ></Field>
               </FormField>
 

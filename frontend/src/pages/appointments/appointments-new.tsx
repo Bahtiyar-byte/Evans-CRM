@@ -42,9 +42,9 @@ const initialValues = {
 
   notes: '',
 
-  related_contact: '',
-
   assigned_to: '',
+
+  related_job: '',
 };
 
 const AppointmentsNew = () => {
@@ -102,16 +102,6 @@ const AppointmentsNew = () => {
                 ></Field>
               </FormField>
 
-              <FormField label='Related Contact' labelFor='related_contact'>
-                <Field
-                  name='related_contact'
-                  id='related_contact'
-                  component={SelectField}
-                  options={[]}
-                  itemRef={'contacts'}
-                ></Field>
-              </FormField>
-
               <FormField label='Assigned To' labelFor='assigned_to'>
                 <Field
                   name='assigned_to'
@@ -119,6 +109,16 @@ const AppointmentsNew = () => {
                   component={SelectField}
                   options={[]}
                   itemRef={'users'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Job' labelFor='related_job'>
+                <Field
+                  name='related_job'
+                  id='related_job'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'jobs'}
                 ></Field>
               </FormField>
 

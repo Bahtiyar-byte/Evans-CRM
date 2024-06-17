@@ -160,11 +160,6 @@ module.exports = class ContactsDBApi {
       transaction,
     });
 
-    output.appointments_related_contact =
-      await contacts.getAppointments_related_contact({
-        transaction,
-      });
-
     output.contracts_related_contact =
       await contacts.getContracts_related_contact({
         transaction,

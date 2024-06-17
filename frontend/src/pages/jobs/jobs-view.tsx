@@ -478,6 +478,55 @@ const JobsView = () => {
           </>
 
           <>
+            <p className={'block font-bold mb-2'}>Appointments Related Job</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Subject</th>
+
+                      <th>Start Time</th>
+
+                      <th>End Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {jobs.appointments_related_job &&
+                      Array.isArray(jobs.appointments_related_job) &&
+                      jobs.appointments_related_job.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/appointments/appointments-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='subject'>{item.subject}</td>
+
+                          <td data-label='start_time'>
+                            {dataFormatter.dateTimeFormatter(item.start_time)}
+                          </td>
+
+                          <td data-label='end_time'>
+                            {dataFormatter.dateTimeFormatter(item.end_time)}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!jobs?.appointments_related_job?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
             <p className={'block font-bold mb-2'}>Tasks Related Job</p>
             <CardBox
               className='mb-6 border border-gray-300 rounded overflow-hidden'

@@ -121,6 +121,10 @@ const DocumentsTablesPage = () => {
               onClick={() => setIsModalActive(true)}
             />
           )}
+
+          <div className='md:inline-flex items-center ms-auto'>
+            <div id='delete-rows-button'></div>
+          </div>
         </CardBox>
         <CardBox className='mb-6' hasTable>
           <TableDocuments

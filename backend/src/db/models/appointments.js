@@ -48,18 +48,18 @@ module.exports = function (sequelize, DataTypes) {
 
     //end loop
 
-    db.appointments.belongsTo(db.contacts, {
-      as: 'related_contact',
-      foreignKey: {
-        name: 'related_contactId',
-      },
-      constraints: false,
-    });
-
     db.appointments.belongsTo(db.users, {
       as: 'assigned_to',
       foreignKey: {
         name: 'assigned_toId',
+      },
+      constraints: false,
+    });
+
+    db.appointments.belongsTo(db.jobs, {
+      as: 'related_job',
+      foreignKey: {
+        name: 'related_jobId',
       },
       constraints: false,
     });
