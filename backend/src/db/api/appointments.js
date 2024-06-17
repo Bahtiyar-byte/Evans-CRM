@@ -34,6 +34,10 @@ module.exports = class AppointmentsDBApi {
       transaction,
     });
 
+    await appointments.setRelated_contact(data.related_contact || null, {
+      transaction,
+    });
+
     return appointments;
   }
 
@@ -91,6 +95,10 @@ module.exports = class AppointmentsDBApi {
     });
 
     await appointments.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await appointments.setRelated_contact(data.related_contact || null, {
       transaction,
     });
 
@@ -166,6 +174,10 @@ module.exports = class AppointmentsDBApi {
       transaction,
     });
 
+    output.related_contact = await appointments.getRelated_contact({
+      transaction,
+    });
+
     return output;
   }
 
@@ -189,6 +201,11 @@ module.exports = class AppointmentsDBApi {
       {
         model: db.jobs,
         as: 'related_job',
+      },
+
+      {
+        model: db.contacts,
+        as: 'related_contact',
       },
     ];
 
@@ -293,6 +310,17 @@ module.exports = class AppointmentsDBApi {
         where = {
           ...where,
           related_jobId: { [Op.or]: listItems },
+        };
+      }
+
+      if (filter.related_contact) {
+        var listItems = filter.related_contact.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_contactId: { [Op.or]: listItems },
         };
       }
 

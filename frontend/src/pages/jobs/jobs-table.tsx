@@ -35,7 +35,6 @@ const JobsTablesPage = () => {
 
     { label: 'Assigned To', title: 'assigned_to' },
     { label: 'Related Contact', title: 'related_contact' },
-    { label: 'Related Estimate', title: 'related_estimate' },
   ]);
 
   const hasCreatePermission =

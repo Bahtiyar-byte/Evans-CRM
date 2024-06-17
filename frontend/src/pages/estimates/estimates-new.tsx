@@ -56,7 +56,7 @@ const initialValues = {
 
   related_job: '',
 
-  related_template: '',
+  status: 'New',
 };
 
 const EstimatesNew = () => {
@@ -162,14 +162,14 @@ const EstimatesNew = () => {
                 ></Field>
               </FormField>
 
-              <FormField label='Related Template' labelFor='related_template'>
-                <Field
-                  name='related_template'
-                  id='related_template'
-                  component={SelectField}
-                  options={[]}
-                  itemRef={'templates'}
-                ></Field>
+              <FormField label='Status' labelFor='status'>
+                <Field name='status' id='status' component='select'>
+                  <option value='New'>New</option>
+
+                  <option value='Approved'>Approved</option>
+
+                  <option value='Sent'>Sent</option>
+                </Field>
               </FormField>
 
               <BaseDivider />

@@ -48,8 +48,6 @@ const initialValues = {
 
   related_contact: '',
 
-  related_estimate: '',
-
   main_image: [],
 
   documents: [],
@@ -161,16 +159,6 @@ const JobsNew = () => {
                   component={SelectField}
                   options={[]}
                   itemRef={'contacts'}
-                ></Field>
-              </FormField>
-
-              <FormField label='Related Estimate' labelFor='related_estimate'>
-                <Field
-                  name='related_estimate'
-                  id='related_estimate'
-                  component={SelectField}
-                  options={[]}
-                  itemRef={'estimates'}
                 ></Field>
               </FormField>
 

@@ -11,7 +11,7 @@ import LoadingSpinner from '../LoadingSpinner';
 import { hasPermission } from '../../helpers/userPermissions';
 
 type Props = {
-  appointments: any[];
+  estimate_sections: any[];
   loading: boolean;
   onDelete: (id: string) => void;
   onView: (id: string) => void;
@@ -21,8 +21,8 @@ type Props = {
   onPageChange: (page: number) => void;
 };
 
-const ListAppointments = ({
-  appointments,
+const ListEstimate_sections = ({
+  estimate_sections,
   loading,
   onEdit,
   onView,
@@ -32,14 +32,17 @@ const ListAppointments = ({
   onPageChange,
 }: Props) => {
   const currentUser = useAppSelector((state) => state.auth.currentUser);
-  const hasUpdatePermission = hasPermission(currentUser, 'UPDATE_APPOINTMENTS');
+  const hasUpdatePermission = hasPermission(
+    currentUser,
+    'UPDATE_ESTIMATE_SECTIONS',
+  );
 
   return (
     <>
       <div className='relative overflow-x-auto p-4 space-y-4'>
         {loading && <LoadingSpinner />}
         {!loading &&
-          appointments.map((item) => (
+          estimate_sections.map((item) => (
             <CardBox hasTable key={item.id} className={'rounded'}>
               <div className={'flex items-center overflow-hidden'}>
                 <div
@@ -49,50 +52,46 @@ const ListAppointments = ({
                   onClick={() => onView(item.id)}
                 >
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Subject</p>
-                    <p className={'line-clamp-2'}>{item.subject}</p>
-                  </div>
-
-                  <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Start Time</p>
+                    <p className={'text-xs text-gray-500'}>Related Estimate</p>
                     <p className={'line-clamp-2'}>
-                      {dataFormatter.dateTimeFormatter(item.start_time)}
-                    </p>
-                  </div>
-
-                  <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>End Time</p>
-                    <p className={'line-clamp-2'}>
-                      {dataFormatter.dateTimeFormatter(item.end_time)}
-                    </p>
-                  </div>
-
-                  <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Notes</p>
-                    <p className={'line-clamp-2'}>{item.notes}</p>
-                  </div>
-
-                  <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Assigned To</p>
-                    <p className={'line-clamp-2'}>
-                      {dataFormatter.usersOneListFormatter(item.assigned_to)}
-                    </p>
-                  </div>
-
-                  <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Related Job</p>
-                    <p className={'line-clamp-2'}>
-                      {dataFormatter.jobsOneListFormatter(item.related_job)}
-                    </p>
-                  </div>
-
-                  <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Related Contact</p>
-                    <p className={'line-clamp-2'}>
-                      {dataFormatter.contactsOneListFormatter(
-                        item.related_contact,
+                      {dataFormatter.estimatesOneListFormatter(
+                        item.related_estimate,
                       )}
                     </p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Related Template</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.templatesOneListFormatter(
+                        item.related_template,
+                      )}
+                    </p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Amount</p>
+                    <p className={'line-clamp-2'}>{item.amount}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Material Price</p>
+                    <p className={'line-clamp-2'}>{item.material_price}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Labor Price</p>
+                    <p className={'line-clamp-2'}>{item.labor_price}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Name</p>
+                    <p className={'line-clamp-2'}>{item.name}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Description</p>
+                    <p className={'line-clamp-2'}>{item.description}</p>
                   </div>
                 </div>
                 <ListActionsPopover
@@ -105,7 +104,7 @@ const ListAppointments = ({
               </div>
             </CardBox>
           ))}
-        {!loading && appointments.length === 0 && (
+        {!loading && estimate_sections.length === 0 && (
           <div className='col-span-full flex items-center justify-center h-40'>
             <p className=''>No data to display</p>
           </div>
@@ -122,4 +121,4 @@ const ListAppointments = ({
   );
 };
 
-export default ListAppointments;
+export default ListEstimate_sections;

@@ -59,7 +59,7 @@ const EditEstimates = () => {
 
     related_job: '',
 
-    related_template: '',
+    status: '',
   };
   const [initialValues, setInitialValues] = useState(initVals);
 
@@ -192,15 +192,14 @@ const EditEstimates = () => {
                 ></Field>
               </FormField>
 
-              <FormField label='Related Template' labelFor='related_template'>
-                <Field
-                  name='related_template'
-                  id='related_template'
-                  component={SelectField}
-                  options={initialValues.related_template}
-                  itemRef={'templates'}
-                  showField={'id'}
-                ></Field>
+              <FormField label='Status' labelFor='status'>
+                <Field name='Status' id='Status' component='select'>
+                  <option value='New'>New</option>
+
+                  <option value='Approved'>Approved</option>
+
+                  <option value='Sent'>Sent</option>
+                </Field>
               </FormField>
 
               <BaseDivider />

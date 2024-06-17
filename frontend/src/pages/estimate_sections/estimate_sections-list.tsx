@@ -7,18 +7,21 @@ import LayoutAuthenticated from '../../layouts/Authenticated';
 import SectionMain from '../../components/SectionMain';
 import SectionTitleLineWithButton from '../../components/SectionTitleLineWithButton';
 import { getPageTitle } from '../../config';
-import TableJobs from '../../components/Jobs/TableJobs';
+import TableEstimate_sections from '../../components/Estimate_sections/TableEstimate_sections';
 import BaseButton from '../../components/BaseButton';
 import axios from 'axios';
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../../stores/hooks';
 import CardBoxModal from '../../components/CardBoxModal';
 import DragDropFilePicker from '../../components/DragDropFilePicker';
-import { setRefetch, uploadCsv } from '../../stores/jobs/jobsSlice';
+import {
+  setRefetch,
+  uploadCsv,
+} from '../../stores/estimate_sections/estimate_sectionsSlice';
 
 import { hasPermission } from '../../helpers/userPermissions';
 
-const JobsTablesPage = () => {
+const Estimate_sectionsTablesPage = () => {
   const [filterItems, setFilterItems] = useState([]);
   const [csvFile, setCsvFile] = useState<File | null>(null);
   const [isModalActive, setIsModalActive] = useState(false);
@@ -31,14 +34,17 @@ const JobsTablesPage = () => {
   const [filters] = useState([
     { label: 'Name', title: 'name' },
     { label: 'Description', title: 'description' },
-    { label: 'Address', title: 'address' },
 
-    { label: 'Assigned To', title: 'assigned_to' },
-    { label: 'Related Contact', title: 'related_contact' },
+    { label: 'Amount', title: 'amount', number: 'true' },
+    { label: 'Material Price', title: 'material_price', number: 'true' },
+    { label: 'Labor Price', title: 'labor_price', number: 'true' },
+
+    { label: 'Related Estimate', title: 'related_estimate' },
+    { label: 'Related Template', title: 'related_template' },
   ]);
 
   const hasCreatePermission =
-    currentUser && hasPermission(currentUser, 'CREATE_JOBS');
+    currentUser && hasPermission(currentUser, 'CREATE_ESTIMATE_SECTIONS');
 
   const addFilter = () => {
     const newItem = {
@@ -54,9 +60,9 @@ const JobsTablesPage = () => {
     setFilterItems([...filterItems, newItem]);
   };
 
-  const getJobsCSV = async () => {
+  const getEstimate_sectionsCSV = async () => {
     const response = await axios({
-      url: '/jobs?filetype=csv',
+      url: '/estimate_sections?filetype=csv',
       method: 'GET',
       responseType: 'blob',
     });
@@ -64,7 +70,7 @@ const JobsTablesPage = () => {
     const blob = new Blob([response.data], { type: type });
     const link = document.createElement('a');
     link.href = window.URL.createObjectURL(blob);
-    link.download = 'jobsCSV.csv';
+    link.download = 'estimate_sectionsCSV.csv';
     link.click();
   };
 
@@ -84,12 +90,12 @@ const JobsTablesPage = () => {
   return (
     <>
       <Head>
-        <title>{getPageTitle('Jobs')}</title>
+        <title>{getPageTitle('Estimate_sections')}</title>
       </Head>
       <SectionMain>
         <SectionTitleLineWithButton
           icon={mdiChartTimelineVariant}
-          title='Jobs'
+          title='Estimate_sections'
           main
         >
           {''}
@@ -98,7 +104,7 @@ const JobsTablesPage = () => {
           {hasCreatePermission && (
             <BaseButton
               className={'mr-3'}
-              href={'/jobs/jobs-new'}
+              href={'/estimate_sections/estimate_sections-new'}
               color='info'
               label='New Item'
             />
@@ -114,7 +120,7 @@ const JobsTablesPage = () => {
             className={'mr-3'}
             color='info'
             label='Download CSV'
-            onClick={getJobsCSV}
+            onClick={getEstimate_sectionsCSV}
           />
 
           {hasCreatePermission && (
@@ -128,13 +134,9 @@ const JobsTablesPage = () => {
           <div className='md:inline-flex items-center ms-auto'>
             <div id='delete-rows-button'></div>
           </div>
-
-          <div className='md:inline-flex items-center ms-auto'>
-            <Link href={'/jobs/jobs-table'}>Switch to Table</Link>
-          </div>
         </CardBox>
         <CardBox className='mb-6' hasTable>
-          <TableJobs
+          <TableEstimate_sections
             filterItems={filterItems}
             setFilterItems={setFilterItems}
             filters={filters}
@@ -161,10 +163,12 @@ const JobsTablesPage = () => {
   );
 };
 
-JobsTablesPage.getLayout = function getLayout(page: ReactElement) {
+Estimate_sectionsTablesPage.getLayout = function getLayout(page: ReactElement) {
   return (
-    <LayoutAuthenticated permission={'READ_JOBS'}>{page}</LayoutAuthenticated>
+    <LayoutAuthenticated permission={'READ_ESTIMATE_SECTIONS'}>
+      {page}
+    </LayoutAuthenticated>
   );
 };
 
-export default JobsTablesPage;
+export default Estimate_sectionsTablesPage;

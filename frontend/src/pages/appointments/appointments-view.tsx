@@ -117,6 +117,12 @@ const AppointmentsView = () => {
             <p>{appointments?.related_job?.name ?? 'No data'}</p>
           </div>
 
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Related Contact</p>
+
+            <p>{appointments?.related_contact?.name ?? 'No data'}</p>
+          </div>
+
           <BaseDivider />
 
           <BaseButton

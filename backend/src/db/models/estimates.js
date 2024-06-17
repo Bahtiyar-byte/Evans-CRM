@@ -50,6 +50,12 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.DECIMAL,
       },
 
+      status: {
+        type: DataTypes.ENUM,
+
+        values: ['New', 'Approved', 'Sent'],
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,
@@ -66,16 +72,16 @@ module.exports = function (sequelize, DataTypes) {
   estimates.associate = (db) => {
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
 
-    db.estimates.hasMany(db.jobs, {
-      as: 'jobs_related_estimate',
+    db.estimates.hasMany(db.orders, {
+      as: 'orders_related_estimate',
       foreignKey: {
         name: 'related_estimateId',
       },
       constraints: false,
     });
 
-    db.estimates.hasMany(db.orders, {
-      as: 'orders_related_estimate',
+    db.estimates.hasMany(db.estimate_sections, {
+      as: 'estimate_sections_related_estimate',
       foreignKey: {
         name: 'related_estimateId',
       },
@@ -96,14 +102,6 @@ module.exports = function (sequelize, DataTypes) {
       as: 'related_job',
       foreignKey: {
         name: 'related_jobId',
-      },
-      constraints: false,
-    });
-
-    db.estimates.belongsTo(db.templates, {
-      as: 'related_template',
-      foreignKey: {
-        name: 'related_templateId',
       },
       constraints: false,
     });

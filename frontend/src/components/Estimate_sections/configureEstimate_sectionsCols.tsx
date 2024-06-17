@@ -36,9 +36,91 @@ export const loadColumns = async (
     }
   }
 
-  const hasUpdatePermission = hasPermission(user, 'UPDATE_ESTIMATES');
+  const hasUpdatePermission = hasPermission(user, 'UPDATE_ESTIMATE_SECTIONS');
 
   return [
+    {
+      field: 'related_estimate',
+      headerName: 'Related Estimate',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      sortable: false,
+      type: 'singleSelect',
+      getOptionValue: (value: any) => value?.id,
+      getOptionLabel: (value: any) => value?.label,
+      valueOptions: await callOptionsApi('estimates'),
+      valueGetter: (params: GridValueGetterParams) =>
+        params?.value?.id ?? params?.value,
+    },
+
+    {
+      field: 'related_template',
+      headerName: 'Related Template',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      sortable: false,
+      type: 'singleSelect',
+      getOptionValue: (value: any) => value?.id,
+      getOptionLabel: (value: any) => value?.label,
+      valueOptions: await callOptionsApi('templates'),
+      valueGetter: (params: GridValueGetterParams) =>
+        params?.value?.id ?? params?.value,
+    },
+
+    {
+      field: 'amount',
+      headerName: 'Amount',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      type: 'number',
+    },
+
+    {
+      field: 'material_price',
+      headerName: 'Material Price',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      type: 'number',
+    },
+
+    {
+      field: 'labor_price',
+      headerName: 'Labor Price',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      type: 'number',
+    },
+
     {
       field: 'name',
       headerName: 'Name',
@@ -54,152 +136,6 @@ export const loadColumns = async (
     {
       field: 'description',
       headerName: 'Description',
-      flex: 1,
-      minWidth: 120,
-      filterable: false,
-      headerClassName: 'datagrid--header',
-      cellClassName: 'datagrid--cell',
-
-      editable: hasUpdatePermission,
-    },
-
-    {
-      field: 'trade',
-      headerName: 'Trade',
-      flex: 1,
-      minWidth: 120,
-      filterable: false,
-      headerClassName: 'datagrid--header',
-      cellClassName: 'datagrid--cell',
-
-      editable: hasUpdatePermission,
-    },
-
-    {
-      field: 'template_used',
-      headerName: 'Template Used',
-      flex: 1,
-      minWidth: 120,
-      filterable: false,
-      headerClassName: 'datagrid--header',
-      cellClassName: 'datagrid--cell',
-
-      editable: hasUpdatePermission,
-    },
-
-    {
-      field: 'material_cost',
-      headerName: 'Material Cost',
-      flex: 1,
-      minWidth: 120,
-      filterable: false,
-      headerClassName: 'datagrid--header',
-      cellClassName: 'datagrid--cell',
-
-      editable: hasUpdatePermission,
-
-      type: 'number',
-    },
-
-    {
-      field: 'labor_cost',
-      headerName: 'Labor Cost',
-      flex: 1,
-      minWidth: 120,
-      filterable: false,
-      headerClassName: 'datagrid--header',
-      cellClassName: 'datagrid--cell',
-
-      editable: hasUpdatePermission,
-
-      type: 'number',
-    },
-
-    {
-      field: 'markup',
-      headerName: 'Markup',
-      flex: 1,
-      minWidth: 120,
-      filterable: false,
-      headerClassName: 'datagrid--header',
-      cellClassName: 'datagrid--cell',
-
-      editable: hasUpdatePermission,
-
-      type: 'number',
-    },
-
-    {
-      field: 'profit_margin',
-      headerName: 'Profit Margin',
-      flex: 1,
-      minWidth: 120,
-      filterable: false,
-      headerClassName: 'datagrid--header',
-      cellClassName: 'datagrid--cell',
-
-      editable: hasUpdatePermission,
-
-      type: 'number',
-    },
-
-    {
-      field: 'total_price',
-      headerName: 'Total Price',
-      flex: 1,
-      minWidth: 120,
-      filterable: false,
-      headerClassName: 'datagrid--header',
-      cellClassName: 'datagrid--cell',
-
-      editable: hasUpdatePermission,
-
-      type: 'number',
-    },
-
-    {
-      field: 'related_contact',
-      headerName: 'Related Contact',
-      flex: 1,
-      minWidth: 120,
-      filterable: false,
-      headerClassName: 'datagrid--header',
-      cellClassName: 'datagrid--cell',
-
-      editable: hasUpdatePermission,
-
-      sortable: false,
-      type: 'singleSelect',
-      getOptionValue: (value: any) => value?.id,
-      getOptionLabel: (value: any) => value?.label,
-      valueOptions: await callOptionsApi('contacts'),
-      valueGetter: (params: GridValueGetterParams) =>
-        params?.value?.id ?? params?.value,
-    },
-
-    {
-      field: 'related_job',
-      headerName: 'Related Job',
-      flex: 1,
-      minWidth: 120,
-      filterable: false,
-      headerClassName: 'datagrid--header',
-      cellClassName: 'datagrid--cell',
-
-      editable: hasUpdatePermission,
-
-      sortable: false,
-      type: 'singleSelect',
-      getOptionValue: (value: any) => value?.id,
-      getOptionLabel: (value: any) => value?.label,
-      valueOptions: await callOptionsApi('jobs'),
-      valueGetter: (params: GridValueGetterParams) =>
-        params?.value?.id ?? params?.value,
-    },
-
-    {
-      field: 'status',
-      headerName: 'Status',
       flex: 1,
       minWidth: 120,
       filterable: false,

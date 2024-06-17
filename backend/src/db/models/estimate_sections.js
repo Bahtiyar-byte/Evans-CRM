@@ -5,13 +5,25 @@ const bcrypt = require('bcrypt');
 const moment = require('moment');
 
 module.exports = function (sequelize, DataTypes) {
-  const templates = sequelize.define(
-    'templates',
+  const estimate_sections = sequelize.define(
+    'estimate_sections',
     {
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
+      },
+
+      amount: {
+        type: DataTypes.DECIMAL,
+      },
+
+      material_price: {
+        type: DataTypes.DECIMAL,
+      },
+
+      labor_price: {
+        type: DataTypes.DECIMAL,
       },
 
       name: {
@@ -35,35 +47,35 @@ module.exports = function (sequelize, DataTypes) {
     },
   );
 
-  templates.associate = (db) => {
+  estimate_sections.associate = (db) => {
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
 
-    db.templates.hasMany(db.estimate_sections, {
-      as: 'estimate_sections_related_template',
+    //end loop
+
+    db.estimate_sections.belongsTo(db.estimates, {
+      as: 'related_estimate',
+      foreignKey: {
+        name: 'related_estimateId',
+      },
+      constraints: false,
+    });
+
+    db.estimate_sections.belongsTo(db.templates, {
+      as: 'related_template',
       foreignKey: {
         name: 'related_templateId',
       },
       constraints: false,
     });
 
-    //end loop
-
-    db.templates.belongsTo(db.trades, {
-      as: 'related_trade',
-      foreignKey: {
-        name: 'related_tradeId',
-      },
-      constraints: false,
-    });
-
-    db.templates.belongsTo(db.users, {
+    db.estimate_sections.belongsTo(db.users, {
       as: 'createdBy',
     });
 
-    db.templates.belongsTo(db.users, {
+    db.estimate_sections.belongsTo(db.users, {
       as: 'updatedBy',
     });
   };
 
-  return templates;
+  return estimate_sections;
 };

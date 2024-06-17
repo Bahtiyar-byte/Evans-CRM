@@ -37,6 +37,8 @@ const Dashboard = () => {
   const [tasks, setTasks] = React.useState('Loading...');
   const [contracts, setContracts] = React.useState('Loading...');
   const [amendments, setAmendments] = React.useState('Loading...');
+  const [estimate_sections, setEstimate_sections] =
+    React.useState('Loading...');
 
   const [widgetsRole, setWidgetsRole] = React.useState({
     role: { value: '', label: '' },
@@ -66,6 +68,7 @@ const Dashboard = () => {
       'tasks',
       'contracts',
       'amendments',
+      'estimate_sections',
     ];
     const fns = [
       setUsers,
@@ -86,6 +89,7 @@ const Dashboard = () => {
       setTasks,
       setContracts,
       setAmendments,
+      setEstimate_sections,
     ];
 
     const requests = entities.map((entity, index) => {
@@ -673,6 +677,34 @@ const Dashboard = () => {
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
                       {amendments}
+                    </div>
+                  </div>
+                  <div>
+                    <BaseIcon
+                      className='text-blue-500'
+                      w='w-16'
+                      h='h-16'
+                      size={48}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      path={icon.mdiTable || icon.mdiTable}
+                    />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {hasPermission(currentUser, 'READ_ESTIMATE_SECTIONS') && (
+            <Link href={'/estimate_sections/estimate_sections-list'}>
+              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+                <div className='flex justify-between align-center'>
+                  <div>
+                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                      Estimate sections
+                    </div>
+                    <div className='text-3xl leading-tight font-semibold'>
+                      {estimate_sections}
                     </div>
                   </div>
                   <div>

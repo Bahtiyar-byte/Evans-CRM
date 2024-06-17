@@ -200,14 +200,6 @@ module.exports = function (sequelize, DataTypes) {
       constraints: false,
     });
 
-    db.jobs.belongsTo(db.estimates, {
-      as: 'related_estimate',
-      foreignKey: {
-        name: 'related_estimateId',
-      },
-      constraints: false,
-    });
-
     db.jobs.hasMany(db.file, {
       as: 'main_image',
       foreignKey: 'belongsToId',

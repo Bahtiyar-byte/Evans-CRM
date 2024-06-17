@@ -93,12 +93,6 @@ const JobsView = () => {
           </div>
 
           <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>Related Estimate</p>
-
-            <p>{jobs?.related_estimate?.name ?? 'No data'}</p>
-          </div>
-
-          <div className={'mb-4'}>
             <p className={'block font-bold mb-2'}>Main Image</p>
             {jobs?.main_image?.length ? (
               <ImageField
@@ -193,6 +187,8 @@ const JobsView = () => {
                       <th>Profit Margin</th>
 
                       <th>Total Price</th>
+
+                      <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -228,6 +224,8 @@ const JobsView = () => {
                           </td>
 
                           <td data-label='total_price'>{item.total_price}</td>
+
+                          <td data-label='status'>{item.status}</td>
                         </tr>
                       ))}
                   </tbody>

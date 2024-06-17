@@ -53,6 +53,8 @@ const contractsRoutes = require('./routes/contracts');
 
 const amendmentsRoutes = require('./routes/amendments');
 
+const estimate_sectionsRoutes = require('./routes/estimate_sections');
+
 const options = {
   definition: {
     openapi: '3.0.0',
@@ -217,6 +219,12 @@ app.use(
   '/api/amendments',
   passport.authenticate('jwt', { session: false }),
   amendmentsRoutes,
+);
+
+app.use(
+  '/api/estimate_sections',
+  passport.authenticate('jwt', { session: false }),
+  estimate_sectionsRoutes,
 );
 
 app.use(

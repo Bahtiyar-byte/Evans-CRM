@@ -42,7 +42,6 @@ const EstimatesTablesPage = () => {
 
     { label: 'Related Contact', title: 'related_contact' },
     { label: 'Related Job', title: 'related_job' },
-    { label: 'Related Template', title: 'related_template' },
   ]);
 
   const hasCreatePermission =

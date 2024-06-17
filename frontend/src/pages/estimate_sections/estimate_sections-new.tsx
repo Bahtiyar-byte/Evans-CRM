@@ -28,34 +28,34 @@ import { SelectField } from '../../components/SelectField';
 import { SelectFieldMany } from '../../components/SelectFieldMany';
 import { RichTextField } from '../../components/RichTextField';
 
-import { create } from '../../stores/appointments/appointmentsSlice';
+import { create } from '../../stores/estimate_sections/estimate_sectionsSlice';
 import { useAppDispatch } from '../../stores/hooks';
 import { useRouter } from 'next/router';
 import moment from 'moment';
 
 const initialValues = {
-  subject: '',
+  related_estimate: '',
 
-  start_time: '',
+  related_template: '',
 
-  end_time: '',
+  amount: '',
 
-  notes: '',
+  material_price: '',
 
-  assigned_to: '',
+  labor_price: '',
 
-  related_job: '',
+  name: '',
 
-  related_contact: '',
+  description: '',
 };
 
-const AppointmentsNew = () => {
+const Estimate_sectionsNew = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
   const handleSubmit = async (data) => {
     await dispatch(create(data));
-    await router.push('/appointments/appointments-list');
+    await router.push('/estimate_sections/estimate_sections-list');
   };
   return (
     <>
@@ -76,62 +76,56 @@ const AppointmentsNew = () => {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
-              <FormField label='Subject'>
-                <Field name='subject' placeholder='Subject' />
+              <FormField label='Related Estimate' labelFor='related_estimate'>
+                <Field
+                  name='related_estimate'
+                  id='related_estimate'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'estimates'}
+                ></Field>
               </FormField>
 
-              <FormField label='Start Time'>
+              <FormField label='Related Template' labelFor='related_template'>
                 <Field
-                  type='datetime-local'
-                  name='start_time'
-                  placeholder='Start Time'
+                  name='related_template'
+                  id='related_template'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'templates'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Amount'>
+                <Field type='number' name='amount' placeholder='Amount' />
+              </FormField>
+
+              <FormField label='Material Price'>
+                <Field
+                  type='number'
+                  name='material_price'
+                  placeholder='Material Price'
                 />
               </FormField>
 
-              <FormField label='End Time'>
+              <FormField label='Labor Price'>
                 <Field
-                  type='datetime-local'
-                  name='end_time'
-                  placeholder='End Time'
+                  type='number'
+                  name='labor_price'
+                  placeholder='Labor Price'
                 />
               </FormField>
 
-              <FormField label='Notes' hasTextareaHeight>
-                <Field
-                  name='notes'
-                  id='notes'
-                  component={RichTextField}
-                ></Field>
+              <FormField label='Name'>
+                <Field name='name' placeholder='Name' />
               </FormField>
 
-              <FormField label='Assigned To' labelFor='assigned_to'>
+              <FormField label='Description' hasTextareaHeight>
                 <Field
-                  name='assigned_to'
-                  id='assigned_to'
-                  component={SelectField}
-                  options={[]}
-                  itemRef={'users'}
-                ></Field>
-              </FormField>
-
-              <FormField label='Related Job' labelFor='related_job'>
-                <Field
-                  name='related_job'
-                  id='related_job'
-                  component={SelectField}
-                  options={[]}
-                  itemRef={'jobs'}
-                ></Field>
-              </FormField>
-
-              <FormField label='Related Contact' labelFor='related_contact'>
-                <Field
-                  name='related_contact'
-                  id='related_contact'
-                  component={SelectField}
-                  options={[]}
-                  itemRef={'contacts'}
-                ></Field>
+                  name='description'
+                  as='textarea'
+                  placeholder='Description'
+                />
               </FormField>
 
               <BaseDivider />
@@ -143,7 +137,9 @@ const AppointmentsNew = () => {
                   color='danger'
                   outline
                   label='Cancel'
-                  onClick={() => router.push('/appointments/appointments-list')}
+                  onClick={() =>
+                    router.push('/estimate_sections/estimate_sections-list')
+                  }
                 />
               </BaseButtons>
             </Form>
@@ -154,12 +150,12 @@ const AppointmentsNew = () => {
   );
 };
 
-AppointmentsNew.getLayout = function getLayout(page: ReactElement) {
+Estimate_sectionsNew.getLayout = function getLayout(page: ReactElement) {
   return (
-    <LayoutAuthenticated permission={'CREATE_APPOINTMENTS'}>
+    <LayoutAuthenticated permission={'CREATE_ESTIMATE_SECTIONS'}>
       {page}
     </LayoutAuthenticated>
   );
 };
 
-export default AppointmentsNew;
+export default Estimate_sectionsNew;

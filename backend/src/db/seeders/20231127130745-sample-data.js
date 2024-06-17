@@ -31,242 +31,226 @@ const Contracts = db.contracts;
 
 const Amendments = db.amendments;
 
+const EstimateSections = db.estimate_sections;
+
 const ContactsData = [
   {
-    name: 'Jonas Salk',
+    name: 'Frederick Sanger',
 
-    email: 'sonny_rolfson@tremblay.com',
+    email: 'jc@bartell.com',
 
-    phone: '(917) 405-2011 x1768',
+    phone: '148.371.9306 x300',
 
-    address: '381 Schmeler Drives, Kautzerchester, VA 91657-7586',
+    address: 'Apt. 133 35515 Guillermina Neck, Nievestown, MA 64338-1830',
 
-    status: 'Lead',
+    status: 'Customer',
 
-    firstName: "Y'all never listen to me",
+    firstName: "That Barbala couldn't fly his way out of a wet paper bag",
 
-    lastName: "That Barbala couldn't fly his way out of a wet paper bag",
-
-    source: 'Facebook',
-  },
-
-  {
-    name: 'Carl Linnaeus',
-
-    email: 'virgilio_morar@gibson.info',
-
-    phone: '722.655.9612 x63091',
-
-    address: '167 Zofia Ville, Alvinview, CT 17612-1450',
-
-    status: 'Lead',
-
-    firstName: 'Might be DQ time',
-
-    lastName: 'Reminds me of my old girlfriend Olga Goodntight',
+    lastName: 'Turd gone wrong',
 
     source: 'Facebook',
   },
 
   {
-    name: 'Antoine Laurent Lavoisier',
+    name: 'Theodosius Dobzhansky',
 
-    email: 'julieann@schamberger.co',
+    email: 'rosy@brakus.info',
 
-    phone: '1-567-019-7600 x804',
+    phone: '668-776-0071 x13625',
 
-    address: '687 Gail Flats, West Aileen, OH 05261',
+    address: 'Apt. 889 5325 Debora Oval, Port Felipeland, NC 47815-6050',
+
+    status: 'Lead',
+
+    firstName: 'No one tells me shit',
+
+    lastName: 'I want my damn cart back',
+
+    source: 'Facebook',
+  },
+
+  {
+    name: 'William Harvey',
+
+    email: 'buddy.stehr@jacobi.biz',
+
+    phone: '(764) 322-2734 x96689',
+
+    address: '9064 Upton Spring, Abbeyberg, ME 38416',
 
     status: 'Prospect',
 
-    firstName: 'Reminds me of my old girlfriend Olga Goodntight',
+    firstName: 'So I was walking Oscar',
 
-    lastName: 'Like a red-headed stepchild',
+    lastName: 'That damn Bill Stull',
 
-    source: 'Website',
+    source: 'Google Ads',
   },
 
   {
-    name: 'Isaac Newton',
+    name: 'William Harvey',
 
-    email: 'edwin_torphy@reichel-konopelski.info',
+    email: 'olin_pfeffer@bradtke.com',
 
-    phone: '297-792-5806',
+    phone: '422-222-0729 x8466',
 
-    address: 'Apt. 973 7667 Felix Walk, Normandmouth, AL 84083-1931',
+    address: 'Suite 209 96020 Schmitt Ville, Port Michell, MA 81316-4423',
 
     status: 'Customer',
 
-    firstName: 'I got that scurvy',
+    firstName: "That's messed up",
 
-    lastName: "How 'bout them Cowboys",
+    lastName: 'I want my 5$ back',
 
     source: 'Website',
-  },
-
-  {
-    name: 'Linus Pauling',
-
-    email: 'graig_bergnaum@kessler.com',
-
-    phone: '1-957-536-4672 x81388',
-
-    address: 'Apt. 768 973 Alden Overpass, Laquitafort, TN 76306',
-
-    status: 'Customer',
-
-    firstName: 'Reminds me of my old girlfriend Olga Goodntight',
-
-    lastName: 'Let me tell ya',
-
-    source: 'Other',
   },
 ];
 
 const EstimatesData = [
   {
-    name: 'Noam Chomsky',
+    name: 'Ludwig Boltzmann',
+
+    description: 'Good relations with the Wookiees, I have.',
+
+    trade: "I'm washing my hands of it",
+
+    template_used: 'That damn diabetes',
+
+    material_cost: 86.58,
+
+    labor_cost: 72.69,
+
+    markup: 97.61,
+
+    profit_margin: 48.27,
+
+    total_price: 69.54,
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    status: 'Sent',
+  },
+
+  {
+    name: 'William Bayliss',
+
+    description:
+      'Like fire across the galaxy the Clone Wars spread. In league with the wicked Count Dooku, more and more planets slip. Against this threat, upon the Jedi Knights falls the duty to lead the newly formed army of the Republic. And as the heat of war grows, so, to, grows the prowess of one most gifted student of the Force.',
+
+    trade: 'I tell you what',
+
+    template_used: "C'mon Naomi",
+
+    material_cost: 40.86,
+
+    labor_cost: 24.07,
+
+    markup: 37.17,
+
+    profit_margin: 54.61,
+
+    total_price: 23.17,
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    status: 'Approved',
+  },
+
+  {
+    name: 'Richard Feynman',
+
+    description:
+      'Strong is Vader. Mind what you have learned. Save you it can.',
+
+    trade: 'No one tells me shit',
+
+    template_used: 'Come on now',
+
+    material_cost: 36.21,
+
+    labor_cost: 90.52,
+
+    markup: 48.88,
+
+    profit_margin: 99.07,
+
+    total_price: 50.84,
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    status: 'Approved',
+  },
+
+  {
+    name: 'Michael Faraday',
 
     description: 'Around the survivors a perimeter create.',
 
     trade: "C'mon Naomi",
 
-    template_used: 'Like a red-headed stepchild',
+    template_used: "Y'all never listen to me",
 
-    material_cost: 91.31,
+    material_cost: 99.78,
 
-    labor_cost: 47.28,
+    labor_cost: 97.51,
 
-    markup: 13.55,
+    markup: 73.28,
 
-    profit_margin: 14.18,
+    profit_margin: 55.96,
 
-    total_price: 77.16,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Albert Einstein',
-
-    description:
-      'Death is a natural part of life. Rejoice for those around you who transform into the Force. Mourn them do not. Miss them do not. Attachment leads to jealously. The shadow of greed, that is.',
-
-    trade: 'That damn Bill Stull',
-
-    template_used: 'Might be DQ time',
-
-    material_cost: 57.82,
-
-    labor_cost: 60.45,
-
-    markup: 25.45,
-
-    profit_margin: 64.61,
-
-    total_price: 82.73,
+    total_price: 20.66,
 
     // type code here for "relation_one" field
 
     // type code here for "relation_one" field
 
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Comte de Buffon',
-
-    description:
-      'Always two there are, no more, no less. A master and an apprentice.',
-
-    trade: "It's around here somewhere",
-
-    template_used: 'Come on now',
-
-    material_cost: 83.06,
-
-    labor_cost: 48.86,
-
-    markup: 84.52,
-
-    profit_margin: 76.94,
-
-    total_price: 19.49,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'August Kekule',
-
-    description:
-      'Through the Force, things you will see. Other places. The future - the past. Old friends long gone.',
-
-    trade: 'I tell you what',
-
-    template_used: 'That damn diabetes',
-
-    material_cost: 53.04,
-
-    labor_cost: 61.72,
-
-    markup: 50.28,
-
-    profit_margin: 17.99,
-
-    total_price: 38.61,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Ludwig Boltzmann',
-
-    description: 'Truly wonderful, the mind of a child is.',
-
-    trade: 'I want my 5$ back',
-
-    template_used: 'My buddy Harlen',
-
-    material_cost: 59.13,
-
-    labor_cost: 55.57,
-
-    markup: 12.51,
-
-    profit_margin: 82.65,
-
-    total_price: 34.76,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
+    status: 'New',
   },
 ];
 
 const JobsData = [
   {
-    name: 'John Dalton',
+    name: 'Sheldon Glashow',
 
-    description: 'Luminous beings are we - not this crude matter.',
+    description: 'Mudhole? Slimy? My home this is!',
+
+    category: 'PropertyManagement',
+
+    type: 'Retail',
+
+    status: 'Completed',
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    // type code here for "images" field
+
+    // type code here for "files" field
+
+    address: 'Apt. 606 34957 Lashawna Viaduct, Octavioborough, VT 81789',
+
+    start_date: new Date('2024-03-10'),
+
+    end_date: new Date('2023-10-06'),
+  },
+
+  {
+    name: 'Frederick Gowland Hopkins',
+
+    description:
+      'Through the Force, things you will see. Other places. The future - the past. Old friends long gone.',
 
     category: 'Residential',
 
-    type: 'Warranty',
+    type: 'Service',
 
     status: 'Quoted',
 
@@ -274,31 +258,28 @@ const JobsData = [
 
     // type code here for "relation_one" field
 
-    // type code here for "relation_one" field
-
     // type code here for "images" field
 
     // type code here for "files" field
 
-    address: '38691 Lolita Mount, Deidraborough, MD 40913-4969',
+    address: 'Suite 219 291 Cassondra Crest, Sanjuanitaland, CA 02587',
 
-    start_date: new Date('2024-03-29'),
+    start_date: new Date('2024-02-07'),
 
-    end_date: new Date('2024-06-11'),
+    end_date: new Date('2023-08-25'),
   },
 
   {
-    name: 'John Dalton',
+    name: 'James Watson',
 
-    description: 'Your weapons, you will not need them.',
+    description:
+      'Size matters not. Look at me. Judge me by my size, do you? Hmm? Hmm. And well you should not. For my ally is the Force, and a powerful ally it is. Life creates it, makes it grow. Its energy surrounds us and binds us. Luminous beings are we, not this crude matter. You must feel the Force around you; here, between you, me, the tree, the rock, everywhere, yes. Even between the land and the ship.',
 
     category: 'Commercial',
 
-    type: 'Service',
+    type: 'Warranty',
 
-    status: 'Invoiced',
-
-    // type code here for "relation_one" field
+    status: 'Active',
 
     // type code here for "relation_one" field
 
@@ -308,77 +289,21 @@ const JobsData = [
 
     // type code here for "files" field
 
-    address: 'Suite 193 101 Kortney Walk, Johnsonberg, NH 78915',
+    address: '9358 Alexander Spur, West Collinberg, TN 17431',
 
-    start_date: new Date('2023-07-12'),
+    start_date: new Date('2023-08-22'),
 
-    end_date: new Date('2024-01-19'),
+    end_date: new Date('2023-08-16'),
   },
 
   {
-    name: 'B. F. Skinner',
+    name: 'Alfred Wegener',
 
-    description: 'Do. Or do not. There is no try.',
-
-    category: 'Commercial',
-
-    type: 'Insurance',
-
-    status: 'Completed',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "images" field
-
-    // type code here for "files" field
-
-    address: 'Apt. 775 8858 Sasha Plains, North Kieth, NV 57375-6786',
-
-    start_date: new Date('2023-12-23'),
-
-    end_date: new Date('2024-02-01'),
-  },
-
-  {
-    name: 'Hans Selye',
-
-    description: 'Always pass on what you have learned.',
+    description: 'Ow, ow, OW! On my ear you are!',
 
     category: 'Residential',
 
-    type: 'Inspection',
-
-    status: 'Completed',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "images" field
-
-    // type code here for "files" field
-
-    address: 'Suite 166 749 Elisa Estates, New Viviennehaven, NH 78011-8874',
-
-    start_date: new Date('2023-10-01'),
-
-    end_date: new Date('2023-06-30'),
-  },
-
-  {
-    name: 'Nicolaus Copernicus',
-
-    description: 'Difficult to see. Always in motion is the future...',
-
-    category: 'Residential',
-
-    type: 'Repair',
+    type: 'Warranty',
 
     status: 'Approved',
 
@@ -386,60 +311,50 @@ const JobsData = [
 
     // type code here for "relation_one" field
 
-    // type code here for "relation_one" field
-
     // type code here for "images" field
 
     // type code here for "files" field
 
-    address: 'Apt. 809 183 Keeling Dale, North Reva, WA 74088',
+    address: '80986 Brian Extension, Botsfordhaven, OR 02576-8582',
 
-    start_date: new Date('2024-05-06'),
+    start_date: new Date('2024-03-16'),
 
-    end_date: new Date('2023-09-09'),
+    end_date: new Date('2024-03-20'),
   },
 ];
 
 const TemplatesData = [
   {
-    name: 'Werner Heisenberg',
+    name: 'Edwin Hubble',
 
     description:
-      'Size matters not. Look at me. Judge me by my size, do you? Hmm? Hmm. And well you should not. For my ally is the Force, and a powerful ally it is. Life creates it, makes it grow. Its energy surrounds us and binds us. Luminous beings are we, not this crude matter. You must feel the Force around you; here, between you, me, the tree, the rock, everywhere, yes. Even between the land and the ship.',
+      'Like fire across the galaxy the Clone Wars spread. In league with the wicked Count Dooku, more and more planets slip. Against this threat, upon the Jedi Knights falls the duty to lead the newly formed army of the Republic. And as the heat of war grows, so, to, grows the prowess of one most gifted student of the Force.',
 
     // type code here for "relation_one" field
   },
 
   {
-    name: 'Ernst Haeckel',
-
-    description: 'Difficult to see. Always in motion is the future...',
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Frederick Sanger',
-
-    description: 'You will find only what you bring in.',
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Hermann von Helmholtz',
+    name: 'John Dalton',
 
     description:
-      'Much to learn you still have my old padawan. ... This is just the beginning!',
+      'Strong is Vader. Mind what you have learned. Save you it can.',
 
     // type code here for "relation_one" field
   },
 
   {
-    name: 'Albert Einstein',
+    name: 'Gustav Kirchhoff',
 
     description:
       'Death is a natural part of life. Rejoice for those around you who transform into the Force. Mourn them do not. Miss them do not. Attachment leads to jealously. The shadow of greed, that is.',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    name: 'Jean Piaget',
+
+    description: 'Around the survivors a perimeter create.',
 
     // type code here for "relation_one" field
   },
@@ -447,65 +362,61 @@ const TemplatesData = [
 
 const TradesData = [
   {
-    name: 'William Harvey',
+    name: 'Francis Galton',
   },
 
   {
-    name: 'Linus Pauling',
+    name: 'Marcello Malpighi',
   },
 
   {
-    name: 'Trofim Lysenko',
+    name: 'Werner Heisenberg',
   },
 
   {
-    name: 'Emil Kraepelin',
-  },
-
-  {
-    name: 'Thomas Hunt Morgan',
+    name: 'Pierre Simon de Laplace',
   },
 ];
 
 const InvoicesData = [
   {
-    invoice_number: 'That goddamn Datamate',
+    invoice_number: 'My buddy Harlen',
 
-    invoice_date: new Date('2023-08-26'),
+    invoice_date: new Date('2024-04-22'),
 
-    terms: 'Net 15 Days',
+    terms: 'Net 45 Days',
 
-    approved_job_value: 62.66,
+    approved_job_value: 97.31,
 
-    balance_amount: 13.99,
+    balance_amount: 18.58,
 
     // type code here for "relation_one" field
   },
 
   {
-    invoice_number: 'That damn Bill Stull',
+    invoice_number: "How 'bout them Cowboys",
 
-    invoice_date: new Date('2023-07-13'),
+    invoice_date: new Date('2023-10-22'),
 
     terms: 'Net 30 Days',
 
-    approved_job_value: 38.56,
+    approved_job_value: 61.87,
 
-    balance_amount: 55.69,
+    balance_amount: 26.17,
 
     // type code here for "relation_one" field
   },
 
   {
-    invoice_number: "C'mon Naomi",
+    invoice_number: 'That goddamn Datamate',
 
-    invoice_date: new Date('2023-07-26'),
+    invoice_date: new Date('2024-03-15'),
 
-    terms: 'Upon Receipt',
+    terms: 'Net 60 Days',
 
-    approved_job_value: 87.54,
+    approved_job_value: 98.47,
 
-    balance_amount: 19.29,
+    balance_amount: 98.28,
 
     // type code here for "relation_one" field
   },
@@ -513,27 +424,13 @@ const InvoicesData = [
   {
     invoice_number: 'That damn diabetes',
 
-    invoice_date: new Date('2024-04-03'),
+    invoice_date: new Date('2024-05-24'),
 
-    terms: 'By Due Date',
+    terms: 'Upon Receipt',
 
-    approved_job_value: 21.32,
+    approved_job_value: 51.92,
 
-    balance_amount: 81.63,
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    invoice_number: 'Got depression, Smith and Wessen',
-
-    invoice_date: new Date('2023-10-31'),
-
-    terms: 'Net 15 Days',
-
-    approved_job_value: 26.47,
-
-    balance_amount: 55.93,
+    balance_amount: 16.87,
 
     // type code here for "relation_one" field
   },
@@ -541,19 +438,9 @@ const InvoicesData = [
 
 const OrdersData = [
   {
-    order_number: "Goin' hog huntin'",
+    order_number: 'Turd gone wrong',
 
-    total_amount: 24.67,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    order_number: 'I got that scurvy',
-
-    total_amount: 19.01,
+    total_amount: 90.58,
 
     // type code here for "relation_one" field
 
@@ -561,19 +448,9 @@ const OrdersData = [
   },
 
   {
-    order_number: "It's around here somewhere",
+    order_number: 'That damn Bill Stull',
 
-    total_amount: 56.62,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    order_number: 'Standby',
-
-    total_amount: 82.26,
+    total_amount: 88.15,
 
     // type code here for "relation_one" field
 
@@ -581,9 +458,19 @@ const OrdersData = [
   },
 
   {
-    order_number: 'I got that scurvy',
+    order_number: 'Contact the tower',
 
-    total_amount: 32.57,
+    total_amount: 80.96,
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    order_number: 'That damn gimble',
+
+    total_amount: 86.63,
 
     // type code here for "relation_one" field
 
@@ -595,7 +482,7 @@ const ImagesData = [
   {
     // type code here for "images" field
 
-    Name: "That Barbala couldn't fly his way out of a wet paper bag",
+    Name: 'Always the last one to the party',
 
     // type code here for "relation_one" field
   },
@@ -603,7 +490,7 @@ const ImagesData = [
   {
     // type code here for "images" field
 
-    Name: "C'mon Naomi",
+    Name: 'That damn gimble',
 
     // type code here for "relation_one" field
   },
@@ -611,7 +498,7 @@ const ImagesData = [
   {
     // type code here for "images" field
 
-    Name: 'Reminds me of my old girlfriend Olga Goodntight',
+    Name: 'My boss gonna fire me',
 
     // type code here for "relation_one" field
   },
@@ -619,15 +506,7 @@ const ImagesData = [
   {
     // type code here for "images" field
 
-    Name: 'Texas!',
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    // type code here for "images" field
-
-    Name: "How 'bout them Cowboys",
+    Name: 'My boss gonna fire me',
 
     // type code here for "relation_one" field
   },
@@ -635,43 +514,31 @@ const ImagesData = [
 
 const DocumentsData = [
   {
-    name: 'Claude Levi-Strauss',
+    name: 'John von Neumann',
 
     // type code here for "relation_one" field
   },
 
   {
-    name: 'Richard Feynman',
+    name: 'Edwin Hubble',
 
     // type code here for "relation_one" field
   },
 
   {
-    name: 'Albrecht von Haller',
+    name: 'Edward O. Wilson',
 
     // type code here for "relation_one" field
   },
 
   {
-    name: 'Galileo Galilei',
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'William Harvey',
+    name: 'Jean Piaget',
 
     // type code here for "relation_one" field
   },
 ];
 
 const EmailsData = [
-  {
-    // type code here for "relation_one" field
-    // type code here for "relation_one" field
-    // type code here for "relation_one" field
-  },
-
   {
     // type code here for "relation_one" field
     // type code here for "relation_one" field
@@ -703,7 +570,7 @@ const ChatsData = [
 
     // type code here for "relation_many" field
 
-    name: 'Richard Feynman',
+    name: 'Andreas Vesalius',
   },
 
   {
@@ -711,7 +578,7 @@ const ChatsData = [
 
     // type code here for "relation_many" field
 
-    name: 'Richard Feynman',
+    name: 'Alfred Binet',
   },
 
   {
@@ -719,7 +586,7 @@ const ChatsData = [
 
     // type code here for "relation_many" field
 
-    name: 'Thomas Hunt Morgan',
+    name: 'J. Robert Oppenheimer',
   },
 
   {
@@ -727,70 +594,22 @@ const ChatsData = [
 
     // type code here for "relation_many" field
 
-    name: 'Murray Gell-Mann',
-  },
-
-  {
-    // type code here for "relation_one" field
-
-    // type code here for "relation_many" field
-
-    name: 'Thomas Hunt Morgan',
+    name: 'James Watson',
   },
 ];
 
 const AppointmentsData = [
   {
-    subject: 'Turd gone wrong',
+    subject: "How 'bout them Cowboys",
 
-    start_time: new Date('2023-10-18'),
+    start_time: new Date('2023-10-12'),
 
-    end_time: new Date('2023-08-10'),
-
-    notes: 'Strong is Vader. Mind what you have learned. Save you it can.',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    subject: 'I got that scurvy',
-
-    start_time: new Date('2024-05-13'),
-
-    end_time: new Date('2024-04-05'),
-
-    notes: 'You will find only what you bring in.',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    subject: "That Barbala couldn't fly his way out of a wet paper bag",
-
-    start_time: new Date('2024-05-13'),
-
-    end_time: new Date('2023-09-12'),
+    end_time: new Date('2024-06-10'),
 
     notes:
-      'Like fire across the galaxy the Clone Wars spread. In league with the wicked Count Dooku, more and more planets slip. Against this threat, upon the Jedi Knights falls the duty to lead the newly formed army of the Republic. And as the heat of war grows, so, to, grows the prowess of one most gifted student of the Force.',
+      'Always two there are, no more, no less. A master and an apprentice.',
 
     // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    subject: 'Reminds me of my old girlfriend Olga Goodntight',
-
-    start_time: new Date('2024-01-01'),
-
-    end_time: new Date('2024-01-02'),
-
-    notes: 'Not if anything to say about it I have',
 
     // type code here for "relation_one" field
 
@@ -798,13 +617,48 @@ const AppointmentsData = [
   },
 
   {
-    subject: 'That damn diabetes',
+    subject: "It's around here somewhere",
 
-    start_time: new Date('2023-11-10'),
+    start_time: new Date('2024-02-13'),
 
-    end_time: new Date('2024-02-04'),
+    end_time: new Date('2024-04-14'),
 
-    notes: 'Strong is Vader. Mind what you have learned. Save you it can.',
+    notes: 'Luminous beings are we - not this crude matter.',
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    subject: 'Might be DQ time',
+
+    start_time: new Date('2024-01-25'),
+
+    end_time: new Date('2024-01-01'),
+
+    notes:
+      'Much to learn you still have my old padawan. ... This is just the beginning!',
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    subject: 'Come on now',
+
+    start_time: new Date('2023-10-28'),
+
+    end_time: new Date('2023-07-08'),
+
+    notes: 'Do. Or do not. There is no try.',
+
+    // type code here for "relation_one" field
 
     // type code here for "relation_one" field
 
@@ -814,71 +668,57 @@ const AppointmentsData = [
 
 const TasksData = [
   {
-    subject: 'Contact the tower',
-
-    // type code here for "relation_one" field
-
-    status: 'Completed',
-
-    priority: 'Medium',
-
-    due_date: new Date('2024-02-17'),
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    subject: 'That goddamn Datamate',
-
-    // type code here for "relation_one" field
-
-    status: 'Completed',
-
-    priority: 'Medium',
-
-    due_date: new Date('2023-09-02'),
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    subject: "How 'bout them Cowboys",
-
-    // type code here for "relation_one" field
-
-    status: 'Open',
-
-    priority: 'High',
-
-    due_date: new Date('2023-06-21'),
-
-    // type code here for "relation_one" field
-  },
-
-  {
     subject: 'I want my 5$ back',
 
     // type code here for "relation_one" field
 
-    status: 'Open',
+    status: 'Accepted',
 
     priority: 'Medium',
 
-    due_date: new Date('2024-04-16'),
+    due_date: new Date('2024-03-01'),
 
     // type code here for "relation_one" field
   },
 
   {
-    subject: 'That goddamn Datamate',
+    subject: 'That damn gimble',
+
+    // type code here for "relation_one" field
+
+    status: 'Accepted',
+
+    priority: 'Low',
+
+    due_date: new Date('2024-01-30'),
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    subject: 'Let me tell ya',
 
     // type code here for "relation_one" field
 
     status: 'Completed',
 
-    priority: 'Medium',
+    priority: 'High',
 
-    due_date: new Date('2024-06-14'),
+    due_date: new Date('2023-10-19'),
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    subject: 'I tell you what',
+
+    // type code here for "relation_one" field
+
+    status: 'Open',
+
+    priority: 'Low',
+
+    due_date: new Date('2024-04-19'),
 
     // type code here for "relation_one" field
   },
@@ -886,71 +726,57 @@ const TasksData = [
 
 const ContractsData = [
   {
-    name: 'John von Neumann',
+    name: 'Comte de Buffon',
 
-    amount: 17.35,
+    amount: 28.84,
 
-    body: 'That is why you fail.',
-
-    // type code here for "relation_one" field
-
-    signed_date: new Date('2024-01-06'),
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Max Planck',
-
-    amount: 38.35,
-
-    body: 'Around the survivors a perimeter create.',
+    body: 'Already know you that which you need.',
 
     // type code here for "relation_one" field
 
-    signed_date: new Date('2023-07-02'),
+    signed_date: new Date('2024-05-17'),
 
     // type code here for "relation_one" field
   },
 
   {
-    name: 'Johannes Kepler',
+    name: 'Gustav Kirchhoff',
 
-    amount: 60.09,
+    amount: 65.24,
 
-    body: 'At an end your rule is, and not short enough it was!',
-
-    // type code here for "relation_one" field
-
-    signed_date: new Date('2024-01-26'),
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Nicolaus Copernicus',
-
-    amount: 12.52,
-
-    body: 'Ready are you? What know you of ready? For eight hundred years have I trained Jedi. My own counsel will I keep on who is to be trained. A Jedi must have the deepest commitment, the most serious mind. This one a long time have I watched. All his life has he looked away - to the future, to the horizon. Never his mind on where he was. Hmm? What he was doing. Hmph. Adventure. Heh. Excitement. Heh. A Jedi craves not these things. You are reckless.',
+    body: 'Hmm. In the end, cowards are those who follow the dark side.',
 
     // type code here for "relation_one" field
 
-    signed_date: new Date('2023-11-23'),
+    signed_date: new Date('2023-11-25'),
 
     // type code here for "relation_one" field
   },
 
   {
-    name: 'Lucretius',
+    name: 'Max von Laue',
 
-    amount: 66.65,
+    amount: 72.02,
 
-    body: 'Soon will I rest, yes, forever sleep. Earned it I have. Twilight is upon me, soon night must fall.',
+    body: 'Size matters not. Look at me. Judge me by my size, do you? Hmm? Hmm. And well you should not. For my ally is the Force, and a powerful ally it is. Life creates it, makes it grow. Its energy surrounds us and binds us. Luminous beings are we, not this crude matter. You must feel the Force around you; here, between you, me, the tree, the rock, everywhere, yes. Even between the land and the ship.',
 
     // type code here for "relation_one" field
 
-    signed_date: new Date('2023-11-15'),
+    signed_date: new Date('2023-12-13'),
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    name: 'Euclid',
+
+    amount: 65.64,
+
+    body: 'Difficult to see. Always in motion is the future...',
+
+    // type code here for "relation_one" field
+
+    signed_date: new Date('2023-07-13'),
 
     // type code here for "relation_one" field
   },
@@ -960,19 +786,75 @@ const AmendmentsData = [
   {
     // type code here for "relation_one" field
 
-    type: 'Supplement',
+    type: 'Upgrade',
 
-    amount: 78.28,
+    amount: 42.76,
 
-    description: 'Younglings, younglings gather ’round.',
+    description: 'Use your feelings, Obi-Wan, and find him you will.',
   },
 
   {
     // type code here for "relation_one" field
 
-    type: 'Insurance Claim',
+    type: 'Change Order',
 
-    amount: 50.28,
+    amount: 31.42,
+
+    description:
+      'Once you start down the dark path, forever will it dominate your destiny, consume you it will.',
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    type: 'Upgrade',
+
+    amount: 26.18,
+
+    description:
+      'Always two there are, no more, no less. A master and an apprentice.',
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    type: 'Discount',
+
+    amount: 46.09,
+
+    description: 'Truly wonderful, the mind of a child is.',
+  },
+];
+
+const EstimateSectionsData = [
+  {
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    amount: 22.06,
+
+    material_price: 33.05,
+
+    labor_price: 52.35,
+
+    name: 'William Herschel',
+
+    description: 'Reckless he is. Matters are worse.',
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    amount: 19.06,
+
+    material_price: 88.62,
+
+    labor_price: 59.08,
+
+    name: 'Anton van Leeuwenhoek',
 
     description: 'Around the survivors a perimeter create.',
   },
@@ -980,9 +862,15 @@ const AmendmentsData = [
   {
     // type code here for "relation_one" field
 
-    type: 'Supplement',
+    // type code here for "relation_one" field
 
-    amount: 75.45,
+    amount: 74.18,
+
+    material_price: 30.86,
+
+    labor_price: 89.34,
+
+    name: 'Robert Koch',
 
     description:
       'Strong is Vader. Mind what you have learned. Save you it can.',
@@ -991,21 +879,18 @@ const AmendmentsData = [
   {
     // type code here for "relation_one" field
 
-    type: 'Change Order',
-
-    amount: 92.63,
-
-    description: 'Use your feelings, Obi-Wan, and find him you will.',
-  },
-
-  {
     // type code here for "relation_one" field
 
-    type: 'Upgrade',
+    amount: 15.07,
 
-    amount: 48.53,
+    material_price: 22.05,
 
-    description: 'Mudhole? Slimy? My home this is!',
+    labor_price: 64.48,
+
+    name: 'Sigmund Freud',
+
+    description:
+      'Much to learn you still have my old padawan. ... This is just the beginning!',
   },
 ];
 
@@ -1055,17 +940,6 @@ async function associateEstimateWithRelated_contact() {
   if (Estimate3?.setRelated_contact) {
     await Estimate3.setRelated_contact(relatedRelated_contact3);
   }
-
-  const relatedRelated_contact4 = await Contacts.findOne({
-    offset: Math.floor(Math.random() * (await Contacts.count())),
-  });
-  const Estimate4 = await Estimates.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Estimate4?.setRelated_contact) {
-    await Estimate4.setRelated_contact(relatedRelated_contact4);
-  }
 }
 
 async function associateEstimateWithRelated_job() {
@@ -1111,74 +985,6 @@ async function associateEstimateWithRelated_job() {
   });
   if (Estimate3?.setRelated_job) {
     await Estimate3.setRelated_job(relatedRelated_job3);
-  }
-
-  const relatedRelated_job4 = await Jobs.findOne({
-    offset: Math.floor(Math.random() * (await Jobs.count())),
-  });
-  const Estimate4 = await Estimates.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Estimate4?.setRelated_job) {
-    await Estimate4.setRelated_job(relatedRelated_job4);
-  }
-}
-
-async function associateEstimateWithRelated_template() {
-  const relatedRelated_template0 = await Templates.findOne({
-    offset: Math.floor(Math.random() * (await Templates.count())),
-  });
-  const Estimate0 = await Estimates.findOne({
-    order: [['id', 'ASC']],
-    offset: 0,
-  });
-  if (Estimate0?.setRelated_template) {
-    await Estimate0.setRelated_template(relatedRelated_template0);
-  }
-
-  const relatedRelated_template1 = await Templates.findOne({
-    offset: Math.floor(Math.random() * (await Templates.count())),
-  });
-  const Estimate1 = await Estimates.findOne({
-    order: [['id', 'ASC']],
-    offset: 1,
-  });
-  if (Estimate1?.setRelated_template) {
-    await Estimate1.setRelated_template(relatedRelated_template1);
-  }
-
-  const relatedRelated_template2 = await Templates.findOne({
-    offset: Math.floor(Math.random() * (await Templates.count())),
-  });
-  const Estimate2 = await Estimates.findOne({
-    order: [['id', 'ASC']],
-    offset: 2,
-  });
-  if (Estimate2?.setRelated_template) {
-    await Estimate2.setRelated_template(relatedRelated_template2);
-  }
-
-  const relatedRelated_template3 = await Templates.findOne({
-    offset: Math.floor(Math.random() * (await Templates.count())),
-  });
-  const Estimate3 = await Estimates.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Estimate3?.setRelated_template) {
-    await Estimate3.setRelated_template(relatedRelated_template3);
-  }
-
-  const relatedRelated_template4 = await Templates.findOne({
-    offset: Math.floor(Math.random() * (await Templates.count())),
-  });
-  const Estimate4 = await Estimates.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Estimate4?.setRelated_template) {
-    await Estimate4.setRelated_template(relatedRelated_template4);
   }
 }
 
@@ -1226,17 +1032,6 @@ async function associateJobWithAssigned_to() {
   if (Job3?.setAssigned_to) {
     await Job3.setAssigned_to(relatedAssigned_to3);
   }
-
-  const relatedAssigned_to4 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Job4 = await Jobs.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Job4?.setAssigned_to) {
-    await Job4.setAssigned_to(relatedAssigned_to4);
-  }
 }
 
 async function associateJobWithRelated_contact() {
@@ -1282,74 +1077,6 @@ async function associateJobWithRelated_contact() {
   });
   if (Job3?.setRelated_contact) {
     await Job3.setRelated_contact(relatedRelated_contact3);
-  }
-
-  const relatedRelated_contact4 = await Contacts.findOne({
-    offset: Math.floor(Math.random() * (await Contacts.count())),
-  });
-  const Job4 = await Jobs.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Job4?.setRelated_contact) {
-    await Job4.setRelated_contact(relatedRelated_contact4);
-  }
-}
-
-async function associateJobWithRelated_estimate() {
-  const relatedRelated_estimate0 = await Estimates.findOne({
-    offset: Math.floor(Math.random() * (await Estimates.count())),
-  });
-  const Job0 = await Jobs.findOne({
-    order: [['id', 'ASC']],
-    offset: 0,
-  });
-  if (Job0?.setRelated_estimate) {
-    await Job0.setRelated_estimate(relatedRelated_estimate0);
-  }
-
-  const relatedRelated_estimate1 = await Estimates.findOne({
-    offset: Math.floor(Math.random() * (await Estimates.count())),
-  });
-  const Job1 = await Jobs.findOne({
-    order: [['id', 'ASC']],
-    offset: 1,
-  });
-  if (Job1?.setRelated_estimate) {
-    await Job1.setRelated_estimate(relatedRelated_estimate1);
-  }
-
-  const relatedRelated_estimate2 = await Estimates.findOne({
-    offset: Math.floor(Math.random() * (await Estimates.count())),
-  });
-  const Job2 = await Jobs.findOne({
-    order: [['id', 'ASC']],
-    offset: 2,
-  });
-  if (Job2?.setRelated_estimate) {
-    await Job2.setRelated_estimate(relatedRelated_estimate2);
-  }
-
-  const relatedRelated_estimate3 = await Estimates.findOne({
-    offset: Math.floor(Math.random() * (await Estimates.count())),
-  });
-  const Job3 = await Jobs.findOne({
-    order: [['id', 'ASC']],
-    offset: 3,
-  });
-  if (Job3?.setRelated_estimate) {
-    await Job3.setRelated_estimate(relatedRelated_estimate3);
-  }
-
-  const relatedRelated_estimate4 = await Estimates.findOne({
-    offset: Math.floor(Math.random() * (await Estimates.count())),
-  });
-  const Job4 = await Jobs.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Job4?.setRelated_estimate) {
-    await Job4.setRelated_estimate(relatedRelated_estimate4);
   }
 }
 
@@ -1397,17 +1124,6 @@ async function associateTemplateWithRelated_trade() {
   if (Template3?.setRelated_trade) {
     await Template3.setRelated_trade(relatedRelated_trade3);
   }
-
-  const relatedRelated_trade4 = await Trades.findOne({
-    offset: Math.floor(Math.random() * (await Trades.count())),
-  });
-  const Template4 = await Templates.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Template4?.setRelated_trade) {
-    await Template4.setRelated_trade(relatedRelated_trade4);
-  }
 }
 
 async function associateInvoiceWithRelated_job() {
@@ -1453,17 +1169,6 @@ async function associateInvoiceWithRelated_job() {
   });
   if (Invoice3?.setRelated_job) {
     await Invoice3.setRelated_job(relatedRelated_job3);
-  }
-
-  const relatedRelated_job4 = await Jobs.findOne({
-    offset: Math.floor(Math.random() * (await Jobs.count())),
-  });
-  const Invoice4 = await Invoices.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Invoice4?.setRelated_job) {
-    await Invoice4.setRelated_job(relatedRelated_job4);
   }
 }
 
@@ -1511,17 +1216,6 @@ async function associateOrderWithRelated_job() {
   if (Order3?.setRelated_job) {
     await Order3.setRelated_job(relatedRelated_job3);
   }
-
-  const relatedRelated_job4 = await Jobs.findOne({
-    offset: Math.floor(Math.random() * (await Jobs.count())),
-  });
-  const Order4 = await Orders.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Order4?.setRelated_job) {
-    await Order4.setRelated_job(relatedRelated_job4);
-  }
 }
 
 async function associateOrderWithRelated_estimate() {
@@ -1567,17 +1261,6 @@ async function associateOrderWithRelated_estimate() {
   });
   if (Order3?.setRelated_estimate) {
     await Order3.setRelated_estimate(relatedRelated_estimate3);
-  }
-
-  const relatedRelated_estimate4 = await Estimates.findOne({
-    offset: Math.floor(Math.random() * (await Estimates.count())),
-  });
-  const Order4 = await Orders.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Order4?.setRelated_estimate) {
-    await Order4.setRelated_estimate(relatedRelated_estimate4);
   }
 }
 
@@ -1625,17 +1308,6 @@ async function associateImageWithRelated_job() {
   if (Image3?.setRelated_job) {
     await Image3.setRelated_job(relatedRelated_job3);
   }
-
-  const relatedRelated_job4 = await Jobs.findOne({
-    offset: Math.floor(Math.random() * (await Jobs.count())),
-  });
-  const Image4 = await Images.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Image4?.setRelated_job) {
-    await Image4.setRelated_job(relatedRelated_job4);
-  }
 }
 
 async function associateDocumentWithRelated_job() {
@@ -1681,17 +1353,6 @@ async function associateDocumentWithRelated_job() {
   });
   if (Document3?.setRelated_job) {
     await Document3.setRelated_job(relatedRelated_job3);
-  }
-
-  const relatedRelated_job4 = await Jobs.findOne({
-    offset: Math.floor(Math.random() * (await Jobs.count())),
-  });
-  const Document4 = await Documents.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Document4?.setRelated_job) {
-    await Document4.setRelated_job(relatedRelated_job4);
   }
 }
 
@@ -1739,17 +1400,6 @@ async function associateEmailWithRelated_job() {
   if (Email3?.setRelated_job) {
     await Email3.setRelated_job(relatedRelated_job3);
   }
-
-  const relatedRelated_job4 = await Jobs.findOne({
-    offset: Math.floor(Math.random() * (await Jobs.count())),
-  });
-  const Email4 = await Emails.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Email4?.setRelated_job) {
-    await Email4.setRelated_job(relatedRelated_job4);
-  }
 }
 
 async function associateEmailWithRelated_contact() {
@@ -1795,17 +1445,6 @@ async function associateEmailWithRelated_contact() {
   });
   if (Email3?.setRelated_contact) {
     await Email3.setRelated_contact(relatedRelated_contact3);
-  }
-
-  const relatedRelated_contact4 = await Contacts.findOne({
-    offset: Math.floor(Math.random() * (await Contacts.count())),
-  });
-  const Email4 = await Emails.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Email4?.setRelated_contact) {
-    await Email4.setRelated_contact(relatedRelated_contact4);
   }
 }
 
@@ -1853,17 +1492,6 @@ async function associateEmailWithRelated_user() {
   if (Email3?.setRelated_user) {
     await Email3.setRelated_user(relatedRelated_user3);
   }
-
-  const relatedRelated_user4 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Email4 = await Emails.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Email4?.setRelated_user) {
-    await Email4.setRelated_user(relatedRelated_user4);
-  }
 }
 
 async function associateChatWithRelated_job() {
@@ -1909,17 +1537,6 @@ async function associateChatWithRelated_job() {
   });
   if (Chat3?.setRelated_job) {
     await Chat3.setRelated_job(relatedRelated_job3);
-  }
-
-  const relatedRelated_job4 = await Jobs.findOne({
-    offset: Math.floor(Math.random() * (await Jobs.count())),
-  });
-  const Chat4 = await Chats.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Chat4?.setRelated_job) {
-    await Chat4.setRelated_job(relatedRelated_job4);
   }
 }
 
@@ -1969,17 +1586,6 @@ async function associateAppointmentWithAssigned_to() {
   if (Appointment3?.setAssigned_to) {
     await Appointment3.setAssigned_to(relatedAssigned_to3);
   }
-
-  const relatedAssigned_to4 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Appointment4 = await Appointments.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Appointment4?.setAssigned_to) {
-    await Appointment4.setAssigned_to(relatedAssigned_to4);
-  }
 }
 
 async function associateAppointmentWithRelated_job() {
@@ -2026,16 +1632,51 @@ async function associateAppointmentWithRelated_job() {
   if (Appointment3?.setRelated_job) {
     await Appointment3.setRelated_job(relatedRelated_job3);
   }
+}
 
-  const relatedRelated_job4 = await Jobs.findOne({
-    offset: Math.floor(Math.random() * (await Jobs.count())),
+async function associateAppointmentWithRelated_contact() {
+  const relatedRelated_contact0 = await Contacts.findOne({
+    offset: Math.floor(Math.random() * (await Contacts.count())),
   });
-  const Appointment4 = await Appointments.findOne({
+  const Appointment0 = await Appointments.findOne({
     order: [['id', 'ASC']],
-    offset: 4,
+    offset: 0,
   });
-  if (Appointment4?.setRelated_job) {
-    await Appointment4.setRelated_job(relatedRelated_job4);
+  if (Appointment0?.setRelated_contact) {
+    await Appointment0.setRelated_contact(relatedRelated_contact0);
+  }
+
+  const relatedRelated_contact1 = await Contacts.findOne({
+    offset: Math.floor(Math.random() * (await Contacts.count())),
+  });
+  const Appointment1 = await Appointments.findOne({
+    order: [['id', 'ASC']],
+    offset: 1,
+  });
+  if (Appointment1?.setRelated_contact) {
+    await Appointment1.setRelated_contact(relatedRelated_contact1);
+  }
+
+  const relatedRelated_contact2 = await Contacts.findOne({
+    offset: Math.floor(Math.random() * (await Contacts.count())),
+  });
+  const Appointment2 = await Appointments.findOne({
+    order: [['id', 'ASC']],
+    offset: 2,
+  });
+  if (Appointment2?.setRelated_contact) {
+    await Appointment2.setRelated_contact(relatedRelated_contact2);
+  }
+
+  const relatedRelated_contact3 = await Contacts.findOne({
+    offset: Math.floor(Math.random() * (await Contacts.count())),
+  });
+  const Appointment3 = await Appointments.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Appointment3?.setRelated_contact) {
+    await Appointment3.setRelated_contact(relatedRelated_contact3);
   }
 }
 
@@ -2083,17 +1724,6 @@ async function associateTaskWithAssigned_to() {
   if (Task3?.setAssigned_to) {
     await Task3.setAssigned_to(relatedAssigned_to3);
   }
-
-  const relatedAssigned_to4 = await Users.findOne({
-    offset: Math.floor(Math.random() * (await Users.count())),
-  });
-  const Task4 = await Tasks.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Task4?.setAssigned_to) {
-    await Task4.setAssigned_to(relatedAssigned_to4);
-  }
 }
 
 async function associateTaskWithRelated_job() {
@@ -2139,17 +1769,6 @@ async function associateTaskWithRelated_job() {
   });
   if (Task3?.setRelated_job) {
     await Task3.setRelated_job(relatedRelated_job3);
-  }
-
-  const relatedRelated_job4 = await Jobs.findOne({
-    offset: Math.floor(Math.random() * (await Jobs.count())),
-  });
-  const Task4 = await Tasks.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Task4?.setRelated_job) {
-    await Task4.setRelated_job(relatedRelated_job4);
   }
 }
 
@@ -2197,17 +1816,6 @@ async function associateContractWithRelated_contact() {
   if (Contract3?.setRelated_contact) {
     await Contract3.setRelated_contact(relatedRelated_contact3);
   }
-
-  const relatedRelated_contact4 = await Contacts.findOne({
-    offset: Math.floor(Math.random() * (await Contacts.count())),
-  });
-  const Contract4 = await Contracts.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Contract4?.setRelated_contact) {
-    await Contract4.setRelated_contact(relatedRelated_contact4);
-  }
 }
 
 async function associateContractWithRelated_job() {
@@ -2253,17 +1861,6 @@ async function associateContractWithRelated_job() {
   });
   if (Contract3?.setRelated_job) {
     await Contract3.setRelated_job(relatedRelated_job3);
-  }
-
-  const relatedRelated_job4 = await Jobs.findOne({
-    offset: Math.floor(Math.random() * (await Jobs.count())),
-  });
-  const Contract4 = await Contracts.findOne({
-    order: [['id', 'ASC']],
-    offset: 4,
-  });
-  if (Contract4?.setRelated_job) {
-    await Contract4.setRelated_job(relatedRelated_job4);
   }
 }
 
@@ -2311,16 +1908,97 @@ async function associateAmendmentWithRelated_job() {
   if (Amendment3?.setRelated_job) {
     await Amendment3.setRelated_job(relatedRelated_job3);
   }
+}
 
-  const relatedRelated_job4 = await Jobs.findOne({
-    offset: Math.floor(Math.random() * (await Jobs.count())),
+async function associateEstimateSectionWithRelated_estimate() {
+  const relatedRelated_estimate0 = await Estimates.findOne({
+    offset: Math.floor(Math.random() * (await Estimates.count())),
   });
-  const Amendment4 = await Amendments.findOne({
+  const EstimateSection0 = await EstimateSections.findOne({
     order: [['id', 'ASC']],
-    offset: 4,
+    offset: 0,
   });
-  if (Amendment4?.setRelated_job) {
-    await Amendment4.setRelated_job(relatedRelated_job4);
+  if (EstimateSection0?.setRelated_estimate) {
+    await EstimateSection0.setRelated_estimate(relatedRelated_estimate0);
+  }
+
+  const relatedRelated_estimate1 = await Estimates.findOne({
+    offset: Math.floor(Math.random() * (await Estimates.count())),
+  });
+  const EstimateSection1 = await EstimateSections.findOne({
+    order: [['id', 'ASC']],
+    offset: 1,
+  });
+  if (EstimateSection1?.setRelated_estimate) {
+    await EstimateSection1.setRelated_estimate(relatedRelated_estimate1);
+  }
+
+  const relatedRelated_estimate2 = await Estimates.findOne({
+    offset: Math.floor(Math.random() * (await Estimates.count())),
+  });
+  const EstimateSection2 = await EstimateSections.findOne({
+    order: [['id', 'ASC']],
+    offset: 2,
+  });
+  if (EstimateSection2?.setRelated_estimate) {
+    await EstimateSection2.setRelated_estimate(relatedRelated_estimate2);
+  }
+
+  const relatedRelated_estimate3 = await Estimates.findOne({
+    offset: Math.floor(Math.random() * (await Estimates.count())),
+  });
+  const EstimateSection3 = await EstimateSections.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (EstimateSection3?.setRelated_estimate) {
+    await EstimateSection3.setRelated_estimate(relatedRelated_estimate3);
+  }
+}
+
+async function associateEstimateSectionWithRelated_template() {
+  const relatedRelated_template0 = await Templates.findOne({
+    offset: Math.floor(Math.random() * (await Templates.count())),
+  });
+  const EstimateSection0 = await EstimateSections.findOne({
+    order: [['id', 'ASC']],
+    offset: 0,
+  });
+  if (EstimateSection0?.setRelated_template) {
+    await EstimateSection0.setRelated_template(relatedRelated_template0);
+  }
+
+  const relatedRelated_template1 = await Templates.findOne({
+    offset: Math.floor(Math.random() * (await Templates.count())),
+  });
+  const EstimateSection1 = await EstimateSections.findOne({
+    order: [['id', 'ASC']],
+    offset: 1,
+  });
+  if (EstimateSection1?.setRelated_template) {
+    await EstimateSection1.setRelated_template(relatedRelated_template1);
+  }
+
+  const relatedRelated_template2 = await Templates.findOne({
+    offset: Math.floor(Math.random() * (await Templates.count())),
+  });
+  const EstimateSection2 = await EstimateSections.findOne({
+    order: [['id', 'ASC']],
+    offset: 2,
+  });
+  if (EstimateSection2?.setRelated_template) {
+    await EstimateSection2.setRelated_template(relatedRelated_template2);
+  }
+
+  const relatedRelated_template3 = await Templates.findOne({
+    offset: Math.floor(Math.random() * (await Templates.count())),
+  });
+  const EstimateSection3 = await EstimateSections.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (EstimateSection3?.setRelated_template) {
+    await EstimateSection3.setRelated_template(relatedRelated_template3);
   }
 }
 
@@ -2356,6 +2034,8 @@ module.exports = {
 
     await Amendments.bulkCreate(AmendmentsData);
 
+    await EstimateSections.bulkCreate(EstimateSectionsData);
+
     await Promise.all([
       // Similar logic for "relation_many"
 
@@ -2363,13 +2043,9 @@ module.exports = {
 
       await associateEstimateWithRelated_job(),
 
-      await associateEstimateWithRelated_template(),
-
       await associateJobWithAssigned_to(),
 
       await associateJobWithRelated_contact(),
-
-      await associateJobWithRelated_estimate(),
 
       await associateTemplateWithRelated_trade(),
 
@@ -2397,6 +2073,8 @@ module.exports = {
 
       await associateAppointmentWithRelated_job(),
 
+      await associateAppointmentWithRelated_contact(),
+
       await associateTaskWithAssigned_to(),
 
       await associateTaskWithRelated_job(),
@@ -2406,6 +2084,10 @@ module.exports = {
       await associateContractWithRelated_job(),
 
       await associateAmendmentWithRelated_job(),
+
+      await associateEstimateSectionWithRelated_estimate(),
+
+      await associateEstimateSectionWithRelated_template(),
     ]);
   },
 
@@ -2439,5 +2121,7 @@ module.exports = {
     await queryInterface.bulkDelete('contracts', null, {});
 
     await queryInterface.bulkDelete('amendments', null, {});
+
+    await queryInterface.bulkDelete('estimate_sections', null, {});
   },
 };
