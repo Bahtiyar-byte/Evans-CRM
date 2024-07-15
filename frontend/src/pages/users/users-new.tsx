@@ -49,6 +49,8 @@ const initialValues = {
   app_role: '',
 
   custom_permissions: [],
+
+  name: '',
 };
 
 const UsersNew = () => {
@@ -139,6 +141,10 @@ const UsersNew = () => {
                   options={[]}
                   component={SelectFieldMany}
                 ></Field>
+              </FormField>
+
+              <FormField label='Name'>
+                <Field name='name' placeholder='Name' />
               </FormField>
 
               <BaseDivider />

@@ -393,21 +393,21 @@ module.exports = class AppointmentsDBApi {
       where = {
         [Op.or]: [
           { ['id']: Utils.uuid(query) },
-          Utils.ilike('appointments', 'id', query),
+          Utils.ilike('appointments', 'subject', query),
         ],
       };
     }
 
     const records = await db.appointments.findAll({
-      attributes: ['id', 'id'],
+      attributes: ['id', 'subject'],
       where,
       limit: limit ? Number(limit) : undefined,
-      orderBy: [['id', 'ASC']],
+      orderBy: [['subject', 'ASC']],
     });
 
     return records.map((record) => ({
       id: record.id,
-      label: record.id,
+      label: record.subject,
     }));
   }
 };

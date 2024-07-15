@@ -62,7 +62,7 @@ const Estimate_sectionsView = () => {
           <div className={'mb-4'}>
             <p className={'block font-bold mb-2'}>Related Template</p>
 
-            <p>{estimate_sections?.related_template?.id ?? 'No data'}</p>
+            <p>{estimate_sections?.related_template?.name ?? 'No data'}</p>
           </div>
 
           <div className={'mb-4'}>

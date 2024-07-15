@@ -123,7 +123,7 @@ const EditContacts = () => {
               </FormField>
 
               <FormField label='Status' labelFor='status'>
-                <Field name='Status' id='Status' component='select'>
+                <Field name='status' id='status' component='select'>
                   <option value='Lead'>Lead</option>
 
                   <option value='Prospect'>Prospect</option>
@@ -141,7 +141,7 @@ const EditContacts = () => {
               </FormField>
 
               <FormField label='Source' labelFor='source'>
-                <Field name='Source' id='Source' component='select'>
+                <Field name='source' id='source' component='select'>
                   <option value='Google Ads'>Google Ads</option>
 
                   <option value='Facebook'>Facebook</option>

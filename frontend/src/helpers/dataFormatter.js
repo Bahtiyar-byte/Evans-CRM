@@ -41,21 +41,21 @@ export default {
 
   usersManyListFormatter(val) {
     if (!val || !val.length) return [];
-    return val.map((item) => item.firstName);
+    return val.map((item) => item.name);
   },
   usersOneListFormatter(val) {
     if (!val) return '';
-    return val.firstName;
+    return val.name;
   },
   usersManyListFormatterEdit(val) {
     if (!val || !val.length) return [];
     return val.map((item) => {
-      return { id: item.id, label: item.firstName };
+      return { id: item.id, label: item.name };
     });
   },
   usersOneListFormatterEdit(val) {
     if (!val) return '';
-    return { label: val.firstName, id: val.id };
+    return { label: val.name, id: val.id };
   },
 
   contactsManyListFormatter(val) {
@@ -155,39 +155,39 @@ export default {
 
   templatesManyListFormatter(val) {
     if (!val || !val.length) return [];
-    return val.map((item) => item.id);
+    return val.map((item) => item.name);
   },
   templatesOneListFormatter(val) {
     if (!val) return '';
-    return val.id;
+    return val.name;
   },
   templatesManyListFormatterEdit(val) {
     if (!val || !val.length) return [];
     return val.map((item) => {
-      return { id: item.id, label: item.id };
+      return { id: item.id, label: item.name };
     });
   },
   templatesOneListFormatterEdit(val) {
     if (!val) return '';
-    return { label: val.id, id: val.id };
+    return { label: val.name, id: val.id };
   },
 
   tradesManyListFormatter(val) {
     if (!val || !val.length) return [];
-    return val.map((item) => item.id);
+    return val.map((item) => item.name);
   },
   tradesOneListFormatter(val) {
     if (!val) return '';
-    return val.id;
+    return val.name;
   },
   tradesManyListFormatterEdit(val) {
     if (!val || !val.length) return [];
     return val.map((item) => {
-      return { id: item.id, label: item.id };
+      return { id: item.id, label: item.name };
     });
   },
   tradesOneListFormatterEdit(val) {
     if (!val) return '';
-    return { label: val.id, id: val.id };
+    return { label: val.name, id: val.id };
   },
 };

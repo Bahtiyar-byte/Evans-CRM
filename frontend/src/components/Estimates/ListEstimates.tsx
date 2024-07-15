@@ -34,67 +34,79 @@ const ListEstimates = ({
   const currentUser = useAppSelector((state) => state.auth.currentUser);
   const hasUpdatePermission = hasPermission(currentUser, 'UPDATE_ESTIMATES');
 
+  const corners = useAppSelector((state) => state.style.corners);
+  const bgColor = useAppSelector((state) => state.style.cardsColor);
+
   return (
     <>
       <div className='relative overflow-x-auto p-4 space-y-4'>
         {loading && <LoadingSpinner />}
         {!loading &&
           estimates.map((item) => (
-            <CardBox hasTable key={item.id} className={'rounded'}>
-              <div className={'flex items-center overflow-hidden'}>
+            <CardBox
+              hasTable
+              isList
+              key={item.id}
+              className={'rounded shadow-none'}
+            >
+              <div
+                className={`flex rounded  dark:bg-dark-900  border  border-stone-300  items-center overflow-hidden`}
+              >
                 <div
                   className={
-                    'flex-1 px-4 py-6 h-24 flex items-stretch divide-x-2 dark:divide-dark-700 overflow-x-auto'
+                    'flex-1 px-4 py-6 h-24 flex items-stretch divide-x-2  divide-stone-300   items-center overflow-hidden`}> dark:divide-dark-700 overflow-x-auto'
                   }
                   onClick={() => onView(item.id)}
                 >
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Name</p>
+                    <p className={'text-xs   text-gray-500 '}>Name</p>
                     <p className={'line-clamp-2'}>{item.name}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Description</p>
+                    <p className={'text-xs   text-gray-500 '}>Description</p>
                     <p className={'line-clamp-2'}>{item.description}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Trade</p>
+                    <p className={'text-xs   text-gray-500 '}>Trade</p>
                     <p className={'line-clamp-2'}>{item.trade}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Template Used</p>
+                    <p className={'text-xs   text-gray-500 '}>Template Used</p>
                     <p className={'line-clamp-2'}>{item.template_used}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Material Cost</p>
+                    <p className={'text-xs   text-gray-500 '}>Material Cost</p>
                     <p className={'line-clamp-2'}>{item.material_cost}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Labor Cost</p>
+                    <p className={'text-xs   text-gray-500 '}>Labor Cost</p>
                     <p className={'line-clamp-2'}>{item.labor_cost}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Markup</p>
+                    <p className={'text-xs   text-gray-500 '}>Markup</p>
                     <p className={'line-clamp-2'}>{item.markup}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Profit Margin</p>
+                    <p className={'text-xs   text-gray-500 '}>Profit Margin</p>
                     <p className={'line-clamp-2'}>{item.profit_margin}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Total Price</p>
+                    <p className={'text-xs   text-gray-500 '}>Total Price</p>
                     <p className={'line-clamp-2'}>{item.total_price}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Related Contact</p>
+                    <p className={'text-xs   text-gray-500 '}>
+                      Related Contact
+                    </p>
                     <p className={'line-clamp-2'}>
                       {dataFormatter.contactsOneListFormatter(
                         item.related_contact,
@@ -103,14 +115,14 @@ const ListEstimates = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Related Job</p>
+                    <p className={'text-xs   text-gray-500 '}>Related Job</p>
                     <p className={'line-clamp-2'}>
                       {dataFormatter.jobsOneListFormatter(item.related_job)}
                     </p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Status</p>
+                    <p className={'text-xs   text-gray-500 '}>Status</p>
                     <p className={'line-clamp-2'}>{item.status}</p>
                   </div>
                 </div>

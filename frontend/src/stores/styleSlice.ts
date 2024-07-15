@@ -15,6 +15,14 @@ interface StyleState {
   navBarItemLabelActiveColorStyle: string;
   overlayStyle: string;
   darkMode: boolean;
+  bgLayoutColor: string;
+  iconsColor: string;
+  activeLinkColor: string;
+  cardsColor: string;
+  focusRingColor: string;
+  corners: string;
+  cardsStyle: string;
+  linkColor: string;
 }
 
 const initialState: StyleState = {
@@ -29,6 +37,14 @@ const initialState: StyleState = {
   navBarItemLabelActiveColorStyle: styles.white.navBarItemLabelActiveColor,
   overlayStyle: styles.white.overlay,
   darkMode: false,
+  bgLayoutColor: styles.white.bgLayoutColor,
+  iconsColor: styles.white.iconsColor,
+  activeLinkColor: styles.white.activeLinkColor,
+  cardsColor: styles.white.cardsColor,
+  focusRingColor: styles.white.focusRingColor,
+  corners: styles.white.corners,
+  cardsStyle: styles.white.cardsStyle,
+  linkColor: styles.white.linkColor,
 };
 
 export const styleSlice = createSlice({

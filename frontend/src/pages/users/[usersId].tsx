@@ -53,6 +53,8 @@ const EditUsers = () => {
 
     custom_permissions: [],
 
+    name: '',
+
     password: '',
   };
   const [initialValues, setInitialValues] = useState(initVals);
@@ -171,6 +173,10 @@ const EditUsers = () => {
                   itemRef={'permissions'}
                   showField={'name'}
                 ></Field>
+              </FormField>
+
+              <FormField label='Name'>
+                <Field name='name' placeholder='Name' />
               </FormField>
 
               <FormField label='Password'>

@@ -32,7 +32,7 @@ export default function UserAvatar({
           path={mdiAccountCircleOutline}
           size={30}
           className={
-            'text-blue-600 dark:text-white dark:hover:text-slate-400 hover:text-black transition-colors'
+            'dark:text-white dark:hover:text-slate-400 hover:text-black transition-colors'
           }
         />
       ) : (

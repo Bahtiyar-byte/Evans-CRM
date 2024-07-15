@@ -68,7 +68,7 @@ const TemplatesView = () => {
           <div className={'mb-4'}>
             <p className={'block font-bold mb-2'}>Related Trade</p>
 
-            <p>{templates?.related_trade?.id ?? 'No data'}</p>
+            <p>{templates?.related_trade?.name ?? 'No data'}</p>
           </div>
 
           <>

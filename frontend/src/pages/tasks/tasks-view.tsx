@@ -59,7 +59,7 @@ const TasksView = () => {
           <div className={'mb-4'}>
             <p className={'block font-bold mb-2'}>Assigned To</p>
 
-            <p>{tasks?.assigned_to?.firstName ?? 'No data'}</p>
+            <p>{tasks?.assigned_to?.name ?? 'No data'}</p>
           </div>
 
           <div className={'mb-4'}>

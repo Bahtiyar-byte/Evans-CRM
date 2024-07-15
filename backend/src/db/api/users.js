@@ -34,6 +34,7 @@ module.exports = class UsersDBApi {
         passwordResetTokenExpiresAt:
           data.data.passwordResetTokenExpiresAt || null,
         provider: data.data.provider || null,
+        name: data.data.name || null,
         importHash: data.data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
@@ -96,6 +97,7 @@ module.exports = class UsersDBApi {
       passwordResetToken: item.passwordResetToken || null,
       passwordResetTokenExpiresAt: item.passwordResetTokenExpiresAt || null,
       provider: item.provider || null,
+      name: item.name || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -160,6 +162,7 @@ module.exports = class UsersDBApi {
         passwordResetToken: data.passwordResetToken || null,
         passwordResetTokenExpiresAt: data.passwordResetTokenExpiresAt || null,
         provider: data.provider || null,
+        name: data.name || null,
         updatedById: currentUser.id,
       },
       { transaction },
@@ -391,6 +394,13 @@ module.exports = class UsersDBApi {
         };
       }
 
+      if (filter.name) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('users', 'name', filter.name),
+        };
+      }
+
       if (filter.emailVerificationTokenExpiresAtRange) {
         const [start, end] = filter.emailVerificationTokenExpiresAtRange;
 
@@ -545,21 +555,21 @@ module.exports = class UsersDBApi {
       where = {
         [Op.or]: [
           { ['id']: Utils.uuid(query) },
-          Utils.ilike('users', 'firstName', query),
+          Utils.ilike('users', 'name', query),
         ],
       };
     }
 
     const records = await db.users.findAll({
-      attributes: ['id', 'firstName'],
+      attributes: ['id', 'name'],
       where,
       limit: limit ? Number(limit) : undefined,
-      orderBy: [['firstName', 'ASC']],
+      orderBy: [['name', 'ASC']],
     });
 
     return records.map((record) => ({
       id: record.id,
-      label: record.firstName,
+      label: record.name,
     }));
   }
 

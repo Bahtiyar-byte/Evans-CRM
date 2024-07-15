@@ -193,7 +193,7 @@ const EditEstimates = () => {
               </FormField>
 
               <FormField label='Status' labelFor='status'>
-                <Field name='Status' id='Status' component='select'>
+                <Field name='status' id='status' component='select'>
                   <option value='New'>New</option>
 
                   <option value='Approved'>Approved</option>

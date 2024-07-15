@@ -33,6 +33,7 @@ const UsersTablesPage = () => {
     { label: 'Last Name', title: 'lastName' },
     { label: 'Phone Number', title: 'phoneNumber' },
     { label: 'E-Mail', title: 'email' },
+    { label: 'Name', title: 'name' },
 
     { label: 'App Role', title: 'app_role' },
   ]);

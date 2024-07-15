@@ -135,6 +135,11 @@ const UsersView = () => {
             </CardBox>
           </>
 
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Name</p>
+            <p>{users?.name}</p>
+          </div>
+
           <>
             <p className={'block font-bold mb-2'}>Jobs Assigned To</p>
             <CardBox

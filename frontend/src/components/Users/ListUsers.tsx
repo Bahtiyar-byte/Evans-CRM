@@ -34,14 +34,24 @@ const ListUsers = ({
   const currentUser = useAppSelector((state) => state.auth.currentUser);
   const hasUpdatePermission = hasPermission(currentUser, 'UPDATE_USERS');
 
+  const corners = useAppSelector((state) => state.style.corners);
+  const bgColor = useAppSelector((state) => state.style.cardsColor);
+
   return (
     <>
       <div className='relative overflow-x-auto p-4 space-y-4'>
         {loading && <LoadingSpinner />}
         {!loading &&
           users.map((item) => (
-            <CardBox hasTable key={item.id} className={'rounded'}>
-              <div className={'flex items-center overflow-hidden'}>
+            <CardBox
+              hasTable
+              isList
+              key={item.id}
+              className={'rounded shadow-none'}
+            >
+              <div
+                className={`flex rounded  dark:bg-dark-900  border  border-stone-300  items-center overflow-hidden`}
+              >
                 <ImageField
                   name={'Avatar'}
                   image={item.avatar}
@@ -53,39 +63,39 @@ const ListUsers = ({
 
                 <div
                   className={
-                    'flex-1 px-4 py-6 h-24 flex items-stretch divide-x-2 dark:divide-dark-700 overflow-x-auto'
+                    'flex-1 px-4 py-6 h-24 flex items-stretch divide-x-2  divide-stone-300   items-center overflow-hidden`}> dark:divide-dark-700 overflow-x-auto'
                   }
                   onClick={() => onView(item.id)}
                 >
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>First Name</p>
+                    <p className={'text-xs   text-gray-500 '}>First Name</p>
                     <p className={'line-clamp-2'}>{item.firstName}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Last Name</p>
+                    <p className={'text-xs   text-gray-500 '}>Last Name</p>
                     <p className={'line-clamp-2'}>{item.lastName}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Phone Number</p>
+                    <p className={'text-xs   text-gray-500 '}>Phone Number</p>
                     <p className={'line-clamp-2'}>{item.phoneNumber}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>E-Mail</p>
+                    <p className={'text-xs   text-gray-500 '}>E-Mail</p>
                     <p className={'line-clamp-2'}>{item.email}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Disabled</p>
+                    <p className={'text-xs   text-gray-500 '}>Disabled</p>
                     <p className={'line-clamp-2'}>
                       {dataFormatter.booleanFormatter(item.disabled)}
                     </p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Avatar</p>
+                    <p className={'text-xs   text-gray-500 '}>Avatar</p>
                     <ImageField
                       name={'Avatar'}
                       image={item.avatar}
@@ -94,14 +104,14 @@ const ListUsers = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>App Role</p>
+                    <p className={'text-xs   text-gray-500 '}>App Role</p>
                     <p className={'line-clamp-2'}>
                       {dataFormatter.rolesOneListFormatter(item.app_role)}
                     </p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>
+                    <p className={'text-xs   text-gray-500 '}>
                       Custom Permissions
                     </p>
                     <p className={'line-clamp-2'}>
@@ -109,6 +119,11 @@ const ListUsers = ({
                         .permissionsManyListFormatter(item.custom_permissions)
                         .join(', ')}
                     </p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs   text-gray-500 '}>Name</p>
+                    <p className={'line-clamp-2'}>{item.name}</p>
                   </div>
                 </div>
                 <ListActionsPopover

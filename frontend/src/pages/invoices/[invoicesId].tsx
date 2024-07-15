@@ -125,7 +125,7 @@ const EditInvoices = () => {
               </FormField>
 
               <FormField label='Terms' labelFor='terms'>
-                <Field name='Terms' id='Terms' component='select'>
+                <Field name='terms' id='terms' component='select'>
                   <option value='By Due Date'>By Due Date</option>
 
                   <option value='Upon Receipt'>Upon Receipt</option>

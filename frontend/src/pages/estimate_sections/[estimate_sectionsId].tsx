@@ -127,7 +127,7 @@ const EditEstimate_sections = () => {
                   component={SelectField}
                   options={initialValues.related_template}
                   itemRef={'templates'}
-                  showField={'id'}
+                  showField={'name'}
                 ></Field>
               </FormField>
 

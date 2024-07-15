@@ -33,7 +33,10 @@ const CardUsers = ({
   const asideScrollbarsStyle = useAppSelector(
     (state) => state.style.asideScrollbarsStyle,
   );
+  const bgColor = useAppSelector((state) => state.style.cardsColor);
   const darkMode = useAppSelector((state) => state.style.darkMode);
+  const corners = useAppSelector((state) => state.style.corners);
+  const focusRing = useAppSelector((state) => state.style.focusRingColor);
 
   const currentUser = useAppSelector((state) => state.auth.currentUser);
   const hasUpdatePermission = hasPermission(currentUser, 'UPDATE_IMAGES');
@@ -49,11 +52,15 @@ const CardUsers = ({
           images.map((item, index) => (
             <li
               key={item.id}
-              className={`overflow-hidden rounded-xl border border-gray-200 dark:border-dark-700 ${
+              className={`overflow-hidden ${
+                corners !== 'rounded-full' ? corners : 'rounded-3xl'
+              } border  ${focusRing} border-gray-200 dark:border-dark-700 ${
                 darkMode ? 'aside-scrollbars-[slate]' : asideScrollbarsStyle
               }`}
             >
-              <div className='flex items-center p-6  md:p-0 md:block  gap-x-4 border-b border-gray-900/5 bg-gray-50 dark:bg-dark-800 relative'>
+              <div
+                className={`flex items-center ${bgColor} p-6  md:p-0 md:block  gap-x-4 border-b border-gray-900/5 bg-gray-50 dark:bg-dark-800 relative`}
+              >
                 <div
                   onClick={() => onView(item.id)}
                   className={'cursor-pointer'}
@@ -77,9 +84,9 @@ const CardUsers = ({
                   />
                 </div>
               </div>
-              <dl className='divide-y divide-gray-100 dark:divide-dark-700 px-6 py-4 text-sm leading-6 h-64 overflow-y-auto'>
+              <dl className='divide-y  divide-stone-300   dark:divide-dark-700 px-6 py-4 text-sm leading-6 h-64 overflow-y-auto'>
                 <div className='flex justify-between gap-x-4 py-3'>
-                  <dt className='text-gray-500 dark:text-dark-600'>Image</dt>
+                  <dt className='  text-gray-500  dark:text-dark-600'>Image</dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium'>
                       <ImageField
@@ -92,14 +99,14 @@ const CardUsers = ({
                 </div>
 
                 <div className='flex justify-between gap-x-4 py-3'>
-                  <dt className='text-gray-500 dark:text-dark-600'>Name</dt>
+                  <dt className='  text-gray-500  dark:text-dark-600'>Name</dt>
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>{item.Name}</div>
                   </dd>
                 </div>
 
                 <div className='flex justify-between gap-x-4 py-3'>
-                  <dt className='text-gray-500 dark:text-dark-600'>
+                  <dt className='  text-gray-500  dark:text-dark-600'>
                     Related Job
                   </dt>
                   <dd className='flex items-start gap-x-2'>
