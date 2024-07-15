@@ -34,7 +34,7 @@ export default function ImageField({
           className={`rounded-full block h-auto w-full max-w-full bg-gray-100 dark:bg-dark-900 ${imageClassName}`}
         />
       ) : (
-        <div className={'flex h-full bg-slate-100 dark:bg-dark-900/70'}>
+        <div className={'flex h-full  dark:bg-dark-900/70'}>
           <BaseIcon
             className='text-black dark:text-white'
             w='w-full'

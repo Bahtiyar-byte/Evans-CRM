@@ -1,5 +1,5 @@
 .rbc-event {
-  @apply bg-blue-600 !important;
+  @apply bg-blue-600  !important;
 }
 
 .rbc-show-more {
@@ -11,11 +11,11 @@
 }
 
 .rbc-btn-group button:hover {
-  @apply dark:bg-dark-700 !important;
+  @apply text-white dark:bg-dark-700 !important;
 }
 
 .rbc-btn-group button.rbc-active {
-  @apply dark:bg-blue-600 !important;
+  @apply text-white dark:bg-blue-600 !important;
 }
 
 .rbc-btn-group button:focus {
@@ -25,7 +25,9 @@
 .rbc-day-bg.rbc-off-range-bg {
   @apply dark:bg-dark-800 !important;
 }
-
+.rbc-current-time-indicator {
+  @apply h-1 !important;
+}
 .rbc-today {
   @apply dark:bg-dark-600/40 !important;
 }

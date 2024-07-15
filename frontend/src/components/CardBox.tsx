@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import CardBoxComponentBody from './CardBoxComponentBody';
 import CardBoxComponentFooter from './CardBoxComponentFooter';
+import { useAppSelector } from '../stores/hooks';
 
 type Props = {
   rounded?: string;
@@ -13,6 +14,7 @@ type Props = {
   isModal?: boolean;
   children: ReactNode;
   footer?: ReactNode;
+  isList?: boolean;
   onClick?: (e: React.MouseEvent) => void;
 };
 
@@ -24,17 +26,21 @@ export default function CardBox({
   cardBoxClassName = '',
   hasTable = false,
   isHoverable = false,
+  isList = false,
   isModal = false,
   children,
   footer,
   onClick,
 }: Props) {
+  const corners = useAppSelector((state) => state.style.corners);
+  const cardsStyle = useAppSelector((state) => state.style.cardsStyle);
   const componentClass = [
-    'bg-white flex border border-pavitra-400 dark:border-dark-700 dark:bg-dark-900',
+    `flex  dark:border-dark-700 dark:bg-dark-900`,
     className,
-    rounded,
+    corners !== 'rounded-full' ? corners : 'rounded-3xl',
     flex,
-    hasTable ? '' : 'border border-pavitra-400 dark:border-dark-700',
+    isList ? '' : `${cardsStyle}`,
+    hasTable ? '' : `border-dark-700  dark:border-dark-700`,
   ];
 
   if (isHoverable) {

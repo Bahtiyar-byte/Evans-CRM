@@ -35,91 +35,91 @@ const EstimateSections = db.estimate_sections;
 
 const ContactsData = [
   {
-    name: 'Hermann von Helmholtz',
-
-    email: 'li_runolfsdottir@spinka-aufderhar.net',
-
-    phone: '1-964-719-0633',
-
-    address: '580 Danielle Squares, Brunomouth, AK 01918',
-
-    status: 'Customer',
-
-    firstName: "Y'all never listen to me",
-
-    lastName: "That's messed up",
-
-    source: 'Website',
-  },
-
-  {
-    name: 'Max Born',
-
-    email: 'bernadette@christiansen.com',
-
-    phone: '708-589-8243 x11111',
-
-    address: 'Suite 943 3091 Berry Meadows, Shaylamouth, DE 71909',
-
-    status: 'Customer',
-
-    firstName: 'I got that scurvy',
-
-    lastName: 'Turd gone wrong',
-
-    source: 'Facebook',
-  },
-
-  {
     name: 'Albert Einstein',
 
-    email: 'eva_boyle@boyle.co',
+    email: 'rolando@padberg.biz',
 
-    phone: '658-020-8235 x87607',
+    phone: '562-799-0324 x451',
 
-    address: 'Apt. 815 9442 Jc Passage, East Sookborough, MO 97923-7154',
+    address: '38261 Korey Harbor, New Odell, MT 49043-7163',
 
-    status: 'Lead',
+    status: 'Prospect',
 
-    firstName: "It's around here somewhere",
+    firstName: 'My boss gonna fire me',
 
-    lastName: 'That goddamn Datamate',
+    lastName: 'Might be DQ time',
 
-    source: 'Website',
+    source: 'Google Ads',
   },
 
   {
-    name: 'Jean Piaget',
+    name: 'Ernst Mayr',
 
-    email: 'michal_goldner@nolan.info',
+    email: 'charlie.terry@satterfield-lemke.io',
 
-    phone: '814.673.4642 x25421',
+    phone: '(409) 832-3398 x3831',
 
-    address: 'Apt. 509 2079 Becker Underpass, West Beulahaven, MS 40957',
+    address: '63571 Sharyl Walk, Port Ahmedville, RI 28680-2529',
+
+    status: 'Prospect',
+
+    firstName: "How 'bout them Cowboys",
+
+    lastName: 'That damn gimble',
+
+    source: 'Google Ads',
+  },
+
+  {
+    name: 'Gregor Mendel',
+
+    email: 'catalina_armstrong@dickens.info',
+
+    phone: '642.725.1654 x664',
+
+    address: '8656 Kohler Islands, North Maryrose, PA 50935',
 
     status: 'Customer',
 
-    firstName: 'That damn diabetes',
+    firstName: 'Got depression, Smith and Wessen',
 
-    lastName: 'That damn diabetes',
+    lastName: "Y'all never listen to me",
 
-    source: 'Website',
+    source: 'Google Ads',
   },
 
   {
-    name: 'Euclid',
+    name: 'Ernest Rutherford',
 
-    email: 'daryl.turner@kemmer-schimmel.com',
+    email: 'edith@welch-wilkinson.com',
 
-    phone: '(287) 283-0586',
+    phone: '(976) 462-9103 x326',
 
-    address: '741 Dwain Dam, East Onachester, DE 59807-2857',
+    address: 'Apt. 454 1533 Kozey Mission, Terenceville, AR 97671-4911',
 
     status: 'Lead',
 
-    firstName: 'Let me tell ya',
+    firstName: 'That damn gimble',
 
-    lastName: 'Standby',
+    lastName: "It's around here somewhere",
+
+    source: 'Other',
+  },
+
+  {
+    name: 'Ludwig Boltzmann',
+
+    email: 'lela@dickinson.info',
+
+    phone: '977.098.6434 x659',
+
+    address: 'Suite 145 943 Denesik Mill, West Manuelview, MO 53185',
+
+    status: 'Prospect',
+
+    firstName: 'I want my damn cart back',
+
+    lastName: 'Let me tell ya',
 
     source: 'Google Ads',
   },
@@ -127,132 +127,77 @@ const ContactsData = [
 
 const EstimatesData = [
   {
-    name: 'Neils Bohr',
-
-    description:
-      'Death is a natural part of life. Rejoice for those around you who transform into the Force. Mourn them do not. Miss them do not. Attachment leads to jealously. The shadow of greed, that is.',
-
-    trade: 'No one tells me shit',
-
-    template_used: "How 'bout them Cowboys",
-
-    material_cost: 89.56,
-
-    labor_cost: 93.47,
-
-    markup: 31.63,
-
-    profit_margin: 17.47,
-
-    total_price: 81.43,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    status: 'New',
-  },
-
-  {
-    name: 'Frederick Gowland Hopkins',
-
-    description:
-      'Pain, suffering, death I feel. Something terrible has happened. Young Skywalker is in pain. Terrible pain',
-
-    trade: 'Standby',
-
-    template_used: "That Barbala couldn't fly his way out of a wet paper bag",
-
-    material_cost: 80.48,
-
-    labor_cost: 81.33,
-
-    markup: 56.29,
-
-    profit_margin: 13.96,
-
-    total_price: 80.17,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    status: 'Sent',
-  },
-
-  {
-    name: 'Sigmund Freud',
-
-    description:
-      'The dark side clouds everything. Impossible to see the future is.',
-
-    trade: "How 'bout them Cowboys",
-
-    template_used: 'Reminds me of my old girlfriend Olga Goodntight',
-
-    material_cost: 37.11,
-
-    labor_cost: 70.58,
-
-    markup: 11.78,
-
-    profit_margin: 48.63,
-
-    total_price: 56.04,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    status: 'Sent',
-  },
-
-  {
-    name: 'Erwin Schrodinger',
-
-    description:
-      'Like fire across the galaxy the Clone Wars spread. In league with the wicked Count Dooku, more and more planets slip. Against this threat, upon the Jedi Knights falls the duty to lead the newly formed army of the Republic. And as the heat of war grows, so, to, grows the prowess of one most gifted student of the Force.',
-
-    trade: "I'm washing my hands of it",
-
-    template_used: 'My buddy Harlen',
-
-    material_cost: 38.45,
-
-    labor_cost: 59.81,
-
-    markup: 26.74,
-
-    profit_margin: 78.42,
-
-    total_price: 13.76,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    status: 'New',
-  },
-
-  {
-    name: 'Gustav Kirchhoff',
+    name: 'Paul Ehrlich',
 
     description:
       'Much to learn you still have my old padawan. ... This is just the beginning!',
 
-    trade: 'Texas!',
+    trade: "It's around here somewhere",
 
-    template_used: 'Come on now',
+    template_used: "Y'all never listen to me",
 
-    material_cost: 70.34,
+    material_cost: 20.84,
 
-    labor_cost: 72.55,
+    labor_cost: 78.64,
 
-    markup: 70.74,
+    markup: 16.05,
 
-    profit_margin: 23.28,
+    profit_margin: 98.35,
 
-    total_price: 19.45,
+    total_price: 28.61,
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    status: 'Sent',
+  },
+
+  {
+    name: 'Alfred Kinsey',
+
+    description: 'Good relations with the Wookiees, I have.',
+
+    trade: 'I want my damn cart back',
+
+    template_used: 'I want my damn cart back',
+
+    material_cost: 10.82,
+
+    labor_cost: 13.41,
+
+    markup: 81.86,
+
+    profit_margin: 13.35,
+
+    total_price: 97.77,
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    status: 'New',
+  },
+
+  {
+    name: 'Emil Kraepelin',
+
+    description:
+      'Through the Force, things you will see. Other places. The future - the past. Old friends long gone.',
+
+    trade: "I'm washing my hands of it",
+
+    template_used: 'So I was walking Oscar',
+
+    material_cost: 56.88,
+
+    labor_cost: 42.22,
+
+    markup: 53.47,
+
+    profit_margin: 41.84,
+
+    total_price: 92.61,
 
     // type code here for "relation_one" field
 
@@ -260,98 +205,70 @@ const EstimatesData = [
 
     status: 'Approved',
   },
+
+  {
+    name: 'Neils Bohr',
+
+    description: 'Do. Or do not. There is no try.',
+
+    trade: 'That damn Bill Stull',
+
+    template_used: 'Let me tell ya',
+
+    material_cost: 50.69,
+
+    labor_cost: 90.75,
+
+    markup: 96.68,
+
+    profit_margin: 31.18,
+
+    total_price: 21.89,
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    status: 'New',
+  },
+
+  {
+    name: 'Sigmund Freud',
+
+    description:
+      'Do not assume anything Obi-Wan. Clear your mind must be if you are to discover the real villains behind this plot.',
+
+    trade: "Y'all never listen to me",
+
+    template_used: 'That damn diabetes',
+
+    material_cost: 80.09,
+
+    labor_cost: 79.79,
+
+    markup: 32.67,
+
+    profit_margin: 25.63,
+
+    total_price: 68.13,
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    status: 'New',
+  },
 ];
 
 const JobsData = [
   {
-    name: 'Claude Levi-Strauss',
+    name: 'Alfred Kinsey',
 
-    description:
-      'Yes, a Jedi’s strength flows from the Force. But beware of the dark side. Anger, fear, aggression; the dark side of the Force are they. Easily they flow, quick to join you in a fight. If once you start down the dark path, forever will it dominate your destiny, consume you it will, as it did Obi-Wan’s apprentice.',
-
-    category: 'Residential',
-
-    type: 'Warranty',
-
-    status: 'Invoiced',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "images" field
-
-    // type code here for "files" field
-
-    address: '2889 Medhurst Bypass, Casperchester, MA 71404',
-
-    start_date: new Date('2024-06-02'),
-
-    end_date: new Date('2023-09-24'),
-  },
-
-  {
-    name: 'Max Born',
-
-    description:
-      'Through the Force, things you will see. Other places. The future - the past. Old friends long gone.',
-
-    category: 'PropertyManagement',
-
-    type: 'New',
-
-    status: 'Active',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "images" field
-
-    // type code here for "files" field
-
-    address: '27106 Krajcik Parkways, Lake Jc, IL 61768-0761',
-
-    start_date: new Date('2023-10-20'),
-
-    end_date: new Date('2024-01-03'),
-  },
-
-  {
-    name: 'Frederick Sanger',
-
-    description: 'To answer power with power, the Jedi way this is',
-
-    category: 'PropertyManagement',
-
-    type: 'Insurance',
-
-    status: 'Invoiced',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "images" field
-
-    // type code here for "files" field
-
-    address: 'Apt. 873 39564 Amina Ports, Priceborough, IA 98906',
-
-    start_date: new Date('2023-12-31'),
-
-    end_date: new Date('2023-07-16'),
-  },
-
-  {
-    name: 'Dmitri Mendeleev',
-
-    description:
-      'Always two there are, no more, no less. A master and an apprentice.',
+    description: 'That is why you fail.',
 
     category: 'Commercial',
 
-    type: 'Warranty',
+    type: 'Inspection',
 
     status: 'Quoted',
 
@@ -363,23 +280,102 @@ const JobsData = [
 
     // type code here for "files" field
 
-    address: '6450 Collin Road, North Laquita, OR 26682-2856',
+    address: 'Apt. 170 4000 King Garden, Ahmadmouth, OR 14195-0373',
 
-    start_date: new Date('2024-06-25'),
+    start_date: new Date('2023-09-13'),
 
-    end_date: new Date('2024-02-26'),
+    end_date: new Date('2024-05-18'),
   },
 
   {
-    name: 'James Watson',
+    name: 'August Kekule',
 
-    description:
-      'Always two there are, no more, no less. A master and an apprentice.',
+    description: 'Mudhole? Slimy? My home this is!',
 
     category: 'Residential',
 
     type: 'Service',
 
+    status: 'Completed',
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    // type code here for "images" field
+
+    // type code here for "files" field
+
+    address: 'Apt. 833 784 Janell Squares, Wernerfort, AR 36907-4065',
+
+    start_date: new Date('2023-12-26'),
+
+    end_date: new Date('2023-09-20'),
+  },
+
+  {
+    name: 'Jean Piaget',
+
+    description:
+      'Like fire across the galaxy the Clone Wars spread. In league with the wicked Count Dooku, more and more planets slip. Against this threat, upon the Jedi Knights falls the duty to lead the newly formed army of the Republic. And as the heat of war grows, so, to, grows the prowess of one most gifted student of the Force.',
+
+    category: 'Residential',
+
+    type: 'Service',
+
+    status: 'Completed',
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    // type code here for "images" field
+
+    // type code here for "files" field
+
+    address: '56743 Waters Corner, Port Ignaciochester, OR 99538-4219',
+
+    start_date: new Date('2024-02-20'),
+
+    end_date: new Date('2023-11-21'),
+  },
+
+  {
+    name: 'Charles Darwin',
+
+    description:
+      'Always two there are, no more, no less. A master and an apprentice.',
+
+    category: 'Residential',
+
+    type: 'Retail',
+
+    status: 'Completed',
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    // type code here for "images" field
+
+    // type code here for "files" field
+
+    address: '65523 McGlynn Roads, Hilllton, FL 61059',
+
+    start_date: new Date('2024-06-03'),
+
+    end_date: new Date('2024-04-23'),
+  },
+
+  {
+    name: 'Jean Piaget',
+
+    description: 'Mudhole? Slimy? My home this is!',
+
+    category: 'PropertyManagement',
+
+    type: 'Retail',
+
     status: 'Quoted',
 
     // type code here for "relation_one" field
@@ -390,55 +386,53 @@ const JobsData = [
 
     // type code here for "files" field
 
-    address: 'Suite 183 1171 Stiedemann Inlet, Boscohaven, VA 30436-9282',
+    address: '717 Sherwood Lane, Port Zacharychester, GA 03297',
 
-    start_date: new Date('2023-07-19'),
+    start_date: new Date('2023-10-07'),
 
-    end_date: new Date('2023-09-09'),
+    end_date: new Date('2023-08-13'),
   },
 ];
 
 const TemplatesData = [
   {
-    name: 'Paul Ehrlich',
+    name: 'Erwin Schrodinger',
 
-    description: 'Reckless he is. Matters are worse.',
+    description:
+      'Death is a natural part of life. Rejoice for those around you who transform into the Force. Mourn them do not. Miss them do not. Attachment leads to jealously. The shadow of greed, that is.',
 
     // type code here for "relation_one" field
   },
 
   {
-    name: 'Paul Ehrlich',
+    name: 'Alfred Wegener',
 
     description:
-      'Ready are you? What know you of ready? For eight hundred years have I trained Jedi. My own counsel will I keep on who is to be trained. A Jedi must have the deepest commitment, the most serious mind. This one a long time have I watched. All his life has he looked away - to the future, to the horizon. Never his mind on where he was. Hmm? What he was doing. Hmph. Adventure. Heh. Excitement. Heh. A Jedi craves not these things. You are reckless.',
+      'Much to learn you still have my old padawan. ... This is just the beginning!',
 
     // type code here for "relation_one" field
   },
 
   {
-    name: 'Karl Landsteiner',
+    name: 'August Kekule',
 
-    description:
-      'Through the Force, things you will see. Other places. The future - the past. Old friends long gone.',
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Justus Liebig',
-
-    description:
-      'Do not assume anything Obi-Wan. Clear your mind must be if you are to discover the real villains behind this plot.',
+    description: 'Truly wonderful, the mind of a child is.',
 
     // type code here for "relation_one" field
   },
 
   {
-    name: 'Hans Selye',
+    name: 'Charles Darwin',
 
-    description:
-      'Once you start down the dark path, forever will it dominate your destiny, consume you it will.',
+    description: 'Younglings, younglings gather ’round.',
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    name: 'Ernst Mayr',
+
+    description: 'Good relations with the Wookiees, I have.',
 
     // type code here for "relation_one" field
   },
@@ -446,15 +440,7 @@ const TemplatesData = [
 
 const TradesData = [
   {
-    name: 'Tycho Brahe',
-  },
-
-  {
-    name: 'Wilhelm Wundt',
-  },
-
-  {
-    name: 'Carl Linnaeus',
+    name: 'Lucretius',
   },
 
   {
@@ -462,77 +448,85 @@ const TradesData = [
   },
 
   {
-    name: 'Charles Lyell',
+    name: 'Wilhelm Wundt',
+  },
+
+  {
+    name: 'Robert Koch',
+  },
+
+  {
+    name: 'Anton van Leeuwenhoek',
   },
 ];
 
 const InvoicesData = [
   {
-    invoice_number: 'Standby',
+    invoice_number: 'I got that scurvy',
 
-    invoice_date: new Date('2024-03-12'),
+    invoice_date: new Date('2023-09-29'),
 
-    terms: 'Net 45 Days',
+    terms: 'Net 10 Days',
 
-    approved_job_value: 86.43,
+    approved_job_value: 53.59,
 
-    balance_amount: 40.11,
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    invoice_number: 'So I was walking Oscar',
-
-    invoice_date: new Date('2023-11-06'),
-
-    terms: 'Net 45 Days',
-
-    approved_job_value: 95.26,
-
-    balance_amount: 18.57,
+    balance_amount: 16.03,
 
     // type code here for "relation_one" field
   },
 
   {
-    invoice_number: 'I tell you what',
+    invoice_number: "How 'bout them Cowboys",
 
-    invoice_date: new Date('2024-06-09'),
+    invoice_date: new Date('2023-11-24'),
+
+    terms: 'Net 10 Days',
+
+    approved_job_value: 34.39,
+
+    balance_amount: 24.21,
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    invoice_number: 'That damn diabetes',
+
+    invoice_date: new Date('2024-02-18'),
 
     terms: 'By Due Date',
 
-    approved_job_value: 44.67,
+    approved_job_value: 93.17,
 
-    balance_amount: 55.01,
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    invoice_number: 'Yup',
-
-    invoice_date: new Date('2023-10-27'),
-
-    terms: 'Upon Receipt',
-
-    approved_job_value: 22.83,
-
-    balance_amount: 27.77,
+    balance_amount: 42.22,
 
     // type code here for "relation_one" field
   },
 
   {
-    invoice_number: 'Might be DQ time',
+    invoice_number: "It's around here somewhere",
 
-    invoice_date: new Date('2023-08-06'),
+    invoice_date: new Date('2024-07-13'),
 
-    terms: 'Net 45 Days',
+    terms: 'Net 10 Days',
 
-    approved_job_value: 86.67,
+    approved_job_value: 26.99,
 
-    balance_amount: 42.14,
+    balance_amount: 68.07,
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    invoice_number: 'That goddamn Datamate',
+
+    invoice_date: new Date('2024-03-18'),
+
+    terms: 'Net 10 Days',
+
+    approved_job_value: 59.94,
+
+    balance_amount: 57.29,
 
     // type code here for "relation_one" field
   },
@@ -540,19 +534,9 @@ const InvoicesData = [
 
 const OrdersData = [
   {
-    order_number: 'Turd gone wrong',
+    order_number: 'Contact the tower',
 
-    total_amount: 76.73,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    order_number: 'My boss gonna fire me',
-
-    total_amount: 79.68,
+    total_amount: 55.23,
 
     // type code here for "relation_one" field
 
@@ -560,19 +544,9 @@ const OrdersData = [
   },
 
   {
-    order_number: 'That goddamn Datamate',
+    order_number: 'Reminds me of my old girlfriend Olga Goodntight',
 
-    total_amount: 11.75,
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    order_number: 'Got depression, Smith and Wessen',
-
-    total_amount: 64.33,
+    total_amount: 93.87,
 
     // type code here for "relation_one" field
 
@@ -580,9 +554,29 @@ const OrdersData = [
   },
 
   {
-    order_number: 'My boss gonna fire me',
+    order_number: "Goin' hog huntin'",
 
-    total_amount: 39.93,
+    total_amount: 62.24,
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    order_number: 'I want my 5$ back',
+
+    total_amount: 65.53,
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    order_number: "Y'all never listen to me",
+
+    total_amount: 98.16,
 
     // type code here for "relation_one" field
 
@@ -594,7 +588,7 @@ const ImagesData = [
   {
     // type code here for "images" field
 
-    Name: 'I tell you what',
+    Name: 'So I was walking Oscar',
 
     // type code here for "relation_one" field
   },
@@ -602,7 +596,7 @@ const ImagesData = [
   {
     // type code here for "images" field
 
-    Name: 'Contact the tower',
+    Name: 'Got depression, Smith and Wessen',
 
     // type code here for "relation_one" field
   },
@@ -610,7 +604,7 @@ const ImagesData = [
   {
     // type code here for "images" field
 
-    Name: 'Always the last one to the party',
+    Name: "It's around here somewhere",
 
     // type code here for "relation_one" field
   },
@@ -618,7 +612,7 @@ const ImagesData = [
   {
     // type code here for "images" field
 
-    Name: 'Let me tell ya',
+    Name: 'Got depression, Smith and Wessen',
 
     // type code here for "relation_one" field
   },
@@ -626,7 +620,7 @@ const ImagesData = [
   {
     // type code here for "images" field
 
-    Name: 'I want my damn cart back',
+    Name: "That's messed up",
 
     // type code here for "relation_one" field
   },
@@ -634,31 +628,31 @@ const ImagesData = [
 
 const DocumentsData = [
   {
-    name: 'Claude Levi-Strauss',
+    name: 'Sigmund Freud',
 
     // type code here for "relation_one" field
   },
 
   {
-    name: 'Richard Feynman',
+    name: 'Murray Gell-Mann',
 
     // type code here for "relation_one" field
   },
 
   {
-    name: 'Gertrude Belle Elion',
+    name: 'Leonard Euler',
 
     // type code here for "relation_one" field
   },
 
   {
-    name: 'Alfred Wegener',
+    name: 'Marie Curie',
 
     // type code here for "relation_one" field
   },
 
   {
-    name: 'Ernst Haeckel',
+    name: 'Comte de Buffon',
 
     // type code here for "relation_one" field
   },
@@ -702,7 +696,7 @@ const ChatsData = [
 
     // type code here for "relation_many" field
 
-    name: 'Claude Levi-Strauss',
+    name: 'Arthur Eddington',
   },
 
   {
@@ -710,7 +704,7 @@ const ChatsData = [
 
     // type code here for "relation_many" field
 
-    name: 'Antoine Laurent Lavoisier',
+    name: 'Comte de Buffon',
   },
 
   {
@@ -718,7 +712,7 @@ const ChatsData = [
 
     // type code here for "relation_many" field
 
-    name: 'Stephen Hawking',
+    name: 'Erwin Schrodinger',
   },
 
   {
@@ -726,7 +720,7 @@ const ChatsData = [
 
     // type code here for "relation_many" field
 
-    name: 'Paul Ehrlich',
+    name: 'Albrecht von Haller',
   },
 
   {
@@ -734,7 +728,7 @@ const ChatsData = [
 
     // type code here for "relation_many" field
 
-    name: 'Edward Teller',
+    name: 'George Gaylord Simpson',
   },
 ];
 
@@ -742,11 +736,11 @@ const AppointmentsData = [
   {
     subject: 'Come on now',
 
-    start_time: new Date('2023-10-30'),
+    start_time: new Date('2023-09-17'),
 
-    end_time: new Date('2023-12-15'),
+    end_time: new Date('2024-04-26'),
 
-    notes: 'You will find only what you bring in.',
+    notes: 'The dark side clouds everything. Impossible to see the future is.',
 
     // type code here for "relation_one" field
 
@@ -756,14 +750,13 @@ const AppointmentsData = [
   },
 
   {
-    subject: 'My buddy Harlen',
+    subject: 'Reminds me of my old girlfriend Olga Goodntight',
 
-    start_time: new Date('2023-12-13'),
+    start_time: new Date('2024-04-13'),
 
-    end_time: new Date('2024-05-04'),
+    end_time: new Date('2024-03-04'),
 
-    notes:
-      'Once you start down the dark path, forever will it dominate your destiny, consume you it will.',
+    notes: 'Younglings, younglings gather ’round.',
 
     // type code here for "relation_one" field
 
@@ -775,28 +768,11 @@ const AppointmentsData = [
   {
     subject: 'That damn Bill Stull',
 
-    start_time: new Date('2023-08-13'),
+    start_time: new Date('2023-10-14'),
 
-    end_time: new Date('2024-03-06'),
+    end_time: new Date('2023-08-07'),
 
-    notes:
-      'Soon will I rest, yes, forever sleep. Earned it I have. Twilight is upon me, soon night must fall.',
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    subject: 'So I was walking Oscar',
-
-    start_time: new Date('2023-12-10'),
-
-    end_time: new Date('2024-01-14'),
-
-    notes: 'Not if anything to say about it I have',
+    notes: 'Hmm. In the end, cowards are those who follow the dark side.',
 
     // type code here for "relation_one" field
 
@@ -806,14 +782,29 @@ const AppointmentsData = [
   },
 
   {
-    subject: "I'm washing my hands of it",
+    subject: 'Standby',
 
-    start_time: new Date('2024-03-28'),
+    start_time: new Date('2024-03-27'),
 
-    end_time: new Date('2024-03-19'),
+    end_time: new Date('2024-04-10'),
 
-    notes:
-      'Always two there are, no more, no less. A master and an apprentice.',
+    notes: 'Feel the force!',
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    subject: 'That damn gimble',
+
+    start_time: new Date('2023-10-03'),
+
+    end_time: new Date('2023-07-25'),
+
+    notes: 'Hmm. In the end, cowards are those who follow the dark side.',
 
     // type code here for "relation_one" field
 
@@ -825,57 +816,57 @@ const AppointmentsData = [
 
 const TasksData = [
   {
+    subject: 'I want my damn cart back',
+
+    // type code here for "relation_one" field
+
+    status: 'Accepted',
+
+    priority: 'High',
+
+    due_date: new Date('2024-03-16'),
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    subject: 'Might be DQ time',
+
+    // type code here for "relation_one" field
+
+    status: 'Accepted',
+
+    priority: 'Medium',
+
+    due_date: new Date('2024-03-02'),
+
+    // type code here for "relation_one" field
+  },
+
+  {
     subject: "That's messed up",
 
     // type code here for "relation_one" field
 
-    status: 'Accepted',
+    status: 'Open',
 
     priority: 'Low',
 
-    due_date: new Date('2024-01-05'),
+    due_date: new Date('2024-01-12'),
 
     // type code here for "relation_one" field
   },
 
   {
-    subject: "I'm washing my hands of it",
+    subject: 'That damn diabetes',
 
     // type code here for "relation_one" field
 
     status: 'Open',
 
-    priority: 'Medium',
+    priority: 'High',
 
-    due_date: new Date('2023-07-31'),
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    subject: 'Reminds me of my old girlfriend Olga Goodntight',
-
-    // type code here for "relation_one" field
-
-    status: 'Accepted',
-
-    priority: 'Low',
-
-    due_date: new Date('2024-06-28'),
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    subject: 'Contact the tower',
-
-    // type code here for "relation_one" field
-
-    status: 'Open',
-
-    priority: 'Low',
-
-    due_date: new Date('2024-04-22'),
+    due_date: new Date('2023-08-11'),
 
     // type code here for "relation_one" field
   },
@@ -885,11 +876,11 @@ const TasksData = [
 
     // type code here for "relation_one" field
 
-    status: 'Open',
+    status: 'Accepted',
 
-    priority: 'Low',
+    priority: 'High',
 
-    due_date: new Date('2023-08-17'),
+    due_date: new Date('2024-01-13'),
 
     // type code here for "relation_one" field
   },
@@ -897,15 +888,29 @@ const TasksData = [
 
 const ContractsData = [
   {
-    name: 'Charles Sherrington',
+    name: 'B. F. Skinner',
 
-    amount: 76.29,
+    amount: 42.34,
 
-    body: 'Pain, suffering, death I feel. Something terrible has happened. Young Skywalker is in pain. Terrible pain',
+    body: 'Do. Or do not. There is no try.',
 
     // type code here for "relation_one" field
 
-    signed_date: new Date('2024-04-16'),
+    signed_date: new Date('2023-09-25'),
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    name: 'Edward O. Wilson',
+
+    amount: 76.18,
+
+    body: 'Through the Force, things you will see. Other places. The future - the past. Old friends long gone.',
+
+    // type code here for "relation_one" field
+
+    signed_date: new Date('2024-04-03'),
 
     // type code here for "relation_one" field
   },
@@ -913,55 +918,41 @@ const ContractsData = [
   {
     name: 'Willard Libby',
 
-    amount: 38.87,
+    amount: 83.25,
 
-    body: 'Death is a natural part of life. Rejoice for those around you who transform into the Force. Mourn them do not. Miss them do not. Attachment leads to jealously. The shadow of greed, that is.',
-
-    // type code here for "relation_one" field
-
-    signed_date: new Date('2023-11-02'),
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Sigmund Freud',
-
-    amount: 23.78,
-
-    body: 'Good relations with the Wookiees, I have.',
-
-    // type code here for "relation_one" field
-
-    signed_date: new Date('2024-05-10'),
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Frederick Sanger',
-
-    amount: 30.67,
-
-    body: 'Luminous beings are we - not this crude matter.',
-
-    // type code here for "relation_one" field
-
-    signed_date: new Date('2024-05-17'),
-
-    // type code here for "relation_one" field
-  },
-
-  {
-    name: 'Frederick Sanger',
-
-    amount: 49.61,
-
-    body: 'Your weapons, you will not need them.',
+    body: 'Strong is Vader. Mind what you have learned. Save you it can.',
 
     // type code here for "relation_one" field
 
     signed_date: new Date('2023-08-06'),
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    name: 'Claude Bernard',
+
+    amount: 86.07,
+
+    body: 'Ow, ow, OW! On my ear you are!',
+
+    // type code here for "relation_one" field
+
+    signed_date: new Date('2024-01-08'),
+
+    // type code here for "relation_one" field
+  },
+
+  {
+    name: 'Louis Pasteur',
+
+    amount: 54.83,
+
+    body: 'Do not assume anything Obi-Wan. Clear your mind must be if you are to discover the real villains behind this plot.',
+
+    // type code here for "relation_one" field
+
+    signed_date: new Date('2024-03-25'),
 
     // type code here for "relation_one" field
   },
@@ -971,9 +962,19 @@ const AmendmentsData = [
   {
     // type code here for "relation_one" field
 
+    type: 'Upgrade',
+
+    amount: 35.46,
+
+    description: 'Already know you that which you need.',
+  },
+
+  {
+    // type code here for "relation_one" field
+
     type: 'Discount',
 
-    amount: 52.64,
+    amount: 15.26,
 
     description: 'Hmm. In the end, cowards are those who follow the dark side.',
   },
@@ -981,43 +982,33 @@ const AmendmentsData = [
   {
     // type code here for "relation_one" field
 
-    type: 'Insurance Claim',
+    type: 'Upgrade',
 
-    amount: 87.14,
-
-    description:
-      'Through the Force, things you will see. Other places. The future - the past. Old friends long gone.',
-  },
-
-  {
-    // type code here for "relation_one" field
-
-    type: 'Change Order',
-
-    amount: 92.38,
-
-    description: 'Mudhole? Slimy? My home this is!',
-  },
-
-  {
-    // type code here for "relation_one" field
-
-    type: 'Supplement',
-
-    amount: 55.38,
-
-    description: 'Younglings, younglings gather ’round.',
-  },
-
-  {
-    // type code here for "relation_one" field
-
-    type: 'Insurance Claim',
-
-    amount: 68.17,
+    amount: 75.48,
 
     description:
       'Strong is Vader. Mind what you have learned. Save you it can.',
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    type: 'Upgrade',
+
+    amount: 93.67,
+
+    description: 'Ow, ow, OW! On my ear you are!',
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    type: 'Insurance Claim',
+
+    amount: 30.39,
+
+    description:
+      'Do not assume anything Obi-Wan. Clear your mind must be if you are to discover the real villains behind this plot.',
   },
 ];
 
@@ -1027,16 +1018,15 @@ const EstimateSectionsData = [
 
     // type code here for "relation_one" field
 
-    amount: 75.61,
+    amount: 17.09,
 
-    material_price: 12.55,
+    material_price: 76.25,
 
-    labor_price: 70.69,
+    labor_price: 40.56,
 
-    name: 'Karl Landsteiner',
+    name: 'Louis Pasteur',
 
-    description:
-      'The dark side clouds everything. Impossible to see the future is.',
+    description: 'Hmm. In the end, cowards are those who follow the dark side.',
   },
 
   {
@@ -1044,15 +1034,15 @@ const EstimateSectionsData = [
 
     // type code here for "relation_one" field
 
-    amount: 48.92,
+    amount: 78.61,
 
-    material_price: 67.95,
+    material_price: 67.82,
 
-    labor_price: 62.81,
+    labor_price: 28.99,
 
-    name: 'Arthur Eddington',
+    name: 'Edward Teller',
 
-    description: 'That is why you fail.',
+    description: 'To answer power with power, the Jedi way this is',
   },
 
   {
@@ -1060,16 +1050,31 @@ const EstimateSectionsData = [
 
     // type code here for "relation_one" field
 
-    amount: 28.97,
+    amount: 67.77,
 
-    material_price: 54.11,
+    material_price: 26.13,
 
-    labor_price: 69.03,
+    labor_price: 76.03,
+
+    name: 'Heike Kamerlingh Onnes',
+
+    description: 'Truly wonderful, the mind of a child is.',
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    // type code here for "relation_one" field
+
+    amount: 90.45,
+
+    material_price: 76.04,
+
+    labor_price: 44.68,
 
     name: 'Wilhelm Wundt',
 
-    description:
-      'Pain, suffering, death I feel. Something terrible has happened. Young Skywalker is in pain. Terrible pain',
+    description: 'Difficult to see. Always in motion is the future...',
   },
 
   {
@@ -1077,32 +1082,15 @@ const EstimateSectionsData = [
 
     // type code here for "relation_one" field
 
-    amount: 54.73,
+    amount: 11.99,
 
-    material_price: 65.45,
+    material_price: 60.99,
 
-    labor_price: 48.61,
+    labor_price: 31.11,
 
-    name: 'Ernst Haeckel',
+    name: 'Paul Ehrlich',
 
-    description: 'Younglings, younglings gather ’round.',
-  },
-
-  {
-    // type code here for "relation_one" field
-
-    // type code here for "relation_one" field
-
-    amount: 10.13,
-
-    material_price: 58.04,
-
-    labor_price: 94.03,
-
-    name: 'Gustav Kirchhoff',
-
-    description:
-      'Always two there are, no more, no less. A master and an apprentice.',
+    description: 'That is why you fail.',
   },
 ];
 

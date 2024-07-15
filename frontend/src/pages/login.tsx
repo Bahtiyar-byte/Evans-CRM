@@ -24,6 +24,8 @@ import { getPexelsImage, getPexelsVideo } from '../helpers/pexels';
 export default function Login() {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const textColor = useAppSelector((state) => state.style.linkColor);
+  const iconsColor = useAppSelector((state) => state.style.iconsColor);
   const notify = (type, msg) => toast(msg, { type });
   const [illustrationImage, setIllustrationImage] = useState({
     src: undefined,
@@ -190,12 +192,12 @@ export default function Login() {
           <div className='flex items-center justify-center flex-col space-y-4 w-full lg:w-full'>
             <CardBox className='w-full md:w-3/5 lg:w-2/3'>
               <h2 className='text-4xl font-semibold my-4'>Evans CRM</h2>
-              <div className='flex flex-row justify-between'>
+              <div className='flex flex-row text-gray-500 justify-between'>
                 <div>
                   <p className='mb-2'>
                     Use{' '}
                     <code
-                      className={'cursor-pointer text-pavitra-blue'}
+                      className={`cursor-pointer ${textColor} `}
                       onClick={(e) => setLogin(e.target)}
                     >
                       admin@flatlogic.com
@@ -205,7 +207,7 @@ export default function Login() {
                   <p>
                     Use{' '}
                     <code
-                      className={'cursor-pointer text-pavitra-blue'}
+                      className={`cursor-pointer ${textColor} `}
                       onClick={(e) => setLogin(e.target)}
                     >
                       client@hello.com
@@ -215,7 +217,7 @@ export default function Login() {
                 </div>
                 <div>
                   <BaseIcon
-                    className='text-blue-500'
+                    className={`${iconsColor}`}
                     w='w-16'
                     h='h-16'
                     size={48}
@@ -245,7 +247,10 @@ export default function Login() {
                       <Field type='checkbox' name='remember' />
                     </FormCheckRadio>
 
-                    <Link className={'text-blue-600'} href={'/forgot'}>
+                    <Link
+                      className={`${textColor} text-blue-600`}
+                      href={'/forgot'}
+                    >
                       Forgot password?
                     </Link>
                   </div>
@@ -262,9 +267,9 @@ export default function Login() {
                     />
                   </BaseButtons>
                   <br />
-                  <p className={'text-center text-gray-600'}>
+                  <p className={'text-center'}>
                     Don’t have account yet?{' '}
-                    <Link className={'text-blue-600'} href={'/register'}>
+                    <Link className={`${textColor}`} href={'/register'}>
                       New Account
                     </Link>
                   </p>

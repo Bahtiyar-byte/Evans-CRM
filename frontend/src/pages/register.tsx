@@ -52,8 +52,6 @@ export default function Register() {
             onSubmit={(values) => handleSubmit(values)}
           >
             <Form>
-              <label className='block font-bold mb-2'>Organization</label>
-
               <FormField label='Email' help='Please enter your email'>
                 <Field type='email' name='email' />
               </FormField>

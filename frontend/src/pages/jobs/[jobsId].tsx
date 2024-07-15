@@ -127,7 +127,7 @@ const EditJobs = () => {
               </FormField>
 
               <FormField label='Category' labelFor='category'>
-                <Field name='Category' id='Category' component='select'>
+                <Field name='category' id='category' component='select'>
                   <option value='Commercial'>Commercial</option>
 
                   <option value='PropertyManagement'>PropertyManagement</option>
@@ -137,7 +137,7 @@ const EditJobs = () => {
               </FormField>
 
               <FormField label='Type' labelFor='type'>
-                <Field name='Type' id='Type' component='select'>
+                <Field name='type' id='type' component='select'>
                   <option value='New'>New</option>
 
                   <option value='Repair'>Repair</option>
@@ -155,7 +155,7 @@ const EditJobs = () => {
               </FormField>
 
               <FormField label='Status' labelFor='status'>
-                <Field name='Status' id='Status' component='select'>
+                <Field name='status' id='status' component='select'>
                   <option value='Quoted'>Quoted</option>
 
                   <option value='Approved'>Approved</option>

@@ -18,6 +18,9 @@ import { SmartWidget } from '../components/SmartWidget/SmartWidget';
 import { useAppDispatch, useAppSelector } from '../stores/hooks';
 const Dashboard = () => {
   const dispatch = useAppDispatch();
+  const iconsColor = useAppSelector((state) => state.style.iconsColor);
+  const corners = useAppSelector((state) => state.style.corners);
+  const cardsStyle = useAppSelector((state) => state.style.cardsStyle);
 
   const [users, setUsers] = React.useState('Loading...');
   const [contacts, setContacts] = React.useState('Loading...');
@@ -155,16 +158,20 @@ const Dashboard = () => {
         )}
         {!!rolesWidgets.length &&
           hasPermission(currentUser, 'CREATE_ROLES') && (
-            <p className='text-gray-500 dark:text-gray-400 mb-4'>
+            <p className='  text-gray-500 dark:text-gray-400 mb-4'>
               {`${widgetsRole?.role?.label || 'Users'}'s widgets`}
             </p>
           )}
 
         <div className='grid grid-cols-1 gap-6 lg:grid-cols-4 mb-6 grid-flow-dense'>
           {(isFetchingQuery || loading) && (
-            <div className='rounded dark:bg-dark-900 text-lg leading-tight text-gray-500 flex items-center bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+            <div
+              className={` ${
+                corners !== 'rounded-full' ? corners : 'rounded-3xl'
+              } dark:bg-dark-900 text-lg leading-tight   text-gray-500 flex items-center ${cardsStyle} dark:border-dark-700 p-6`}
+            >
               <BaseIcon
-                className='text-blue-500 animate-spin mr-5'
+                className={`${iconsColor} animate-spin mr-5`}
                 w='w-16'
                 h='h-16'
                 size={48}
@@ -186,15 +193,19 @@ const Dashboard = () => {
             ))}
         </div>
 
-        {!!rolesWidgets.length && <hr className='my-6' />}
+        {!!rolesWidgets.length && <hr className='my-6 text--mainBG  ' />}
 
         <div className='grid grid-cols-1 gap-6 lg:grid-cols-3 mb-6'>
           {hasPermission(currentUser, 'READ_USERS') && (
             <Link href={'/users/users-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Users
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -203,7 +214,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -219,10 +230,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_CONTACTS') && (
             <Link href={'/contacts/contacts-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Contacts
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -231,7 +246,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -247,10 +262,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_ESTIMATES') && (
             <Link href={'/estimates/estimates-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Estimates
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -259,7 +278,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -275,10 +294,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_JOBS') && (
             <Link href={'/jobs/jobs-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Jobs
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -287,7 +310,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -303,10 +326,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_ROLES') && (
             <Link href={'/roles/roles-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Roles
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -315,7 +342,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -333,10 +360,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_PERMISSIONS') && (
             <Link href={'/permissions/permissions-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Permissions
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -345,7 +376,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -361,10 +392,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_TEMPLATES') && (
             <Link href={'/templates/templates-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Templates
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -373,7 +408,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -389,10 +424,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_TRADES') && (
             <Link href={'/trades/trades-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Trades
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -401,7 +440,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -417,10 +456,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_INVOICES') && (
             <Link href={'/invoices/invoices-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Invoices
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -429,7 +472,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -445,10 +488,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_ORDERS') && (
             <Link href={'/orders/orders-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Orders
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -457,7 +504,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -473,10 +520,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_IMAGES') && (
             <Link href={'/images/images-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Images
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -485,7 +536,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -501,10 +552,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_DOCUMENTS') && (
             <Link href={'/documents/documents-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Documents
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -513,7 +568,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -529,10 +584,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_EMAILS') && (
             <Link href={'/emails/emails-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Emails
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -541,7 +600,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -557,10 +616,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_CHATS') && (
             <Link href={'/chats/chats-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Chats
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -569,7 +632,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -585,10 +648,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_APPOINTMENTS') && (
             <Link href={'/appointments/appointments-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Appointments
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -597,7 +664,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -613,10 +680,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_TASKS') && (
             <Link href={'/tasks/tasks-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Tasks
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -625,7 +696,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -641,10 +712,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_CONTRACTS') && (
             <Link href={'/contracts/contracts-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Contracts
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -653,7 +728,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -669,10 +744,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_AMENDMENTS') && (
             <Link href={'/amendments/amendments-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Amendments
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -681,7 +760,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}
@@ -697,10 +776,14 @@ const Dashboard = () => {
 
           {hasPermission(currentUser, 'READ_ESTIMATE_SECTIONS') && (
             <Link href={'/estimate_sections/estimate_sections-list'}>
-              <div className='rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6'>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
                 <div className='flex justify-between align-center'>
                   <div>
-                    <div className='text-lg leading-tight text-gray-500 dark:text-gray-400'>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
                       Estimate sections
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
@@ -709,7 +792,7 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <BaseIcon
-                      className='text-blue-500'
+                      className={`${iconsColor}`}
                       w='w-16'
                       h='h-16'
                       size={48}

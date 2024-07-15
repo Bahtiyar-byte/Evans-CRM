@@ -1,5 +1,6 @@
 import { Children, cloneElement, ReactElement, ReactNode } from 'react';
 import BaseIcon from './BaseIcon';
+import { useAppSelector } from '../stores/hooks';
 
 type Props = {
   label?: string;
@@ -15,7 +16,9 @@ type Props = {
 
 const FormField = ({ icons = [], ...props }: Props) => {
   const childrenCount = Children.count(props.children);
-
+  const bgColor = useAppSelector((state) => state.style.cardsColor);
+  const focusRing = useAppSelector((state) => state.style.focusRingColor);
+  const corners = useAppSelector((state) => state.style.corners);
   let elementWrapperClass = '';
 
   switch (childrenCount) {
@@ -27,11 +30,11 @@ const FormField = ({ icons = [], ...props }: Props) => {
   }
 
   const controlClassName = [
-    'px-3 py-2 max-w-full border-gray-300 dark:border-dark-700 rounded w-full dark:placeholder-gray-400',
-    'focus:ring focus:ring-blue-600 focus:border-blue-600 focus:outline-none',
+    `px-3 py-2 max-w-full border-gray-300 dark:border-dark-700 ${corners} w-full dark:placeholder-gray-400`,
+    `${focusRing}`,
     props.hasTextareaHeight ? 'h-24' : 'h-12',
     props.isBorderless ? 'border-0' : 'border',
-    props.isTransparent ? 'bg-transparent' : 'bg-white dark:bg-dark-800',
+    props.isTransparent ? 'bg-transparent' : `${bgColor} dark:bg-dark-800`,
     props.disabled ? 'bg-gray-200 text-gray-100 dark:bg-dark-900 disabled' : '',
   ].join(' ');
 
@@ -65,7 +68,7 @@ const FormField = ({ icons = [], ...props }: Props) => {
         ))}
       </div>
       {props.help && (
-        <div className='text-xs text-gray-500 dark:text-dark-600 mt-1'>
+        <div className='text-xs    text-gray-500 dark:text-dark-600 mt-1'>
           {props.help}
         </div>
       )}

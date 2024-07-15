@@ -59,7 +59,7 @@
   }
 
   tbody tr:nth-child(even) {
-    @apply lg:bg-pavitra-300 dark:bg-pavitra-300/70;
+    @apply lg:bg-pavitra-300  dark:bg-pavitra-300/70;
   }
 
   td:before {
@@ -68,7 +68,7 @@
   }
 
   tbody tr td {
-    @apply text-sm font-normal text-pavitra-900 dark:text-white;
+    @apply text-sm font-normal text-pavitra-900  dark:text-white;
   }
 
   .datagrid--table,
@@ -109,5 +109,9 @@
 
   .datagrid--table .MuiTablePagination-root .MuiButtonBase-root:hover {
     @apply dark:bg-dark-700;
+  }
+
+  .MuiButton-colorInherit {
+    @apply text-blue-600  dark:text-dark-700 !important;
   }
 }

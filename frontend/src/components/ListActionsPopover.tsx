@@ -30,7 +30,6 @@ const ListActionsPopover = ({
   iconClassName,
 }: Props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -47,7 +46,7 @@ const ListActionsPopover = ({
       <IconButton
         aria-describedby={id}
         onClick={handleClick}
-        className={`rounded-full ${className}`}
+        className={`rounded-full  ${className}`}
         size={'small'}
       >
         <BaseIcon
@@ -72,9 +71,10 @@ const ListActionsPopover = ({
           horizontal: 'center',
         }}
       >
-        <div className={'flex flex-col'}>
+        <div className={'flex  flex-col'}>
           <Button
             startIcon={<BaseIcon path={mdiEye} size={24} />}
+            className='MuiButton-colorInherit'
             onClick={() => {
               onView(itemId);
             }}
@@ -85,6 +85,7 @@ const ListActionsPopover = ({
           {hasUpdatePermission && (
             <Button
               startIcon={<BaseIcon path={mdiPencilOutline} size={24} />}
+              className='MuiButton-colorInherit'
               onClick={() => {
                 onEdit(itemId);
               }}
@@ -95,6 +96,7 @@ const ListActionsPopover = ({
           {hasUpdatePermission && (
             <Button
               startIcon={<BaseIcon path={mdiTrashCan} size={24} />}
+              className='MuiButton-colorInherit'
               onClick={() => {
                 handleClose();
                 onDelete(itemId);

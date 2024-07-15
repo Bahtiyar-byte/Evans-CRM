@@ -37,22 +37,34 @@ const ListEstimate_sections = ({
     'UPDATE_ESTIMATE_SECTIONS',
   );
 
+  const corners = useAppSelector((state) => state.style.corners);
+  const bgColor = useAppSelector((state) => state.style.cardsColor);
+
   return (
     <>
       <div className='relative overflow-x-auto p-4 space-y-4'>
         {loading && <LoadingSpinner />}
         {!loading &&
           estimate_sections.map((item) => (
-            <CardBox hasTable key={item.id} className={'rounded'}>
-              <div className={'flex items-center overflow-hidden'}>
+            <CardBox
+              hasTable
+              isList
+              key={item.id}
+              className={'rounded shadow-none'}
+            >
+              <div
+                className={`flex rounded  dark:bg-dark-900  border  border-stone-300  items-center overflow-hidden`}
+              >
                 <div
                   className={
-                    'flex-1 px-4 py-6 h-24 flex items-stretch divide-x-2 dark:divide-dark-700 overflow-x-auto'
+                    'flex-1 px-4 py-6 h-24 flex items-stretch divide-x-2  divide-stone-300   items-center overflow-hidden`}> dark:divide-dark-700 overflow-x-auto'
                   }
                   onClick={() => onView(item.id)}
                 >
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Related Estimate</p>
+                    <p className={'text-xs   text-gray-500 '}>
+                      Related Estimate
+                    </p>
                     <p className={'line-clamp-2'}>
                       {dataFormatter.estimatesOneListFormatter(
                         item.related_estimate,
@@ -61,7 +73,9 @@ const ListEstimate_sections = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Related Template</p>
+                    <p className={'text-xs   text-gray-500 '}>
+                      Related Template
+                    </p>
                     <p className={'line-clamp-2'}>
                       {dataFormatter.templatesOneListFormatter(
                         item.related_template,
@@ -70,27 +84,27 @@ const ListEstimate_sections = ({
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Amount</p>
+                    <p className={'text-xs   text-gray-500 '}>Amount</p>
                     <p className={'line-clamp-2'}>{item.amount}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Material Price</p>
+                    <p className={'text-xs   text-gray-500 '}>Material Price</p>
                     <p className={'line-clamp-2'}>{item.material_price}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Labor Price</p>
+                    <p className={'text-xs   text-gray-500 '}>Labor Price</p>
                     <p className={'line-clamp-2'}>{item.labor_price}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Name</p>
+                    <p className={'text-xs   text-gray-500 '}>Name</p>
                     <p className={'line-clamp-2'}>{item.name}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Description</p>
+                    <p className={'text-xs   text-gray-500 '}>Description</p>
                     <p className={'line-clamp-2'}>{item.description}</p>
                   </div>
                 </div>

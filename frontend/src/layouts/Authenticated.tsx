@@ -30,6 +30,7 @@ export default function LayoutAuthenticated({
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { token, currentUser } = useAppSelector((state) => state.auth);
+  const bgColor = useAppSelector((state) => state.style.bgLayoutColor);
   let localToken;
   if (typeof window !== 'undefined') {
     // Perform localStorage action
@@ -90,7 +91,7 @@ export default function LayoutAuthenticated({
       <div
         className={`${layoutAsidePadding} ${
           isAsideMobileExpanded ? 'ml-60 lg:ml-0' : ''
-        } pt-14 min-h-screen w-screen transition-position lg:w-auto bg-gray-50 dark:bg-dark-800 dark:text-slate-100`}
+        } pt-14 min-h-screen w-screen transition-position lg:w-auto ${bgColor}  dark:bg-dark-800 dark:text-slate-100`}
       >
         <NavBar
           menu={menuNavBar}

@@ -35,7 +35,7 @@ export default function AsideMenuLayer({
       className={`${className} zzz lg:py-2 lg:pl-2 w-60 fixed flex z-40 top-0 h-screen transition-position overflow-hidden`}
     >
       <div
-        className={`lg:rounded-2xl flex-1 flex flex-col overflow-hidden dark:bg-dark-900 ${asideStyle}`}
+        className={`flex-1 flex flex-col overflow-hidden dark:bg-dark-900 ${asideStyle}`}
       >
         <div
           className={`flex flex-row h-14 items-center justify-between ${asideBrandStyle}`}

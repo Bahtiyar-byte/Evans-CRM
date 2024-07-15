@@ -53,6 +53,9 @@ const TableSampleUsers = ({
     refetch,
   } = useAppSelector((state) => state.users);
   const { currentUser } = useAppSelector((state) => state.auth);
+  const focusRing = useAppSelector((state) => state.style.focusRingColor);
+  const bgColor = useAppSelector((state) => state.style.bgLayoutColor);
+  const corners = useAppSelector((state) => state.style.corners);
 
   const numPages =
     Math.floor(count / perPage) === 0 ? 1 : Math.ceil(count / perPage);
@@ -197,8 +200,8 @@ const TableSampleUsers = ({
   };
 
   const controlClasses =
-    'w-full py-2 px-2 my-2 border-gray-700 rounded dark:placeholder-gray-400 ' +
-    'focus:ring focus:ring-blue-600 focus:border-blue-600 focus:outline-none bg-white ' +
+    'w-full py-2 px-2 my-2 border-gray-700  rounded dark:placeholder-gray-400 ' +
+    ` ${bgColor} ${focusRing} ${corners} ` +
     'dark:bg-slate-800 border';
 
   const dataGrid = (
@@ -272,7 +275,9 @@ const TableSampleUsers = ({
                     return (
                       <div key={filterItem.id} className='flex mb-4'>
                         <div className='flex flex-col w-full mr-3'>
-                          <div className='text-gray-500 font-bold'>Filter</div>
+                          <div className='  text-gray-500  font-bold'>
+                            Filter
+                          </div>
                           <Field
                             className={controlClasses}
                             name='selectedField'
@@ -297,7 +302,7 @@ const TableSampleUsers = ({
                         )?.number ? (
                           <div className='flex flex-row w-full mr-3'>
                             <div className='flex flex-col w-full mr-3'>
-                              <div className='text-gray-500 font-bold'>
+                              <div className='  text-gray-500  font-bold'>
                                 From
                               </div>
                               <Field
@@ -309,7 +314,9 @@ const TableSampleUsers = ({
                               />
                             </div>
                             <div className='flex flex-col w-full'>
-                              <div className='text-gray-500 font-bold'>To</div>
+                              <div className='  text-gray-500  font-bold'>
+                                To
+                              </div>
                               <Field
                                 className={controlClasses}
                                 name='filterValueTo'
@@ -326,7 +333,7 @@ const TableSampleUsers = ({
                           )?.date ? (
                           <div className='flex flex-row w-full mr-3'>
                             <div className='flex flex-col w-full mr-3'>
-                              <div className='text-gray-500 font-bold'>
+                              <div className='  text-gray-500  font-bold'>
                                 From
                               </div>
                               <Field
@@ -339,7 +346,9 @@ const TableSampleUsers = ({
                               />
                             </div>
                             <div className='flex flex-col w-full'>
-                              <div className='text-gray-500 font-bold'>To</div>
+                              <div className='  text-gray-500  font-bold'>
+                                To
+                              </div>
                               <Field
                                 className={controlClasses}
                                 name='filterValueTo'
@@ -352,7 +361,7 @@ const TableSampleUsers = ({
                           </div>
                         ) : (
                           <div className='flex flex-col w-full mr-3'>
-                            <div className='text-gray-500 font-bold'>
+                            <div className='  text-gray-500  font-bold'>
                               Contains
                             </div>
                             <Field
@@ -365,7 +374,9 @@ const TableSampleUsers = ({
                           </div>
                         )}
                         <div className='flex flex-col'>
-                          <div className='text-gray-500 font-bold'>Action</div>
+                          <div className='  text-gray-500  font-bold'>
+                            Action
+                          </div>
                           <BaseButton
                             className='my-2'
                             type='reset'

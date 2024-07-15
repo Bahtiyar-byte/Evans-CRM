@@ -26,7 +26,9 @@ const AsideMenuItem = ({ item, isDropdownList = false }: Props) => {
   const asideMenuItemActiveStyle = useAppSelector(
     (state) => state.style.asideMenuItemActiveStyle,
   );
-
+  const activeLinkColor = useAppSelector(
+    (state) => state.style.activeLinkColor,
+  );
   const activeClassAddon =
     !item.color && isLinkActive ? asideMenuItemActiveStyle : '';
 
@@ -71,13 +73,13 @@ const AsideMenuItem = ({ item, isDropdownList = false }: Props) => {
   );
 
   const componentClass = [
-    'flex cursor-pointer py-1.5 rounded-xl',
+    'flex cursor-pointer py-1.5 ',
     isDropdownList ? 'px-6 text-sm' : '',
     item.color
       ? getButtonColor(item.color, false, true)
       : `${asideMenuItemStyle}`,
     isLinkActive
-      ? 'text-black bg-gray-100/70 dark:text-white dark:bg-dark-800'
+      ? `text-black ${activeLinkColor} dark:text-white dark:bg-dark-800`
       : '',
   ].join(' ');
 

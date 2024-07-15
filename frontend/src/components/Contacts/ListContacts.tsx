@@ -34,57 +34,67 @@ const ListContacts = ({
   const currentUser = useAppSelector((state) => state.auth.currentUser);
   const hasUpdatePermission = hasPermission(currentUser, 'UPDATE_CONTACTS');
 
+  const corners = useAppSelector((state) => state.style.corners);
+  const bgColor = useAppSelector((state) => state.style.cardsColor);
+
   return (
     <>
       <div className='relative overflow-x-auto p-4 space-y-4'>
         {loading && <LoadingSpinner />}
         {!loading &&
           contacts.map((item) => (
-            <CardBox hasTable key={item.id} className={'rounded'}>
-              <div className={'flex items-center overflow-hidden'}>
+            <CardBox
+              hasTable
+              isList
+              key={item.id}
+              className={'rounded shadow-none'}
+            >
+              <div
+                className={`flex rounded  dark:bg-dark-900  border  border-stone-300  items-center overflow-hidden`}
+              >
                 <div
                   className={
-                    'flex-1 px-4 py-6 h-24 flex items-stretch divide-x-2 dark:divide-dark-700 overflow-x-auto'
+                    'flex-1 px-4 py-6 h-24 flex items-stretch divide-x-2  divide-stone-300   items-center overflow-hidden`}> dark:divide-dark-700 overflow-x-auto'
                   }
                   onClick={() => onView(item.id)}
                 >
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Name</p>
+                    <p className={'text-xs   text-gray-500 '}>Name</p>
                     <p className={'line-clamp-2'}>{item.name}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Email</p>
+                    <p className={'text-xs   text-gray-500 '}>Email</p>
                     <p className={'line-clamp-2'}>{item.email}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Phone</p>
+                    <p className={'text-xs   text-gray-500 '}>Phone</p>
                     <p className={'line-clamp-2'}>{item.phone}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Address</p>
+                    <p className={'text-xs   text-gray-500 '}>Address</p>
                     <p className={'line-clamp-2'}>{item.address}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Status</p>
+                    <p className={'text-xs   text-gray-500 '}>Status</p>
                     <p className={'line-clamp-2'}>{item.status}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>First Name</p>
+                    <p className={'text-xs   text-gray-500 '}>First Name</p>
                     <p className={'line-clamp-2'}>{item.firstName}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Last Name</p>
+                    <p className={'text-xs   text-gray-500 '}>Last Name</p>
                     <p className={'line-clamp-2'}>{item.lastName}</p>
                   </div>
 
                   <div className={'flex-1 px-3'}>
-                    <p className={'text-xs text-gray-500'}>Source</p>
+                    <p className={'text-xs   text-gray-500 '}>Source</p>
                     <p className={'line-clamp-2'}>{item.source}</p>
                   </div>
                 </div>

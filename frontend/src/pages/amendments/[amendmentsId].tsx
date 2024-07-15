@@ -110,7 +110,7 @@ const EditAmendments = () => {
               </FormField>
 
               <FormField label='Type' labelFor='type'>
-                <Field name='Type' id='Type' component='select'>
+                <Field name='type' id='type' component='select'>
                   <option value='Change Order'>Change Order</option>
 
                   <option value='Discount'>Discount</option>

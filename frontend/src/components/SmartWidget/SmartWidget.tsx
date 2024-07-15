@@ -2,7 +2,7 @@ import React from 'react';
 import BaseButton from '../BaseButton';
 import BaseIcon from '../BaseIcon';
 import * as icons from '@mdi/js';
-import { useAppDispatch } from '../../stores/hooks';
+import { useAppDispatch, useAppSelector } from '../../stores/hooks';
 
 import { fetchWidgets, removeWidget } from '../../stores/roles/rolesSlice';
 import { WidgetChartType, WidgetType } from './models/widget.model';
@@ -13,6 +13,8 @@ import { LineChart } from './components/LineChart';
 
 export const SmartWidget = ({ widget, userId, admin, roleId }) => {
   const dispatch = useAppDispatch();
+  const corners = useAppSelector((state) => state.style.corners);
+  const cardsStyle = useAppSelector((state) => state.style.cardsStyle);
 
   const deleteWidget = async () => {
     await dispatch(
@@ -23,7 +25,9 @@ export const SmartWidget = ({ widget, userId, admin, roleId }) => {
 
   return (
     <div
-      className={`rounded dark:bg-dark-900 bg-white border border-pavitra-400 dark:border-dark-700 p-6 ${
+      className={`${
+        corners !== 'rounded-full' ? corners : 'rounded-3xl'
+      }  dark:bg-dark-900   dark:border-dark-700 p-6  ${cardsStyle} ${
         widget.widget_type === 'chart'
           ? 'col-span-2'
           : 'lg:col-span-1 col-span-2'
@@ -31,7 +35,7 @@ export const SmartWidget = ({ widget, userId, admin, roleId }) => {
     >
       <div className='flex justify-between flex-col h-full'>
         <div className='flex justify-between items-center'>
-          <div className='text-lg leading-tight text-gray-500 dark:text-dark-600 line-clamp-2'>
+          <div className='text-lg leading-tight  text-gray-500 dark:text-dark-600 line-clamp-2'>
             {widget.label}
           </div>
 

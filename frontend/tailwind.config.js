@@ -61,6 +61,9 @@ module.exports = {
           300: '#F7F7FC',
         },
       },
+      borderRadius: {
+        '3xl': '2rem',
+      },
     },
   },
   plugins: [

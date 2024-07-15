@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getButtonColor } from '../colors';
 import BaseIcon from './BaseIcon';
 import type { ColorButtonKey } from '../interfaces';
+import { useAppSelector } from '../stores/hooks';
 
 type Props = {
   label?: string;
@@ -41,6 +42,7 @@ export default function BaseButton({
   roundedFull = false,
   onClick,
 }: Props) {
+  const corners = useAppSelector((state) => state.style.corners);
   const componentClass = [
     'inline-flex',
     'justify-center',
@@ -52,7 +54,7 @@ export default function BaseButton({
     'duration-150',
     'border',
     disabled ? 'cursor-not-allowed' : 'cursor-pointer',
-    roundedFull ? 'rounded-full' : 'rounded',
+    roundedFull ? 'rounded-full' : `${corners}`,
     getButtonColor(color, outline, !disabled, active),
     className,
   ];
