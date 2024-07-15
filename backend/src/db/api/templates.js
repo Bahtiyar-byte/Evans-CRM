@@ -281,21 +281,21 @@ module.exports = class TemplatesDBApi {
       where = {
         [Op.or]: [
           { ['id']: Utils.uuid(query) },
-          Utils.ilike('templates', 'id', query),
+          Utils.ilike('templates', 'name', query),
         ],
       };
     }
 
     const records = await db.templates.findAll({
-      attributes: ['id', 'id'],
+      attributes: ['id', 'name'],
       where,
       limit: limit ? Number(limit) : undefined,
-      orderBy: [['id', 'ASC']],
+      orderBy: [['name', 'ASC']],
     });
 
     return records.map((record) => ({
       id: record.id,
-      label: record.id,
+      label: record.name,
     }));
   }
 };

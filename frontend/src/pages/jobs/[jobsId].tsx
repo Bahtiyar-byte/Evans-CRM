@@ -175,7 +175,7 @@ const EditJobs = () => {
                   component={SelectField}
                   options={initialValues.assigned_to}
                   itemRef={'users'}
-                  showField={'firstName'}
+                  showField={'name'}
                 ></Field>
               </FormField>
 

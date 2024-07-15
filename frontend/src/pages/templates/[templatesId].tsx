@@ -115,7 +115,7 @@ const EditTemplates = () => {
                   component={SelectField}
                   options={initialValues.related_trade}
                   itemRef={'trades'}
-                  showField={'id'}
+                  showField={'name'}
                 ></Field>
               </FormField>
 

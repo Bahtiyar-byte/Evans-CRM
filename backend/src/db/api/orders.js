@@ -319,21 +319,21 @@ module.exports = class OrdersDBApi {
       where = {
         [Op.or]: [
           { ['id']: Utils.uuid(query) },
-          Utils.ilike('orders', 'id', query),
+          Utils.ilike('orders', 'order_number', query),
         ],
       };
     }
 
     const records = await db.orders.findAll({
-      attributes: ['id', 'id'],
+      attributes: ['id', 'order_number'],
       where,
       limit: limit ? Number(limit) : undefined,
-      orderBy: [['id', 'ASC']],
+      orderBy: [['order_number', 'ASC']],
     });
 
     return records.map((record) => ({
       id: record.id,
-      label: record.id,
+      label: record.order_number,
     }));
   }
 };

@@ -32,6 +32,9 @@ router.use(checkCrudPermissions('users'));
  *          email:
  *            type: string
  *            default: email
+ *          name:
+ *            type: string
+ *            default: name
 
  */
 
@@ -301,7 +304,14 @@ router.get(
 
     const payload = await UsersDBApi.findAll(req.query);
     if (filetype && filetype === 'csv') {
-      const fields = ['id', 'firstName', 'lastName', 'phoneNumber', 'email'];
+      const fields = [
+        'id',
+        'firstName',
+        'lastName',
+        'phoneNumber',
+        'email',
+        'name',
+      ];
       const opts = { fields };
       try {
         const csv = parse(payload.rows, opts);

@@ -125,7 +125,7 @@ const EditEmails = () => {
                   component={SelectField}
                   options={initialValues.related_user}
                   itemRef={'users'}
-                  showField={'firstName'}
+                  showField={'name'}
                 ></Field>
               </FormField>
 

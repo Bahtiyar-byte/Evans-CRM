@@ -110,6 +110,11 @@ const ListUsers = ({
                         .join(', ')}
                     </p>
                   </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs text-gray-500'}>Name</p>
+                    <p className={'line-clamp-2'}>{item.name}</p>
+                  </div>
                 </div>
                 <ListActionsPopover
                   onDelete={onDelete}

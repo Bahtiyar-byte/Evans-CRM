@@ -339,21 +339,21 @@ module.exports = class TasksDBApi {
       where = {
         [Op.or]: [
           { ['id']: Utils.uuid(query) },
-          Utils.ilike('tasks', 'id', query),
+          Utils.ilike('tasks', 'subject', query),
         ],
       };
     }
 
     const records = await db.tasks.findAll({
-      attributes: ['id', 'id'],
+      attributes: ['id', 'subject'],
       where,
       limit: limit ? Number(limit) : undefined,
-      orderBy: [['id', 'ASC']],
+      orderBy: [['subject', 'ASC']],
     });
 
     return records.map((record) => ({
       id: record.id,
-      label: record.id,
+      label: record.subject,
     }));
   }
 };

@@ -83,7 +83,7 @@ const JobsView = () => {
           <div className={'mb-4'}>
             <p className={'block font-bold mb-2'}>Assigned To</p>
 
-            <p>{jobs?.assigned_to?.firstName ?? 'No data'}</p>
+            <p>{jobs?.assigned_to?.name ?? 'No data'}</p>
           </div>
 
           <div className={'mb-4'}>

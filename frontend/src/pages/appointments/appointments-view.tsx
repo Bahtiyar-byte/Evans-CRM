@@ -108,7 +108,7 @@ const AppointmentsView = () => {
           <div className={'mb-4'}>
             <p className={'block font-bold mb-2'}>Assigned To</p>
 
-            <p>{appointments?.assigned_to?.firstName ?? 'No data'}</p>
+            <p>{appointments?.assigned_to?.name ?? 'No data'}</p>
           </div>
 
           <div className={'mb-4'}>

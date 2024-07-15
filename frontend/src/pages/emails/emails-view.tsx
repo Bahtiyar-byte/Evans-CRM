@@ -66,7 +66,7 @@ const EmailsView = () => {
           <div className={'mb-4'}>
             <p className={'block font-bold mb-2'}>Related User</p>
 
-            <p>{emails?.related_user?.firstName ?? 'No data'}</p>
+            <p>{emails?.related_user?.name ?? 'No data'}</p>
           </div>
 
           <BaseDivider />

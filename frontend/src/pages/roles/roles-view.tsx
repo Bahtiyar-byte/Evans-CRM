@@ -112,6 +112,8 @@ const RolesView = () => {
                       <th>E-Mail</th>
 
                       <th>Disabled</th>
+
+                      <th>Name</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -135,6 +137,8 @@ const RolesView = () => {
                           <td data-label='disabled'>
                             {dataFormatter.booleanFormatter(item.disabled)}
                           </td>
+
+                          <td data-label='name'>{item.name}</td>
                         </tr>
                       ))}
                   </tbody>

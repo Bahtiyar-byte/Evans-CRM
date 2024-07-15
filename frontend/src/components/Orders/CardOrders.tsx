@@ -58,7 +58,7 @@ const CardUsers = ({
                   className='text-lg font-bold leading-6 line-clamp-1'
                   onClick={() => onView(item.id)}
                 >
-                  {item.id}
+                  {item.order_number}
                 </button>
 
                 <div className='ml-auto '>

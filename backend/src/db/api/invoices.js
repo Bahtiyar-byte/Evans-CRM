@@ -361,21 +361,21 @@ module.exports = class InvoicesDBApi {
       where = {
         [Op.or]: [
           { ['id']: Utils.uuid(query) },
-          Utils.ilike('invoices', 'id', query),
+          Utils.ilike('invoices', 'invoice_number', query),
         ],
       };
     }
 
     const records = await db.invoices.findAll({
-      attributes: ['id', 'id'],
+      attributes: ['id', 'invoice_number'],
       where,
       limit: limit ? Number(limit) : undefined,
-      orderBy: [['id', 'ASC']],
+      orderBy: [['invoice_number', 'ASC']],
     });
 
     return records.map((record) => ({
       id: record.id,
-      label: record.id,
+      label: record.invoice_number,
     }));
   }
 };

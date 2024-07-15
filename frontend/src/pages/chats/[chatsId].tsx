@@ -114,7 +114,7 @@ const EditChats = () => {
                   component={SelectFieldMany}
                   options={initialValues.related_users}
                   itemRef={'users'}
-                  showField={'firstName'}
+                  showField={'name'}
                 ></Field>
               </FormField>
 

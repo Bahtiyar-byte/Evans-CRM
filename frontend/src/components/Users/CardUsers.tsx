@@ -64,7 +64,7 @@ const CardUsers = ({
                     className='w-12 h-12 md:w-full md:h-44 rounded-lg md:rounded-b-none overflow-hidden ring-1 ring-gray-900/10'
                     imageClassName='h-full w-full flex-none rounded-lg md:rounded-b-none bg-white object-cover'
                   />
-                  <p className={'px-6 py-2 font-semibold'}>{item.firstName}</p>
+                  <p className={'px-6 py-2 font-semibold'}>{item.name}</p>
                 </div>
 
                 <div className='ml-auto  md:absolute md:top-0 md:right-0 '>
@@ -159,6 +159,13 @@ const CardUsers = ({
                         .permissionsManyListFormatter(item.custom_permissions)
                         .join(', ')}
                     </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='text-gray-500 dark:text-dark-600'>Name</dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>{item.name}</div>
                   </dd>
                 </div>
               </dl>
