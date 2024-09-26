@@ -58,6 +58,10 @@ const EditAddressPage = () => {
     is_billing_Address: false,
 
     related_job: '',
+
+    latitude: '',
+
+    longitude: '',
   };
   const [initialValues, setInitialValues] = useState(initVals);
 
@@ -192,6 +196,14 @@ const EditAddressPage = () => {
                   itemRef={'jobs'}
                   showField={'name'}
                 ></Field>
+              </FormField>
+
+              <FormField label='Latitude'>
+                <Field type='number' name='latitude' placeholder='Latitude' />
+              </FormField>
+
+              <FormField label='Longitude'>
+                <Field type='number' name='longitude' placeholder='Longitude' />
               </FormField>
 
               <BaseDivider />

@@ -27,6 +27,8 @@ module.exports = class AddressDBApi {
 
         is_billing_Address: data.is_billing_Address || false,
 
+        latitude: data.latitude || null,
+        longitude: data.longitude || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
@@ -65,6 +67,8 @@ module.exports = class AddressDBApi {
 
       is_billing_Address: item.is_billing_Address || false,
 
+      latitude: item.latitude || null,
+      longitude: item.longitude || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -99,6 +103,8 @@ module.exports = class AddressDBApi {
 
         is_billing_Address: data.is_billing_Address || false,
 
+        latitude: data.latitude || null,
+        longitude: data.longitude || null,
         updatedById: currentUser.id,
       },
       { transaction },
@@ -245,6 +251,54 @@ module.exports = class AddressDBApi {
           ...where,
           [Op.and]: Utils.ilike('address', 'zip', filter.zip),
         };
+      }
+
+      if (filter.latitudeRange) {
+        const [start, end] = filter.latitudeRange;
+
+        if (start !== undefined && start !== null && start !== '') {
+          where = {
+            ...where,
+            latitude: {
+              ...where.latitude,
+              [Op.gte]: start,
+            },
+          };
+        }
+
+        if (end !== undefined && end !== null && end !== '') {
+          where = {
+            ...where,
+            latitude: {
+              ...where.latitude,
+              [Op.lte]: end,
+            },
+          };
+        }
+      }
+
+      if (filter.longitudeRange) {
+        const [start, end] = filter.longitudeRange;
+
+        if (start !== undefined && start !== null && start !== '') {
+          where = {
+            ...where,
+            longitude: {
+              ...where.longitude,
+              [Op.gte]: start,
+            },
+          };
+        }
+
+        if (end !== undefined && end !== null && end !== '') {
+          where = {
+            ...where,
+            longitude: {
+              ...where.longitude,
+              [Op.lte]: end,
+            },
+          };
+        }
       }
 
       if (

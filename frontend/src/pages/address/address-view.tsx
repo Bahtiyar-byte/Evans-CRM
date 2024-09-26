@@ -123,6 +123,16 @@ const AddressView = () => {
             <p>{address?.related_job?.name ?? 'No data'}</p>
           </div>
 
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Latitude</p>
+            <p>{address?.latitude || 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Longitude</p>
+            <p>{address?.longitude || 'No data'}</p>
+          </div>
+
           <BaseDivider />
 
           <BaseButton

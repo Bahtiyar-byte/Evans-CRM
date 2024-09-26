@@ -63,6 +63,14 @@ module.exports = function (sequelize, DataTypes) {
         defaultValue: false,
       },
 
+      latitude: {
+        type: DataTypes.DECIMAL,
+      },
+
+      longitude: {
+        type: DataTypes.DECIMAL,
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,
