@@ -55,6 +55,10 @@ module.exports = class SearchService {
           'firstName',
 
           'lastName',
+
+          'referral',
+
+          'company',
         ],
 
         estimates: ['name', 'description', 'trade', 'template_used'],
@@ -88,6 +92,30 @@ module.exports = class SearchService {
         contact_phones: ['phone_number'],
 
         contact_emails: ['email'],
+
+        labor_ticket: ['name', 'crew_instructions', 'disclaimer'],
+
+        crew: ['name'],
+
+        subcontractor: [
+          'name',
+
+          'first_name',
+
+          'last_name',
+
+          'address',
+
+          'phone',
+
+          'mobile_phone',
+
+          'entity_name',
+        ],
+
+        history: ['action_description'],
+
+        address: ['street', 'suite_apt_unit', 'city', 'zip'],
       };
       const columnsInt = {
         estimates: [

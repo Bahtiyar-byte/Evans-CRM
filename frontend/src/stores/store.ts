@@ -25,6 +25,11 @@ import amendmentsSlice from './amendments/amendmentsSlice';
 import estimate_sectionsSlice from './estimate_sections/estimate_sectionsSlice';
 import contact_phonesSlice from './contact_phones/contact_phonesSlice';
 import contact_emailsSlice from './contact_emails/contact_emailsSlice';
+import labor_ticketSlice from './labor_ticket/labor_ticketSlice';
+import crewSlice from './crew/crewSlice';
+import subcontractorSlice from './subcontractor/subcontractorSlice';
+import historySlice from './history/historySlice';
+import addressSlice from './address/addressSlice';
 
 export const store = configureStore({
   reducer: {
@@ -54,6 +59,11 @@ export const store = configureStore({
     estimate_sections: estimate_sectionsSlice,
     contact_phones: contact_phonesSlice,
     contact_emails: contact_emailsSlice,
+    labor_ticket: labor_ticketSlice,
+    crew: crewSlice,
+    subcontractor: subcontractorSlice,
+    history: historySlice,
+    address: addressSlice,
   },
 });
 

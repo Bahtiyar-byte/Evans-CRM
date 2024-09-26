@@ -269,6 +269,18 @@ module.exports = class JobsDBApi {
       transaction,
     });
 
+    output.labor_ticket_related_job = await jobs.getLabor_ticket_related_job({
+      transaction,
+    });
+
+    output.history_related_job = await jobs.getHistory_related_job({
+      transaction,
+    });
+
+    output.address_related_job = await jobs.getAddress_related_job({
+      transaction,
+    });
+
     output.assigned_to = await jobs.getAssigned_to({
       transaction,
     });

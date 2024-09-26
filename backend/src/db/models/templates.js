@@ -22,6 +22,13 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.TEXT,
       },
 
+      is_email_template: {
+        type: DataTypes.BOOLEAN,
+
+        allowNull: false,
+        defaultValue: false,
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,

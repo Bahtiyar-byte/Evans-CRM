@@ -38,6 +38,14 @@ module.exports = function (sequelize, DataTypes) {
   orders.associate = (db) => {
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
 
+    db.orders.hasMany(db.labor_ticket, {
+      as: 'labor_ticket_related_order',
+      foreignKey: {
+        name: 'related_orderId',
+      },
+      constraints: false,
+    });
+
     //end loop
 
     db.orders.belongsTo(db.jobs, {

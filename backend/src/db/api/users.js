@@ -35,6 +35,10 @@ module.exports = class UsersDBApi {
           data.data.passwordResetTokenExpiresAt || null,
         provider: data.data.provider || null,
         name: data.data.name || null,
+        isActive: data.data.isActive || false,
+
+        isVerified: data.data.isVerified || false,
+
         importHash: data.data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
@@ -98,6 +102,10 @@ module.exports = class UsersDBApi {
       passwordResetTokenExpiresAt: item.passwordResetTokenExpiresAt || null,
       provider: item.provider || null,
       name: item.name || null,
+      isActive: item.isActive || false,
+
+      isVerified: item.isVerified || false,
+
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -163,6 +171,10 @@ module.exports = class UsersDBApi {
         passwordResetTokenExpiresAt: data.passwordResetTokenExpiresAt || null,
         provider: data.provider || null,
         name: data.name || null,
+        isActive: data.isActive || false,
+
+        isVerified: data.isVerified || false,
+
         updatedById: currentUser.id,
       },
       { transaction },
@@ -247,6 +259,10 @@ module.exports = class UsersDBApi {
 
     const output = users.get({ plain: true });
 
+    output.contacts_assigned_to = await users.getContacts_assigned_to({
+      transaction,
+    });
+
     output.jobs_assigned_to = await users.getJobs_assigned_to({
       transaction,
     });
@@ -260,6 +276,10 @@ module.exports = class UsersDBApi {
     });
 
     output.tasks_assigned_to = await users.getTasks_assigned_to({
+      transaction,
+    });
+
+    output.history_related_user = await users.getHistory_related_user({
       transaction,
     });
 
@@ -472,6 +492,20 @@ module.exports = class UsersDBApi {
         where = {
           ...where,
           emailVerified: filter.emailVerified,
+        };
+      }
+
+      if (filter.isActive) {
+        where = {
+          ...where,
+          isActive: filter.isActive,
+        };
+      }
+
+      if (filter.isVerified) {
+        where = {
+          ...where,
+          isVerified: filter.isVerified,
         };
       }
 

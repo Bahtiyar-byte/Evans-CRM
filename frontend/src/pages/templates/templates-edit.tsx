@@ -40,6 +40,8 @@ const EditTemplatesPage = () => {
     name: '',
 
     description: '',
+
+    is_email_template: false,
   };
   const [initialValues, setInitialValues] = useState(initVals);
 
@@ -103,6 +105,14 @@ const EditTemplatesPage = () => {
                   name='description'
                   id='description'
                   component={RichTextField}
+                ></Field>
+              </FormField>
+
+              <FormField label='Is Email Template' labelFor='is_email_template'>
+                <Field
+                  name='is_email_template'
+                  id='is_email_template'
+                  component={SwitchField}
                 ></Field>
               </FormField>
 

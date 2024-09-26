@@ -65,6 +65,17 @@ const TemplatesView = () => {
             )}
           </div>
 
+          <FormField label='Is Email Template'>
+            <SwitchField
+              field={{
+                name: 'is_email_template',
+                value: templates?.is_email_template,
+              }}
+              form={{ setFieldValue: () => null }}
+              disabled
+            />
+          </FormField>
+
           <>
             <p className={'block font-bold mb-2'}>
               Estimate_sections Related Template

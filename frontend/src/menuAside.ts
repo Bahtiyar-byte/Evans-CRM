@@ -181,6 +181,46 @@ const menuAside: MenuAsideItem[] = [
     permissions: 'READ_CONTACT_EMAILS',
   },
   {
+    href: '/labor_ticket/labor_ticket-list',
+    label: 'Labor ticket',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    icon: icon.mdiTable ? icon.mdiTable : icon.mdiTable,
+    permissions: 'READ_LABOR_TICKET',
+  },
+  {
+    href: '/crew/crew-list',
+    label: 'Crew',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    icon: icon.mdiTable ? icon.mdiTable : icon.mdiTable,
+    permissions: 'READ_CREW',
+  },
+  {
+    href: '/subcontractor/subcontractor-list',
+    label: 'Subcontractor',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    icon: icon.mdiTable ? icon.mdiTable : icon.mdiTable,
+    permissions: 'READ_SUBCONTRACTOR',
+  },
+  {
+    href: '/history/history-list',
+    label: 'History',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    icon: icon.mdiTable ? icon.mdiTable : icon.mdiTable,
+    permissions: 'READ_HISTORY',
+  },
+  {
+    href: '/address/address-list',
+    label: 'Address',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    icon: icon.mdiTable ? icon.mdiTable : icon.mdiTable,
+    permissions: 'READ_ADDRESS',
+  },
+  {
     href: '/profile',
     label: 'Profile',
     icon: icon.mdiAccountCircle,

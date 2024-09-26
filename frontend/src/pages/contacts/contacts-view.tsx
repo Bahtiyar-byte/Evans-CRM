@@ -92,6 +92,106 @@ const ContactsView = () => {
           </div>
 
           <>
+            <p className={'block font-bold mb-2'}>Related Phones</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Phone Number</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {contacts.related_phones &&
+                      Array.isArray(contacts.related_phones) &&
+                      contacts.related_phones.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/contact_phones/contact_phones-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='phone_number'>{item.phone_number}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!contacts?.related_phones?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Related Emails</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Email</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {contacts.related_emails &&
+                      Array.isArray(contacts.related_emails) &&
+                      contacts.related_emails.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/contact_emails/contact_emails-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='email'>{item.email}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!contacts?.related_emails?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Assigned To</p>
+
+            <p>{contacts?.assigned_to?.name ?? 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Category</p>
+            <p>{contacts?.category ?? 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Work Type</p>
+            <p>{contacts?.work_type ?? 'No data'}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Referral</p>
+            <p>{contacts?.referral}</p>
+          </div>
+
+          <div className={'mb-4'}>
+            <p className={'block font-bold mb-2'}>Company</p>
+            <p>{contacts?.company}</p>
+          </div>
+
+          <>
             <p className={'block font-bold mb-2'}>Estimates Related Contact</p>
             <CardBox
               className='mb-6 border border-gray-300 rounded overflow-hidden'
@@ -230,6 +330,78 @@ const ContactsView = () => {
           </>
 
           <>
+            <p className={'block font-bold mb-2'}>Images Related Contact</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {contacts.images_related_contact &&
+                      Array.isArray(contacts.images_related_contact) &&
+                      contacts.images_related_contact.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/images/images-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='Name'>{item.Name}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!contacts?.images_related_contact?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Documents Related Contact</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {contacts.documents_related_contact &&
+                      Array.isArray(contacts.documents_related_contact) &&
+                      contacts.documents_related_contact.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/documents/documents-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='name'>{item.name}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!contacts?.documents_related_contact?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
             <p className={'block font-bold mb-2'}>Emails Related Contact</p>
             <CardBox
               className='mb-6 border border-gray-300 rounded overflow-hidden'
@@ -353,6 +525,122 @@ const ContactsView = () => {
                 </table>
               </div>
               {!contacts?.contracts_related_contact?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>History Related Contact</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {contacts.history_related_contact &&
+                      Array.isArray(contacts.history_related_contact) &&
+                      contacts.history_related_contact.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/history/history-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='action_description'>
+                            {item.action_description}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!contacts?.history_related_contact?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Address Related Contact</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Street</th>
+
+                      <th>Suite/Apt/Unit</th>
+
+                      <th>City</th>
+
+                      <th>State</th>
+
+                      <th>Zip</th>
+
+                      <th>Country</th>
+
+                      <th>Mailing Address</th>
+
+                      <th>Location</th>
+
+                      <th>Billing Address</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {contacts.address_related_contact &&
+                      Array.isArray(contacts.address_related_contact) &&
+                      contacts.address_related_contact.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/address/address-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='street'>{item.street}</td>
+
+                          <td data-label='suite_apt_unit'>
+                            {item.suite_apt_unit}
+                          </td>
+
+                          <td data-label='city'>{item.city}</td>
+
+                          <td data-label='state'>{item.state}</td>
+
+                          <td data-label='zip'>{item.zip}</td>
+
+                          <td data-label='country'>{item.country}</td>
+
+                          <td data-label='is_mailing_address'>
+                            {dataFormatter.booleanFormatter(
+                              item.is_mailing_address,
+                            )}
+                          </td>
+
+                          <td data-label='is_location'>
+                            {dataFormatter.booleanFormatter(item.is_location)}
+                          </td>
+
+                          <td data-label='is_billing_Address'>
+                            {dataFormatter.booleanFormatter(
+                              item.is_billing_Address,
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!contacts?.address_related_contact?.length && (
                 <div className={'text-center py-4'}>No data</div>
               )}
             </CardBox>

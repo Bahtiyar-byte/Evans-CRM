@@ -59,6 +59,16 @@ const contact_phonesRoutes = require('./routes/contact_phones');
 
 const contact_emailsRoutes = require('./routes/contact_emails');
 
+const labor_ticketRoutes = require('./routes/labor_ticket');
+
+const crewRoutes = require('./routes/crew');
+
+const subcontractorRoutes = require('./routes/subcontractor');
+
+const historyRoutes = require('./routes/history');
+
+const addressRoutes = require('./routes/address');
+
 const options = {
   definition: {
     openapi: '3.0.0',
@@ -241,6 +251,36 @@ app.use(
   '/api/contact_emails',
   passport.authenticate('jwt', { session: false }),
   contact_emailsRoutes,
+);
+
+app.use(
+  '/api/labor_ticket',
+  passport.authenticate('jwt', { session: false }),
+  labor_ticketRoutes,
+);
+
+app.use(
+  '/api/crew',
+  passport.authenticate('jwt', { session: false }),
+  crewRoutes,
+);
+
+app.use(
+  '/api/subcontractor',
+  passport.authenticate('jwt', { session: false }),
+  subcontractorRoutes,
+);
+
+app.use(
+  '/api/history',
+  passport.authenticate('jwt', { session: false }),
+  historyRoutes,
+);
+
+app.use(
+  '/api/address',
+  passport.authenticate('jwt', { session: false }),
+  addressRoutes,
 );
 
 app.use(

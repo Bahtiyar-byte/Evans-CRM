@@ -146,6 +146,10 @@ module.exports = class InvoicesDBApi {
 
     const output = invoices.get({ plain: true });
 
+    output.history_related_invoice = await invoices.getHistory_related_invoice({
+      transaction,
+    });
+
     output.related_job = await invoices.getRelated_job({
       transaction,
     });

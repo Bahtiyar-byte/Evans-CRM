@@ -40,6 +40,8 @@ const EditDocumentsPage = () => {
     name: '',
 
     related_job: '',
+
+    related_contact: '',
   };
   const [initialValues, setInitialValues] = useState(initVals);
 
@@ -105,6 +107,17 @@ const EditDocumentsPage = () => {
                   component={SelectField}
                   options={initialValues.related_job}
                   itemRef={'jobs'}
+                  showField={'name'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Contact' labelFor='related_contact'>
+                <Field
+                  name='related_contact'
+                  id='related_contact'
+                  component={SelectField}
+                  options={initialValues.related_contact}
+                  itemRef={'contacts'}
                   showField={'name'}
                 ></Field>
               </FormField>

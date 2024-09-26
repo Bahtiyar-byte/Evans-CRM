@@ -44,6 +44,14 @@ module.exports = function (sequelize, DataTypes) {
       constraints: false,
     });
 
+    db.images.belongsTo(db.contacts, {
+      as: 'related_contact',
+      foreignKey: {
+        name: 'related_contactId',
+      },
+      constraints: false,
+    });
+
     db.images.hasMany(db.file, {
       as: 'image',
       foreignKey: 'belongsToId',

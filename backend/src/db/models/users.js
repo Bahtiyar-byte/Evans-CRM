@@ -72,6 +72,20 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.TEXT,
       },
 
+      isActive: {
+        type: DataTypes.BOOLEAN,
+
+        allowNull: false,
+        defaultValue: false,
+      },
+
+      isVerified: {
+        type: DataTypes.BOOLEAN,
+
+        allowNull: false,
+        defaultValue: false,
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,
@@ -96,6 +110,14 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
+
+    db.users.hasMany(db.contacts, {
+      as: 'contacts_assigned_to',
+      foreignKey: {
+        name: 'assigned_toId',
+      },
+      constraints: false,
+    });
 
     db.users.hasMany(db.jobs, {
       as: 'jobs_assigned_to',
@@ -125,6 +147,14 @@ module.exports = function (sequelize, DataTypes) {
       as: 'tasks_assigned_to',
       foreignKey: {
         name: 'assigned_toId',
+      },
+      constraints: false,
+    });
+
+    db.users.hasMany(db.history, {
+      as: 'history_related_user',
+      foreignKey: {
+        name: 'related_userId',
       },
       constraints: false,
     });

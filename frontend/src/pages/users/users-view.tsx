@@ -140,6 +140,103 @@ const UsersView = () => {
             <p>{users?.name}</p>
           </div>
 
+          <FormField label='Active'>
+            <SwitchField
+              field={{ name: 'isActive', value: users?.isActive }}
+              form={{ setFieldValue: () => null }}
+              disabled
+            />
+          </FormField>
+
+          <FormField label='Verified'>
+            <SwitchField
+              field={{ name: 'isVerified', value: users?.isVerified }}
+              form={{ setFieldValue: () => null }}
+              disabled
+            />
+          </FormField>
+
+          <>
+            <p className={'block font-bold mb-2'}>Contacts Assigned To</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+
+                      <th>Email</th>
+
+                      <th>Phone</th>
+
+                      <th>Address</th>
+
+                      <th>Status</th>
+
+                      <th>First Name</th>
+
+                      <th>Last Name</th>
+
+                      <th>Source</th>
+
+                      <th>Category</th>
+
+                      <th>Work Type</th>
+
+                      <th>Referral</th>
+
+                      <th>Company</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users.contacts_assigned_to &&
+                      Array.isArray(users.contacts_assigned_to) &&
+                      users.contacts_assigned_to.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/contacts/contacts-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='name'>{item.name}</td>
+
+                          <td data-label='email'>{item.email}</td>
+
+                          <td data-label='phone'>{item.phone}</td>
+
+                          <td data-label='address'>{item.address}</td>
+
+                          <td data-label='status'>{item.status}</td>
+
+                          <td data-label='firstName'>{item.firstName}</td>
+
+                          <td data-label='lastName'>{item.lastName}</td>
+
+                          <td data-label='source'>{item.source}</td>
+
+                          <td data-label='category'>{item.category}</td>
+
+                          <td data-label='work_type'>{item.work_type}</td>
+
+                          <td data-label='referral'>{item.referral}</td>
+
+                          <td data-label='company'>{item.company}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!users?.contacts_assigned_to?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
           <>
             <p className={'block font-bold mb-2'}>Jobs Assigned To</p>
             <CardBox
@@ -327,6 +424,43 @@ const UsersView = () => {
                 </table>
               </div>
               {!users?.tasks_assigned_to?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>History Related User</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users.history_related_user &&
+                      Array.isArray(users.history_related_user) &&
+                      users.history_related_user.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/history/history-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='action_description'>
+                            {item.action_description}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!users?.history_related_user?.length && (
                 <div className={'text-center py-4'}>No data</div>
               )}
             </CardBox>

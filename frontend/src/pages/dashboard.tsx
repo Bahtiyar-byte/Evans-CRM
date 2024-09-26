@@ -44,6 +44,11 @@ const Dashboard = () => {
     React.useState('Loading...');
   const [contact_phones, setContact_phones] = React.useState('Loading...');
   const [contact_emails, setContact_emails] = React.useState('Loading...');
+  const [labor_ticket, setLabor_ticket] = React.useState('Loading...');
+  const [crew, setCrew] = React.useState('Loading...');
+  const [subcontractor, setSubcontractor] = React.useState('Loading...');
+  const [history, setHistory] = React.useState('Loading...');
+  const [address, setAddress] = React.useState('Loading...');
 
   const [widgetsRole, setWidgetsRole] = React.useState({
     role: { value: '', label: '' },
@@ -76,6 +81,11 @@ const Dashboard = () => {
       'estimate_sections',
       'contact_phones',
       'contact_emails',
+      'labor_ticket',
+      'crew',
+      'subcontractor',
+      'history',
+      'address',
     ];
     const fns = [
       setUsers,
@@ -99,6 +109,11 @@ const Dashboard = () => {
       setEstimate_sections,
       setContact_phones,
       setContact_emails,
+      setLabor_ticket,
+      setCrew,
+      setSubcontractor,
+      setHistory,
+      setAddress,
     ];
 
     const requests = entities.map((entity, index) => {
@@ -858,6 +873,166 @@ const Dashboard = () => {
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
                       {contact_emails}
+                    </div>
+                  </div>
+                  <div>
+                    <BaseIcon
+                      className={`${iconsColor}`}
+                      w='w-16'
+                      h='h-16'
+                      size={48}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      path={icon.mdiTable || icon.mdiTable}
+                    />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {hasPermission(currentUser, 'READ_LABOR_TICKET') && (
+            <Link href={'/labor_ticket/labor_ticket-list'}>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
+                <div className='flex justify-between align-center'>
+                  <div>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
+                      Labor ticket
+                    </div>
+                    <div className='text-3xl leading-tight font-semibold'>
+                      {labor_ticket}
+                    </div>
+                  </div>
+                  <div>
+                    <BaseIcon
+                      className={`${iconsColor}`}
+                      w='w-16'
+                      h='h-16'
+                      size={48}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      path={icon.mdiTable || icon.mdiTable}
+                    />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {hasPermission(currentUser, 'READ_CREW') && (
+            <Link href={'/crew/crew-list'}>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
+                <div className='flex justify-between align-center'>
+                  <div>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
+                      Crew
+                    </div>
+                    <div className='text-3xl leading-tight font-semibold'>
+                      {crew}
+                    </div>
+                  </div>
+                  <div>
+                    <BaseIcon
+                      className={`${iconsColor}`}
+                      w='w-16'
+                      h='h-16'
+                      size={48}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      path={icon.mdiTable || icon.mdiTable}
+                    />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {hasPermission(currentUser, 'READ_SUBCONTRACTOR') && (
+            <Link href={'/subcontractor/subcontractor-list'}>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
+                <div className='flex justify-between align-center'>
+                  <div>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
+                      Subcontractor
+                    </div>
+                    <div className='text-3xl leading-tight font-semibold'>
+                      {subcontractor}
+                    </div>
+                  </div>
+                  <div>
+                    <BaseIcon
+                      className={`${iconsColor}`}
+                      w='w-16'
+                      h='h-16'
+                      size={48}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      path={icon.mdiTable || icon.mdiTable}
+                    />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {hasPermission(currentUser, 'READ_HISTORY') && (
+            <Link href={'/history/history-list'}>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
+                <div className='flex justify-between align-center'>
+                  <div>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
+                      History
+                    </div>
+                    <div className='text-3xl leading-tight font-semibold'>
+                      {history}
+                    </div>
+                  </div>
+                  <div>
+                    <BaseIcon
+                      className={`${iconsColor}`}
+                      w='w-16'
+                      h='h-16'
+                      size={48}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      path={icon.mdiTable || icon.mdiTable}
+                    />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {hasPermission(currentUser, 'READ_ADDRESS') && (
+            <Link href={'/address/address-list'}>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
+                <div className='flex justify-between align-center'>
+                  <div>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
+                      Address
+                    </div>
+                    <div className='text-3xl leading-tight font-semibold'>
+                      {address}
                     </div>
                   </div>
                   <div>

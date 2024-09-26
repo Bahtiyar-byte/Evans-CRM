@@ -51,6 +51,10 @@ const initialValues = {
   custom_permissions: [],
 
   name: '',
+
+  isActive: false,
+
+  isVerified: false,
 };
 
 const UsersNew = () => {
@@ -145,6 +149,22 @@ const UsersNew = () => {
 
               <FormField label='Name'>
                 <Field name='name' placeholder='Name' />
+              </FormField>
+
+              <FormField label='Active' labelFor='isActive'>
+                <Field
+                  name='isActive'
+                  id='isActive'
+                  component={SwitchField}
+                ></Field>
+              </FormField>
+
+              <FormField label='Verified' labelFor='isVerified'>
+                <Field
+                  name='isVerified'
+                  id='isVerified'
+                  component={SwitchField}
+                ></Field>
               </FormField>
 
               <BaseDivider />

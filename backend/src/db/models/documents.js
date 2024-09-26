@@ -44,6 +44,14 @@ module.exports = function (sequelize, DataTypes) {
       constraints: false,
     });
 
+    db.documents.belongsTo(db.contacts, {
+      as: 'related_contact',
+      foreignKey: {
+        name: 'related_contactId',
+      },
+      constraints: false,
+    });
+
     db.documents.belongsTo(db.users, {
       as: 'createdBy',
     });

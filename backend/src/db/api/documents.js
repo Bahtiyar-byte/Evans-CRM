@@ -27,6 +27,10 @@ module.exports = class DocumentsDBApi {
       transaction,
     });
 
+    await documents.setRelated_contact(data.related_contact || null, {
+      transaction,
+    });
+
     return documents;
   }
 
@@ -70,6 +74,10 @@ module.exports = class DocumentsDBApi {
     );
 
     await documents.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await documents.setRelated_contact(data.related_contact || null, {
       transaction,
     });
 
@@ -138,6 +146,10 @@ module.exports = class DocumentsDBApi {
       transaction,
     });
 
+    output.related_contact = await documents.getRelated_contact({
+      transaction,
+    });
+
     return output;
   }
 
@@ -156,6 +168,11 @@ module.exports = class DocumentsDBApi {
       {
         model: db.jobs,
         as: 'related_job',
+      },
+
+      {
+        model: db.contacts,
+        as: 'related_contact',
       },
     ];
 
@@ -194,6 +211,17 @@ module.exports = class DocumentsDBApi {
         where = {
           ...where,
           related_jobId: { [Op.or]: listItems },
+        };
+      }
+
+      if (filter.related_contact) {
+        var listItems = filter.related_contact.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_contactId: { [Op.or]: listItems },
         };
       }
 

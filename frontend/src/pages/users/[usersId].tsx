@@ -55,6 +55,10 @@ const EditUsers = () => {
 
     name: '',
 
+    isActive: false,
+
+    isVerified: false,
+
     password: '',
   };
   const [initialValues, setInitialValues] = useState(initVals);
@@ -177,6 +181,22 @@ const EditUsers = () => {
 
               <FormField label='Name'>
                 <Field name='name' placeholder='Name' />
+              </FormField>
+
+              <FormField label='Active' labelFor='isActive'>
+                <Field
+                  name='isActive'
+                  id='isActive'
+                  component={SwitchField}
+                ></Field>
+              </FormField>
+
+              <FormField label='Verified' labelFor='isVerified'>
+                <Field
+                  name='isVerified'
+                  id='isVerified'
+                  component={SwitchField}
+                ></Field>
               </FormField>
 
               <FormField label='Password'>

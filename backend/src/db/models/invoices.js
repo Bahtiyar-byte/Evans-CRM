@@ -74,6 +74,14 @@ module.exports = function (sequelize, DataTypes) {
   invoices.associate = (db) => {
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
 
+    db.invoices.hasMany(db.history, {
+      as: 'history_related_invoice',
+      foreignKey: {
+        name: 'related_invoiceId',
+      },
+      constraints: false,
+    });
+
     //end loop
 
     db.invoices.belongsTo(db.jobs, {

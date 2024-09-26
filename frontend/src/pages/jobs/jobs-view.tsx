@@ -661,6 +661,203 @@ const JobsView = () => {
             </CardBox>
           </>
 
+          <>
+            <p className={'block font-bold mb-2'}>Labor_ticket Related Job</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+
+                      <th>Start Date</th>
+
+                      <th>End Date</th>
+
+                      <th>Actual Start Time</th>
+
+                      <th>Actual End Time</th>
+
+                      <th>Crew Actions</th>
+
+                      <th>Labor Progress</th>
+
+                      <th>Assigned Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {jobs.labor_ticket_related_job &&
+                      Array.isArray(jobs.labor_ticket_related_job) &&
+                      jobs.labor_ticket_related_job.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/labor_ticket/labor_ticket-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='name'>{item.name}</td>
+
+                          <td data-label='start_date'>
+                            {dataFormatter.dateFormatter(item.start_date)}
+                          </td>
+
+                          <td data-label='end_date'>
+                            {dataFormatter.dateFormatter(item.end_date)}
+                          </td>
+
+                          <td data-label='actual_start_time'>
+                            {dataFormatter.dateTimeFormatter(
+                              item.actual_start_time,
+                            )}
+                          </td>
+
+                          <td data-label='actual_end_time'>
+                            {dataFormatter.dateTimeFormatter(
+                              item.actual_end_time,
+                            )}
+                          </td>
+
+                          <td data-label='crew_actions'>{item.crew_actions}</td>
+
+                          <td data-label='labor_progress'>
+                            {item.labor_progress}
+                          </td>
+
+                          <td data-label='assigned_date'>
+                            {dataFormatter.dateFormatter(item.assigned_date)}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!jobs?.labor_ticket_related_job?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>History Related Job</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {jobs.history_related_job &&
+                      Array.isArray(jobs.history_related_job) &&
+                      jobs.history_related_job.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/history/history-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='action_description'>
+                            {item.action_description}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!jobs?.history_related_job?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
+          <>
+            <p className={'block font-bold mb-2'}>Address Related Job</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Street</th>
+
+                      <th>Suite/Apt/Unit</th>
+
+                      <th>City</th>
+
+                      <th>State</th>
+
+                      <th>Zip</th>
+
+                      <th>Country</th>
+
+                      <th>Mailing Address</th>
+
+                      <th>Location</th>
+
+                      <th>Billing Address</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {jobs.address_related_job &&
+                      Array.isArray(jobs.address_related_job) &&
+                      jobs.address_related_job.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/address/address-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='street'>{item.street}</td>
+
+                          <td data-label='suite_apt_unit'>
+                            {item.suite_apt_unit}
+                          </td>
+
+                          <td data-label='city'>{item.city}</td>
+
+                          <td data-label='state'>{item.state}</td>
+
+                          <td data-label='zip'>{item.zip}</td>
+
+                          <td data-label='country'>{item.country}</td>
+
+                          <td data-label='is_mailing_address'>
+                            {dataFormatter.booleanFormatter(
+                              item.is_mailing_address,
+                            )}
+                          </td>
+
+                          <td data-label='is_location'>
+                            {dataFormatter.booleanFormatter(item.is_location)}
+                          </td>
+
+                          <td data-label='is_billing_Address'>
+                            {dataFormatter.booleanFormatter(
+                              item.is_billing_Address,
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!jobs?.address_related_job?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
           <BaseDivider />
 
           <BaseButton

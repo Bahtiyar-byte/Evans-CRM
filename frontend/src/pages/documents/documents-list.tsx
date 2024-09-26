@@ -32,6 +32,7 @@ const DocumentsTablesPage = () => {
     { label: 'Name', title: 'name' },
 
     { label: 'Related Job', title: 'related_job' },
+    { label: 'Related Contact', title: 'related_contact' },
   ]);
 
   const hasCreatePermission =

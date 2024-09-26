@@ -67,6 +67,15 @@ const ListTemplates = ({
                     <p className={'text-xs   text-gray-500 '}>Description</p>
                     <p className={'line-clamp-2'}>{item.description}</p>
                   </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs   text-gray-500 '}>
+                      Is Email Template
+                    </p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.booleanFormatter(item.is_email_template)}
+                    </p>
+                  </div>
                 </div>
                 <ListActionsPopover
                   onDelete={onDelete}

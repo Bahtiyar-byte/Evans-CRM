@@ -35,6 +35,10 @@ const ContactsTablesPage = () => {
     { label: 'Address', title: 'address' },
     { label: 'First Name', title: 'firstName' },
     { label: 'Last Name', title: 'lastName' },
+    { label: 'Referral', title: 'referral' },
+    { label: 'Company', title: 'company' },
+
+    { label: 'Assigned To', title: 'assigned_to' },
   ]);
 
   const hasCreatePermission =

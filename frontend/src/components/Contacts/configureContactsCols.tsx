@@ -137,6 +137,74 @@ export const loadColumns = async (
     },
 
     {
+      field: 'assigned_to',
+      headerName: 'Assigned To',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      sortable: false,
+      type: 'singleSelect',
+      getOptionValue: (value: any) => value?.id,
+      getOptionLabel: (value: any) => value?.label,
+      valueOptions: await callOptionsApi('users'),
+      valueGetter: (params: GridValueGetterParams) =>
+        params?.value?.id ?? params?.value,
+    },
+
+    {
+      field: 'category',
+      headerName: 'Category',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+    },
+
+    {
+      field: 'work_type',
+      headerName: 'Work Type',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+    },
+
+    {
+      field: 'referral',
+      headerName: 'Referral',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+    },
+
+    {
+      field: 'company',
+      headerName: 'Company',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+    },
+
+    {
       field: 'actions',
       type: 'actions',
       minWidth: 30,

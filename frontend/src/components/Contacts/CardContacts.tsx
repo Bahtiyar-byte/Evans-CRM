@@ -156,6 +156,61 @@ const CardUsers = ({
                     </div>
                   </dd>
                 </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='  text-gray-500  dark:text-dark-600'>
+                    Assigned To
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {dataFormatter.usersOneListFormatter(item.assigned_to)}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='  text-gray-500  dark:text-dark-600'>
+                    Category
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {item.category}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='  text-gray-500  dark:text-dark-600'>
+                    Work Type
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {item.work_type}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='  text-gray-500  dark:text-dark-600'>
+                    Referral
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {item.referral}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='  text-gray-500  dark:text-dark-600'>
+                    Company
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {item.company}
+                    </div>
+                  </dd>
+                </div>
               </dl>
             </li>
           ))}

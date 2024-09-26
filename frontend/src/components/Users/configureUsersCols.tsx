@@ -174,6 +174,34 @@ export const loadColumns = async (
     },
 
     {
+      field: 'isActive',
+      headerName: 'Active',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      type: 'boolean',
+    },
+
+    {
+      field: 'isVerified',
+      headerName: 'Verified',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      type: 'boolean',
+    },
+
+    {
       field: 'actions',
       type: 'actions',
       minWidth: 30,

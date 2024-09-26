@@ -50,6 +50,40 @@ module.exports = function (sequelize, DataTypes) {
         values: ['Google Ads', 'Facebook', 'Website', 'Other'],
       },
 
+      category: {
+        type: DataTypes.ENUM,
+
+        values: ['Commercial', 'Residential', 'Property Management'],
+      },
+
+      work_type: {
+        type: DataTypes.ENUM,
+
+        values: [
+          'New',
+
+          'Repair',
+
+          'Service',
+
+          'Retail',
+
+          'Insurance',
+
+          'Warranty ',
+
+          'Inspection',
+        ],
+      },
+
+      referral: {
+        type: DataTypes.TEXT,
+      },
+
+      company: {
+        type: DataTypes.TEXT,
+      },
+
       importHash: {
         type: DataTypes.STRING(255),
         allowNull: true,
@@ -100,6 +134,22 @@ module.exports = function (sequelize, DataTypes) {
       constraints: false,
     });
 
+    db.contacts.hasMany(db.images, {
+      as: 'images_related_contact',
+      foreignKey: {
+        name: 'related_contactId',
+      },
+      constraints: false,
+    });
+
+    db.contacts.hasMany(db.documents, {
+      as: 'documents_related_contact',
+      foreignKey: {
+        name: 'related_contactId',
+      },
+      constraints: false,
+    });
+
     db.contacts.hasMany(db.emails, {
       as: 'emails_related_contact',
       foreignKey: {
@@ -124,7 +174,31 @@ module.exports = function (sequelize, DataTypes) {
       constraints: false,
     });
 
+    db.contacts.hasMany(db.history, {
+      as: 'history_related_contact',
+      foreignKey: {
+        name: 'related_contactId',
+      },
+      constraints: false,
+    });
+
+    db.contacts.hasMany(db.address, {
+      as: 'address_related_contact',
+      foreignKey: {
+        name: 'related_contactId',
+      },
+      constraints: false,
+    });
+
     //end loop
+
+    db.contacts.belongsTo(db.users, {
+      as: 'assigned_to',
+      foreignKey: {
+        name: 'assigned_toId',
+      },
+      constraints: false,
+    });
 
     db.contacts.belongsTo(db.users, {
       as: 'createdBy',

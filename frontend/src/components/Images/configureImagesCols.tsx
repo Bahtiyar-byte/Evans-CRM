@@ -93,6 +93,26 @@ export const loadColumns = async (
     },
 
     {
+      field: 'related_contact',
+      headerName: 'Related Contact',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      sortable: false,
+      type: 'singleSelect',
+      getOptionValue: (value: any) => value?.id,
+      getOptionLabel: (value: any) => value?.label,
+      valueOptions: await callOptionsApi('contacts'),
+      valueGetter: (params: GridValueGetterParams) =>
+        params?.value?.id ?? params?.value,
+    },
+
+    {
       field: 'actions',
       type: 'actions',
       minWidth: 30,

@@ -185,6 +185,28 @@ const CardUsers = ({
                     <div className='font-medium line-clamp-4'>{item.name}</div>
                   </dd>
                 </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='  text-gray-500  dark:text-dark-600'>
+                    Active
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {dataFormatter.booleanFormatter(item.isActive)}
+                    </div>
+                  </dd>
+                </div>
+
+                <div className='flex justify-between gap-x-4 py-3'>
+                  <dt className='  text-gray-500  dark:text-dark-600'>
+                    Verified
+                  </dt>
+                  <dd className='flex items-start gap-x-2'>
+                    <div className='font-medium line-clamp-4'>
+                      {dataFormatter.booleanFormatter(item.isVerified)}
+                    </div>
+                  </dd>
+                </div>
               </dl>
             </li>
           ))}

@@ -69,6 +69,17 @@ const ListDocuments = ({
                       {dataFormatter.jobsOneListFormatter(item.related_job)}
                     </p>
                   </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs   text-gray-500 '}>
+                      Related Contact
+                    </p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.contactsOneListFormatter(
+                        item.related_contact,
+                      )}
+                    </p>
+                  </div>
                 </div>
                 <ListActionsPopover
                   onDelete={onDelete}

@@ -30,6 +30,14 @@ module.exports = function (sequelize, DataTypes) {
   emails.associate = (db) => {
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
 
+    db.emails.hasMany(db.history, {
+      as: 'history_related_email',
+      foreignKey: {
+        name: 'related_emailId',
+      },
+      constraints: false,
+    });
+
     //end loop
 
     db.emails.belongsTo(db.jobs, {
