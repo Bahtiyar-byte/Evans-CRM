@@ -30,6 +30,14 @@ module.exports = class ContactsDBApi {
       { transaction },
     );
 
+    await contacts.setRelated_phones(data.related_phones || [], {
+      transaction,
+    });
+
+    await contacts.setRelated_emails(data.related_emails || [], {
+      transaction,
+    });
+
     return contacts;
   }
 
@@ -85,6 +93,14 @@ module.exports = class ContactsDBApi {
       },
       { transaction },
     );
+
+    await contacts.setRelated_phones(data.related_phones || [], {
+      transaction,
+    });
+
+    await contacts.setRelated_emails(data.related_emails || [], {
+      transaction,
+    });
 
     return contacts;
   }
@@ -170,6 +186,14 @@ module.exports = class ContactsDBApi {
         transaction,
       });
 
+    output.related_phones = await contacts.getRelated_phones({
+      transaction,
+    });
+
+    output.related_emails = await contacts.getRelated_emails({
+      transaction,
+    });
+
     return output;
   }
 
@@ -184,7 +208,37 @@ module.exports = class ContactsDBApi {
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};
-    let include = [];
+    let include = [
+      {
+        model: db.contact_phones,
+        as: 'related_phones',
+        through: filter.related_phones
+          ? {
+              where: {
+                [Op.or]: filter.related_phones.split('|').map((item) => {
+                  return { ['Id']: Utils.uuid(item) };
+                }),
+              },
+            }
+          : null,
+        required: filter.related_phones ? true : null,
+      },
+
+      {
+        model: db.contact_emails,
+        as: 'related_emails',
+        through: filter.related_emails
+          ? {
+              where: {
+                [Op.or]: filter.related_emails.split('|').map((item) => {
+                  return { ['Id']: Utils.uuid(item) };
+                }),
+              },
+            }
+          : null,
+        required: filter.related_emails ? true : null,
+      },
+    ];
 
     if (filter) {
       if (filter.id) {

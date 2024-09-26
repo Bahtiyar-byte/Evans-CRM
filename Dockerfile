@@ -1,6 +1,4 @@
-
-  FROM node:20-alpine AS builder
-
+FROM node:20.15.1-alpine AS builder
 RUN apk add --no-cache git
 WORKDIR /app
 COPY frontend/package.json frontend/yarn.lock ./
@@ -8,7 +6,7 @@ RUN yarn install --pure-lockfile
 COPY frontend .
 RUN yarn build
 
-FROM node:18.18-alpine
+FROM node:20.15.1-alpine
 WORKDIR /app
 COPY backend/package.json backend/yarn.lock ./
 RUN yarn install --pure-lockfile

@@ -40,8 +40,6 @@ const EditTemplates = () => {
     name: '',
 
     description: '',
-
-    related_trade: '',
   };
   const [initialValues, setInitialValues] = useState(initVals);
 
@@ -105,17 +103,6 @@ const EditTemplates = () => {
                   name='description'
                   id='description'
                   component={RichTextField}
-                ></Field>
-              </FormField>
-
-              <FormField label='Related Trade' labelFor='related_trade'>
-                <Field
-                  name='related_trade'
-                  id='related_trade'
-                  component={SelectField}
-                  options={initialValues.related_trade}
-                  itemRef={'trades'}
-                  showField={'name'}
                 ></Field>
               </FormField>
 

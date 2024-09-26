@@ -74,6 +74,8 @@ const CardUsers = ({
                     onView={onView}
                     onEdit={onEdit}
                     itemId={item.id}
+                    pathEdit={`/templates/templates-edit/?id=${item.id}`}
+                    pathView={`/templates/templates-view/?id=${item.id}`}
                     hasUpdatePermission={hasUpdatePermission}
                   />
                 </div>
@@ -93,17 +95,6 @@ const CardUsers = ({
                   <dd className='flex items-start gap-x-2'>
                     <div className='font-medium line-clamp-4'>
                       {item.description}
-                    </div>
-                  </dd>
-                </div>
-
-                <div className='flex justify-between gap-x-4 py-3'>
-                  <dt className='  text-gray-500  dark:text-dark-600'>
-                    Related Trade
-                  </dt>
-                  <dd className='flex items-start gap-x-2'>
-                    <div className='font-medium line-clamp-4'>
-                      {dataFormatter.tradesOneListFormatter(item.related_trade)}
                     </div>
                   </dd>
                 </div>

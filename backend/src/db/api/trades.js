@@ -124,10 +124,6 @@ module.exports = class TradesDBApi {
 
     const output = trades.get({ plain: true });
 
-    output.templates_related_trade = await trades.getTemplates_related_trade({
-      transaction,
-    });
-
     return output;
   }
 

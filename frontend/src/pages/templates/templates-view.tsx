@@ -65,12 +65,6 @@ const TemplatesView = () => {
             )}
           </div>
 
-          <div className={'mb-4'}>
-            <p className={'block font-bold mb-2'}>Related Trade</p>
-
-            <p>{templates?.related_trade?.name ?? 'No data'}</p>
-          </div>
-
           <>
             <p className={'block font-bold mb-2'}>
               Estimate_sections Related Template

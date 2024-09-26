@@ -112,6 +112,8 @@ const ListAppointments = ({
                   onView={onView}
                   onEdit={onEdit}
                   itemId={item.id}
+                  pathEdit={`/appointments/appointments-edit/?id=${item.id}`}
+                  pathView={`/appointments/appointments-view/?id=${item.id}`}
                   hasUpdatePermission={hasUpdatePermission}
                 />
               </div>

@@ -113,6 +113,8 @@ const ListEstimate_sections = ({
                   onView={onView}
                   onEdit={onEdit}
                   itemId={item.id}
+                  pathEdit={`/estimate_sections/estimate_sections-edit/?id=${item.id}`}
+                  pathView={`/estimate_sections/estimate_sections-view/?id=${item.id}`}
                   hasUpdatePermission={hasUpdatePermission}
                 />
               </div>

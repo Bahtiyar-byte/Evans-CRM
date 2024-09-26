@@ -99,6 +99,8 @@ const ListTasks = ({
                   onView={onView}
                   onEdit={onEdit}
                   itemId={item.id}
+                  pathEdit={`/tasks/tasks-edit/?id=${item.id}`}
+                  pathView={`/tasks/tasks-view/?id=${item.id}`}
                   hasUpdatePermission={hasUpdatePermission}
                 />
               </div>

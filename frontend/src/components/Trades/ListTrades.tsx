@@ -68,6 +68,8 @@ const ListTrades = ({
                   onView={onView}
                   onEdit={onEdit}
                   itemId={item.id}
+                  pathEdit={`/trades/trades-edit/?id=${item.id}`}
+                  pathView={`/trades/trades-view/?id=${item.id}`}
                   hasUpdatePermission={hasUpdatePermission}
                 />
               </div>

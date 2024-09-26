@@ -84,6 +84,10 @@ module.exports = class SearchService {
         amendments: ['description'],
 
         estimate_sections: ['name', 'description'],
+
+        contact_phones: ['phone_number'],
+
+        contact_emails: ['email'],
       };
       const columnsInt = {
         estimates: [

@@ -11,6 +11,7 @@ import ImageField from '../ImageField';
 import { saveFile } from '../../helpers/fileSaver';
 import dataFormatter from '../../helpers/dataFormatter';
 import DataGridMultiSelect from '../DataGridMultiSelect';
+import ListActionsPopover from '../ListActionsPopover';
 
 import { hasPermission } from '../../helpers/userPermissions';
 
@@ -64,67 +65,24 @@ export const loadColumns = async (
     },
 
     {
-      field: 'related_trade',
-      headerName: 'Related Trade',
-      flex: 1,
-      minWidth: 120,
-      filterable: false,
-      headerClassName: 'datagrid--header',
-      cellClassName: 'datagrid--cell',
-
-      editable: hasUpdatePermission,
-
-      sortable: false,
-      type: 'singleSelect',
-      getOptionValue: (value: any) => value?.id,
-      getOptionLabel: (value: any) => value?.label,
-      valueOptions: await callOptionsApi('trades'),
-      valueGetter: (params: GridValueGetterParams) =>
-        params?.value?.id ?? params?.value,
-    },
-
-    {
       field: 'actions',
       type: 'actions',
       minWidth: 30,
       headerClassName: 'datagrid--header',
       cellClassName: 'datagrid--cell',
       getActions: (params: GridRowParams) => {
-        const actions = [
-          <GridActionsCellItem
+        return [
+          <ListActionsPopover
+            onDelete={onDelete}
+            onView={onView}
+            onEdit={onEdit}
+            itemId={params?.row?.id}
+            pathEdit={`/templates/templates-edit/?id=${params?.row?.id}`}
+            pathView={`/templates/templates-view/?id=${params?.row?.id}`}
             key={1}
-            icon={<BaseIcon path={mdiEye} size={24} />}
-            onClick={() => onView(params?.row?.id)}
-            label='View'
-            showInMenu
+            hasUpdatePermission={hasUpdatePermission}
           />,
         ];
-
-        if (hasUpdatePermission) {
-          actions.push(
-            <GridActionsCellItem
-              key={2}
-              icon={<BaseIcon path={mdiPencilOutline} size={24} />}
-              onClick={() => onEdit(params?.row?.id)}
-              label='Edit'
-              showInMenu
-            />,
-          );
-        }
-
-        if (hasUpdatePermission) {
-          actions.push(
-            <GridActionsCellItem
-              key={3}
-              icon={<BaseIcon path={mdiTrashCan} size={24} />}
-              onClick={() => onDelete(params?.row?.id)}
-              label='Delete'
-              showInMenu
-            />,
-          );
-        }
-
-        return actions;
       },
     },
   ];
