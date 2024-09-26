@@ -191,6 +191,120 @@ export default {
     return { label: val.name, id: val.id };
   },
 
+  invoicesManyListFormatter(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => item.invoice_number);
+  },
+  invoicesOneListFormatter(val) {
+    if (!val) return '';
+    return val.invoice_number;
+  },
+  invoicesManyListFormatterEdit(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => {
+      return { id: item.id, label: item.invoice_number };
+    });
+  },
+  invoicesOneListFormatterEdit(val) {
+    if (!val) return '';
+    return { label: val.invoice_number, id: val.id };
+  },
+
+  ordersManyListFormatter(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => item.order_number);
+  },
+  ordersOneListFormatter(val) {
+    if (!val) return '';
+    return val.order_number;
+  },
+  ordersManyListFormatterEdit(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => {
+      return { id: item.id, label: item.order_number };
+    });
+  },
+  ordersOneListFormatterEdit(val) {
+    if (!val) return '';
+    return { label: val.order_number, id: val.id };
+  },
+
+  imagesManyListFormatter(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => item.Name);
+  },
+  imagesOneListFormatter(val) {
+    if (!val) return '';
+    return val.Name;
+  },
+  imagesManyListFormatterEdit(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => {
+      return { id: item.id, label: item.Name };
+    });
+  },
+  imagesOneListFormatterEdit(val) {
+    if (!val) return '';
+    return { label: val.Name, id: val.id };
+  },
+
+  documentsManyListFormatter(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => item.name);
+  },
+  documentsOneListFormatter(val) {
+    if (!val) return '';
+    return val.name;
+  },
+  documentsManyListFormatterEdit(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => {
+      return { id: item.id, label: item.name };
+    });
+  },
+  documentsOneListFormatterEdit(val) {
+    if (!val) return '';
+    return { label: val.name, id: val.id };
+  },
+
+  emailsManyListFormatter(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => item.id);
+  },
+  emailsOneListFormatter(val) {
+    if (!val) return '';
+    return val.id;
+  },
+  emailsManyListFormatterEdit(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => {
+      return { id: item.id, label: item.id };
+    });
+  },
+  emailsOneListFormatterEdit(val) {
+    if (!val) return '';
+    return { label: val.id, id: val.id };
+  },
+
+  appointmentsManyListFormatter(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => item.subject);
+  },
+  appointmentsOneListFormatter(val) {
+    if (!val) return '';
+    return val.subject;
+  },
+  appointmentsManyListFormatterEdit(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => {
+      return { id: item.id, label: item.subject };
+    });
+  },
+  appointmentsOneListFormatterEdit(val) {
+    if (!val) return '';
+    return { label: val.subject, id: val.id };
+  },
+
   contact_phonesManyListFormatter(val) {
     if (!val || !val.length) return [];
     return val.map((item) => item.phone_number);
@@ -227,5 +341,43 @@ export default {
   contact_emailsOneListFormatterEdit(val) {
     if (!val) return '';
     return { label: val.email, id: val.id };
+  },
+
+  labor_ticketManyListFormatter(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => item.id);
+  },
+  labor_ticketOneListFormatter(val) {
+    if (!val) return '';
+    return val.id;
+  },
+  labor_ticketManyListFormatterEdit(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => {
+      return { id: item.id, label: item.id };
+    });
+  },
+  labor_ticketOneListFormatterEdit(val) {
+    if (!val) return '';
+    return { label: val.id, id: val.id };
+  },
+
+  crewManyListFormatter(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => item.id);
+  },
+  crewOneListFormatter(val) {
+    if (!val) return '';
+    return val.id;
+  },
+  crewManyListFormatterEdit(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => {
+      return { id: item.id, label: item.id };
+    });
+  },
+  crewOneListFormatterEdit(val) {
+    if (!val) return '';
+    return { label: val.id, id: val.id };
   },
 };

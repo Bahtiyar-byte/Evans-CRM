@@ -182,6 +182,30 @@ module.exports = function (sequelize, DataTypes) {
       constraints: false,
     });
 
+    db.jobs.hasMany(db.labor_ticket, {
+      as: 'labor_ticket_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.jobs.hasMany(db.history, {
+      as: 'history_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
+    db.jobs.hasMany(db.address, {
+      as: 'address_related_job',
+      foreignKey: {
+        name: 'related_jobId',
+      },
+      constraints: false,
+    });
+
     //end loop
 
     db.jobs.belongsTo(db.users, {

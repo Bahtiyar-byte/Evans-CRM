@@ -180,6 +180,11 @@ module.exports = class EstimatesDBApi {
         transaction,
       });
 
+    output.history_related_estimate =
+      await estimates.getHistory_related_estimate({
+        transaction,
+      });
+
     output.related_contact = await estimates.getRelated_contact({
       transaction,
     });

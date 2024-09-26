@@ -46,6 +46,14 @@ module.exports = function (sequelize, DataTypes) {
   appointments.associate = (db) => {
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
 
+    db.appointments.hasMany(db.history, {
+      as: 'history_related_appointment',
+      foreignKey: {
+        name: 'related_appointmentId',
+      },
+      constraints: false,
+    });
+
     //end loop
 
     db.appointments.belongsTo(db.users, {

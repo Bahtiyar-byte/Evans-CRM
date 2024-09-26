@@ -145,6 +145,10 @@ module.exports = class EmailsDBApi {
 
     const output = emails.get({ plain: true });
 
+    output.history_related_email = await emails.getHistory_related_email({
+      transaction,
+    });
+
     output.related_job = await emails.getRelated_job({
       transaction,
     });

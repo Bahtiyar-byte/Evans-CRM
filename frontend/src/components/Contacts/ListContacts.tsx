@@ -97,6 +97,33 @@ const ListContacts = ({
                     <p className={'text-xs   text-gray-500 '}>Source</p>
                     <p className={'line-clamp-2'}>{item.source}</p>
                   </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs   text-gray-500 '}>Assigned To</p>
+                    <p className={'line-clamp-2'}>
+                      {dataFormatter.usersOneListFormatter(item.assigned_to)}
+                    </p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs   text-gray-500 '}>Category</p>
+                    <p className={'line-clamp-2'}>{item.category}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs   text-gray-500 '}>Work Type</p>
+                    <p className={'line-clamp-2'}>{item.work_type}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs   text-gray-500 '}>Referral</p>
+                    <p className={'line-clamp-2'}>{item.referral}</p>
+                  </div>
+
+                  <div className={'flex-1 px-3'}>
+                    <p className={'text-xs   text-gray-500 '}>Company</p>
+                    <p className={'line-clamp-2'}>{item.company}</p>
+                  </div>
                 </div>
                 <ListActionsPopover
                   onDelete={onDelete}

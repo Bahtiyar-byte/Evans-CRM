@@ -38,7 +38,15 @@ router.use(checkCrudPermissions('contacts'));
  *          lastName:
  *            type: string
  *            default: lastName
+ *          referral:
+ *            type: string
+ *            default: referral
+ *          company:
+ *            type: string
+ *            default: company
 
+ *          
+ *          
  *          
  *          
  */
@@ -328,6 +336,8 @@ router.get(
         'address',
         'firstName',
         'lastName',
+        'referral',
+        'company',
       ];
       const opts = { fields };
       try {

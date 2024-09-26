@@ -37,6 +37,8 @@ const initialValues = {
   name: '',
 
   description: '',
+
+  is_email_template: false,
 };
 
 const TemplatesNew = () => {
@@ -75,6 +77,14 @@ const TemplatesNew = () => {
                   name='description'
                   id='description'
                   component={RichTextField}
+                ></Field>
+              </FormField>
+
+              <FormField label='Is Email Template' labelFor='is_email_template'>
+                <Field
+                  name='is_email_template'
+                  id='is_email_template'
+                  component={SwitchField}
                 ></Field>
               </FormField>
 

@@ -65,6 +65,20 @@ export const loadColumns = async (
     },
 
     {
+      field: 'is_email_template',
+      headerName: 'Is Email Template',
+      flex: 1,
+      minWidth: 120,
+      filterable: false,
+      headerClassName: 'datagrid--header',
+      cellClassName: 'datagrid--cell',
+
+      editable: hasUpdatePermission,
+
+      type: 'boolean',
+    },
+
+    {
       field: 'actions',
       type: 'actions',
       minWidth: 30,

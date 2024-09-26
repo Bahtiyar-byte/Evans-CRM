@@ -23,12 +23,20 @@ module.exports = class ContactsDBApi {
         firstName: data.firstName || null,
         lastName: data.lastName || null,
         source: data.source || null,
+        category: data.category || null,
+        work_type: data.work_type || null,
+        referral: data.referral || null,
+        company: data.company || null,
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await contacts.setAssigned_to(data.assigned_to || null, {
+      transaction,
+    });
 
     await contacts.setRelated_phones(data.related_phones || [], {
       transaction,
@@ -57,6 +65,10 @@ module.exports = class ContactsDBApi {
       firstName: item.firstName || null,
       lastName: item.lastName || null,
       source: item.source || null,
+      category: item.category || null,
+      work_type: item.work_type || null,
+      referral: item.referral || null,
+      company: item.company || null,
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -89,10 +101,18 @@ module.exports = class ContactsDBApi {
         firstName: data.firstName || null,
         lastName: data.lastName || null,
         source: data.source || null,
+        category: data.category || null,
+        work_type: data.work_type || null,
+        referral: data.referral || null,
+        company: data.company || null,
         updatedById: currentUser.id,
       },
       { transaction },
     );
+
+    await contacts.setAssigned_to(data.assigned_to || null, {
+      transaction,
+    });
 
     await contacts.setRelated_phones(data.related_phones || [], {
       transaction,
@@ -172,6 +192,15 @@ module.exports = class ContactsDBApi {
       transaction,
     });
 
+    output.images_related_contact = await contacts.getImages_related_contact({
+      transaction,
+    });
+
+    output.documents_related_contact =
+      await contacts.getDocuments_related_contact({
+        transaction,
+      });
+
     output.emails_related_contact = await contacts.getEmails_related_contact({
       transaction,
     });
@@ -186,11 +215,23 @@ module.exports = class ContactsDBApi {
         transaction,
       });
 
+    output.history_related_contact = await contacts.getHistory_related_contact({
+      transaction,
+    });
+
+    output.address_related_contact = await contacts.getAddress_related_contact({
+      transaction,
+    });
+
     output.related_phones = await contacts.getRelated_phones({
       transaction,
     });
 
     output.related_emails = await contacts.getRelated_emails({
+      transaction,
+    });
+
+    output.assigned_to = await contacts.getAssigned_to({
       transaction,
     });
 
@@ -209,6 +250,11 @@ module.exports = class ContactsDBApi {
     const transaction = (options && options.transaction) || undefined;
     let where = {};
     let include = [
+      {
+        model: db.users,
+        as: 'assigned_to',
+      },
+
       {
         model: db.contact_phones,
         as: 'related_phones',
@@ -290,6 +336,20 @@ module.exports = class ContactsDBApi {
         };
       }
 
+      if (filter.referral) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('contacts', 'referral', filter.referral),
+        };
+      }
+
+      if (filter.company) {
+        where = {
+          ...where,
+          [Op.and]: Utils.ilike('contacts', 'company', filter.company),
+        };
+      }
+
       if (
         filter.active === true ||
         filter.active === 'true' ||
@@ -313,6 +373,31 @@ module.exports = class ContactsDBApi {
         where = {
           ...where,
           source: filter.source,
+        };
+      }
+
+      if (filter.category) {
+        where = {
+          ...where,
+          category: filter.category,
+        };
+      }
+
+      if (filter.work_type) {
+        where = {
+          ...where,
+          work_type: filter.work_type,
+        };
+      }
+
+      if (filter.assigned_to) {
+        var listItems = filter.assigned_to.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          assigned_toId: { [Op.or]: listItems },
         };
       }
 

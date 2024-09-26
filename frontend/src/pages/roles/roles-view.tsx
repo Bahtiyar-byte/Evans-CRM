@@ -114,6 +114,10 @@ const RolesView = () => {
                       <th>Disabled</th>
 
                       <th>Name</th>
+
+                      <th>Active</th>
+
+                      <th>Verified</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -139,6 +143,14 @@ const RolesView = () => {
                           </td>
 
                           <td data-label='name'>{item.name}</td>
+
+                          <td data-label='isActive'>
+                            {dataFormatter.booleanFormatter(item.isActive)}
+                          </td>
+
+                          <td data-label='isVerified'>
+                            {dataFormatter.booleanFormatter(item.isVerified)}
+                          </td>
                         </tr>
                       ))}
                   </tbody>

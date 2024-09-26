@@ -143,6 +143,11 @@ module.exports = class OrdersDBApi {
 
     const output = orders.get({ plain: true });
 
+    output.labor_ticket_related_order =
+      await orders.getLabor_ticket_related_order({
+        transaction,
+      });
+
     output.related_job = await orders.getRelated_job({
       transaction,
     });

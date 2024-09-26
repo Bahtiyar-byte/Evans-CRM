@@ -17,6 +17,8 @@ module.exports = class TemplatesDBApi {
 
         name: data.name || null,
         description: data.description || null,
+        is_email_template: data.is_email_template || false,
+
         importHash: data.importHash || null,
         createdById: currentUser.id,
         updatedById: currentUser.id,
@@ -41,6 +43,8 @@ module.exports = class TemplatesDBApi {
 
       name: item.name || null,
       description: item.description || null,
+      is_email_template: item.is_email_template || false,
+
       importHash: item.importHash || null,
       createdById: currentUser.id,
       updatedById: currentUser.id,
@@ -67,6 +71,8 @@ module.exports = class TemplatesDBApi {
       {
         name: data.name || null,
         description: data.description || null,
+        is_email_template: data.is_email_template || false,
+
         updatedById: currentUser.id,
       },
       { transaction },
@@ -208,6 +214,13 @@ module.exports = class TemplatesDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
+        };
+      }
+
+      if (filter.is_email_template) {
+        where = {
+          ...where,
+          is_email_template: filter.is_email_template,
         };
       }
 

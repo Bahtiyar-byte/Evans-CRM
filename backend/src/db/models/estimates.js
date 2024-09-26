@@ -88,6 +88,14 @@ module.exports = function (sequelize, DataTypes) {
       constraints: false,
     });
 
+    db.estimates.hasMany(db.history, {
+      as: 'history_related_estimate',
+      foreignKey: {
+        name: 'related_estimateId',
+      },
+      constraints: false,
+    });
+
     //end loop
 
     db.estimates.belongsTo(db.contacts, {

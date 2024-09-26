@@ -166,6 +166,11 @@ module.exports = class AppointmentsDBApi {
 
     const output = appointments.get({ plain: true });
 
+    output.history_related_appointment =
+      await appointments.getHistory_related_appointment({
+        transaction,
+      });
+
     output.assigned_to = await appointments.getAssigned_to({
       transaction,
     });

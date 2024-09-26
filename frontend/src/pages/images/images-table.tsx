@@ -32,6 +32,7 @@ const ImagesTablesPage = () => {
     { label: 'Name', title: 'Name' },
 
     { label: 'Related Job', title: 'related_job' },
+    { label: 'Related Contact', title: 'related_contact' },
   ]);
 
   const hasCreatePermission =

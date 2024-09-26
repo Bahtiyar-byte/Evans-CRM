@@ -217,6 +217,43 @@ const EstimatesView = () => {
             </CardBox>
           </>
 
+          <>
+            <p className={'block font-bold mb-2'}>History Related Estimate</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {estimates.history_related_estimate &&
+                      Array.isArray(estimates.history_related_estimate) &&
+                      estimates.history_related_estimate.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(`/history/history-view/?id=${item.id}`)
+                          }
+                        >
+                          <td data-label='action_description'>
+                            {item.action_description}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!estimates?.history_related_estimate?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
           <BaseDivider />
 
           <BaseButton

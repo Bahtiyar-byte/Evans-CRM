@@ -27,6 +27,10 @@ module.exports = class ImagesDBApi {
       transaction,
     });
 
+    await images.setRelated_contact(data.related_contact || null, {
+      transaction,
+    });
+
     await FileDBApi.replaceRelationFiles(
       {
         belongsTo: db.images.getTableName(),
@@ -90,6 +94,10 @@ module.exports = class ImagesDBApi {
     );
 
     await images.setRelated_job(data.related_job || null, {
+      transaction,
+    });
+
+    await images.setRelated_contact(data.related_contact || null, {
       transaction,
     });
 
@@ -172,6 +180,10 @@ module.exports = class ImagesDBApi {
       transaction,
     });
 
+    output.related_contact = await images.getRelated_contact({
+      transaction,
+    });
+
     return output;
   }
 
@@ -190,6 +202,11 @@ module.exports = class ImagesDBApi {
       {
         model: db.jobs,
         as: 'related_job',
+      },
+
+      {
+        model: db.contacts,
+        as: 'related_contact',
       },
 
       {
@@ -233,6 +250,17 @@ module.exports = class ImagesDBApi {
         where = {
           ...where,
           related_jobId: { [Op.or]: listItems },
+        };
+      }
+
+      if (filter.related_contact) {
+        var listItems = filter.related_contact.split('|').map((item) => {
+          return Utils.uuid(item);
+        });
+
+        where = {
+          ...where,
+          related_contactId: { [Op.or]: listItems },
         };
       }
 

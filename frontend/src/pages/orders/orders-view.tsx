@@ -73,6 +73,87 @@ const OrdersView = () => {
             <p>{orders?.related_estimate?.name ?? 'No data'}</p>
           </div>
 
+          <>
+            <p className={'block font-bold mb-2'}>Labor_ticket Related Order</p>
+            <CardBox
+              className='mb-6 border border-gray-300 rounded overflow-hidden'
+              hasTable
+            >
+              <div className='overflow-x-auto'>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+
+                      <th>Start Date</th>
+
+                      <th>End Date</th>
+
+                      <th>Actual Start Time</th>
+
+                      <th>Actual End Time</th>
+
+                      <th>Crew Actions</th>
+
+                      <th>Labor Progress</th>
+
+                      <th>Assigned Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {orders.labor_ticket_related_order &&
+                      Array.isArray(orders.labor_ticket_related_order) &&
+                      orders.labor_ticket_related_order.map((item: any) => (
+                        <tr
+                          key={item.id}
+                          onClick={() =>
+                            router.push(
+                              `/labor_ticket/labor_ticket-view/?id=${item.id}`,
+                            )
+                          }
+                        >
+                          <td data-label='name'>{item.name}</td>
+
+                          <td data-label='start_date'>
+                            {dataFormatter.dateFormatter(item.start_date)}
+                          </td>
+
+                          <td data-label='end_date'>
+                            {dataFormatter.dateFormatter(item.end_date)}
+                          </td>
+
+                          <td data-label='actual_start_time'>
+                            {dataFormatter.dateTimeFormatter(
+                              item.actual_start_time,
+                            )}
+                          </td>
+
+                          <td data-label='actual_end_time'>
+                            {dataFormatter.dateTimeFormatter(
+                              item.actual_end_time,
+                            )}
+                          </td>
+
+                          <td data-label='crew_actions'>{item.crew_actions}</td>
+
+                          <td data-label='labor_progress'>
+                            {item.labor_progress}
+                          </td>
+
+                          <td data-label='assigned_date'>
+                            {dataFormatter.dateFormatter(item.assigned_date)}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {!orders?.labor_ticket_related_order?.length && (
+                <div className={'text-center py-4'}>No data</div>
+              )}
+            </CardBox>
+          </>
+
           <BaseDivider />
 
           <BaseButton

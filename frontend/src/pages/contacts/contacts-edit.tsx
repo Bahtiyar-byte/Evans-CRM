@@ -52,6 +52,20 @@ const EditContactsPage = () => {
     lastName: '',
 
     source: '',
+
+    related_phones: [],
+
+    related_emails: [],
+
+    assigned_to: '',
+
+    category: '',
+
+    work_type: '',
+
+    referral: '',
+
+    company: '',
   };
   const [initialValues, setInitialValues] = useState(initVals);
 
@@ -150,6 +164,77 @@ const EditContactsPage = () => {
 
                   <option value='Other'>Other</option>
                 </Field>
+              </FormField>
+
+              <FormField label='Related Phones' labelFor='related_phones'>
+                <Field
+                  name='related_phones'
+                  id='related_phones'
+                  component={SelectFieldMany}
+                  options={initialValues.related_phones}
+                  itemRef={'contact_phones'}
+                  showField={'phone_number'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Emails' labelFor='related_emails'>
+                <Field
+                  name='related_emails'
+                  id='related_emails'
+                  component={SelectFieldMany}
+                  options={initialValues.related_emails}
+                  itemRef={'contact_emails'}
+                  showField={'email'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Assigned To' labelFor='assigned_to'>
+                <Field
+                  name='assigned_to'
+                  id='assigned_to'
+                  component={SelectField}
+                  options={initialValues.assigned_to}
+                  itemRef={'users'}
+                  showField={'name'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Category' labelFor='category'>
+                <Field name='category' id='category' component='select'>
+                  <option value='Commercial'>Commercial</option>
+
+                  <option value='Residential'>Residential</option>
+
+                  <option value='Property Management'>
+                    Property Management
+                  </option>
+                </Field>
+              </FormField>
+
+              <FormField label='Work Type' labelFor='work_type'>
+                <Field name='work_type' id='work_type' component='select'>
+                  <option value='New'>New</option>
+
+                  <option value='Repair'>Repair</option>
+
+                  <option value='Service'>Service</option>
+
+                  <option value='Retail'>Retail</option>
+
+                  <option value='Insurance'>Insurance</option>
+
+                  <option value='Warranty '>Warranty </option>
+
+                  <option value='Inspection'>Inspection</option>
+                </Field>
+              </FormField>
+
+              <FormField label='Referral'>
+                <Field name='referral' placeholder='Referral' />
+              </FormField>
+
+              <FormField label='Company'>
+                <Field name='company' placeholder='Company' />
               </FormField>
 
               <BaseDivider />

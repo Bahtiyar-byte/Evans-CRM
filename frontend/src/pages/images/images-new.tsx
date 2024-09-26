@@ -39,6 +39,8 @@ const initialValues = {
   Name: '',
 
   related_job: '',
+
+  related_contact: '',
 };
 
 const ImagesNew = () => {
@@ -95,6 +97,16 @@ const ImagesNew = () => {
                   component={SelectField}
                   options={[]}
                   itemRef={'jobs'}
+                ></Field>
+              </FormField>
+
+              <FormField label='Related Contact' labelFor='related_contact'>
+                <Field
+                  name='related_contact'
+                  id='related_contact'
+                  component={SelectField}
+                  options={[]}
+                  itemRef={'contacts'}
                 ></Field>
               </FormField>
 
