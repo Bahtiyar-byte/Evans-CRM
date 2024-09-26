@@ -36,6 +36,15 @@ module.exports = function (sequelize, DataTypes) {
   );
 
   templates.associate = (db) => {
+    db.templates.belongsToMany(db.trades, {
+      as: 'related_trade',
+      foreignKey: {
+        name: 'templates_related_tradeId',
+      },
+      constraints: false,
+      through: 'templatesRelated_tradeTrades',
+    });
+
     /// loop through entities and it's fields, and if ref === current e[name] and create relation has many on parent entity
 
     db.templates.hasMany(db.estimate_sections, {
@@ -47,14 +56,6 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     //end loop
-
-    db.templates.belongsTo(db.trades, {
-      as: 'related_trade',
-      foreignKey: {
-        name: 'related_tradeId',
-      },
-      constraints: false,
-    });
 
     db.templates.belongsTo(db.users, {
       as: 'createdBy',

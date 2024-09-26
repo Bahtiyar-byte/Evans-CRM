@@ -37,8 +37,6 @@ const initialValues = {
   name: '',
 
   description: '',
-
-  related_trade: '',
 };
 
 const TemplatesNew = () => {
@@ -77,16 +75,6 @@ const TemplatesNew = () => {
                   name='description'
                   id='description'
                   component={RichTextField}
-                ></Field>
-              </FormField>
-
-              <FormField label='Related Trade' labelFor='related_trade'>
-                <Field
-                  name='related_trade'
-                  id='related_trade'
-                  component={SelectField}
-                  options={[]}
-                  itemRef={'trades'}
                 ></Field>
               </FormField>
 

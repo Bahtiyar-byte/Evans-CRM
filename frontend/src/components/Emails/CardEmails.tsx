@@ -74,6 +74,8 @@ const CardUsers = ({
                     onView={onView}
                     onEdit={onEdit}
                     itemId={item.id}
+                    pathEdit={`/emails/emails-edit/?id=${item.id}`}
+                    pathView={`/emails/emails-view/?id=${item.id}`}
                     hasUpdatePermission={hasUpdatePermission}
                   />
                 </div>

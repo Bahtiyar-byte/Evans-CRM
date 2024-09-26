@@ -78,7 +78,10 @@ router.use(checkCrudPermissions('jobs'));
 router.post(
   '/',
   wrapAsync(async (req, res) => {
-    const link = new URL(req.headers.referer);
+    const referer =
+      req.headers.referer ||
+      `${req.protocol}://${req.hostname}${req.originalUrl}`;
+    const link = new URL(referer);
     await JobsService.create(req.body.data, req.currentUser, true, link.host);
     const payload = true;
     res.status(200).send(payload);
@@ -123,7 +126,10 @@ router.post(
 router.post(
   '/bulk-import',
   wrapAsync(async (req, res) => {
-    const link = new URL(req.headers.referer);
+    const referer =
+      req.headers.referer ||
+      `${req.protocol}://${req.hostname}${req.originalUrl}`;
+    const link = new URL(referer);
     await JobsService.bulkImport(req, res, true, link.host);
     const payload = true;
     res.status(200).send(payload);

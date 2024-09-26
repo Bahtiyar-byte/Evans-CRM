@@ -190,4 +190,42 @@ export default {
     if (!val) return '';
     return { label: val.name, id: val.id };
   },
+
+  contact_phonesManyListFormatter(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => item.phone_number);
+  },
+  contact_phonesOneListFormatter(val) {
+    if (!val) return '';
+    return val.phone_number;
+  },
+  contact_phonesManyListFormatterEdit(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => {
+      return { id: item.id, label: item.phone_number };
+    });
+  },
+  contact_phonesOneListFormatterEdit(val) {
+    if (!val) return '';
+    return { label: val.phone_number, id: val.id };
+  },
+
+  contact_emailsManyListFormatter(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => item.email);
+  },
+  contact_emailsOneListFormatter(val) {
+    if (!val) return '';
+    return val.email;
+  },
+  contact_emailsManyListFormatterEdit(val) {
+    if (!val || !val.length) return [];
+    return val.map((item) => {
+      return { id: item.id, label: item.email };
+    });
+  },
+  contact_emailsOneListFormatterEdit(val) {
+    if (!val) return '';
+    return { label: val.email, id: val.id };
+  },
 };

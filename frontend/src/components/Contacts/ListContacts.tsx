@@ -103,6 +103,8 @@ const ListContacts = ({
                   onView={onView}
                   onEdit={onEdit}
                   itemId={item.id}
+                  pathEdit={`/contacts/contacts-edit/?id=${item.id}`}
+                  pathView={`/contacts/contacts-view/?id=${item.id}`}
                   hasUpdatePermission={hasUpdatePermission}
                 />
               </div>

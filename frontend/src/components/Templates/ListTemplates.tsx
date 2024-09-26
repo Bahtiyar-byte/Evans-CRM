@@ -67,19 +67,14 @@ const ListTemplates = ({
                     <p className={'text-xs   text-gray-500 '}>Description</p>
                     <p className={'line-clamp-2'}>{item.description}</p>
                   </div>
-
-                  <div className={'flex-1 px-3'}>
-                    <p className={'text-xs   text-gray-500 '}>Related Trade</p>
-                    <p className={'line-clamp-2'}>
-                      {dataFormatter.tradesOneListFormatter(item.related_trade)}
-                    </p>
-                  </div>
                 </div>
                 <ListActionsPopover
                   onDelete={onDelete}
                   onView={onView}
                   onEdit={onEdit}
                   itemId={item.id}
+                  pathEdit={`/templates/templates-edit/?id=${item.id}`}
+                  pathView={`/templates/templates-view/?id=${item.id}`}
                   hasUpdatePermission={hasUpdatePermission}
                 />
               </div>

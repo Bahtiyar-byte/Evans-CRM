@@ -24,7 +24,7 @@ module.exports = class TemplatesDBApi {
       { transaction },
     );
 
-    await templates.setRelated_trade(data.related_trade || null, {
+    await templates.setRelated_trade(data.related_trade || [], {
       transaction,
     });
 
@@ -72,7 +72,7 @@ module.exports = class TemplatesDBApi {
       { transaction },
     );
 
-    await templates.setRelated_trade(data.related_trade || null, {
+    await templates.setRelated_trade(data.related_trade || [], {
       transaction,
     });
 
@@ -164,6 +164,16 @@ module.exports = class TemplatesDBApi {
       {
         model: db.trades,
         as: 'related_trade',
+        through: filter.related_trade
+          ? {
+              where: {
+                [Op.or]: filter.related_trade.split('|').map((item) => {
+                  return { ['Id']: Utils.uuid(item) };
+                }),
+              },
+            }
+          : null,
+        required: filter.related_trade ? true : null,
       },
     ];
 
@@ -198,17 +208,6 @@ module.exports = class TemplatesDBApi {
         where = {
           ...where,
           active: filter.active === true || filter.active === 'true',
-        };
-      }
-
-      if (filter.related_trade) {
-        var listItems = filter.related_trade.split('|').map((item) => {
-          return Utils.uuid(item);
-        });
-
-        where = {
-          ...where,
-          related_tradeId: { [Op.or]: listItems },
         };
       }
 

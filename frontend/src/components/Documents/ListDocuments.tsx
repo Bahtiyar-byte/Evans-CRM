@@ -75,6 +75,8 @@ const ListDocuments = ({
                   onView={onView}
                   onEdit={onEdit}
                   itemId={item.id}
+                  pathEdit={`/documents/documents-edit/?id=${item.id}`}
+                  pathView={`/documents/documents-view/?id=${item.id}`}
                   hasUpdatePermission={hasUpdatePermission}
                 />
               </div>

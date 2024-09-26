@@ -55,6 +55,10 @@ const amendmentsRoutes = require('./routes/amendments');
 
 const estimate_sectionsRoutes = require('./routes/estimate_sections');
 
+const contact_phonesRoutes = require('./routes/contact_phones');
+
+const contact_emailsRoutes = require('./routes/contact_emails');
+
 const options = {
   definition: {
     openapi: '3.0.0',
@@ -225,6 +229,18 @@ app.use(
   '/api/estimate_sections',
   passport.authenticate('jwt', { session: false }),
   estimate_sectionsRoutes,
+);
+
+app.use(
+  '/api/contact_phones',
+  passport.authenticate('jwt', { session: false }),
+  contact_phonesRoutes,
+);
+
+app.use(
+  '/api/contact_emails',
+  passport.authenticate('jwt', { session: false }),
+  contact_emailsRoutes,
 );
 
 app.use(

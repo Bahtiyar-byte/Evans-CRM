@@ -31,8 +31,6 @@ const TemplatesTablesPage = () => {
   const [filters] = useState([
     { label: 'Name', title: 'name' },
     { label: 'Description', title: 'description' },
-
-    { label: 'Related Trade', title: 'related_trade' },
   ]);
 
   const hasCreatePermission =

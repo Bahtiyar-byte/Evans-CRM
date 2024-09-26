@@ -165,6 +165,22 @@ const menuAside: MenuAsideItem[] = [
     permissions: 'READ_ESTIMATE_SECTIONS',
   },
   {
+    href: '/contact_phones/contact_phones-list',
+    label: 'Contact phones',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    icon: icon.mdiTable ? icon.mdiTable : icon.mdiTable,
+    permissions: 'READ_CONTACT_PHONES',
+  },
+  {
+    href: '/contact_emails/contact_emails-list',
+    label: 'Contact emails',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    icon: icon.mdiTable ? icon.mdiTable : icon.mdiTable,
+    permissions: 'READ_CONTACT_EMAILS',
+  },
+  {
     href: '/profile',
     label: 'Profile',
     icon: icon.mdiAccountCircle,

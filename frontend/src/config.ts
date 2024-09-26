@@ -14,7 +14,7 @@ export const appTitle = 'created by Flatlogic generator!';
 export const getPageTitle = (currentPageTitle: string) =>
   `${currentPageTitle} — ${appTitle}`;
 
-export const tinyKey = 's0bs8snu2u6qo8skn5r3kurkerhbaagpsgm9cdkbxnbo8nj4';
+export const tinyKey = 'cnslp6h943xbg36t2tf2xglmrxiw5b7tatycf3kir7n2j7eh';
 
 export const pexelsKey =
   'Vc99rnmOhHhJAbgGQoKLZtsaIVfkeownoQNbTj78VemUjKh08ZYRbf18';

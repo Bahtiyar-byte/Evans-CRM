@@ -42,6 +42,8 @@ const Dashboard = () => {
   const [amendments, setAmendments] = React.useState('Loading...');
   const [estimate_sections, setEstimate_sections] =
     React.useState('Loading...');
+  const [contact_phones, setContact_phones] = React.useState('Loading...');
+  const [contact_emails, setContact_emails] = React.useState('Loading...');
 
   const [widgetsRole, setWidgetsRole] = React.useState({
     role: { value: '', label: '' },
@@ -72,6 +74,8 @@ const Dashboard = () => {
       'contracts',
       'amendments',
       'estimate_sections',
+      'contact_phones',
+      'contact_emails',
     ];
     const fns = [
       setUsers,
@@ -93,6 +97,8 @@ const Dashboard = () => {
       setContracts,
       setAmendments,
       setEstimate_sections,
+      setContact_phones,
+      setContact_emails,
     ];
 
     const requests = entities.map((entity, index) => {
@@ -788,6 +794,70 @@ const Dashboard = () => {
                     </div>
                     <div className='text-3xl leading-tight font-semibold'>
                       {estimate_sections}
+                    </div>
+                  </div>
+                  <div>
+                    <BaseIcon
+                      className={`${iconsColor}`}
+                      w='w-16'
+                      h='h-16'
+                      size={48}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      path={icon.mdiTable || icon.mdiTable}
+                    />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {hasPermission(currentUser, 'READ_CONTACT_PHONES') && (
+            <Link href={'/contact_phones/contact_phones-list'}>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
+                <div className='flex justify-between align-center'>
+                  <div>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
+                      Contact phones
+                    </div>
+                    <div className='text-3xl leading-tight font-semibold'>
+                      {contact_phones}
+                    </div>
+                  </div>
+                  <div>
+                    <BaseIcon
+                      className={`${iconsColor}`}
+                      w='w-16'
+                      h='h-16'
+                      size={48}
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      path={icon.mdiTable || icon.mdiTable}
+                    />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          )}
+
+          {hasPermission(currentUser, 'READ_CONTACT_EMAILS') && (
+            <Link href={'/contact_emails/contact_emails-list'}>
+              <div
+                className={`${
+                  corners !== 'rounded-full' ? corners : 'rounded-3xl'
+                } dark:bg-dark-900 ${cardsStyle} dark:border-dark-700 p-6`}
+              >
+                <div className='flex justify-between align-center'>
+                  <div>
+                    <div className='text-lg leading-tight   text-gray-500 dark:text-gray-400'>
+                      Contact emails
+                    </div>
+                    <div className='text-3xl leading-tight font-semibold'>
+                      {contact_emails}
                     </div>
                   </div>
                   <div>

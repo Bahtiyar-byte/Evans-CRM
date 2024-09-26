@@ -32,6 +32,7 @@ module.exports = {
         createdAt,
         updatedAt,
       },
+
       { id: getId('User'), name: 'User', createdAt, updatedAt },
     ]);
 
@@ -87,6 +88,8 @@ module.exports = {
       'contracts',
       'amendments',
       'estimate_sections',
+      'contact_phones',
+      'contact_emails',
       ,
     ];
     await queryInterface.bulkInsert(
@@ -544,6 +547,56 @@ primary key ("roles_permissionsId", "permissionId")
         updatedAt,
         roles_permissionsId: getId('User'),
         permissionId: getId('DELETE_ESTIMATE_SECTIONS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('User'),
+        permissionId: getId('CREATE_CONTACT_PHONES'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('User'),
+        permissionId: getId('READ_CONTACT_PHONES'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('User'),
+        permissionId: getId('UPDATE_CONTACT_PHONES'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('User'),
+        permissionId: getId('DELETE_CONTACT_PHONES'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('User'),
+        permissionId: getId('CREATE_CONTACT_EMAILS'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('User'),
+        permissionId: getId('READ_CONTACT_EMAILS'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('User'),
+        permissionId: getId('UPDATE_CONTACT_EMAILS'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('User'),
+        permissionId: getId('DELETE_CONTACT_EMAILS'),
       },
 
       {
@@ -1032,6 +1085,56 @@ primary key ("roles_permissionsId", "permissionId")
         createdAt,
         updatedAt,
         roles_permissionsId: getId('Administrator'),
+        permissionId: getId('CREATE_CONTACT_PHONES'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('Administrator'),
+        permissionId: getId('READ_CONTACT_PHONES'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('Administrator'),
+        permissionId: getId('UPDATE_CONTACT_PHONES'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('Administrator'),
+        permissionId: getId('DELETE_CONTACT_PHONES'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('Administrator'),
+        permissionId: getId('CREATE_CONTACT_EMAILS'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('Administrator'),
+        permissionId: getId('READ_CONTACT_EMAILS'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('Administrator'),
+        permissionId: getId('UPDATE_CONTACT_EMAILS'),
+      },
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('Administrator'),
+        permissionId: getId('DELETE_CONTACT_EMAILS'),
+      },
+
+      {
+        createdAt,
+        updatedAt,
+        roles_permissionsId: getId('Administrator'),
         permissionId: getId('READ_API_DOCS'),
       },
       {
@@ -1052,6 +1155,7 @@ primary key ("roles_permissionsId", "permissionId")
         'Administrator',
       )}' WHERE "email"='admin@flatlogic.com'`,
     );
+
     await queryInterface.sequelize.query(
       `UPDATE "users" SET "app_roleId"='${getId(
         'User',
