@@ -70,13 +70,13 @@ module.exports = class Contact_phonesService {
         throw new ValidationError('contact_phonesNotFound');
       }
 
-      await Contact_phonesDBApi.update(id, data, {
+      const updatedContact_phones = await Contact_phonesDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return contact_phones;
+      return updatedContact_phones;
     } catch (error) {
       await transaction.rollback();
       throw error;

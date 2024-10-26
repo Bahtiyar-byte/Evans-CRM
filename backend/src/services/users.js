@@ -108,7 +108,7 @@ module.exports = class UsersService {
         throw new ValidationError('iam.errors.userNotFound');
       }
 
-      await UsersDBApi.update(
+      const updatedUser = await UsersDBApi.update(
         id,
         data,
 
@@ -119,7 +119,7 @@ module.exports = class UsersService {
       );
 
       await transaction.commit();
-      return users;
+      return updatedUser;
     } catch (error) {
       await transaction.rollback();
       throw error;

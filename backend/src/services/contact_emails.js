@@ -70,13 +70,13 @@ module.exports = class Contact_emailsService {
         throw new ValidationError('contact_emailsNotFound');
       }
 
-      await Contact_emailsDBApi.update(id, data, {
+      const updatedContact_emails = await Contact_emailsDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return contact_emails;
+      return updatedContact_emails;
     } catch (error) {
       await transaction.rollback();
       throw error;

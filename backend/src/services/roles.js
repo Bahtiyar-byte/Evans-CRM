@@ -207,13 +207,13 @@ module.exports = class RolesService {
         throw new ValidationError('rolesNotFound');
       }
 
-      await RolesDBApi.update(id, data, {
+      const updatedRoles = await RolesDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return roles;
+      return updatedRoles;
     } catch (error) {
       await transaction.rollback();
       throw error;

@@ -70,13 +70,13 @@ module.exports = class SubcontractorService {
         throw new ValidationError('subcontractorNotFound');
       }
 
-      await SubcontractorDBApi.update(id, data, {
+      const updatedSubcontractor = await SubcontractorDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return subcontractor;
+      return updatedSubcontractor;
     } catch (error) {
       await transaction.rollback();
       throw error;

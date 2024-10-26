@@ -161,13 +161,13 @@ module.exports = class TasksDBApi {
   }
 
   static async findAll(filter, options) {
-    var limit = filter.limit || 0;
-    var offset = 0;
+    const limit = filter.limit || 0;
+    let offset = 0;
     const currentPage = +filter.page;
 
     offset = currentPage * limit;
 
-    var orderBy = null;
+    const orderBy = null;
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};
@@ -249,7 +249,7 @@ module.exports = class TasksDBApi {
       }
 
       if (filter.assigned_to) {
-        var listItems = filter.assigned_to.split('|').map((item) => {
+        const listItems = filter.assigned_to.split('|').map((item) => {
           return Utils.uuid(item);
         });
 
@@ -260,7 +260,7 @@ module.exports = class TasksDBApi {
       }
 
       if (filter.related_job) {
-        var listItems = filter.related_job.split('|').map((item) => {
+        const listItems = filter.related_job.split('|').map((item) => {
           return Utils.uuid(item);
         });
 

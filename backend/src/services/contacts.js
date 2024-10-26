@@ -67,13 +67,13 @@ module.exports = class ContactsService {
         throw new ValidationError('contactsNotFound');
       }
 
-      await ContactsDBApi.update(id, data, {
+      const updatedContacts = await ContactsDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return contacts;
+      return updatedContacts;
     } catch (error) {
       await transaction.rollback();
       throw error;

@@ -67,13 +67,13 @@ module.exports = class InvoicesService {
         throw new ValidationError('invoicesNotFound');
       }
 
-      await InvoicesDBApi.update(id, data, {
+      const updatedInvoices = await InvoicesDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return invoices;
+      return updatedInvoices;
     } catch (error) {
       await transaction.rollback();
       throw error;

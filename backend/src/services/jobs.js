@@ -67,13 +67,13 @@ module.exports = class JobsService {
         throw new ValidationError('jobsNotFound');
       }
 
-      await JobsDBApi.update(id, data, {
+      const updatedJobs = await JobsDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return jobs;
+      return updatedJobs;
     } catch (error) {
       await transaction.rollback();
       throw error;

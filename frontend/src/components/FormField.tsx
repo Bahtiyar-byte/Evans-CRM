@@ -12,6 +12,9 @@ type Props = {
   hasTextareaHeight?: boolean;
   children: ReactNode;
   disabled?: boolean;
+  borderButtom?: boolean;
+  diversity?: boolean;
+  websiteBg?: boolean;
 };
 
 const FormField = ({ icons = [], ...props }: Props) => {
@@ -19,6 +22,7 @@ const FormField = ({ icons = [], ...props }: Props) => {
   const bgColor = useAppSelector((state) => state.style.cardsColor);
   const focusRing = useAppSelector((state) => state.style.focusRingColor);
   const corners = useAppSelector((state) => state.style.corners);
+  const bgWebsiteColor = useAppSelector((state) => state.style.bgLayoutColor);
   let elementWrapperClass = '';
 
   switch (childrenCount) {
@@ -34,8 +38,17 @@ const FormField = ({ icons = [], ...props }: Props) => {
     `${focusRing}`,
     props.hasTextareaHeight ? 'h-24' : 'h-12',
     props.isBorderless ? 'border-0' : 'border',
-    props.isTransparent ? 'bg-transparent' : `${bgColor} dark:bg-dark-800`,
+    props.isTransparent
+      ? 'bg-transparent'
+      : `${props.websiteBg ? `  ` : bgColor} dark:bg-dark-800`,
     props.disabled ? 'bg-gray-200 text-gray-100 dark:bg-dark-900 disabled' : '',
+    props.borderButtom
+      ? `border-0 border-b ${
+          props.diversity
+            ? 'border-gray-400'
+            : ' placeholder-white   border-gray-300/10  '
+        } rounded-none focus:ring-0`
+      : '',
   ].join(' ');
 
   return (

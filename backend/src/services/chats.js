@@ -67,13 +67,13 @@ module.exports = class ChatsService {
         throw new ValidationError('chatsNotFound');
       }
 
-      await ChatsDBApi.update(id, data, {
+      const updatedChats = await ChatsDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return chats;
+      return updatedChats;
     } catch (error) {
       await transaction.rollback();
       throw error;

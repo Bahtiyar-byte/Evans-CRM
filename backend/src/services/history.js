@@ -67,13 +67,13 @@ module.exports = class HistoryService {
         throw new ValidationError('historyNotFound');
       }
 
-      await HistoryDBApi.update(id, data, {
+      const updatedHistory = await HistoryDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return history;
+      return updatedHistory;
     } catch (error) {
       await transaction.rollback();
       throw error;
