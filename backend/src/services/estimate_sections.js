@@ -70,13 +70,17 @@ module.exports = class Estimate_sectionsService {
         throw new ValidationError('estimate_sectionsNotFound');
       }
 
-      await Estimate_sectionsDBApi.update(id, data, {
-        currentUser,
-        transaction,
-      });
+      const updatedEstimate_sections = await Estimate_sectionsDBApi.update(
+        id,
+        data,
+        {
+          currentUser,
+          transaction,
+        },
+      );
 
       await transaction.commit();
-      return estimate_sections;
+      return updatedEstimate_sections;
     } catch (error) {
       await transaction.rollback();
       throw error;

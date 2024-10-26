@@ -67,13 +67,13 @@ module.exports = class ImagesService {
         throw new ValidationError('imagesNotFound');
       }
 
-      await ImagesDBApi.update(id, data, {
+      const updatedImages = await ImagesDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return images;
+      return updatedImages;
     } catch (error) {
       await transaction.rollback();
       throw error;

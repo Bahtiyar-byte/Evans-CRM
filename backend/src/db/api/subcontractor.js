@@ -167,13 +167,13 @@ module.exports = class SubcontractorDBApi {
   }
 
   static async findAll(filter, options) {
-    var limit = filter.limit || 0;
-    var offset = 0;
+    const limit = filter.limit || 0;
+    let offset = 0;
     const currentPage = +filter.page;
 
     offset = currentPage * limit;
 
-    var orderBy = null;
+    const orderBy = null;
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};

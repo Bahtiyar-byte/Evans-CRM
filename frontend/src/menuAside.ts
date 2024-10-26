@@ -225,6 +225,7 @@ const menuAside: MenuAsideItem[] = [
     label: 'Profile',
     icon: icon.mdiAccountCircle,
   },
+
   {
     href: '/api-docs',
     target: '_blank',

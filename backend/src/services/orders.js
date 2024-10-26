@@ -67,13 +67,13 @@ module.exports = class OrdersService {
         throw new ValidationError('ordersNotFound');
       }
 
-      await OrdersDBApi.update(id, data, {
+      const updatedOrders = await OrdersDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return orders;
+      return updatedOrders;
     } catch (error) {
       await transaction.rollback();
       throw error;

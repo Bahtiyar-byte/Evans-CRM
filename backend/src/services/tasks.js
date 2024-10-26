@@ -67,13 +67,13 @@ module.exports = class TasksService {
         throw new ValidationError('tasksNotFound');
       }
 
-      await TasksDBApi.update(id, data, {
+      const updatedTasks = await TasksDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return tasks;
+      return updatedTasks;
     } catch (error) {
       await transaction.rollback();
       throw error;

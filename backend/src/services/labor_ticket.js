@@ -70,13 +70,13 @@ module.exports = class Labor_ticketService {
         throw new ValidationError('labor_ticketNotFound');
       }
 
-      await Labor_ticketDBApi.update(id, data, {
+      const updatedLabor_ticket = await Labor_ticketDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return labor_ticket;
+      return updatedLabor_ticket;
     } catch (error) {
       await transaction.rollback();
       throw error;

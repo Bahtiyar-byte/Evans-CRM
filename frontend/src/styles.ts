@@ -17,6 +17,11 @@ interface StyleObject {
   corners: string;
   cardsStyle: string;
   linkColor: string;
+  websiteHeder: string;
+  borders: string;
+  shadow: string;
+  websiteSectionStyle: string;
+  textSecondary: string;
 }
 
 export const basic: StyleObject = {
@@ -39,6 +44,11 @@ export const basic: StyleObject = {
   corners: 'rounded',
   cardsStyle: 'bg-white border border-pavitra-400',
   linkColor: 'text-black',
+  websiteHeder: '',
+  borders: '',
+  shadow: '',
+  websiteSectionStyle: '',
+  textSecondary: '',
 };
 
 export const white: StyleObject = {
@@ -62,6 +72,11 @@ export const white: StyleObject = {
   corners: 'rounded',
   cardsStyle: 'bg-white border border-pavitra-400',
   linkColor: 'text-blue-600',
+  websiteHeder: 'border-b border-gray-200',
+  borders: 'border-gray-200',
+  shadow: '',
+  websiteSectionStyle: '',
+  textSecondary: 'text-gray-500',
 };
 
 export const dataGridStyles = {

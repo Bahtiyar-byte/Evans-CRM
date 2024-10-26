@@ -67,13 +67,13 @@ module.exports = class EstimatesService {
         throw new ValidationError('estimatesNotFound');
       }
 
-      await EstimatesDBApi.update(id, data, {
+      const updatedEstimates = await EstimatesDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return estimates;
+      return updatedEstimates;
     } catch (error) {
       await transaction.rollback();
       throw error;

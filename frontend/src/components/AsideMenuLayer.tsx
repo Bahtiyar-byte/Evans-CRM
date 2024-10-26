@@ -4,6 +4,7 @@ import BaseIcon from './BaseIcon';
 import AsideMenuList from './AsideMenuList';
 import { MenuAsideItem } from '../interfaces';
 import { useAppSelector } from '../stores/hooks';
+import Link from 'next/link';
 
 type Props = {
   menu: MenuAsideItem[];

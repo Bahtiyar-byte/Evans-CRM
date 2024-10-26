@@ -67,13 +67,13 @@ module.exports = class TemplatesService {
         throw new ValidationError('templatesNotFound');
       }
 
-      await TemplatesDBApi.update(id, data, {
+      const updatedTemplates = await TemplatesDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return templates;
+      return updatedTemplates;
     } catch (error) {
       await transaction.rollback();
       throw error;

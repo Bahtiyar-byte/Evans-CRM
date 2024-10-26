@@ -67,13 +67,13 @@ module.exports = class CrewService {
         throw new ValidationError('crewNotFound');
       }
 
-      await CrewDBApi.update(id, data, {
+      const updatedCrew = await CrewDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return crew;
+      return updatedCrew;
     } catch (error) {
       await transaction.rollback();
       throw error;

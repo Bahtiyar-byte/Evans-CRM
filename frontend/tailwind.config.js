@@ -47,6 +47,9 @@ module.exports = {
           600: '#9CA3AF',
           500: '#CBD5E1',
         },
+        green: {
+          text: '#45B26B',
+        },
         pavitra: {
           blue: '#0162FD',
           green: '#00B448',

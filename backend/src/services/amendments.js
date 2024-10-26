@@ -67,13 +67,13 @@ module.exports = class AmendmentsService {
         throw new ValidationError('amendmentsNotFound');
       }
 
-      await AmendmentsDBApi.update(id, data, {
+      const updatedAmendments = await AmendmentsDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return amendments;
+      return updatedAmendments;
     } catch (error) {
       await transaction.rollback();
       throw error;

@@ -1,46 +1,75 @@
-import { pexelsKey, pexelsQuery } from '../config';
-
-const KEY = pexelsKey;
+import axios from 'axios';
 
 export async function getPexelsImage() {
-  const headers = new Headers({
-    Authorization: `${KEY}`,
-  });
-  const query = pexelsQuery || 'nature';
-  const orientation = 'portrait'; // landscape, portrait or square
-  const perPage = 1;
-  const url = `https://api.pexels.com/v1/search?query=${query}&orientation=${orientation}&per_page=${perPage}&page=1`;
   try {
-    const response = await fetch(url, {
-      headers: headers,
-    });
-    const data = await response.json();
-    return data.photos[0];
+    const response = await axios.get(`/pexels/image`);
+    return response.data;
   } catch (error) {
-    console.error('Error:', error);
-    return '';
+    console.error('Error fetching image:', error);
+    return null;
   }
 }
 
 export async function getPexelsVideo() {
-  const headers = new Headers({
-    Authorization: `${KEY}`,
-  });
-  const baseUrl = 'https://api.pexels.com/videos/search';
-  const query = pexelsQuery || 'nature';
-  const orientation = 'portrait'; // landscape, portrait or square
-  const perPage = 1;
-  const url =
-    baseUrl +
-    `?query=${query}&orientation=${orientation}&per_page=${perPage}&page=1`;
   try {
-    const response = await fetch(url, {
-      headers: headers,
-    });
-    const data = await response.json();
-    return data.videos[0];
+    const response = await axios.get(`/pexels/video`);
+    return response.data;
   } catch (error) {
-    console.error('Error:', error);
-    return '';
+    console.error('Error fetching video:', error);
+    return null;
   }
+}
+
+let localStorageLock = false;
+
+export async function getMultiplePexelsImages(
+  queries = ['home', 'apple', 'pizza', 'mountains', 'cat'],
+) {
+  const normalizeQuery = (query) =>
+    query.trim().toLowerCase().replace(/\s+/g, '');
+
+  while (localStorageLock) {
+    await new Promise((resolve) => setTimeout(resolve, 50));
+  }
+  localStorageLock = true;
+
+  const cachedImages =
+    JSON.parse(localStorage.getItem('pexelsImagesCache')) || {};
+
+  const isImageCached = (query) => {
+    const normalizedQuery = normalizeQuery(query);
+    const cached = cachedImages[normalizedQuery];
+    const isCached =
+      cached && cached.src && cached.photographer && cached.photographer_url;
+    return isCached;
+  };
+
+  const missingQueries = queries.filter((query) => !isImageCached(query));
+
+  if (missingQueries.length > 0) {
+    const queryString = missingQueries.join(',');
+
+    try {
+      const response = await axios.get(`/pexels/multiple-images`, {
+        params: { queries: queryString },
+      });
+
+      missingQueries.forEach((query, index) => {
+        const normalizedQuery = normalizeQuery(query);
+        if (!cachedImages[normalizedQuery]) {
+          cachedImages[normalizedQuery] = response.data[index];
+        }
+      });
+
+      localStorage.setItem('pexelsImagesCache', JSON.stringify(cachedImages));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const result = queries.map((query) => cachedImages[normalizeQuery(query)]);
+
+  localStorageLock = false;
+
+  return result;
 }

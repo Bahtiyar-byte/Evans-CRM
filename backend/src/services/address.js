@@ -67,13 +67,13 @@ module.exports = class AddressService {
         throw new ValidationError('addressNotFound');
       }
 
-      await AddressDBApi.update(id, data, {
+      const updatedAddress = await AddressDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return address;
+      return updatedAddress;
     } catch (error) {
       await transaction.rollback();
       throw error;

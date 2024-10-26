@@ -118,11 +118,11 @@ export default function Login() {
       <div className='flex justify-center w-full bg-blue-300/20'>
         <a
           className='text-[8px]'
-          href={image.photographer_url}
+          href={image?.photographer_url}
           target='_blank'
           rel='noreferrer'
         >
-          Photo by {image.photographer} on Pexels
+          Photo by {image?.photographer} on Pexels
         </a>
       </div>
     </div>
@@ -192,6 +192,7 @@ export default function Login() {
           <div className='flex items-center justify-center flex-col space-y-4 w-full lg:w-full'>
             <CardBox className='w-full md:w-3/5 lg:w-2/3'>
               <h2 className='text-4xl font-semibold my-4'>Evans CRM</h2>
+
               <div className='flex flex-row text-gray-500 justify-between'>
                 <div>
                   <p className='mb-2'>

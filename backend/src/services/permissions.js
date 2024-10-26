@@ -67,13 +67,13 @@ module.exports = class PermissionsService {
         throw new ValidationError('permissionsNotFound');
       }
 
-      await PermissionsDBApi.update(id, data, {
+      const updatedPermissions = await PermissionsDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return permissions;
+      return updatedPermissions;
     } catch (error) {
       await transaction.rollback();
       throw error;

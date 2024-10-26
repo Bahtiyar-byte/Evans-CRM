@@ -23,6 +23,11 @@ interface StyleState {
   corners: string;
   cardsStyle: string;
   linkColor: string;
+  websiteHeder: string;
+  borders: string;
+  shadow: string;
+  websiteSectionStyle: string;
+  textSecondary: string;
 }
 
 const initialState: StyleState = {
@@ -45,6 +50,11 @@ const initialState: StyleState = {
   corners: styles.white.corners,
   cardsStyle: styles.white.cardsStyle,
   linkColor: styles.white.linkColor,
+  websiteHeder: styles.white.websiteHeder,
+  borders: styles.white.borders,
+  shadow: styles.white.shadow,
+  websiteSectionStyle: styles.white.websiteSectionStyle,
+  textSecondary: styles.white.textSecondary,
 };
 
 export const styleSlice = createSlice({

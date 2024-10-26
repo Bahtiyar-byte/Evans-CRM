@@ -67,13 +67,13 @@ module.exports = class ContractsService {
         throw new ValidationError('contractsNotFound');
       }
 
-      await ContractsDBApi.update(id, data, {
+      const updatedContracts = await ContractsDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return contracts;
+      return updatedContracts;
     } catch (error) {
       await transaction.rollback();
       throw error;

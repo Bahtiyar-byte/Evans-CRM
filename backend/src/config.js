@@ -58,7 +58,8 @@ const config = {
       ? 'https://flatlogic.com/projects'
       : 'http://localhost:3000/projects',
 };
-
+config.pexelsKey = 'Vc99rnmOhHhJAbgGQoKLZtsaIVfkeownoQNbTj78VemUjKh08ZYRbf18';
+config.pexelsQuery = 'clouds over city';
 config.host =
   process.env.NODE_ENV === 'production' ? config.remote : 'http://localhost';
 config.apiUrl = `${config.host}${config.port ? `:${config.port}` : ``}/api`;

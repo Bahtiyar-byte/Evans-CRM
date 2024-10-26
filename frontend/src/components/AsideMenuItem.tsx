@@ -26,6 +26,7 @@ const AsideMenuItem = ({ item, isDropdownList = false }: Props) => {
   const asideMenuItemActiveStyle = useAppSelector(
     (state) => state.style.asideMenuItemActiveStyle,
   );
+  const borders = useAppSelector((state) => state.style.borders);
   const activeLinkColor = useAppSelector(
     (state) => state.style.activeLinkColor,
   );
@@ -85,6 +86,7 @@ const AsideMenuItem = ({ item, isDropdownList = false }: Props) => {
 
   return (
     <li className={'px-3 py-1.5'}>
+      {item.withDevider && <hr className={`${borders} mb-3`} />}
       {item.href && (
         <Link href={item.href} target={item.target} className={componentClass}>
           {asideMenuItemInnerContents}

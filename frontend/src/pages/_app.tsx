@@ -26,7 +26,13 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   if (typeof window !== 'undefined') {
     // Perform localStorage action
-    axios.defaults.baseURL = baseURLApi;
+    console.log(
+      'process.env.NEXT_PUBLIC_BACK_API',
+      process.env.NEXT_PUBLIC_BACK_API,
+    );
+    axios.defaults.baseURL = process.env.NEXT_PUBLIC_BACK_API
+      ? process.env.NEXT_PUBLIC_BACK_API
+      : baseURLApi;
     axios.defaults.headers.common['Content-Type'] = 'application/json';
     const token = localStorage.getItem('token');
     if (token) {

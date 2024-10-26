@@ -14,6 +14,7 @@ const swaggerJsDoc = require('swagger-jsdoc');
 const authRoutes = require('./routes/auth');
 const fileRoutes = require('./routes/file');
 const searchRoutes = require('./routes/search');
+const pexelsRoutes = require('./routes/pexels');
 
 const openaiRoutes = require('./routes/openai');
 
@@ -125,6 +126,7 @@ app.use(bodyParser.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/file', fileRoutes);
+app.use('/api/pexels', pexelsRoutes);
 app.enable('trust proxy');
 
 app.use(
@@ -305,7 +307,7 @@ if (fs.existsSync(publicDir)) {
   });
 }
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.NODE_ENV === 'dev_stage' ? 3000 : 8080;
 
 db.sequelize.sync().then(function () {
   app.listen(PORT, () => {

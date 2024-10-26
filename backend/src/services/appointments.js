@@ -70,13 +70,13 @@ module.exports = class AppointmentsService {
         throw new ValidationError('appointmentsNotFound');
       }
 
-      await AppointmentsDBApi.update(id, data, {
+      const updatedAppointments = await AppointmentsDBApi.update(id, data, {
         currentUser,
         transaction,
       });
 
       await transaction.commit();
-      return appointments;
+      return updatedAppointments;
     } catch (error) {
       await transaction.rollback();
       throw error;

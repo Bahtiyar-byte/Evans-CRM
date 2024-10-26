@@ -224,13 +224,13 @@ module.exports = class HistoryDBApi {
   }
 
   static async findAll(filter, options) {
-    var limit = filter.limit || 0;
-    var offset = 0;
+    const limit = filter.limit || 0;
+    let offset = 0;
     const currentPage = +filter.page;
 
     offset = currentPage * limit;
 
-    var orderBy = null;
+    const orderBy = null;
 
     const transaction = (options && options.transaction) || undefined;
     let where = {};
@@ -308,7 +308,7 @@ module.exports = class HistoryDBApi {
       }
 
       if (filter.related_estimate) {
-        var listItems = filter.related_estimate.split('|').map((item) => {
+        const listItems = filter.related_estimate.split('|').map((item) => {
           return Utils.uuid(item);
         });
 
@@ -319,7 +319,7 @@ module.exports = class HistoryDBApi {
       }
 
       if (filter.related_invoice) {
-        var listItems = filter.related_invoice.split('|').map((item) => {
+        const listItems = filter.related_invoice.split('|').map((item) => {
           return Utils.uuid(item);
         });
 
@@ -330,7 +330,7 @@ module.exports = class HistoryDBApi {
       }
 
       if (filter.related_job) {
-        var listItems = filter.related_job.split('|').map((item) => {
+        const listItems = filter.related_job.split('|').map((item) => {
           return Utils.uuid(item);
         });
 
@@ -341,7 +341,7 @@ module.exports = class HistoryDBApi {
       }
 
       if (filter.related_email) {
-        var listItems = filter.related_email.split('|').map((item) => {
+        const listItems = filter.related_email.split('|').map((item) => {
           return Utils.uuid(item);
         });
 
@@ -352,7 +352,7 @@ module.exports = class HistoryDBApi {
       }
 
       if (filter.related_labor_ticket) {
-        var listItems = filter.related_labor_ticket.split('|').map((item) => {
+        const listItems = filter.related_labor_ticket.split('|').map((item) => {
           return Utils.uuid(item);
         });
 
@@ -363,7 +363,7 @@ module.exports = class HistoryDBApi {
       }
 
       if (filter.related_user) {
-        var listItems = filter.related_user.split('|').map((item) => {
+        const listItems = filter.related_user.split('|').map((item) => {
           return Utils.uuid(item);
         });
 
@@ -374,7 +374,7 @@ module.exports = class HistoryDBApi {
       }
 
       if (filter.related_contact) {
-        var listItems = filter.related_contact.split('|').map((item) => {
+        const listItems = filter.related_contact.split('|').map((item) => {
           return Utils.uuid(item);
         });
 
@@ -385,7 +385,7 @@ module.exports = class HistoryDBApi {
       }
 
       if (filter.related_appointment) {
-        var listItems = filter.related_appointment.split('|').map((item) => {
+        const listItems = filter.related_appointment.split('|').map((item) => {
           return Utils.uuid(item);
         });
 
